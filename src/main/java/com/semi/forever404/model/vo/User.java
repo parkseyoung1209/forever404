@@ -1,5 +1,7 @@
 package com.semi.forever404.model.vo;
 
+
+
 import java.util.Date;
 
 import lombok.AllArgsConstructor;
