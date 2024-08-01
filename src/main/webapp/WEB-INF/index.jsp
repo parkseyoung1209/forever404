@@ -7,8 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
 
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/reset.css" />
-    <link rel="stylesheet" href=".${pageContext.request.contextPath}/semi.css" />
+	 <link rel="stylesheet" href="${pageContext.request.contextPath}/reset.css" />
+     <link rel="stylesheet" href="${pageContext.request.contextPath}/semi.css" />
     <script
     src="https://kit.fontawesome.com/ef885bd654.js"
     crossorigin="anonymous"
@@ -22,14 +22,14 @@
           Forever
         </h1>
         </a >
-        <a href=""><img src="semiResources/404.png" alt=""></a>
+        <a href=""><img src="${pageContext.request.contextPath}/image/main/404.png" /></a>
       </nav>
 
       <nav id="a2">
         <button
           type="button"
           class="nav-link"
-          onclick="location.href='developer.html'"
+          onclick="location.href='/developer'"
         >
           개발자
         </button>
@@ -43,13 +43,12 @@
     <div className="main">
       <div id="carousel">
         <button id="prevBtn" class="button2">&#10094;</button>
-        <div id="section-container">
+        <div id="sectioncontainer">
           <section class="section" id="section1">
             <h1>트러블 없는 트래블 스케줄러,(적당한 멘트)</h1>
             <br />
             <h1>"SEMI PROJECT"<프로젝트제목></h1>
             <h2><a id="scrollLink">자세히 보기</a></h2>
-            <img src="../front-end-workspace/resources/제주1.jpg" alt="" />
           </section>
           <section class="section" id="section2">
             <h1>심플한 여행스케줄러,</h1>
@@ -67,7 +66,7 @@
       <section id="section5">
         <h1>이 스케줄러의 장점</h1>
         <p>전체 여행 일정을 한눈에 !</p>
-        <img src="../resources/스케줄1.jpg" alt="" />
+        <img src="${pageContext.request.contextPath}/image/main/schedule.jpg" alt="" />
       </section>
       <section id="section6">
         <div id="textBox">
@@ -77,10 +76,10 @@
         </div>
         <div id="positionBox">
           <div class="box" id="box1">
-            <img src="../resources/캘린더2(box1).jpg" alt="" />
+            <img src="${pageContext.request.contextPath}/image/main/calender2.jpg" />
           </div>
           <div class="box" id="box2">
-            <img src="../resources/비행기2.jpg" alt="" />
+            <img src="${pageContext.request.contextPath}/image/main/plane.jpg"/>
           </div>
         </div>
       </section>
@@ -120,7 +119,7 @@
             <input type="submit" value="로그인" />
           </div>
           <div class="kkt_login_btn">
-            <img src="semiResources/kakao_login_large_wide.png" alt="" />
+            <img src="${pageContext.request.contextPath}/image/main/kakao.png"/>
           </div>
         </div>
       </div>
@@ -128,8 +127,6 @@
   <script>
     const header = document.getElementById("header");
     const navLinks = document.querySelectorAll(".nav-link");
-    const spans = document.querySelectorAll("#a1");
-    const span = document.querySelectorAll(".white");
 
     navLinks.forEach((link) => {
       link.addEventListener("mouseover", () => {
@@ -142,38 +139,6 @@
       link.addEventListener("mouseout", () => {
         header.style.backgroundColor = "transparent";
         navLinks.forEach((link) => {
-          link.style.color = "white";
-        });
-      });
-    });
-
-    navLinks.forEach((link) => {
-      link.addEventListener("mouseover", () => {
-        header.style.backgroundColor = "white";
-        spans.forEach((link) => {
-          link.style.color = "black";
-        });
-      });
-
-      link.addEventListener("mouseout", () => {
-        header.style.backgroundColor = "transparent";
-        spans.forEach((link) => {
-          link.style.color = "darkred";
-        });
-      });
-    });
-
-    navLinks.forEach((link) => {
-      link.addEventListener("mouseover", () => {
-        header.style.backgroundColor = "white";
-        span.forEach((link) => {
-          link.style.color = "black";
-        });
-      });
-
-      link.addEventListener("mouseout", () => {
-        header.style.backgroundColor = "transparent";
-        span.forEach((link) => {
           link.style.color = "white";
         });
       });
@@ -182,8 +147,9 @@
     let currentIndex = 0;
     const sections = document.querySelectorAll(".section");
     const totalSections = sections.length;
-    const sectionContainer = document.getElementById("section-container");
+    const sectionContainer = document.getElementById("sectioncontainer");
 
+    
     document
       .getElementById("nextBtn")
       .addEventListener("click", showNextSection);
@@ -203,7 +169,7 @@
 
     function updateCarousel() {
       const offset = -currentIndex * 100;
-      sectionContainer.style.transform = `translateX(${offset}%)`;
+      sectionContainer.style.transform = "translateX(" + offset + "%)";
     }
 
     setInterval(showNextSection, 4000);
