@@ -67,6 +67,7 @@ form div.user_birth {
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
 }
+
 form div input {
   width: 400px;
   margin-top: 30px;
@@ -75,19 +76,33 @@ form div input {
   outline: none;
   cursor: pointer;
 }
+form div.user_birth input {
+  width: 490px;
+  color: gray;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  margin-top: 25px;
+}
 form div i {
   margin-left: 20px;
   margin-right: 20px;
   color: grey;
   font-size: 30px;
+  cursor: pointer;
 }
-form div.user_kkt_id i {
-  margin-left: 10px;
-  margin-right: 10px;
-  border-radius: 100%;
-  padding: 7px;
-  /* color: rgb(92, 64, 51); */
-  /* background-color: rgb(255, 234, 0); */
+
+form div.user_phone i {
+  margin-left: 22px;
+  margin-right: 21px;
+}
+form div.user_name i {
+  margin-right: 19.5px;
+}
+form div.user_email i {
+  margin-right: 17.5px;
+  margin-left: 18px;
+}
+form div.user_birth i {
+  margin-right: 19.5px;
 }
 .submit_btn {
   border: none;
