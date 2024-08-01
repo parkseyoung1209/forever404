@@ -29,12 +29,12 @@
         <button
           type="button"
           class="nav-link"
-          onclick="location.href='developer.html'"
+          onclick="location.href='/developer'"
         >
           개발자
         </button>
         <button type="button" class="nav-link" id="login">로그인</button>
-        <button type="button" class="nav-link" onclick="location.href='register.html'">
+        <button type="button" class="nav-link" onclick="location.href='/register'">
           회원가입
         </button>
       </nav>
