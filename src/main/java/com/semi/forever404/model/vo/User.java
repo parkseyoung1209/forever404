@@ -16,12 +16,13 @@ public class User {
 	private Date birth;
 	
 	
-	
-	public User(String id, String password, String name) {
+	public User(String id, String password, String phone, String name, String email) {
 		super();
 		this.id=id;
 		this.password=password;
+		this.phone = phone;
 		this.name=name;
+		this.email=email;
 	}
 	
 }
