@@ -22,7 +22,7 @@
           Forever
         </h1>
         </a >
-        <a href=""><img src="${pageContext.request.contextPath}/image/main/404.png" /></a>
+        <a href="/kakaomap"><img src="${pageContext.request.contextPath}/image/main/404.png" /></a>
       </nav>
 
       <nav id="a2">
