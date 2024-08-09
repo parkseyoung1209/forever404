@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -7,8 +8,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
 
-	 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/reset.css" />
-     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/semi.css" />
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/reset.css" />
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/semi.css" />
     <script
     src="https://kit.fontawesome.com/ef885bd654.js"
     crossorigin="anonymous"
@@ -22,14 +23,14 @@
           Forever
         </h1>
         </a >
-        <a href=""><img src="${pageContext.request.contextPath}/image/main/404.png" /></a>
+        <a href=""><img src="${pageContext.request.contextPath}/image/main/404.png" alt=""></a>
       </nav>
 
       <nav id="a2">
         <button
           type="button"
           class="nav-link"
-          onclick="location.href='/developer'"
+          onclick="location.href='developer.html'"
         >
           개발자
         </button>
@@ -64,9 +65,14 @@
         <button id="nextBtn" class="button2">&#10095;</button>
       </div>
       <section id="section5">
-        <h1>이 스케줄러의 장점</h1>
-        <p>전체 여행 일정을 한눈에 !</p>
-        <img src="${pageContext.request.contextPath}/image/main/schedule.jpg" alt="" />
+        <div class=schedule>
+          <h1>이 스케줄러의 장점</h1>
+          <p>전체 여행 일정을 한눈에 !</p>
+        </div>
+
+        <div class="schedule">
+          <img src="${pageContext.request.contextPath}/image/main/schedule.jpg" alt="" />
+        </div>
       </section>
       <section id="section6">
         <div id="textBox">
@@ -76,15 +82,14 @@
         </div>
         <div id="positionBox">
           <div class="box" id="box1">
-            <img src="${pageContext.request.contextPath}/image/main/calender2.jpg" />
+            <img src="${pageContext.request.contextPath}/image/main/calender2.jpg" alt="" />
           </div>
           <div class="box" id="box2">
-            <img src="${pageContext.request.contextPath}/image/main/plane.jpg"/>
+            <img src="${pageContext.request.contextPath}/image/main/plane.jpg" alt="" />
           </div>
         </div>
       </section>
-
-
+	<form action="/login" method="post">
       <div class="modal">
         <div class="modal_body">
           <div class="back_to_menu">
@@ -94,7 +99,6 @@
             <h1>로그인</h1>
           </div>
           <div class="user_login">
-          <label for="id">
             <i class="fa-regular fa-user"></i>
             <input
               type="text"
@@ -103,27 +107,67 @@
               name="id"
               placeholder="아이디"
               required
-            /></label>
+            />
           </div>
           <div class="user_login">
-          <label for="password">
             <i class="fa-solid fa-lock"></i>
             <input
-              type="text"
+              type="password"
               class="user_password_input"
               id="password"
               name="password"
               placeholder="비밀번호"
               required
-            /></label>
+            />
           </div>
           <div class="login_btn">
-        	<button type="button" id="login2" onclick="location.href='/movement'">로그인</button>
+            <button type="submit" id="login2" onclick="location.href='/main'">로그인</button>
           </div>
+          </form>
           <div class="kkt_login_btn">
-            <img src="${pageContext.request.contextPath}/image/main/kakao.png"/>
+          	 <a href="javascript:kakaoRegister();">
+            <img src="${pageContext.request.contextPath}/image/main/kakao.png" alt="카카오 로그인 버튼" />
+            </a>
+            <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+            <script>
+              Kakao.init('416439531d0e4d8f33eb240c9b791ffb');
+
+              function kakaoRegister() {
+                window.Kakao.Auth.login({
+                  scope: 'account_email, name, birthyear, phone_number',
+                  success: function(authObj) {
+                	  const accessToken = authObj.access_token;
+                      window.Kakao.Auth.setAccessToken(accessToken);
+                      Kakao.Auth.authorize({
+                    	  redirectUri: 'http://localhost:8080/main',
+                    	});
+                    window.Kakao.API.request({
+                      url:'/v2/user/me',
+                      success: res => {
+                        const kakao_account = res.kakao_account;
+                        const formData = new URLSearchParams();
+                        formData.append('email', res.kakao_account.email);
+                        formData.append('name', res.kakao_account.name);
+                        formData.append('birthday', res.kakao_account.birthday)
+                        formData.append("birthyear", res.kakao_account.birthyear);
+                        formData.append("phone", res.kakao_account.phone_number);
+                        formData.append("token", accessToken);
+                        fetch('/register/kakao', {
+                            method: 'POST',
+                          headers: {
+                            'Content-Type': 'application/x-www-form-urlencoded'
+                        },
+                        body: formData.toString()
+                		})
+                      }
+                    });
+                  }
+                });
+              }
+            </script>
           </div>
         </div>
+      </div>
   </body>
   <script>
     const header = document.getElementById("header");
@@ -150,7 +194,6 @@
     const totalSections = sections.length;
     const sectionContainer = document.getElementById("sectioncontainer");
 
-    
     document
       .getElementById("nextBtn")
       .addEventListener("click", showNextSection);

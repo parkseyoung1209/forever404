@@ -1,0 +1,49 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.GroupMapper">
+	<insert id="addGroup" parameterType="BigGroup">
+		INSERT INTO big_group(group_name) VALUES(#{groupName})
+	</insert>
+	<!-- biggroup -->
+	<resultMap type="BigGroup" id="bgMap">
+		<id column="bg_group_code" property="bgGroupCode"/>
+		<result column="group_name" property="groupName"/>
+		<result column="money" property="money"/>
+	</resultMap>
+	<select id="userGroup" resultMap="bgMap">
+	SELECT *
+	FROM big_group
+	</select>
+	<!-- small~ -->
+	<resultMap type="SmallGroup" id="groupMap">
+	<id column="sm_group_code" property="smGroupCode"></id>
+	<result column="money_per_user" property="moneyPerUser"/>
+	<result column="role_code" property="roleCode"/>
+	<association property="bigGroup" javaType="BigGroup">
+		<id column="bg_group_code" property="bgGroupCode"/>
+		<result column="group_name" property="groupName"/>
+		<result column="money" property="money"/>
+	</association>
+	<collection property="user" ofType="User">
+	<id column="id" property="id"></id>
+	<result column="password" property="password"></result>
+	<result column="phone" property="phone"></result>
+	<result column="name" property="name"></result>
+	<result column="email" property="email"></result>
+	<result column="birth" property="birth"></result>
+	</collection>
+	</resultMap>
+	<select id="searchBgCode" resultMap="bgMap" parameterType="String">
+	SELECT bg_group_code
+	FROM big_group
+	WHERE group_name=#{groupName}
+	</select>
+	<select id="allInfoGroup" resultMap="groupMap" parameterType="String">
+	select * 
+	from user
+	left join small_group using(id)
+	left join big_group using(bg_group_code)
+	<where>
+	id=#{id}
+	</where>
+	</select>
+</mapper>

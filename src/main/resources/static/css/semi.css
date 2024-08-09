@@ -45,8 +45,9 @@ nav button {
 }
 
 #section1 {
+  min-width: 100%;
   background-color: rgba(0, 0, 0, 0.3);
-  background-image: url("/image/main/jeju1.jpg");
+  background-image: url("/image/register/jeju1.jpg");
   background-size: cover;
   height: 100vh;
   display: flex;
@@ -71,8 +72,9 @@ nav button {
 }
 
 #section2 {
+  min-width: 100%;
   background-color: rgba(0, 0, 0, 0.3);
-  background-image: url("/image/main/calender3.jpg");
+  background-image: url("/image/register/calender3.jpg");
   background-blend-mode: color;
   background-size: cover;
   background-position: center;
@@ -92,8 +94,9 @@ nav button {
   padding-bottom: 50px;
 }
 #section3 {
+  min-width: 100%;
   background-color: rgba(0, 0, 0, 0.3);
-  background-image: url("/image/main/lake1.jpg");
+  background-image: url("/image/register/lake1.jpg");
   background-blend-mode: color;
   background-size: cover;
   height: 100vh;
@@ -108,9 +111,10 @@ nav button {
 }
 
 #section4 {
+  min-width: 100%;
   background-color: violet;
   background-color: rgba(0, 0, 0, 0.6);
-  background-image: url("/image/main/seoul2.jpg");
+  background-image: url("/image/register/seoul2.jpg");
   background-blend-mode: color;
   background-size: cover;
   background-position: center;
@@ -141,23 +145,6 @@ nav button {
   width: 100%;
   height: 100%;
 }
-
-.section {
-  min-width: 100%;
-  background-color: rgba(0, 0, 0, 0.6);
-  background-blend-mode: color;
-  background-size: cover;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  text-align: center;
-  color: white;
-  font-size: 3rem;
-  font-weight: bold;
-}
-
 .button2 {
   position: absolute;
   top: 50%;
@@ -191,12 +178,22 @@ nav button {
   flex-direction: column;
 }
 
+#section5 {
+  height: 100vh;
+}
+
+.schedule {
+  width: 1250px;
+}
+
 #section5 h1 {
+  position: relative;
   font-size: 3rem;
   display: flex;
   justify-content: center;
   padding: 15px;
   font-weight: bold;
+  padding-left: 50%;
 }
 
 #section5 p {
@@ -205,14 +202,14 @@ nav button {
   justify-content: center;
   color: gray;
   padding: 15px;
+  padding-left: 50%;
 }
+
 #section5 img {
-  display: flex;
-  width: 80%;
-  height: 80%;
-  justify-content: center;
-  padding-left: 400px;
-  padding-top: 15px;
+  width: 1200px;
+  height: 700px;
+  padding-top: 30px;
+  margin-left: 350px;
 }
 
 #section6 {
@@ -363,6 +360,7 @@ div.user_login input {
   margin-top: 25px;
   width: 100%;
 }
+
 #login2 {
   font-size: 25px;
   width: 100%;

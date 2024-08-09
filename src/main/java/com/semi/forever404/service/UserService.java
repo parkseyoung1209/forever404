@@ -15,4 +15,10 @@ public class UserService {
 	public void register(User user) {
 		mapper.register(user);
 	}
+	public User login(User user) {
+		return mapper.login(user);
+	}
+	public User kakaoLogin(String email) {
+		return mapper.kakaoLogin(email);
+	}
 }
