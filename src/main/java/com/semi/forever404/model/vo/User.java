@@ -27,5 +27,8 @@ public class User {
 		this.phone=phone;
 		this.email=email;
 	}
+	public User(String id) {
+		this.id=id;
+	}
 	
 }

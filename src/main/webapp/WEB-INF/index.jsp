@@ -14,6 +14,7 @@
     src="https://kit.fontawesome.com/ef885bd654.js"
     crossorigin="anonymous"
   ></script>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
   </head>
   <body>
     <header id="header">
@@ -125,45 +126,56 @@
           </div>
           </form>
           <div class="kkt_login_btn">
-          	 <a href="javascript:kakaoRegister();">
+          	 <a href="javascript:kakaoLogin();">
             <img src="${pageContext.request.contextPath}/image/main/kakao.png" alt="카카오 로그인 버튼" />
             </a>
             <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
             <script>
               Kakao.init('416439531d0e4d8f33eb240c9b791ffb');
+            </script>
+            <script>
+            function kakaoLogin() {
+            	  window.Kakao.Auth.login({
+            	    scope: 'account_email, name, birthyear, phone_number',
+            	    success: function(authObj) {
+            	      const accessToken = authObj.access_token;
+            	      window.Kakao.Auth.setAccessToken(accessToken);
 
-              function kakaoRegister() {
-                window.Kakao.Auth.login({
-                  scope: 'account_email, name, birthyear, phone_number',
-                  success: function(authObj) {
-                	  const accessToken = authObj.access_token;
-                      window.Kakao.Auth.setAccessToken(accessToken);
-                      Kakao.Auth.authorize({
-                    	  redirectUri: 'http://localhost:8080/main',
-                    	});
-                    window.Kakao.API.request({
-                      url:'/v2/user/me',
-                      success: res => {
-                        const kakao_account = res.kakao_account;
-                        const formData = new URLSearchParams();
-                        formData.append('email', res.kakao_account.email);
-                        formData.append('name', res.kakao_account.name);
-                        formData.append('birthday', res.kakao_account.birthday)
-                        formData.append("birthyear", res.kakao_account.birthyear);
-                        formData.append("phone", res.kakao_account.phone_number);
-                        formData.append("token", accessToken);
-                        fetch('/register/kakao', {
-                            method: 'POST',
-                          headers: {
-                            'Content-Type': 'application/x-www-form-urlencoded'
-                        },
-                        body: formData.toString()
-                		})
-                      }
-                    });
-                  }
-                });
-              }
+            	      window.Kakao.API.request({
+            	        url: '/v2/user/me',
+            	        success: function(res) {
+            	          const kakao_account = res.kakao_account;
+            	          const formData = {
+            	            email: kakao_account.email,
+            	            name: kakao_account.name,
+            	            birthday: kakao_account.birthday,
+            	            birthyear: kakao_account.birthyear,
+            	            phone: kakao_account.phone_number,
+            	            token: accessToken
+            	          };
+
+            	          // jQuery AJAX 요청
+            	          $.ajax({
+            	            url: '/kakaoLogin',
+            	            method: 'POST',
+            	            data: formData,
+            	            success: function(response) {
+            	              // 요청이 성공했을 때 수행할 작업
+            	            	window.location.href = '/main';
+            	            },
+            	            error: function(jqXHR, textStatus, errorThrown) {
+            	              // 요청이 실패했을 때 수행할 작업
+            	              console.error('Login failed: ', textStatus, errorThrown);
+            	            }
+            	          });
+            	        }
+            	      });
+            	    },
+            	    fail: function(error) {
+            	      console.error('Kakao login failed: ', error);
+            	    }
+            	  });
+            	}
             </script>
           </div>
         </div>

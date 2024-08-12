@@ -6,36 +6,67 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/reset.css" />
+    <link rel="stylesheet" href="${pageContext.request.contextPath}css/calander.css" />
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="${pageContext.request.contextPath}js/index.global.js"></script>
 </head>
 <body>
 	<c:if test="${not empty user}">
-		<form action="logout">
-			<input type="submit" value="로그아웃">
-		</form>
-		<input type="button" value="그룹생성창" id="group">
-		<br />
-		<div>
-			<p>
-				그룹명 : <input type="text" id="title">
-				<span id="successText"></span>
-			</p>
-			<input type="button" value="그룹생성하기" id="addGroup">
-			<div id="groupTable"></div>
-		</div>
+	<header>
+      <div class="addgroup">
+        <button id="addgroup"><i class="fa-solid fa-plus"></i></button>
+      </div>
+      <div class="group" id="group">
+     	 </div>
+     	 <div class="user">
+        <i class="fa-regular fa-user"></i>
+      </div>
+	</header>
+	<div id="calendar-container">
+      <div id="calendar"></div>
+    </div>
+		<div id="modal1" class="modal">
+      <div class="modalcontent">
+        <span class="close">&times</span>
+        <h2>그룹 추가</h2>
+        <hr />
+        <div class="add">
+          <button id="schedule" class="add2">추가</button>
+        </div>
+      </div>
+    </div>
+		<script src="https://kit.fontawesome.com/ef885bd654.js"
+      		crossorigin="anonymous">
+		</script>
+		<script>
+			$("#addgroup").click(function () {
+			  $("#modal1").css("display", "block");
+			});
+			  $(".close").click(function () {
+			     $(".modal").css("display", "none");
+			  });
+			  $(window).click(function (event) {
+			     if ($(event.target).is(".modal")) {
+			       $(".modal").css("display", "none");
+			     }
+			  });
+			$(document).keydown(function (event) {
+			    if (event.keyCode == 27) {
+			       $(".modal").css("display", "none");
+			     }
+			  });
+    	</script>
 		<script>
 		$(document).ready(function () {
 		$.ajax ({
 			type : "post",
 			url : "/userGroup",
 			success : function(list) {
-				console.log(list);
-				const groupList = list.map((item) => item.bigGroup);
-				console.log(groupList);
-				const nameList = groupList.map((value) => value.groupName);
-				console.log(nameList);
+				const groupList = list.map((item) => item.bigGroup);		
+				const nameList = groupList.map((value) => value.groupName);				
 				nameList.forEach((value) => {
-					$("#groupTable").append("<p><input type='button' value='"+ value +"'></p>");
+					$("#group").append("<button type='button' class='groupButton'><i class='fa-solid fa-user-group'></i></button><span>"+value+"</span>");
 				});
 			}
 		});
@@ -49,11 +80,11 @@
 			type : "post",
 			url : "/addGroup",
 			data : "groupName=" + $("#title").val(),
-		
+		// <button><i class="fa-solid fa-plus"></i></button>
 			success : function(result) {
 				if(result == true) {
 					$("#successText").text("생성완료");
-					$("#groupTable").append("<p><input type='button' value='"+ title +"'></p>");
+					$("#groupTable").prepend("<p><input type='button' value='"+ title +"'></p>");
 				} else {
 					$("#successText").text("사용할 수 없는 그룹명입니다.");
 				}
@@ -62,6 +93,6 @@
 	});
 	</script>
 	</c:if>
-	<script src="${pageContext.request.contextPath}/js/main.js"></script>
+	<script src="${pageContext.request.contextPath}/js/calander.js"></script>
 </body>
 </html>

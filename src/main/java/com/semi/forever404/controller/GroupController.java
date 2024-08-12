@@ -27,6 +27,8 @@ public class GroupController {
 	@PostMapping("/addGroup")
 	public boolean addGroup(BigGroup bigGroup, String groupName, HttpServletRequest request) {
 			List<BigGroup> list = service.userGroup();
+			HttpSession session = request.getSession();
+			User user = (User) session.getAttribute("user");
 			for(BigGroup group : list) {
 				String name = group.getGroupName();
 				if(name.equals(groupName)) {
@@ -35,10 +37,10 @@ public class GroupController {
 			}
 			service.addGroup(bigGroup);
 			BigGroup bg = service.searchBgCode(groupName);
-			HttpSession session = request.getSession();
-			User user = (User) session.getAttribute("user");
 			String id =user.getId();
 			int bgGroupCode = bg.getBgGroupCode();
+			SmallGroup smGroup = new SmallGroup(new User(id), new BigGroup(bgGroupCode));
+			service.addSmGroup(smGroup);
 			return true;
 	}
 	

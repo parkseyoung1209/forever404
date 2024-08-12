@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.semi.forever404.model.vo.User;
 import com.semi.forever404.service.UserService;
@@ -66,7 +67,8 @@ public class UserController {
 		}
 		return "main";
 	}
-	@PostMapping("/register/kakao")
+	@ResponseBody
+	@PostMapping("/kakaoLogin")
 	public String kakaoLogin(@RequestParam("email") String email,
 						   @RequestParam("name") String name,
 						   @RequestParam("phone") String phone,
@@ -74,7 +76,8 @@ public class UserController {
 						   @RequestParam("birthyear") String birthyear,
 						   @RequestParam("token") String token,
 						   HttpServletRequest request,
-						   User user
+						   User user,
+						   Model model
 							) throws ParseException {
 		String month = birthday.substring(0, 2);
 		String day = birthday.substring(2, 4);
@@ -87,15 +90,16 @@ public class UserController {
 			 HttpSession session = request.getSession();
 			 session.setAttribute("user", existingUser);
 			 System.out.println("기존 정보가 존재할경우만 뜨는 문구");
-			 return "redirect:/main";
-		}else if(existingUser == null){
+			 return "main";
+		}else {
 			 user = new User(email, token, newphone, name, email, date);
 			 service.register(user);
 			 System.out.println("기존 정보가 존재하지 않을 경우 뜨는 문구");
 			 HttpSession session = request.getSession();
 			 session.setAttribute("user", user);
+			 return "main";
 		}
-		return "redirect:/main";
+		 
 	}
 	
 	@GetMapping("/main")
@@ -106,13 +110,10 @@ public class UserController {
 	    user = (User) session.getAttribute("user");
 	    System.out.println(user);
 	    if(user!=null) {
-	    	System.out.println("user");
 	    	model.addAttribute("user", user);
 	    }else if(user==null){
-	    	System.out.println("!");
 	    	return "redirect:/";
 	    }
-	    System.out.println("처리");
 		return "main";
 	}
 }

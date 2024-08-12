@@ -32,6 +32,9 @@
 	<result column="birth" property="birth"></result>
 	</collection>
 	</resultMap>
+	<insert id="addSmGroup" parameterType="SmallGroup">
+	INSERT INTO small_group(id, bg_group_code) VALUES(#{user.id}, #{bigGroup.bgGroupCode})
+	</insert>
 	<select id="searchBgCode" resultMap="bgMap" parameterType="String">
 	SELECT bg_group_code
 	FROM big_group

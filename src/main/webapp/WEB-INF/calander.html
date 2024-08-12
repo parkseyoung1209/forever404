@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="/src/main/resources/static/css/reset.css" />
+    <link rel="stylesheet" href="/src/main/resources/static/css/calander.css" />
+    <script src="/src/main/resources/static/js/index.global.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  </head>
+  <body>
+    <header>
+      <div class="addgroup">
+        <button id="addgroup"><i class="fa-solid fa-plus"></i></button>
+      </div>
+      <div class="group" id="group1">
+      <button class=group>
+        <i class="fa-solid fa-user-group"></i>
+        </button>
+        <span>그룹1</span>
+      </div>
+      <div class="group" id="group2">
+        <i class="fa-solid fa-user-group"></i>
+        <span>그룹2</span>
+      </div>
+      <div class="group" id="group3">
+        <i class="fa-solid fa-user-group"></i>
+        <span>그룹3</span>
+      </div>
+      <div class="group" id="group4">
+        <i class="fa-solid fa-user-group"></i>
+        <span>그룹4</span>
+      </div>
+      <div class="user">
+        <i class="fa-regular fa-user"></i>
+      </div>
+    </header>
+    <div id="calendar-container">
+      <div id="calendar"></div>
+    </div>
+
+    <div id="modal1" class="modal">
+      <div class="modalcontent">
+        <span class="close">&times</span>
+        <h2>그룹 추가</h2>
+        <hr />
+        <div class="add">
+          <button id="schedule" class="add2">추가</button>
+        </div>
+      </div>
+    </div>
+    <script
+      src="https://kit.fontawesome.com/ef885bd654.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="/src/main/resources/static/js/calander.js"></script>
+    <script>
+      $("#addgroup").click(function () {
+        $("#modal1").css("display", "block");
+      });
+      $(".close").click(function () {
+        $(".modal").css("display", "none");
+      });
+      $(window).click(function (event) {
+        if ($(event.target).is(".modal")) {
+          $(".modal").css("display", "none");
+        }
+      });
+      $(document).keydown(function (event) {
+        if (event.keyCode == 27) {
+          $(".modal").css("display", "none");
+        }
+      });
+    </script>
+  </body>
+</html>
