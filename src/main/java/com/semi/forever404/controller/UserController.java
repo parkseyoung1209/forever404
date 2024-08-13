@@ -47,9 +47,12 @@ public class UserController {
 		return "redirect:/";
 	}
 	
+	
+	
+	
 	@GetMapping("/kakaomap")
 	public String kakaomap() {
-		return "kakaomap";
+		return "kakaomap2";
 	}
 	
 }

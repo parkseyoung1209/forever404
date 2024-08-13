@@ -216,16 +216,17 @@ var areas = {
      paginationEl.appendChild(fragment);
  }
 
- // 검색결과 목록 또는 마커를 클릭했을 때 호출되는 함수입니다
- // 인포윈도우에 장소명을 표시합니다
+ // 검색결과 목록 또는 마커를 클릭했을 때 호출되는 함수
+ // 인포윈도우에 장소명을 표시
  function displayInfowindow(marker, title) {
-     var content = '<div style="z-index:1;">' + title + '</div>';
+     var content = //'<div style="z-index:1;">' + title + '</div>';
+	 '<div style="z-index:1 padding:5px;">' + title + '<br><a href="https://map.kakao.com/link/map/Hello World!,33.450701,126.570667" style="color:blue" target="_blank">큰지도보기</a> <a href="https://map.kakao.com/link/to/Hello World!,33.450701,126.570667" style="color:blue" target="_blank">길찾기</a></div>'; // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
 
      infowindow.setContent(content);
      infowindow.open(map, marker);
  }
 
-  // 검색결과 목록의 자식 Element를 제거하는 함수입니다
+  // 검색결과 목록의 자식 Element를 제거하는 함수
  function removeAllChildNods(el) {   
      while (el.hasChildNodes()) {
          el.removeChild (el.lastChild);
