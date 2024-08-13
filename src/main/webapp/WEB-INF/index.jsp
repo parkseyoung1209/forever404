@@ -7,7 +7,6 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/reset.css" />
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/semi.css" />
     <script
@@ -26,15 +25,15 @@
         </a >
         <a href=""><img src="${pageContext.request.contextPath}/image/main/404.png" alt=""></a>
       </nav>
-
       <nav id="a2">
         <button
           type="button"
           class="nav-link"
-          onclick="location.href='developer.html'"
+          onclick="location.href='/developer'"
         >
           개발자
         </button>
+        
         <button type="button" class="nav-link" id="login">로그인</button>
         <button type="button" class="nav-link" onclick="location.href='/register'">
           회원가입
@@ -42,7 +41,7 @@
       </nav>
     </header>
 
-    <div className="main">
+    <div class="main">
       <div id="carousel">
         <button id="prevBtn" class="button2">&#10094;</button>
         <div id="sectioncontainer">
@@ -90,8 +89,8 @@
           </div>
         </div>
       </section>
-	<form action="/login" method="post">
-      <div class="modal">
+	
+      <div class="modal" id="modal">
         <div class="modal_body">
           <div class="back_to_menu">
             <a href=""><i class="fa-solid fa-xmark"></i></a>
@@ -122,9 +121,8 @@
             />
           </div>
           <div class="login_btn">
-            <button type="submit" id="login2" onclick="location.href='/main'">로그인</button>
+            <button type="submit" id="login2">로그인</button>
           </div>
-          </form>
           <div class="kkt_login_btn">
           	 <a href="javascript:kakaoLogin();">
             <img src="${pageContext.request.contextPath}/image/main/kakao.png" alt="카카오 로그인 버튼" />
@@ -162,6 +160,7 @@
             	            success: function(response) {
             	              // 요청이 성공했을 때 수행할 작업
             	            	window.location.href = '/main';
+            	            	location.reload();
             	            },
             	            error: function(jqXHR, textStatus, errorThrown) {
             	              // 요청이 실패했을 때 수행할 작업
@@ -180,6 +179,22 @@
           </div>
         </div>
       </div>
+	<script>
+		$("#login2").click(() => {
+			$.ajax({
+				type : "post",
+				url : "/login",
+				data : {
+					id: $("#id").val(),
+					password: $("#password").val()
+				},
+				success : function() {
+					window.location.href = '/main';
+					location.reload();
+				}
+			})
+		});
+	</script>
   </body>
   <script>
     const header = document.getElementById("header");
@@ -269,5 +284,7 @@
         modal.style.display = "none";
       }
     });
+    
+    
   </script>
 </html>

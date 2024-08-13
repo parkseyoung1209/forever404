@@ -27,14 +27,23 @@ public class UserController {
 	private UserService service;
 	
 	@GetMapping("/")
-	public String index() {
+	public String index(HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		User user = (User) session.getAttribute("user");
+		System.out.println(user);
+		if(user!=null) {
+			return "main";
+		}
 		return "index";
 	}
 	@GetMapping("/register")
 	public String register() {
 		return "register";
 	}
-	
+	@GetMapping("/developer")
+	public String developer() {
+		return "developer";
+	}
 	@PostMapping("/register")
 	public String register(String id, String password, String phone, String name, String email, @RequestParam(name="birth", required=false) String birth) {
 		try {
@@ -56,8 +65,18 @@ public class UserController {
 		public String login(HttpServletRequest request, User user) {
 			HttpSession session = request.getSession();
 			session.setAttribute("user", service.login(user));
-			return "redirect:/main";
+			
+			return "main";
 		}
+	@PostMapping("/backController")
+	public boolean backController(HttpServletRequest request, User user) {
+		HttpSession session = request.getSession();
+		session.setAttribute("user", service.login(user));
+		user = (User) session.getAttribute("user");
+		if(user!=null) {
+			return true;
+		}return false;
+	}
 	@GetMapping("/logout")
 	public String logout(HttpServletRequest request) {
 		HttpSession session = request.getSession();
@@ -108,7 +127,6 @@ public class UserController {
 		
 		HttpSession session = request.getSession();
 	    user = (User) session.getAttribute("user");
-	    System.out.println(user);
 	    if(user!=null) {
 	    	model.addAttribute("user", user);
 	    }else if(user==null){

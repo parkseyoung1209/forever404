@@ -179,7 +179,7 @@ nav button {
 }
 
 #section5 {
-  height: 100vh;
+  height: 1000px;
 }
 
 .schedule {
@@ -215,6 +215,7 @@ nav button {
 #section6 {
   height: 100vh;
   display: flex;
+  background-color: rgba(0,0,0,0.05);
 }
 
 #textBox {
@@ -371,4 +372,14 @@ div.user_login input {
   border-radius: 10px;
   margin-top: 40px;
   cursor: pointer;
+}
+@media screen and (max-height: 600px) {
+  #section6 img {
+    display: none;
+  }
+}
+@media screen and (max-width: 800px) {
+  #section6 img {
+    display: none;
+  }
 }

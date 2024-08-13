@@ -20,7 +20,7 @@
                 <source src="${pageContext.request.contextPath}/video/backgroundvideo.mp4">
             </video>
         </div>
-        <h1><a href=""><i class="fa-solid fa-arrow-left"></i></a></h1>
+        <h1><button onclick="history.back()" id="back"><i class="fa-solid fa-arrow-left"></i></button></h1>
 <div class="formlist">
 <form action="" method="post" id="regi_form" class="form">
 <div class="user_id" id="user_id">

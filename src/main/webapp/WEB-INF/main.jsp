@@ -17,6 +17,7 @@
       <div class="addgroup">
         <button id="addgroup"><i class="fa-solid fa-plus"></i></button>
       </div>
+      <button type="button" onclick="location.href='/logout'">로그아웃</button>
       <div class="group" id="group">
      	 </div>
      	 <div class="user">
