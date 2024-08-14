@@ -27,21 +27,17 @@
             <span class="category_bg visit"></span>
             관광명소
         </li>       
-        <li id="MT1" data-order="1"> 
-            <span class="category_bg mart"></span>
-            마트
-        </li>  
-        <li id="FD6" data-order="2"> 
+        <li id="FD6" data-order="1"> 
             <span class="category_bg food"></span>
             음식점
         </li>  
-        <li id="CE7" data-order="3"> 
+        <li id="CE7" data-order="2"> 
             <span class="category_bg cafe"></span>
             카페
         </li>  
-        <li id="AD5" data-order="4"> 
+        <li id="AD5" data-order="3"> 
             <span class="category_bg hotel"></span>
-             숙박
+            숙박
         </li>      
     </ul>
 </div>

@@ -8,8 +8,10 @@
 		<result column="service_phone" property="servicePhone" />
 		<result column="service_list" property="serviceList" />
 	</resultMap>
+	
 	<insert id="addInfo" parameterType="String">
 		INSERT INTO service_info (si_type,service_name,service_jibun,service_lat,service_lng,service_phone, service_img)
 		VALUES (#{type}, #{title}, #{addr}, #{lat}, #{lng}, #{phone}, #{url})
 	</insert>
+	
 </mapper>

@@ -52,7 +52,7 @@ public class UserController {
 	
 	@GetMapping("/kakaomap")
 	public String kakaomap() {
-		return "kakaomap2";
+		return "detail2";
 	}
 	
 }

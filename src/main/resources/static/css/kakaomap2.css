@@ -75,23 +75,23 @@
 	background-position: -10px 0;
 	}
 	
-#category li .mart {
+#category li .food {
 	background-position: -10px -36px;
 	}
 	
-#category li .food {
+#category li .cafe {
 	background-position: -10px -72px;
 	}
 	
-#category li .cafe {
+#category li .hotel {
 	background-position: -10px -108px;
 	}
-	
-#category li .hotel {
+/*	네번째
+#category li .mart {
 	background-position: -10px -144px;
 	}
 	
-/* 다섯번째 - #category li .store {background-position: -10px -180px;}*/
+다섯번째 - #category li .store {background-position: -10px -180px;}*/
 
 
 #category li.on .category_bg {
