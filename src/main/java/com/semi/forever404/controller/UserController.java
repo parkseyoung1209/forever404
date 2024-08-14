@@ -4,9 +4,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -48,13 +46,44 @@ public class UserController {
 			return "main";
 		}
 	
+	// check!
 	@GetMapping("/logout")
 	public String logout(HttpServletRequest request) {
 		HttpSession session = request.getSession();
 		if(session.getAttribute("user")!=null) {
 		session.invalidate();
-		return "redirect:/";
+		
 		}
+		return "redirect:/";}
+		
+	@GetMapping("/")
+	public String index() {
+		return "index";
+	}
+	
+	@GetMapping("/register")
+	public String register() {
+		return "register";
+	}
+	// check
+	@PostMapping("/register")
+	public String register(String id, String password, String phone, String name, String email, @RequestParam(name="birth", required=false) String birth) {
+			System.out.println(birth);
+		try {
+			if(!birth.equals("")) {
+			SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd"); 
+			Date date = formatter.parse(birth);
+			User user = new User(id, password, phone, name, email, date);
+			service.register(user);
+			} else {
+				User user = new User(id, password, phone, name, email, null);
+				service.register(user);
+			}
+			
+		} catch (ParseException e) {} 
+
+		
+		
 		return "main";
 	}
 	@ResponseBody
@@ -106,5 +135,13 @@ public class UserController {
 		return "main";
 	}
 	
+	
+	
+	
+	
+	@GetMapping("/kakaomap")
+	public String kakaomap() {
+		return "detail2";
+	}
 	
 }
