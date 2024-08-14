@@ -1,6 +1,3 @@
-
-
-
 header {
   position: fixed;
   width: 100%;
@@ -48,8 +45,9 @@ nav button {
 }
 
 #section1 {
+  min-width: 100%;
   background-color: rgba(0, 0, 0, 0.3);
-  background-image: url("../image/제주1(섹션1).jpg");
+  background-image: url("/image/register/jeju1.jpg");
   background-size: cover;
   height: 100vh;
   display: flex;
@@ -74,8 +72,9 @@ nav button {
 }
 
 #section2 {
+  min-width: 100%;
   background-color: rgba(0, 0, 0, 0.3);
-  background-image: url("../image/캘린더3(섹션2).jpg");
+  background-image: url("/image/register/calender3.jpg");
   background-blend-mode: color;
   background-size: cover;
   background-position: center;
@@ -95,8 +94,9 @@ nav button {
   padding-bottom: 50px;
 }
 #section3 {
+  min-width: 100%;
   background-color: rgba(0, 0, 0, 0.3);
-  background-image: url("../image/호수1(섹션3).jpg");
+  background-image: url("/image/register/lake1.jpg");
   background-blend-mode: color;
   background-size: cover;
   height: 100vh;
@@ -111,9 +111,10 @@ nav button {
 }
 
 #section4 {
+  min-width: 100%;
   background-color: violet;
   background-color: rgba(0, 0, 0, 0.6);
-  background-image: url("../image/서울2(섹션4).jpg");
+  background-image: url("/image/register/seoul2.jpg");
   background-blend-mode: color;
   background-size: cover;
   background-position: center;
@@ -144,25 +145,6 @@ nav button {
   width: 100%;
   height: 100%;
 }
-
-
-.section {
-	min-width:100%;
-  background-color: rgba(0, 0, 0, 0.6);
-  background-blend-mode: color;
-  background-size: cover;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  text-align: center;
-  color: white;
-  font-size: 3rem;
-  font-weight: bold;
-}
-
-
 .button2 {
   position: absolute;
   top: 50%;
@@ -196,12 +178,22 @@ nav button {
   flex-direction: column;
 }
 
+#section5 {
+  height: 1000px;
+}
+
+.schedule {
+  width: 1250px;
+}
+
 #section5 h1 {
+  position: relative;
   font-size: 3rem;
   display: flex;
   justify-content: center;
   padding: 15px;
   font-weight: bold;
+  padding-left: 50%;
 }
 
 #section5 p {
@@ -210,19 +202,20 @@ nav button {
   justify-content: center;
   color: gray;
   padding: 15px;
+  padding-left: 50%;
 }
+
 #section5 img {
-  display: flex;
-  width: 80%;
-  height: 80%;
-  justify-content: center;
-  padding-left: 400px;
-  padding-top: 15px;
+  width: 1200px;
+  height: 700px;
+  padding-top: 30px;
+  margin-left: 350px;
 }
 
 #section6 {
   height: 100vh;
   display: flex;
+  background-color: rgba(0, 0, 0, 0.05);
 }
 
 #textBox {
@@ -369,5 +362,24 @@ div.user_login input {
   width: 100%;
 }
 
-
-
+#login2 {
+  font-size: 25px;
+  width: 100%;
+  height: 55px;
+  border: none;
+  color: white;
+  background-color: skyblue;
+  border-radius: 10px;
+  margin-top: 40px;
+  cursor: pointer;
+}
+@media screen and (max-height: 600px) {
+  #section6 img {
+    display: none;
+  }
+}
+@media screen and (max-width: 800px) {
+  #section6 img {
+    display: none;
+  }
+}

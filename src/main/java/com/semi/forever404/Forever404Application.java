@@ -5,7 +5,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-@MapperScan("mapper") // 매퍼,인터페이스  위치
+@MapperScan("mapper") // MyBatis 매퍼 인터페이스 위치 패키지
 public class Forever404Application {
 
 	public static void main(String[] args) {
