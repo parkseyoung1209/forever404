@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.semi.forever404.model.vo.BigGroup;
+import com.semi.forever404.model.vo.BigSchedule;
 import com.semi.forever404.model.vo.SmallGroup;
 
 import mapper.GroupMapper;
@@ -30,5 +31,9 @@ public class GroupService {
 	public List<SmallGroup> allInfoGroup(String id) {
 		return mapper.allInfoGroup(id);
 	}
-
+	
+	// 스케줄 관련
+	public void scheduleAdd(BigSchedule bgs) {
+		mapper.scheduleAdd(bgs);
+	}
 }

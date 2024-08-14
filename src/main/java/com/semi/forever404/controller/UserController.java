@@ -26,57 +26,27 @@ public class UserController {
 	@Autowired
 	private UserService service;
 	
-	@GetMapping("/")
-	public String index(HttpServletRequest request) {
-		HttpSession session = request.getSession();
-		User user = (User) session.getAttribute("user");
-		System.out.println(user);
-		if(user!=null) {
-			return "main";
-		}
-		return "index";
-	}
-	@GetMapping("/register")
-	public String register() {
-		return "register";
-	}
-	@GetMapping("/developer")
-	public String developer() {
-		return "developer";
-	}
-	@PostMapping("/register")
-	public String register(String id, String password, String phone, String name, String email, @RequestParam(name="birth", required=false) String birth) {
-		try {
-			if(!birth.equals("")) {
-			SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-			Date date = formatter.parse(birth);
-			User user = new User(id, password, phone, name, email, date);
-			service.register(user);
-			} else {
-				User user = new User(id, password, phone, name, email);
+	@ResponseBody
+	@PostMapping("/signUp")
+	public void signUp(String id, String password, String phone, String name, String email, @RequestParam(name="birth", required=false) String birth) throws ParseException {
+			if(!(birth.equals(""))) {
+				SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+				Date date = formatter.parse(birth);
+				User user = new User(id, password, phone, name, email, date);
+				service.register(user);
+			} else if(birth.equals("")){
+				User user = new User(id, password, phone, name, email, null);
 				service.register(user);
 			}
-			
-		} catch (ParseException e) {}
-		return "redirect:/";
 	}
-	
+	@ResponseBody
 	@PostMapping("/login")
 		public String login(HttpServletRequest request, User user) {
 			HttpSession session = request.getSession();
 			session.setAttribute("user", service.login(user));
-			
 			return "main";
 		}
-	@PostMapping("/backController")
-	public boolean backController(HttpServletRequest request, User user) {
-		HttpSession session = request.getSession();
-		session.setAttribute("user", service.login(user));
-		user = (User) session.getAttribute("user");
-		if(user!=null) {
-			return true;
-		}return false;
-	}
+	
 	@GetMapping("/logout")
 	public String logout(HttpServletRequest request) {
 		HttpSession session = request.getSession();

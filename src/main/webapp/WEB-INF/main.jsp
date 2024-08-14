@@ -27,12 +27,21 @@
 	<div id="calendar-container">
       <div id="calendar"></div>
     </div>
+    <h1>큰그룹 정보</h1>
+		<form id="frm">
+			여행 이름 : <input type="text" name="tripName"><br/>
+			시작 날짜 : <input type="text" name="startDate"><br/>
+			종료 날짜 : <input type="text" name="endDate"><br/>
+			총 경비 : <input type="text" name="totalMoney"><br/>
+			<input type="submit" value="큰그룹정보" id="add">
+		</form>
 		<div id="modal1" class="modal">
       <div class="modalcontent">
         <span class="close">&times</span>
         <h2>그룹 추가</h2>
         <hr />
         <div class="add">
+        	<p><input type="text" id="textBox"></p>
           <button id="schedule" class="add2">추가</button>
         </div>
       </div>
@@ -58,8 +67,11 @@
 			     }
 			  });
     	</script>
+    	
 		<script>
+		let buttonId;
 		$(document).ready(function () {
+			
 		$.ajax ({
 			type : "post",
 			url : "/userGroup",
@@ -67,25 +79,45 @@
 				const groupList = list.map((item) => item.bigGroup);		
 				const nameList = groupList.map((value) => value.groupName);				
 				nameList.forEach((value) => {
-					$("#group").append("<button type='button' class='groupButton'><i class='fa-solid fa-user-group'></i></button><span>"+value+"</span>");
+					$("#group").append("<button type='button' class='groupButton' id='"+value+"'>"+"<i class='fa-solid fa-user-group'></i></button><span>"+value+"</span>");
 				});
 			}
 		});
+		
+		
+		});
+		$(document).on('click', '.groupButton', function() {
+	        buttonId = $(this).attr('id');
+	        console.log("버튼 클릭됨, ID:", buttonId);
+	    });
+		$("#add").click(() => {
+			$.ajax({
+				type : 'post',
+				url : '/scheduleAdd',
+				data : {info :$('#frm').serialize(),
+						groupName : buttonId
+						},
+				success : function() {
+					console.log('!');
+				}
 			
-	});
+			});
+		});
 	</script>
-		<script>
-	$("#addGroup").click(() => {
-		const title = $("#title").val();
+
+	<script>
+	$("#schedule").click(() => {
+		const title = $("#textBox").val();
 		$.ajax ({
 			type : "post",
 			url : "/addGroup",
-			data : "groupName=" + $("#title").val(),
+			data : "groupName=" + $("#textBox").val(),
 		// <button><i class="fa-solid fa-plus"></i></button>
 			success : function(result) {
+				console.log(result);
 				if(result == true) {
 					$("#successText").text("생성완료");
-					$("#groupTable").prepend("<p><input type='button' value='"+ title +"'></p>");
+					$("#group").prepend("<button type='button' class='groupButton'><i class='fa-solid fa-user-group'></i></button><span>"+title+"</span>");
 				} else {
 					$("#successText").text("사용할 수 없는 그룹명입니다.");
 				}

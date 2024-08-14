@@ -12,6 +12,7 @@
     src="https://kit.fontawesome.com/ef885bd654.js"
     crossorigin="anonymous"
   ></script>
+   <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 </head>
 <body>
     <div class="registersection">
@@ -22,7 +23,7 @@
         </div>
         <h1><button onclick="history.back()" id="back"><i class="fa-solid fa-arrow-left"></i></button></h1>
 <div class="formlist">
-<form action="" method="post" id="regi_form" class="form">
+<div class="form">
 <div class="user_id" id="user_id">
     <i class="fa-regular fa-user"></i>
     <input type="text" name="id" id="id" placeholder="회원 아이디" class="user_id" autocapitalize="off">
@@ -50,12 +51,35 @@
     <i class="fa-solid fa-calendar-days"></i>
     <input type="date" name="birth" id="birth" placeholder="회원 생년월일 (선택사항)" class="user_birth">
 </div>
+</div>
+</div>
 <div class="submit_btn">
-    <input type="submit" name="submit" id="submit" value="회원가입하기!">
+    <input type="submit" id="submit" value="회원가입하기!">
 </div>
-</form>
+<script>
+$("#submit").click(() => {
+	$.ajax ({
+		type : 'post',
+		url : '/signUp',
+		data : {
+			id : $("#id").val(),
+			password:$("#password").val(),
+			phone :$("#phone").val(),
+			name :$("#name").val(), 
+			email :$("#email").val(),
+			birth :$("#birth").val(),
+		},
+		success : function() {
+			
+			location.href = '/';
+		},
+		error: function(xhr, status, error) {
+	        console.error("오류 발생:", status, error);
+	    }
+	});
+});
+</script>
 </div>
-
 <script src="${pageContext.request.contextPath}/js/register.js"></script>
 </body>
 </html>

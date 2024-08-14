@@ -24,19 +24,19 @@
   margin-right: 550px;
   margin-top: 10px;
 }
-.formlist form {
+.formlist .form{
   width: 600px;
   height: 500px;
   margin-top: 50px;
 }
-form span {
+.form span {
   display: block;
   font-size: 14px;
   margin-left: 70px;
   margin-top: 5px;
   color: white;
 }
-form div {
+.form div {
   display: block;
   background-color: white;
   align-items: center;
@@ -47,17 +47,17 @@ form div {
   border-bottom: 4px solid rgba(128, 128, 128, 0.5);
   margin-top: -3px;
 }
-form div.user_id {
+.form div.user_id {
   border-top: 4px solid gray;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
 }
-form div.user_birth {
+.form div.user_birth {
   border-bottom: 4px solid gray;
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
 }
-form div input {
+.form div input {
   width: 400px;
   margin-top: 30px;
   font-size: 25px;
@@ -65,13 +65,13 @@ form div input {
   outline: none;
   cursor: pointer;
 }
-form div i {
+.form div i {
   margin-left: 20px;
   margin-right: 20px;
   color: grey;
   font-size: 30px;
 }
-form div.user_kkt_id i {
+.form div.user_kkt_id i {
   margin-left: 10px;
   margin-right: 10px;
   border-radius: 100%;
@@ -82,7 +82,7 @@ form div.user_kkt_id i {
 .submit_btn {
   border: none;
   width: 600px;
-  margin-top: 20px;
+  margin-top: 40px;
 }
 .submit_btn {
   background-color: rgba(0, 0, 0, 0);

@@ -190,7 +190,6 @@
 				},
 				success : function() {
 					window.location.href = '/main';
-					location.reload();
 				}
 			})
 		});

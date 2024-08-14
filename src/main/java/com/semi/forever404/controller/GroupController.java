@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.semi.forever404.model.vo.BigGroup;
+import com.semi.forever404.model.vo.BigSchedule;
 import com.semi.forever404.model.vo.SmallGroup;
 import com.semi.forever404.model.vo.User;
 import com.semi.forever404.service.GroupService;
@@ -53,5 +54,18 @@ public class GroupController {
 		List<SmallGroup> list = service.allInfoGroup(id);
 		model.addAttribute("list", list);
 		return list;
+	}
+	
+	@ResponseBody
+	@PostMapping("/scheduleAdd")
+	public void schduleAdd(HttpServletRequest request, String groupName) {
+		System.out.println(groupName);
+		HttpSession session = request.getSession();
+		User user = (User) session.getAttribute("user");
+		System.out.println(user);
+		String id = user.getId();
+		BigGroup bg = service.searchBgCode(groupName);
+		BigSchedule bgs = new BigSchedule(bg, new User(id));
+		service.scheduleAdd(bgs);
 	}
 }
