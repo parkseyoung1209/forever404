@@ -24,4 +24,6 @@ public class UserController {
 		service.register(vo);
 		return "redirect:/";
 	}
+	
+	
 }
