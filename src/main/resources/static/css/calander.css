@@ -80,6 +80,7 @@ button i {
   height: 80vh;
   top: 120px;
   left: 200px;
+  z-index: -1;
 }
 .modal {
   display: none;
@@ -200,6 +201,7 @@ button i {
   border-bottom-right-radius: 20px;
   cursor: pointer;
   display: none;
+  z-index: 10;
 }
 
 .addgroup2 {
@@ -211,6 +213,7 @@ button i {
   cursor: pointer;
   color: black;
   outline: none;
+  z-idnex: 10;
 }
 
 .addgroup2:hover {
@@ -222,11 +225,13 @@ button i {
 #groupmake:hover {
   border-top-left-radius: 20px;
   border-top-right-radius: 20px;
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.4);
 }
 
 #grouppart:hover {
   border-bottom-left-radius: 20px;
   border-bottom-right-radius: 20px;
+  box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.4);
 }
 
 .addgroup2 i {
@@ -260,16 +265,18 @@ button i {
 .mymodal {
   position: absolute;
   background-color: lightgrey;
+  border: #999;
   width: 250px;
   height: 250px;
-  margin-top: 470px;
-  margin-left: 200px;
+  margin-top: 600px;
+  margin-left: 300px;
   border-top-left-radius: 20px;
   border-top-right-radius: 20px;
   border-bottom-left-radius: 20px;
   border-bottom-right-radius: 20px;
   display: none;
   z-index: 3;
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2);
 }
 
 #logout {

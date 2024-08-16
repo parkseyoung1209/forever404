@@ -103,7 +103,7 @@ pageEncoding="UTF-8"%>
               name="birth"
               id="birth"
               placeholder="회원 생년월일 (선택사항)"
-              class="user_birth"
+              class="user_birth" max="9999-12-31"
             />
           </div>
         </div>
