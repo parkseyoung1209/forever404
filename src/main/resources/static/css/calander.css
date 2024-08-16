@@ -1,0 +1,202 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  background-color: whitesmoke;
+  width: 140px;
+  height: 100vh;
+  position: fixed;
+}
+.btn-add {
+  background-color: pink;
+  margin-top: 50px;
+  width: 70px;
+  height: 70px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+}
+button i {
+  font-size: 30px;
+}
+.group {
+  display: flex;
+  flex-direction: column;
+}
+.group span {
+  margin-top: 10px;
+}
+.group i {
+  margin-top: 50px;
+  font-size: 30px;
+}
+#group1 {
+  margin-top: 40px;
+}
+.user i {
+  font-size: 60px;
+  position: absolute;
+  bottom: 50px;
+  left: 40px;
+  cursor: pointer;
+}
+.date {
+  padding-left: 10px;
+  border: 3px solid grey;
+  position: absolute;
+  width: 600px;
+  height: 70px;
+  left: 200px;
+  top: 40px;
+  border-radius: 10px;
+}
+#calendar {
+  position: absolute;
+  width: 110vh;
+  height: 80vh;
+  top: 120px;
+  left: 200px;
+}
+#myModal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+}
+#modalContent {
+  position: relative;
+  background-color: white;
+  margin-top: 182px;
+  margin-left: 1340px;
+  border: 1px solid #999;
+  width: 500px;
+  height: 700px;
+  border-radius: 10px;
+}
+.head-wrd {
+  font-size: 40px;
+  margin-left: 120px;
+}
+#X {
+  font-size: 40px;
+  color: black;
+  margin-left: 90px;
+  margin-bottom: 60px;
+}
+.mdl-header {
+  display: flex;
+  flex-direction: row;
+  width: 498px;
+  height: 100px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  border-bottom: 1px solid black;
+}
+.section {
+  display: flex;
+  background-color: white;
+  width: 498px;
+  height: 100px;
+  border: none;
+  border-bottom: 1px solid black;
+}
+#one {
+  margin-top: 100px;
+}
+#six {
+  font-size: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  background-color: black;
+  width: 80px;
+  height: 80px;
+  border-radius: 100px;
+  margin-left: 410px;
+  margin-top: 10px;
+  cursor: pointer;
+}
+#modal2 {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  width: 100%;
+  height: 100vh;
+}
+#modalContent2 {
+  z-index: 2;
+  position: relative;
+  background-color: white;
+  margin-top: 182px;
+  margin-left: 1340px;
+  border: 1px solid #999;
+  width: 500px;
+  height: 700px;
+  border-radius: 10px;
+}
+.head-wrd2 {
+  font-size: 30px;
+  margin-left: 150px;
+}
+#X2 {
+  font-size: 40px;
+  color: black;
+  margin-left: 113px;
+  margin-bottom: 60px;
+}
+.mdl-header2 {
+  display: flex;
+  flex-direction: row;
+  width: 498px;
+  height: 100px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  border-bottom: 1px solid black;
+}
+.inpt-brder {
+  border: 1px solid black;
+  height: 80px;
+  margin: 20px;
+  border: none;
+  border-bottom: 2px solid black;
+}
+#title {
+  margin-top: 100px;
+}
+.submit {
+  font-size: 40px;
+  width: 498px;
+  height: 98px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  border: none;
+  cursor: pointer;
+  border-top: 1px solid black;
+}
+.inpt-brder i {
+  font-size: 30px;
+  margin-top: 35px;
+  margin-left: 10px;
+}
+.tripinfo {
+  font-size: 30px;
+  width: 370px;
+  height: 50px;
+  margin-left: 30px;
+  border: none;
+  outline: none;
+  color: #999;
+}
+
+::placeholder {
+  color: #999;
+}

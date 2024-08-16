@@ -6,7 +6,6 @@
   position: absolute;
   top: 0;
   left: 0;
-  height: 100vh;
   width: 100%;
   z-index: -1;
   opacity: 0.7;
@@ -120,4 +119,13 @@ form div.user_birth i {
   font-size: 25px;
   color: white;
   background-color: rgb(49, 195, 253);
+}
+#back {
+  width: 50px;
+  height: 50px;
+  margin-top: 20px;
+  margin-right: 550px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
 }
