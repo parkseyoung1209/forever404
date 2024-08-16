@@ -10,5 +10,20 @@ public class SmallSchedule {
 	private String memo;
 	private String items;
 	private char isReservation;
-	private int bsCode;
+	private BigSchedule bigSchedule;
+
+	public SmallSchedule(String memo, String items, char isReservation, BigSchedule bigSchedule) {
+		this.memo = memo;
+		this.items = items;
+		this.isReservation = isReservation;
+		this.bigSchedule = bigSchedule;
+	}
+
+	public SmallSchedule(String memo, String items, char isReservation) {
+		super();
+		this.memo = memo;
+		this.items = items;
+		this.isReservation = isReservation;
+	}
+	
 }

@@ -277,3 +277,10 @@ button i {
 	bottom: 10px;
 	left: 100px;
 }
+
+#frm {
+	margin-left: 200px;
+}
+#frm2 {
+	margin-left: 1200px;
+}
