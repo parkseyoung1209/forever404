@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.semi.forever404.model.vo.BigGroup;
 import com.semi.forever404.model.vo.BigSchedule;
 import com.semi.forever404.model.vo.SmallGroup;
+import com.semi.forever404.model.vo.SmallSchedule;
 import com.semi.forever404.model.vo.User;
 import com.semi.forever404.service.GroupService;
 
@@ -28,14 +29,9 @@ public class GroupController {
 	@PostMapping("/addGroup")
 	public boolean addGroup(BigGroup bigGroup, String groupName, HttpServletRequest request) {
 			List<BigGroup> list = service.userGroup();
+			System.out.println(list);
 			HttpSession session = request.getSession();
 			User user = (User) session.getAttribute("user");
-			for(BigGroup group : list) {
-				String name = group.getGroupName();
-				if(name.equals(groupName)) {
-					return false;
-				}
-			}
 			service.addGroup(bigGroup);
 			BigGroup bg = service.searchBgCode(groupName);
 			String id =user.getId();
@@ -59,13 +55,24 @@ public class GroupController {
 	@ResponseBody
 	@PostMapping("/scheduleAdd")
 	public void schduleAdd(HttpServletRequest request, String groupName) {
-		System.out.println(groupName);
 		HttpSession session = request.getSession();
 		User user = (User) session.getAttribute("user");
-		System.out.println(user);
 		String id = user.getId();
 		BigGroup bg = service.searchBgCode(groupName);
 		BigSchedule bgs = new BigSchedule(bg, new User(id));
 		service.scheduleAdd(bgs);
 	}
+	
+	@ResponseBody
+	@PostMapping("/scheduleAdd2")
+	public void scheduleAdd2(String groupName) {
+		BigGroup bg = service.searchBgCode(groupName);
+		System.out.println(bg);
+		int num = bg.getBgGroupCode();
+		System.out.println(num);
+		BigSchedule bgs = service.searchBsCode(num);
+		int a = bgs.getBsCode();
+		System.out.println(a);
+	}
+
 }

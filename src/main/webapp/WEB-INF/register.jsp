@@ -44,9 +44,7 @@ pageEncoding="UTF-8"%>
               class="user_id"
               autocapitalize="off"
             />
-            <span id="userIdSpan"
-              >* 아이디는 무조건 영소문자, 숫자 포함 20자 이하여야합니다.</span
-            >
+            <span id="userIdSpan"></span>
           </div>
           <div class="user_password" id="user_password">
             <i class="fa-solid fa-lock"></i>
@@ -58,10 +56,7 @@ pageEncoding="UTF-8"%>
               class="user_password"
               autocapitalize="off"
             />
-            <span id="userPasswordSpan"
-              >* 비밀번호는 영소문자, 숫자, 특수문자 포함 8자리
-              이상이여야합니다.</span
-            >
+            <span id="userPasswordSpan"></span>
           </div>
           <div class="user_phone">
             <i class="fa-solid fa-mobile-screen-button"></i>
@@ -83,7 +78,7 @@ pageEncoding="UTF-8"%>
               class="user_name"
               required
             />
-            <span id="userNameSpan">* 이름은 필수입니다! (2글자 이상)</span>
+            <span id="userNameSpan"></span>
           </div>
           <div class="user_email" id="user">
             <i class="fa-regular fa-envelope"></i>
@@ -104,6 +99,7 @@ pageEncoding="UTF-8"%>
               id="birth"
               placeholder="회원 생년월일 (선택사항)"
               class="user_birth"
+              max="9999-12-31"
             />
           </div>
         </div>
@@ -111,29 +107,7 @@ pageEncoding="UTF-8"%>
       <div class="submit_btn">
         <input type="submit" id="submit" value="회원가입하기!" />
       </div>
-      <script>
-        $("#submit").click(() => {
-          $.ajax({
-            type: "post",
-            url: "/signUp",
-            data: {
-              id: $("#id").val(),
-              password: $("#password").val(),
-              phone: $("#phone").val(),
-              name: $("#name").val(),
-              email: $("#email").val(),
-              birth: $("#birth").val(),
-            },
-            success: function () {
-              location.href = "/";
-            },
-            error: function (xhr, status, error) {
-              console.error("오류 발생:", status, error);
-            },
-          });
-        });
-      </script>
     </div>
-    <script src="register.js"></script>
+    <script src="${pageContext.request.contextPath}/js/register.js"></script>
   </body>
 </html>
