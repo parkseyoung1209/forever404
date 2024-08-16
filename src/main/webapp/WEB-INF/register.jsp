@@ -44,9 +44,7 @@ pageEncoding="UTF-8"%>
               class="user_id"
               autocapitalize="off"
             />
-            <span id="userIdSpan"
-              ></span
-            >
+            <span id="userIdSpan"></span>
           </div>
           <div class="user_password" id="user_password">
             <i class="fa-solid fa-lock"></i>
@@ -58,9 +56,7 @@ pageEncoding="UTF-8"%>
               class="user_password"
               autocapitalize="off"
             />
-            <span id="userPasswordSpan"
-              ></span
-            >
+            <span id="userPasswordSpan"></span>
           </div>
           <div class="user_phone">
             <i class="fa-solid fa-mobile-screen-button"></i>
@@ -102,7 +98,8 @@ pageEncoding="UTF-8"%>
               name="birth"
               id="birth"
               placeholder="회원 생년월일 (선택사항)"
-              class="user_birth" max="9999-12-31"
+              class="user_birth"
+              max="9999-12-31"
             />
           </div>
         </div>
