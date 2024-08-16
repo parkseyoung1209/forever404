@@ -16,6 +16,11 @@
   <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
   </head>
   <body>
+  <c:if test="${not empty user}">
+  <script>
+  window.location.href = '/main';
+  </script>
+  </c:if>
     <header id="header">
       <nav id="a1">
       <a href="">
@@ -160,7 +165,7 @@
             	            success: function(response) {
             	              // 요청이 성공했을 때 수행할 작업
             	            	window.location.href = '/main';
-            	            	location.reload();
+            	              	location.reload();
             	            },
             	            error: function(jqXHR, textStatus, errorThrown) {
             	              // 요청이 실패했을 때 수행할 작업
@@ -190,6 +195,7 @@
 				},
 				success : function() {
 					window.location.href = '/main';
+					location.reload();
 				}
 			})
 		});

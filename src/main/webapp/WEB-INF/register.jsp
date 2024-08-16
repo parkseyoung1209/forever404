@@ -111,29 +111,31 @@ pageEncoding="UTF-8"%>
       <div class="submit_btn">
         <input type="submit" id="submit" value="회원가입하기!" />
       </div>
-      <script>
-        $("#submit").click(() => {
-          $.ajax({
-            type: "post",
-            url: "/signUp",
-            data: {
-              id: $("#id").val(),
-              password: $("#password").val(),
-              phone: $("#phone").val(),
-              name: $("#name").val(),
-              email: $("#email").val(),
-              birth: $("#birth").val(),
-            },
-            success: function () {
-              location.href = "/";
-            },
-            error: function (xhr, status, error) {
-              console.error("오류 발생:", status, error);
-            },
-          });
-        });
-      </script>
     </div>
-    <script src="register.js"></script>
+    <script>
+   
+    $("#submit").click(() => {
+              $.ajax({
+                type: "post",
+                url: "/signUp",
+                data: {
+                  id: $("#id").val(),
+                  password: $("#password").val(),
+                  phone: $("#phone").val(),
+                  name: $("#name").val(),
+                  email: $("#email").val(),
+                  birth: $("#birth").val(),
+                },
+                success: function () {
+                	
+                  location.href = "/";
+                },
+                error: function (xhr, status, error) {
+                  console.error("오류 발생:", status, error);
+                },
+              });
+            });
+    </script>
+    <script src="${pageContext.request.contextPath}/js/register.js"></script>
   </body>
 </html>
