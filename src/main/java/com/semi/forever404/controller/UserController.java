@@ -9,7 +9,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -55,15 +54,6 @@ public class UserController {
 		}
 		return "redirect:/";}
 		
-	@GetMapping("/")
-	public String index() {
-		return "index";
-	}
-	
-	@GetMapping("/register")
-	public String register() {
-		return "register";
-	}
 	// check
 	@PostMapping("/register")
 	public String register(String id, String password, String phone, String name, String email, @RequestParam(name="birth", required=false) String birth) {
@@ -133,9 +123,6 @@ public class UserController {
 	    }
 		return "main";
 	}
-	
-	
-	
 	
 	
 	@GetMapping("/kakaomap")
