@@ -96,6 +96,6 @@
 		
 	</resultMap>  -->
 	<insert id="scheduleAdd2" parameterType="SmallSchedule">
-		INSERT INTO small_schedule(memo, items, is_reservation, bs_code) VALUES (#{memo}, #{items}, #{isReservation}, #{bsCode})
+		INSERT INTO small_schedule(memo, items, is_reservation, bs_code) VALUES (#{memo}, #{items}, #{isReservation}, #{bigSchedule.bsCode})
 	</insert>
 </mapper>

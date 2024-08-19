@@ -18,7 +18,9 @@
   border: 100vh;
   flex-direction: column;
 }
-
+.registersection h1 {
+	margin-bottom: 30px;
+}
 .registersection h1 i {
   color: rgb(49, 195, 253);
   font-size: 50px;

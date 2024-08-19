@@ -44,20 +44,20 @@
 	<div id="calendar-container">
       <div id="calendar"></div>
     </div>
+   <div>
     <h1>큰그룹 정보</h1>
-		<form id="frm">
-			여행 이름 : <input type="text" name="tripName"><br/>
+			여행 이름 : <input type="text" id="testTitle" name="title"><br/>
 			시작 날짜 : <input type="text" name="startDate"><br/>
 			종료 날짜 : <input type="text" name="endDate"><br/>
-			총 경비 : <input type="text" name="totalMoney"><br/>
+			총 경비 : <input type="text" name="entireMoney"><br/>
 			<input type="submit" value="큰그룹정보" id="add">
-		</form>
+	</div>
 	<h1>작은그룹 정보</h1>
 		<form id="frm2">
 			메모 : <input type="text" name="memo" id="memo"><br/>
 			종류 : <input type="text" name="items" id="items"><br/>
 			예약여부 : <input type="text" name="isReservation" id="isReservation"><br/>
-			<input type="submit" value="작은그룹" id="add2">
+			<input type="button" value="작은그룹" id="add2">
 		</form>
    <div id="modal1" class="modal">
       <div class="modalcontent">
@@ -147,13 +147,21 @@
 		$(document).on('click', '.groupButton', function() {
 	        buttonId = $(this).attr('id');
 	        console.log("버튼 클릭됨, ID:", buttonId);
+	        $.ajax({
+	        	type : 'post',
+	        	url : 'selectGroup',
+	        	data : {groupName : buttonId},
+	        success : function(result) {
+				console.log(result);
+				}
+	        });
 	    });
 		$("#add").click(() => {
 			$.ajax({
 				type : 'post',
 				url : '/scheduleAdd',
-				data : {info :$('#frm').serialize(),
-						groupName : buttonId
+				data : {groupName : buttonId,
+						testTitle : $("#testTitle").val()
 						},
 				success : function() {
 					console.log('!');
@@ -162,11 +170,16 @@
 			});
 		});
 		$("#add2").click(() => {
+
 			$.ajax({
 			type : 'post',
 			url : '/scheduleAdd2',
-			data : {info2 : $('#frm2').serialize(),
-				groupName : buttonId
+			data :{
+				groupName: buttonId,
+				memo: $("#memo").val(),
+				items: $("#items").val(),
+				isReservation: $("#isReservation").val(),
+				
 			},
 			success : function () {
 			}

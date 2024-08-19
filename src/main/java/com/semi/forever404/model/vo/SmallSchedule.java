@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 
 @Data @NoArgsConstructor @AllArgsConstructor
 public class SmallSchedule {
+	private String groupName;
 	private int ssCode;
 	private String memo;
 	private String items;
@@ -19,11 +20,4 @@ public class SmallSchedule {
 		this.bigSchedule = bigSchedule;
 	}
 
-	public SmallSchedule(String memo, String items, char isReservation) {
-		super();
-		this.memo = memo;
-		this.items = items;
-		this.isReservation = isReservation;
-	}
-	
 }
