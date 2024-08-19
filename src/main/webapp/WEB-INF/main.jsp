@@ -44,15 +44,21 @@
 	<div id="calendar-container">
       <div id="calendar"></div>
     </div>
+   <div>
     <h1>큰그룹 정보</h1>
-		<form id="frm">
-			여행 이름 : <input type="text" name="tripName"><br/>
+			여행 이름 : <input type="text" id="testTitle" name="title"><br/>
 			시작 날짜 : <input type="text" name="startDate"><br/>
 			종료 날짜 : <input type="text" name="endDate"><br/>
-			총 경비 : <input type="text" name="totalMoney"><br/>
+			총 경비 : <input type="text" name="entireMoney"><br/>
 			<input type="submit" value="큰그룹정보" id="add">
+	</div>
+	<h1>작은그룹 정보</h1>
+		<form id="frm2">
+			메모 : <input type="text" name="memo" id="memo"><br/>
+			종류 : <input type="text" name="items" id="items"><br/>
+			예약여부 : <input type="text" name="isReservation" id="isReservation"><br/>
+			<input type="button" value="작은그룹" id="add2">
 		</form>
-		
    <div id="modal1" class="modal">
       <div class="modalcontent">
         <p class="close">&times</p>
@@ -66,9 +72,10 @@
         <section class="mid">
           <h3>새 그룹 명</h3>
           <br />
-          <input type="text" />
+          <input type="text" id="textbox"/>
           <div class="add">
-            <button id="add" class="add2">만들기</button>
+            <button id="addGroup" class="add2">만들기</button>
+            <div id="successText"></div>>
           </div>
         </section>
       </div>
@@ -81,7 +88,7 @@
         <hr />
         <br />
         <p>
-          아래에 전달받은 그룹코드를 입력해<br />
+          아래에 전달받은 그룹코드를 입력해<br/>
           그룹에 참여해보세요
         </p>
         <section class="mid">
@@ -200,13 +207,21 @@
 		$(document).on('click', '.groupButton', function() {
 	        buttonId = $(this).attr('id');
 	        console.log("버튼 클릭됨, ID:", buttonId);
+	        $.ajax({
+	        	type : 'post',
+	        	url : 'selectGroup',
+	        	data : {groupName : buttonId},
+	        success : function(result) {
+				console.log(result);
+				}
+	        });
 	    });
 		$("#add").click(() => {
 			$.ajax({
 				type : 'post',
 				url : '/scheduleAdd',
-				data : {info :$('#frm').serialize(),
-						groupName : buttonId
+				data : {groupName : buttonId,
+						testTitle : $("#testTitle").val()
 						},
 				success : function() {
 					console.log('!');
@@ -214,21 +229,36 @@
 			
 			});
 		});
+		$("#add2").click(() => {
+
+			$.ajax({
+			type : 'post',
+			url : '/scheduleAdd2',
+			data :{
+				groupName: buttonId,
+				memo: $("#memo").val(),
+				items: $("#items").val(),
+				isReservation: $("#isReservation").val(),
+				
+			},
+			success : function () {
+			}
+			})
+		});
 	</script>
 
 	<script>
-	$("#schedule").click(() => {
-		const title = $("#textBox").val();
+	$("#addGroup").click(() => {
+		const title = $("#textbox").val();
 		$.ajax ({
 			type : "post",
 			url : "/addGroup",
-			data : "groupName=" + $("#textBox").val(),
+			data : "groupName=" + title,
 		// <button><i class="fa-solid fa-plus"></i></button>
 			success : function(result) {
 				console.log(result);
 				if(result == true) {
-					$("#successText").text("생성완료");
-					$("#group").prepend("<button type='button' class='groupButton'><i class='fa-solid fa-user-group'></i></button><span>"+title+"</span>");
+					$("#group").prepend("<button type='button' class='groupButton' id='"+title+"'>"+"<i class='fa-solid fa-user-group'></i></button><span>"+title+"</span>");
 				} else {
 					$("#successText").text("사용할 수 없는 그룹명입니다.");
 				}
