@@ -14,6 +14,8 @@
     crossorigin="anonymous"
   ></script>
   <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script> 
   </head>
   <body>
     <header id="header">
@@ -65,26 +67,26 @@
         <button id="nextBtn" class="button2">&#10095;</button>
       </div>
       <section id="section5">
-        <div class=schedule>
+        <div class=schedule data-aos="fade-down" data-aos-delay="300" data-aos-duration="600">
           <h1>이 스케줄러의 장점</h1>
           <p>전체 여행 일정을 한눈에 !</p>
         </div>
 
-        <div class="schedule">
+        <div class="schedule" data-aos="fade-up" data-aos-delay="300" data-aos-duration="600">
           <img src="${pageContext.request.contextPath}/image/main/schedule.jpg" alt="" />
         </div>
       </section>
       <section id="section6">
-        <div id="textBox">
+        <div id="textBox" data-aos="fade-right"  data-aos-delay="300" data-aos-duration="600">
           <h1>이 외의 유용한 기능들</h1>
           <p>세부 일정을 요일, 시간 별로 확인해 보세요.</p>
           <p>자주 잊어먹는 분들을 위한 알람 기능</p>
         </div>
         <div id="positionBox">
-          <div class="box" id="box1">
+          <div class="box" id="box1" data-aos="fade-left"  data-aos-delay="400" data-aos-duration="600">
             <img src="${pageContext.request.contextPath}/image/main/calender2.jpg" alt="" />
           </div>
-          <div class="box" id="box2">
+          <div class="box" id="box2" data-aos="fade-left"  data-aos-delay="500" data-aos-duration="600">
             <img src="${pageContext.request.contextPath}/image/main/plane.jpg" alt="" />
           </div>
         </div>
@@ -284,6 +286,6 @@
       }
     });
     
-    
+    AOS.init();
   </script>
 </html>

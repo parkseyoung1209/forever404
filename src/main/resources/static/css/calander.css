@@ -75,8 +75,8 @@ button i {
   background: url();
 }
 #calendar {
-	position: absolute;
-  width: 100vh;
+position: absolute;
+  width: 110vh;
   height: 80vh;
   top: 120px;
   left: 200px;
