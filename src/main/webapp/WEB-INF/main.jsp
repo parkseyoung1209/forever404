@@ -94,7 +94,67 @@
         </section>
       </div>
     </div>
+    
+    
+    
+        <div id="bigModal" style="display: none">
+      <div id="modalContent3">
+        <header class="mdl-header">
+          <p class="head-wrd">일정 추가하기</p>
+          <i class="fa-solid fa-xmark" id="X"></i>
+        </header>
+        <button class="modsection" id="one"></button>
+        <button class="modsection" id="two"></button>
+        <button class="modsection" id="three"></button>
+        <button class="modsection" id="four"></button>
+        <button class="modsection" id="five"></button>
+        <button class="modsection" id="six">추가</button>
+      </div>
     </div>
+    
+    
+       <div id="detModal" style="display: none">
+      <div id="modalContent4">
+        <header class="mdl-header2">
+          <p class="head-wrd2">세부 일정 추가</p>
+          <i class="fa-solid fa-xmark" id="X2"></i>
+        </header>
+        <div class="inpt-brder" id="title">
+          <i class="fa-solid fa-pencil"></i>
+          <input type="text" placeholder="일정 이름" class="tripinfo" />
+        </div>
+        <div class="inpt-brder">
+          <i class="fa-solid fa-plane-departure"></i>
+          <input
+            type="date"
+            placeholder="시작 날짜"
+            class="tripinfo"
+            max="9999-12-31"
+          />
+        </div>
+        <div class="inpt-brder">
+          <i class="fa-solid fa-plane-arrival"></i>
+          <input
+            type="date"
+            placeholder="종료 날짜"
+            class="tripinfo"
+            max="9999-12-31"
+          />
+        </div>
+        <div class="inpt-brder" id="date">
+          <i class="fa-solid fa-coins"></i>
+          <input type="text" placeholder="여행 총 경비" class="tripinfo" />
+        </div>
+        <div class="inpt-brder" id="date">
+          <i class="fa-solid fa-helmet-safety"></i>
+          <input type="text" placeholder="추후 추가예정" class="tripinfo" />
+        </div>
+        <div><button class="submit" id="final">추가하기</button></div>
+      </div>
+    </div>
+    
+    
+    
 		<script src="https://kit.fontawesome.com/ef885bd654.js"
       		crossorigin="anonymous">
 		</script>

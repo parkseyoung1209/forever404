@@ -1,12 +1,9 @@
 document.addEventListener("DOMContentLoaded", function () {
-  var Calendar = FullCalendar.Calendar;
-  var Draggable = FullCalendar.Draggable;
+  const Calendar = FullCalendar.Calendar;
 
-  var containerEl = document.getElementById("external-events");
-  var calendarEl = document.getElementById("calendar");
-  var checkbox = document.getElementById("drop-remove");
+  const calendarEl = document.getElementById("calendar");
 
-  var calendar = new Calendar(calendarEl, {
+  const calendar = new Calendar(calendarEl, {
     headerToolbar: {
       left: "prev,next today",
       center: "title",
@@ -14,17 +11,61 @@ document.addEventListener("DOMContentLoaded", function () {
     },
     selectable: true,
     editable: true,
-    droppable: true, // this allows things to be dropped onto the calendar
-    drop: function (info) {
-      // is the "remove after drop" checkbox checked?
-      if (checkbox.checked) {
-        // if so, remove the element from the "Draggable Events" list
-        info.draggedEl.parentNode.removeChild(info.draggedEl);
+    dateClick: function (info) {
+      const month = calendarEl
+        .querySelector(".fc-toolbar-title")
+        .innerText.split(" ")[0];
+      const clickedDate = info.dateStr;
+      const selectedMonth = info.date.getMonth(); // 0부터 시작하는 월 인덱스
+      // 예: 7월 (8월의 경우 7로 설정)
+      if (selectedMonth === 0 && month === "January") {
+        showModal(clickedDate);
+      } else if (selectedMonth === 1 && month === "February") {
+        showModal(clickedDate);
+      } else if (selectedMonth === 2 && month === "March") {
+        showModal(clickedDate);
+      } else if (selectedMonth === 3 && month === "April") {
+        showModal(clickedDate);
+      } else if (selectedMonth === 4 && month === "May") {
+        showModal(clickedDate);
+      } else if (selectedMonth === 5 && month === "June") {
+        showModal(clickedDate);
+      } else if (selectedMonth === 6 && month === "July") {
+        showModal(clickedDate);
+      } else if (selectedMonth === 7 && month === "August") {
+        showModal(clickedDate);
+      } else if (selectedMonth === 8 && month === "September") {
+        showModal(clickedDate);
+      } else if (selectedMonth === 9 && month === "October") {
+        showModal(clickedDate);
+      } else if (selectedMonth === 10 && month === "November") {
+        showModal(clickedDate);
+      } else if (selectedMonth === 11 && month === "December") {
+        showModal(clickedDate);
       }
     },
   });
 
   calendar.render();
+
+  function showModal() {
+    const modal = document.getElementById("bigModal");
+    modal.style.display = "block";
+  }
+
+  document.getElementById("X").addEventListener("click", function () {
+    document.getElementById("bigModal").style.display = "none";
+  });
+});
+
+$("#six").click(function () {
+  $("#detModal").css("display", "block");
+  $("#bigModal").css("display", "none");
+});
+
+$("#X2").click(function () {
+  $("#detModal").css("display", "none");
+  $("#bigModal").css("display", "block");
 });
 
 

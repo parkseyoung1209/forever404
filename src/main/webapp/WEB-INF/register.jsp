@@ -34,7 +34,7 @@ pageEncoding="UTF-8"%>
       </h1>
       <div class="formlist">
         <div class="form">
-          <div class="user_id" id="user_id">
+          <div class="user_id" id="user_id"><label>
             <i class="fa-regular fa-user"></i>
             <input
               type="text"
@@ -43,12 +43,12 @@ pageEncoding="UTF-8"%>
               placeholder="회원 아이디"
               class="user_id"
               autocapitalize="off"
-            />
+            /></label>
             <span id="userIdSpan"
               >* 아이디는 무조건 영소문자, 숫자 포함 20자 이하여야합니다.</span
             >
           </div>
-          <div class="user_password" id="user_password">
+          <div class="user_password" id="user_password"><label>
             <i class="fa-solid fa-lock"></i>
             <input
               type="password"
@@ -57,13 +57,13 @@ pageEncoding="UTF-8"%>
               placeholder="회원 비밀번호"
               class="user_password"
               autocapitalize="off"
-            />
+            /></label>
             <span id="userPasswordSpan"
               >* 비밀번호는 영소문자, 숫자, 특수문자 포함 8자리
               이상이여야합니다.</span
             >
           </div>
-          <div class="user_phone">
+          <div class="user_phone"><label>
             <i class="fa-solid fa-mobile-screen-button"></i>
             <input
               type="text"
@@ -71,9 +71,9 @@ pageEncoding="UTF-8"%>
               id="phone"
               placeholder="회원 휴대전화번호 (선택사항)"
               class="user_phone"
-            />
+            /></label>
           </div>
-          <div class="user_name">
+          <div class="user_name"><label>
             <i class="fa-regular fa-user"></i>
             <input
               type="text"
@@ -82,10 +82,10 @@ pageEncoding="UTF-8"%>
               placeholder="회원 이름"
               class="user_name"
               required
-            />
+            /></label>
             <span id="userNameSpan">* 이름은 필수입니다! (2글자 이상)</span>
           </div>
-          <div class="user_email" id="user">
+          <div class="user_email" id="user"><label>
             <i class="fa-regular fa-envelope"></i>
             <input
               type="text"
@@ -94,9 +94,9 @@ pageEncoding="UTF-8"%>
               placeholder="회원 이메일 (선택사항)"
               class="user_email"
               autocapitalize="off"
-            />
+            /></label>
           </div>
-          <div class="user_birth" id="user">
+          <div class="user_birth" id="user"><label for="birth">
             <i class="fa-solid fa-calendar-days"></i>
             <input
               type="date"
@@ -104,7 +104,7 @@ pageEncoding="UTF-8"%>
               id="birth"
               placeholder="회원 생년월일 (선택사항)"
               class="user_birth" max="9999-12-31"
-            />
+            /></label>
           </div>
         </div>
       </div>
