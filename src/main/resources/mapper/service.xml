@@ -4,14 +4,18 @@
 	<resultMap id="serviceInfo" type="ServiceInfo">
 		<id column="si_code" property="siCode" />
 		<result column="service_name" property="serviceName"/>
-		<result column="service_location" property="serviceLocation" />
+		<result column="service_jibun" property="serviceJibun" />
+		<result column="service_lat" property="serviceLat" />
+		<result column="service_lng" property="serviceLng" />
 		<result column="service_phone" property="servicePhone" />
-		<result column="service_list" property="serviceList" />
+		<result column="service_img" property="serviceImg" />
 	</resultMap>
 	
-	<insert id="addInfo" parameterType="String">
-		INSERT INTO service_info (si_type,service_name,service_jibun,service_lat,service_lng,service_phone, service_img)
-		VALUES (#{type}, #{title}, #{addr}, #{lat}, #{lng}, #{phone}, #{url})
+	<insert id="addInfo" parameterType="serviceInfo">
+		INSERT INTO service_info (service_name,service_jibun,service_lat,service_lng,service_phone, service_img)
+		VALUES (#{serviceName}, #{serviceJibun}, #{serviceLat}, #{serviceLng}, #{servicePhone}, #{serviceImg})
 	</insert>
-	
+	<select id="selectService" resultMap="serviceInfo">
+		SELELCT * FROM service_info
+	</select>
 </mapper>

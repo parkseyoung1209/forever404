@@ -146,13 +146,11 @@
 		});
 		$(document).on('click', '.groupButton', function() {
 	        buttonId = $(this).attr('id');
-	        console.log("버튼 클릭됨, ID:", buttonId);
 	        $.ajax({
 	        	type : 'post',
 	        	url : 'selectGroup',
 	        	data : {groupName : buttonId},
 	        success : function(result) {
-				console.log(result);
 				}
 	        });
 	    });

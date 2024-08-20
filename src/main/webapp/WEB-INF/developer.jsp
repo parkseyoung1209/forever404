@@ -122,7 +122,6 @@
       </section>
     </div>
     <!-- 로그인 모달 -->
-    <form action="/login" method="post">
       <div class="modal">
         <div class="modal_body">
           <div class="back_to_menu">
@@ -154,9 +153,8 @@
             />
           </div>
           <div class="login_btn">
-            <button type="submit" id="login2" onclick="location.href='/main'">로그인</button>
+            <button type="submit" id="login2">로그인</button>
           </div>
-          </form>
           <div class="kkt_login_btn">
           	 <a href="javascript:kakaoLogin();">
             <img src="${pageContext.request.contextPath}/image/main/kakao.png" alt="카카오 로그인 버튼" />
@@ -194,6 +192,7 @@
             	            success: function(response) {
             	              // 요청이 성공했을 때 수행할 작업
             	            	window.location.href = '/main';
+            	            	location.reload();
             	            },
             	            error: function(jqXHR, textStatus, errorThrown) {
             	              // 요청이 실패했을 때 수행할 작업
@@ -254,18 +253,21 @@
         }
       });
     </script>
-     <c:if test="${not empty user}">
   	<script>
-  	history.pushState(null, null, location.href);
-  	window.onpageshow = function(event) {
-  	      if ( event.persisted || (window.performance && window.performance.navigation.type == 2)) {
-  	      // Back Forward Cache로 브라우저가 로딩될 경우 혹은 브라우저 뒤로가기 했을 경우
-  	      
-  	      location.href="/main";
-  	    }
-  	      history.forward();
-  	}
-  	</script>
-  	</c:if>
+		$("#login2").click(() => {
+			$.ajax({
+				type : "post",
+				url : "/login",
+				data : {
+					id: $("#id").val(),
+					password: $("#password").val()
+				},
+				success : function() {
+					window.location.href = '/main';
+					location.reload();
+				}
+			})
+		});
+	</script>
   </body>
 </html>
