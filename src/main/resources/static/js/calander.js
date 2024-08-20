@@ -49,22 +49,28 @@ document.addEventListener("DOMContentLoaded", function () {
   calendar.render();
 
   function showModal() {
-    const modal = document.getElementById("bigModal");
-    modal.style.display = "block";
+    $("#bigModal").slideDown();
+    if (modal.css("display") === "none") {
+      modal.slideUp(400);
+    }
   }
-
+/*
   document.getElementById("X").addEventListener("click", function () {
     document.getElementById("bigModal").style.display = "none";
+  });*/
+    $("#X").click(function () {
+      $("#bigModal").slideUp(400);
+    });
   });
-});
 
 $("#six").click(function () {
+	$("#detModal").slideDown(400);
   $("#detModal").css("display", "block");
   $("#bigModal").css("display", "none");
 });
 
 $("#X2").click(function () {
-  $("#detModal").css("display", "none");
+  $("#detModal").slideUp(400);
   $("#bigModal").css("display", "block");
 });
 

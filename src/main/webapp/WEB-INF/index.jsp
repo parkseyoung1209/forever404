@@ -77,21 +77,21 @@
           <p>전체 여행 일정을 한눈에 !</p>
         </div>
 
-        <div class="schedule" data-aos="fade-up" data-aos-delay="300" data-aos-duration="600">
+        <div class="schedule" data-aos="fade-up" data-aos-delay="300" data-aos-duration="800">
           <img src="${pageContext.request.contextPath}/image/main/schedule.jpg" alt="" />
         </div>
       </section>
       <section id="section6">
-        <div id="textBox" data-aos="fade-right"  data-aos-delay="300" data-aos-duration="600">
+        <div id="textBox" data-aos="fade-right"  data-aos-delay="300" data-aos-duration="800">
           <h1>이 외의 유용한 기능들</h1>
           <p>세부 일정을 요일, 시간 별로 확인해 보세요.</p>
           <p>자주 잊어먹는 분들을 위한 알람 기능</p>
         </div>
         <div id="positionBox">
-          <div class="box" id="box1" data-aos="fade-left"  data-aos-delay="400" data-aos-duration="600">
+          <div class="box" id="box1" data-aos="fade-left"  data-aos-delay="300" data-aos-duration="800">
             <img src="${pageContext.request.contextPath}/image/main/calender2.jpg" alt="" />
           </div>
-          <div class="box" id="box2" data-aos="fade-left"  data-aos-delay="500" data-aos-duration="600">
+          <div class="box" id="box2" data-aos="fade-left"  data-aos-delay="500" data-aos-duration="800">
             <img src="${pageContext.request.contextPath}/image/main/plane.jpg" alt="" />
           </div>
         </div>

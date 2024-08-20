@@ -132,6 +132,7 @@
   font-size: 25px;
   color: white;
   background-color: rgb(49, 195, 253);
+  cursor: pointer;
 }
 #back {
   width: 50px;
