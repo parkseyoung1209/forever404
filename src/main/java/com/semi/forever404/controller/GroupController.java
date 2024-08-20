@@ -1,16 +1,14 @@
 package com.semi.forever404.controller;
 
-import java.util.ArrayList;
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
+
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
+
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.semi.forever404.model.vo.BigGroup;
@@ -59,7 +57,6 @@ public class GroupController {
 	public String selectGroup(HttpServletRequest request,String groupName) {
 		HttpSession session = request.getSession();
 		session.setAttribute("groupName", groupName);
-		System.out.println(session.getAttribute("groupName"));
 		return (String) session.getAttribute("groupName");
 	}
 	
@@ -85,7 +82,7 @@ public class GroupController {
 		int num = bg.getBgGroupCode();
 		BigSchedule bgs = service.searchBsCode(num);
 		System.out.println(bgs);
-		service.scheduleAdd2(new SmallSchedule(schedule.getMemo(), schedule.getItems(), schedule.getIsReservation(), bgs));
+		service.scheduleAdd2(new SmallSchedule(schedule.getMemo(), schedule.getIsReservation(), bgs));
 	}
 
 }
