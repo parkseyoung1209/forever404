@@ -9,7 +9,7 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/reset.css" />
     <link rel="stylesheet" href="${pageContext.request.contextPath}css/calander.css" />
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-<script src="${pageContext.request.contextPath}js/index.global.js"></script>
+<script src="${pageContext.request.contextPath}js/index.global.min.js"></script>
 </head>
 <body>
 	<c:if test="${not empty user}">
@@ -44,7 +44,8 @@
 	<div id="calendar-container">
       <div id="calendar"></div>
     </div>
-    <!-- 
+   
+   <!--  
    <div>
     <h1>큰그룹 정보</h1>
 			여행 이름 : <input type="text" id="testTitle" name="title"><br/>
@@ -60,7 +61,7 @@
 			예약여부 : <input type="text" name="isReservation" id="isReservation"><br/>
 			<input type="button" value="작은그룹" id="add2">
 		</form>
-		 -->
+	-->
    <div id="modal1" class="modal">
       <div class="modalcontent">
         <p class="close">&times</p>
@@ -266,6 +267,12 @@
 		});
 	});
 	</script>
+	</c:if>
+	<c:if test="${empty user}">
+		<script>
+		location.reload();
+		window.location.href = "redirect:/";
+		</script>
 	</c:if>
 	<script src="${pageContext.request.contextPath}/js/calander.js"></script>
 </body>

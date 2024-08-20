@@ -190,9 +190,11 @@
 					id: $("#id").val(),
 					password: $("#password").val()
 				},
-				success : function() {
-					window.location.href = '/main';
-					location.reload();
+				success : function(response) {
+					if(response == true) {
+						window.location.href = "/main";
+						loaction.reload;
+					}
 				}
 			})
 		});
