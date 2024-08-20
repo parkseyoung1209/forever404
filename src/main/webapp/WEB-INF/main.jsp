@@ -44,21 +44,23 @@
 	<div id="calendar-container">
       <div id="calendar"></div>
     </div>
+    <!-- 
+   <div>
     <h1>큰그룹 정보</h1>
-		<form id="frm">
-			여행 이름 : <input type="text" name="tripName"><br/>
+			여행 이름 : <input type="text" id="testTitle" name="title"><br/>
 			시작 날짜 : <input type="text" name="startDate"><br/>
 			종료 날짜 : <input type="text" name="endDate"><br/>
-			총 경비 : <input type="text" name="totalMoney"><br/>
+			총 경비 : <input type="text" name="entireMoney"><br/>
 			<input type="submit" value="큰그룹정보" id="add">
-		</form>
+	</div>
 	<h1>작은그룹 정보</h1>
 		<form id="frm2">
 			메모 : <input type="text" name="memo" id="memo"><br/>
 			종류 : <input type="text" name="items" id="items"><br/>
 			예약여부 : <input type="text" name="isReservation" id="isReservation"><br/>
-			<input type="submit" value="작은그룹" id="add2">
+			<input type="button" value="작은그룹" id="add2">
 		</form>
+		 -->
    <div id="modal1" class="modal">
       <div class="modalcontent">
         <p class="close">&times</p>
@@ -101,7 +103,67 @@
         </section>
       </div>
     </div>
+    
+    
+    
+        <div id="bigModal" style="display: none">
+      <div id="modalContent3">
+        <header class="mdl-header">
+          <p class="head-wrd">일정 추가하기</p>
+          <i class="fa-solid fa-xmark" id="X"></i>
+        </header>
+        <button class="modsection" id="one"></button>
+        <button class="modsection" id="two"></button>
+        <button class="modsection" id="three"></button>
+        <button class="modsection" id="four"></button>
+        <button class="modsection" id="five"></button>
+        <button class="modsection" id="six">추가</button>
+      </div>
     </div>
+    
+    
+       <div id="detModal" style="display: none">
+      <div id="modalContent4">
+        <header class="mdl-header2">
+          <p class="head-wrd2">세부 일정 추가</p>
+          <i class="fa-solid fa-xmark" id="X2"></i>
+        </header>
+        <div class="inpt-brder" id="title">
+          <i class="fa-solid fa-pencil"></i>
+          <input type="text" placeholder="일정 이름" class="tripinfo" />
+        </div>
+        <div class="inpt-brder">
+          <i class="fa-solid fa-plane-departure"></i>
+          <input
+            type="date"
+            placeholder="시작 날짜"
+            class="tripinfo"
+            max="9999-12-31"
+          />
+        </div>
+        <div class="inpt-brder">
+          <i class="fa-solid fa-plane-arrival"></i>
+          <input
+            type="date"
+            placeholder="종료 날짜"
+            class="tripinfo"
+            max="9999-12-31"
+          />
+        </div>
+        <div class="inpt-brder" id="date">
+          <i class="fa-solid fa-coins"></i>
+          <input type="text" placeholder="여행 총 경비" class="tripinfo" />
+        </div>
+        <div class="inpt-brder" id="date">
+          <i class="fa-solid fa-helmet-safety"></i>
+          <input type="text" placeholder="추후 추가예정" class="tripinfo" />
+        </div>
+        <div><button class="submit" id="final">추가하기</button></div>
+      </div>
+    </div>
+    
+    
+    
 		<script src="https://kit.fontawesome.com/ef885bd654.js"
       		crossorigin="anonymous">
 		</script>
@@ -146,14 +208,20 @@
 		});
 		$(document).on('click', '.groupButton', function() {
 	        buttonId = $(this).attr('id');
-	        console.log("버튼 클릭됨, ID:", buttonId);
+	        $.ajax({
+	        	type : 'post',
+	        	url : 'selectGroup',
+	        	data : {groupName : buttonId},
+	        success : function(result) {
+				}
+	        });
 	    });
 		$("#add").click(() => {
 			$.ajax({
 				type : 'post',
 				url : '/scheduleAdd',
-				data : {info :$('#frm').serialize(),
-						groupName : buttonId
+				data : {groupName : buttonId,
+						testTitle : $("#testTitle").val()
 						},
 				success : function() {
 					console.log('!');
@@ -162,11 +230,16 @@
 			});
 		});
 		$("#add2").click(() => {
+
 			$.ajax({
 			type : 'post',
 			url : '/scheduleAdd2',
-			data : {info2 : $('#frm2').serialize(),
-				groupName : buttonId
+			data :{
+				groupName: buttonId,
+				memo: $("#memo").val(),
+				items: $("#items").val(),
+				isReservation: $("#isReservation").val(),
+				
 			},
 			success : function () {
 			}

@@ -18,7 +18,9 @@
   border: 100vh;
   flex-direction: column;
 }
-
+.registersection h1 {
+	margin-bottom: 30px;
+}
 .registersection h1 i {
   color: rgb(49, 195, 253);
   font-size: 50px;
@@ -79,6 +81,14 @@
   margin-right: 20px;
   color: grey;
   font-size: 30px;
+  cursor: pointer;
+}
+
+.form div.user_birth input {
+  width: 490px;
+  color: gray;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  margin-top: 25px;
 }
 .form div.user_kkt_id i {
   margin-left: 10px;
@@ -104,6 +114,8 @@
 .form div.user_birth i {
   margin-right: 19.5px;
 }
+
+
 .submit_btn {
   border: none;
   width: 600px;
@@ -120,6 +132,7 @@
   font-size: 25px;
   color: white;
   background-color: rgb(49, 195, 253);
+  cursor: pointer;
 }
 #back {
   width: 50px;

@@ -2,7 +2,9 @@ package mapper;
 
 import org.apache.ibatis.annotations.Mapper;
 
+import com.semi.forever404.model.vo.ServiceInfo;
+
 @Mapper
 public interface ServiceMapper {
-	void addInfo(String type, String title, String addr, String lat, String lng, String phone, String url);
+	void addInfo(ServiceInfo si);
 }

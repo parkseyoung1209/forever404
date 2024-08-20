@@ -1,13 +1,14 @@
 package com.semi.forever404.controller;
 
-import java.util.ArrayList;
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
+
 import org.springframework.web.bind.annotation.PostMapping;
+
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.semi.forever404.model.vo.BigGroup;
@@ -51,11 +52,19 @@ public class GroupController {
 		model.addAttribute("list", list);
 		return list;
 	}
+	@ResponseBody
+	@PostMapping("/selectGroup")
+	public String selectGroup(HttpServletRequest request,String groupName) {
+		HttpSession session = request.getSession();
+		session.setAttribute("groupName", groupName);
+		return (String) session.getAttribute("groupName");
+	}
 	
 	@ResponseBody
 	@PostMapping("/scheduleAdd")
-	public void schduleAdd(HttpServletRequest request, String groupName) {
+	public void schduleAdd(HttpServletRequest request) {
 		HttpSession session = request.getSession();
+		String groupName = (String) session.getAttribute("groupName");
 		User user = (User) session.getAttribute("user");
 		String id = user.getId();
 		BigGroup bg = service.searchBgCode(groupName);
@@ -65,14 +74,15 @@ public class GroupController {
 	
 	@ResponseBody
 	@PostMapping("/scheduleAdd2")
-	public void scheduleAdd2(String groupName) {
+	public void scheduleAdd2(HttpServletRequest request, SmallSchedule schedule) {
+		HttpSession session = request.getSession();
+		String groupName = (String) session.getAttribute("groupName");
+		System.out.println(groupName);
 		BigGroup bg = service.searchBgCode(groupName);
-		System.out.println(bg);
 		int num = bg.getBgGroupCode();
-		System.out.println(num);
 		BigSchedule bgs = service.searchBsCode(num);
-		int a = bgs.getBsCode();
-		System.out.println(a);
+		System.out.println(bgs);
+		service.scheduleAdd2(new SmallSchedule(schedule.getMemo(), schedule.getIsReservation(), bgs));
 	}
 
 }
