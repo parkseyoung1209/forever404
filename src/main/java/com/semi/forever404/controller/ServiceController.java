@@ -17,6 +17,11 @@ public class ServiceController {
 	@ResponseBody
 	@GetMapping("/addinfo")
 	public void addInfo(String title, String addr, Double lat, Double lng, String phone) {
+		
+		
+		
+		
+		
 		try {
 			
 			service.addInfo(title, addr, lat, lng, phone);

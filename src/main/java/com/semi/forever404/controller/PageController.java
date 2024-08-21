@@ -17,4 +17,14 @@ public class PageController {
 	public String developer() {
 		return "developer";
 	}
+	
+	@GetMapping("/kakaomap")
+	public String kakaomap() {
+		return "kakaomap2";
+	}
+	
+	@GetMapping("/detail")
+	public String detail() {
+		return "detail2";
+	}
 }

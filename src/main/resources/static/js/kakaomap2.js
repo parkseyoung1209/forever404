@@ -138,17 +138,56 @@ function displayPlaces(places) {
     }
 }
 
-// 마커를 생성하고 지도 위에 마커를 표시하는 함수입니다
-function addMarker(position, order) {
-    var imageSrc = 'https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/places_category.png', // 마커 이미지 url, 스프라이트 이미지를 씁니다
+
+
+	
+// 아이콘을 마커로 생성하고 지도 위에 마커를 표시하는 함수입니다
+function addMarker(position, order, order2) {
+	/*
+    // Define Font Awesome classes for each order
+    const iconClasses = [
+        'fa-solid fa-landmark',
+        'fa-solid fa-utensils',
+        'fa-solid fa-mug-saucer',
+        'fa-solid fa-house'
+    ];
+
+	// Create a div element to hold the marker content
+    var markerDiv = document.createElement('div');
+    markerDiv.style.width = '30px';  // Width of the marker
+    markerDiv.style.height = '30px'; // Height of the marker
+    markerDiv.style.display = 'flex';
+    markerDiv.style.alignItems = 'center';
+    markerDiv.style.justifyContent = 'center';
+    markerDiv.style.fontSize = '20px'; // Font size of the icon
+    markerDiv.style.color = '#000'; // Icon color (adjust as needed)
+    markerDiv.style.backgroundColor = 'white'; // Optional: background color
+    markerDiv.style.borderRadius = '50%'; // Optional: rounded marker
+    markerDiv.style.border = '2px solid #000'; // Optional: border color	
+	
+	
+	// Convert the div to a Kakao Maps marker image
+	markerImage = new kakao.maps.MarkerImage(markerDiv, new kakao.maps.Size(30, 30));
+*/
+	
+    var imageSrc = "../image/qibla_9989353.png"
+	//'https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/places_category.png', // 마커 이미지 url, 스프라이트 이미지를 씁니다
         imageSize = new kakao.maps.Size(27, 28),  // 마커 이미지의 크기
         imgOptions =  {
+			spriteSize : new kakao.maps.Size(27, 28), // 스프라이트 이미지의 크기
+            //spriteOrigin : new kakao.maps.Point((order*36), (order2*36)), // 스프라이트 이미지 중 사용할 영역의 좌상단 좌표
+            //offset: new kakao.maps.Point(5, 20) // 마커 좌표에 일치시킬 이미지 내에서의 좌표
+			/*
             spriteSize : new kakao.maps.Size(72, 208), // 스프라이트 이미지의 크기
             spriteOrigin : new kakao.maps.Point(46, (order*36)), // 스프라이트 이미지 중 사용할 영역의 좌상단 좌표
             offset: new kakao.maps.Point(11, 28) // 마커 좌표에 일치시킬 이미지 내에서의 좌표
+			*/
         },
-        markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize, imgOptions),
-            marker = new kakao.maps.Marker({
+		
+		
+		
+ 	     markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize, imgOptions),
+         marker = new kakao.maps.Marker({
             position: position, // 마커의 위치
             image: markerImage 
         });
@@ -265,5 +304,3 @@ function changeCategoryClass(el) {
 } 
 
 }
-        
-window.onload = initMap;
