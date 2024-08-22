@@ -11,19 +11,12 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import com.semi.forever404.model.vo.ServiceInfo;
-
-import mapper.ServiceMapper;
 
 @Service
 public class ServiceService {
-	@Autowired
-	private ServiceMapper mapper;
 	
-	public void addInfo(String title, String addr, Double lat, Double lng, String phone) throws InterruptedException {
+	public String getImgUrl(String title) throws InterruptedException {
 		
 		// 1. WebDriver와 ChromeDriver 설정
 		// 프로젝트 폴더 기준으로 chromedirver.exe 파일의 위치를 작성

@@ -11,8 +11,8 @@ public class BigSchedule {
 	private int bsCode;
 	private BigGroup bigGroup;
 	private User user;
-	private Date startDate;
-	private Date endDate;
+	private String startDate;
+	private String endDate;
 	private String title;
 	private int entireMoney;
 	private String scheduleColor;

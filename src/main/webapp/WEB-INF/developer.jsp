@@ -16,6 +16,11 @@
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
   </head>
   <body>
+ <c:if test="${not empty user}">
+  	<script>
+  	window.location.href = "/movement";
+  	</script>
+  </c:if>
   <!-- 헤더 -->
     <header id="header">
       <a href="/">

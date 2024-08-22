@@ -47,8 +47,49 @@
     </ul>
 </div>
 
-
-
+<div class="testtesttest">
+    <h1>테스트</h1>
+			메모 : <input type="text" id="memo" name="memo"><br/>
+			<p>예약
+			<select id="isReservation">
+				<option value="Y">Y</option>
+				<option value="N">N</option>
+			</select>
+			</p>
+			<p>시간
+			<select id="time">
+				<option value="0">0시</option>
+				<option value="1">1시</option>
+				<option value="2">2시</option>
+				<option value="3">3시</option>
+				<option value="4">4시</option>
+				<option value="5">5시</option>
+				<option value="6">6시</option>
+				<option value="7">7시</option>
+				<option value="8">8시</option>
+				<option value="9">9시</option>
+				<option value="10">10시</option>
+				<option value="11">11시</option>
+				<option value="12">12시</option>
+				<option value="13">13시</option>
+				<option value="14">14시</option>
+				<option value="15">15시</option>
+				<option value="16">16시</option>
+				<option value="17">17시</option>
+				<option value="18">18시</option>
+				<option value="19">19시</option>
+				<option value="20">20시</option>
+				<option value="21">21시</option>
+				<option value="22">22시</option>
+				<option value="23">23시</option>
+			</select>
+			</p>
+			<span id="serviceName"></span><br>
+			<span id="serviceJibun"></span><br>
+			<span id="servicePhone"></span><br>
+			<input type="submit" value="테스트" id="ssTest">
+	</div>
+	
 <script
 	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=416439531d0e4d8f33eb240c9b791ffb&libraries=services"></script>
 <script src="${pageContext.request.contextPath}/js/kakaomap2.js"></script>
