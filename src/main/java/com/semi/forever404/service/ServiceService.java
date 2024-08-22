@@ -58,10 +58,7 @@ public class ServiceService {
         System.out.println("Image URL: " + imageSrc);
         driver.close();
 			
-       
-        ServiceInfo si = new ServiceInfo (title, addr, lat, lng, phone, imageSrc);
-        
-        System.out.println(si);
+        return imageSrc;
         
 //		mapper.addInfo(si);
 	}

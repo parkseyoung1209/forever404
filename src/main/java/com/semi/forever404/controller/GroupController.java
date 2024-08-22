@@ -39,7 +39,7 @@ public class GroupController {
 	@PostMapping("/addGroup")
 	public boolean addGroup(BigGroup bigGroup, String groupName, HttpServletRequest request) {
 			List<BigGroup> list = service.userGroup();
-			System.out.println(list);
+//			System.out.println(list);
 			HttpSession session = request.getSession();
 			User user = (User) session.getAttribute("user");
 			service.addGroup(bigGroup);
@@ -60,6 +60,24 @@ public class GroupController {
 		List<SmallGroup> list = service.allInfoGroup(id);
 		model.addAttribute("list", list);
 		return list;
+	}
+	
+	// 그룹 참여
+	@ResponseBody
+	@PostMapping("/attendGroup")
+	public boolean attendGroup(HttpServletRequest request, String groupName) {
+		BigGroup bg = service.searchBgCode(groupName);
+		HttpSession session = request.getSession();
+		User user = (User) session.getAttribute("user");
+		if(bg != null) {
+			SmallGroup sg = new SmallGroup(user, bg);
+			service.attendGroup(sg);
+			return true;
+		} else {
+			System.out.println("없는 그룹");
+			return false;
+		}
+
 	}
 	
 	

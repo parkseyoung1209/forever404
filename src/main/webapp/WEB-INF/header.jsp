@@ -28,6 +28,8 @@ uri="http://java.sun.com/jsp/jstl/core"%>
           <i class="fa-solid fa-plus"></i>
           <p>그룹 생성</p>
         </button>
+        
+        
 
         <button id="grouppart" class="addgroup2">
           <i class="fa-solid fa-plus"></i>

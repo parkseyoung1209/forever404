@@ -21,6 +21,6 @@ public interface GroupMapper {
 	List<BigSchedule> searchBsCode(int num);
 	List<BigSchedule> selectBg(BigSchedule bs);
 	List<SmallSchedule> selectSc(BigSchedule bs);
-	
+	void attendGroup(SmallGroup sg);
 	
 }

@@ -66,6 +66,33 @@ uri="http://java.sun.com/jsp/jstl/core"%>
           </section>
         </div>
       </div>
+      
+       <script>
+        $("#addGroup").click(() => {
+          const title = $("#textbox").val();
+          $.ajax({
+            type: "post",
+            url: "/addGroup",
+            data: "groupName=" + title,
+            // <button><i class="fa-solid fa-plus"></i></button>
+            success: function (result) {
+              console.log(result);
+              if (result == true) {
+                $("#group").prepend(
+                  "<button type='button' class='groupButton' id='" +
+                    title +
+                    "'>" +
+                    "<i class='fa-solid fa-user-group'></i></button><span>" +
+                    title +
+                    "</span>"
+                );
+              } else {
+                $("#successText").text("사용할 수 없는 그룹명입니다.");
+              }
+            },
+          });
+        });
+      </script>
 
       <div id="modal2" class="modal">
         <div class="modalcontent">
@@ -87,10 +114,32 @@ uri="http://java.sun.com/jsp/jstl/core"%>
           </section>
         </div>
       </div>
+      
+       <script>
+        $("#attend").click(() => {
+          const title = $("#inputatt").val();
+          $.ajax({
+            type: "post",
+            url: "/attendGroup",
+            data: "groupName=" + title,
+            success: function (check) {
+            	if(check === true){
+            		alert("그룹 참여 성공:)"); 
+            	} else {
+            		alert("없는 그룹입니다");
+            	}
+            	location.reload();
+            },
+            error: function(){
+            	alert("실패");
+            }
+          });
+        });
+      </script>
      
-      <div>
+      <div id="allList">
         <c:forEach items="${bsList}" var="bs">
-          ${bs.title} ${bs.entireMoney} ${bs.startDate} ${bs.endDate}
+          ${bs.title} : 총 경비 ${bs.entireMoney}원, ${bs.startDate} ~ ${bs.endDate}<br>
         </c:forEach>
       </div>
 
@@ -224,32 +273,7 @@ uri="http://java.sun.com/jsp/jstl/core"%>
         });
       </script>
 
-      <script>
-        $("#addGroup").click(() => {
-          const title = $("#textbox").val();
-          $.ajax({
-            type: "post",
-            url: "/addGroup",
-            data: "groupName=" + title,
-            // <button><i class="fa-solid fa-plus"></i></button>
-            success: function (result) {
-              console.log(result);
-              if (result == true) {
-                $("#group").prepend(
-                  "<button type='button' class='groupButton' id='" +
-                    title +
-                    "'>" +
-                    "<i class='fa-solid fa-user-group'></i></button><span>" +
-                    title +
-                    "</span>"
-                );
-              } else {
-                $("#successText").text("사용할 수 없는 그룹명입니다.");
-              }
-            },
-          });
-        });
-      </script>
+     
       <script>
       $(document).ready(function(){
     	  let groupName = localStorage.getItem('groupName');
