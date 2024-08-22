@@ -26,7 +26,7 @@ uri="http://java.sun.com/jsp/jstl/core"%>
           <div id="calendar"></div>
         </div>
       </div>
-
+	<a href="/detail">세부일정으로</a>
       <!--  
    <div>
     <h1>큰그룹 정보</h1>
@@ -88,12 +88,6 @@ uri="http://java.sun.com/jsp/jstl/core"%>
         </div>
       </div>
      
-      <div>
-        <c:forEach items="${bsList}" var="bs">
-          ${bs.title} ${bs.entireMoney} ${bs.startDate} ${bs.endDate}
-        </c:forEach>
-      </div>
-
       <div id="bigModal" style="display: none">
         <div id="modalContent3">
           <header class="mdl-header">
@@ -158,26 +152,6 @@ uri="http://java.sun.com/jsp/jstl/core"%>
         src="https://kit.fontawesome.com/ef885bd654.js"
         crossorigin="anonymous"
       ></script>
-      <script>
-        <%--
-        	$("#addgroup").click(function () {
-        	  $("#modal1").css("display", "block");
-        	});
-        	  $(".close").click(function () {
-        	     $(".modal").css("display", "none");
-        	  });
-        	  $(window).click(function (event) {
-        	     if ($(event.target).is(".modal")) {
-        	       $(".modal").css("display", "none");
-        	     }
-        	  });
-        	$(document).keydown(function (event) {
-        	    if (event.keyCode == 27) {
-        	       $(".modal").css("display", "none");
-        	     }
-        	  });
-        	  --%>
-      </script>
 
       <script>
         //	$(document).on('click', '.groupButton', function() {
@@ -191,7 +165,7 @@ uri="http://java.sun.com/jsp/jstl/core"%>
         //		}
         //     });
         // });
-
+		
         $("#final").click(() => {
   
           $.ajax({
@@ -204,8 +178,7 @@ uri="http://java.sun.com/jsp/jstl/core"%>
               entireMoney: $("#entireMoney").val(),
             },
             success: function () {
-            	const id = $("#title2").val();
-            	$("#addMemo").html("<button>"+id+"</button>");
+     
             },
           });
         });
@@ -235,7 +208,7 @@ uri="http://java.sun.com/jsp/jstl/core"%>
             success: function (result) {
               console.log(result);
               if (result == true) {
-                $("#group").prepend(
+                $("#group").append(
                   "<button type='button' class='groupButton' id='" +
                     title +
                     "'>" +
@@ -250,19 +223,24 @@ uri="http://java.sun.com/jsp/jstl/core"%>
           });
         });
       </script>
-      <script>
-      $(document).ready(function(){
+      
+      <!--
+      $("#calendar").click(function(e){
     	  let groupName = localStorage.getItem('groupName');
-    	 $.ajax({
+    	  let date = sessionStorage.getItem('date');
+    		$.ajax({
     		 type: "post",
-    	 	 url: "/selectAllSchedule",
-    	 	 data : {groupName : groupName},
+    	 	 url: "/mola",
+    	 	 data : {groupName : groupName,
+    	 			localDate : date	 
+    	 	 },
     	 	success: function() {
-    	 		
+
     	 	}
     	 }) 
       });
-      </script>
+      -->
+      
     </c:if>
     <c:if test="${empty user}">
       <script>

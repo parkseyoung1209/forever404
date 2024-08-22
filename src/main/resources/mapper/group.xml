@@ -107,8 +107,8 @@
 		</association>
 	</resultMap>
 	<insert id="scheduleAdd2" parameterType="SmallSchedule">
-		INSERT INTO small_schedule(memo, is_reservation, cur_date, cur_time, use_money, left_money, buying_list, bs_code, service_name, service_jibun, service_lat, service_lng, service_phone, service_img)
-		VALUES (#{memo}, #{isReservation}, #{cur_date}, #{cur_time}, #{use_money}, #{left_money}, #{buying_list}, #{bigSchedule.bsCode}, #{serviceName}, #{serviceJibun}, #{serviceLat},#{serviceLng},#{servicePhone},#{serviceImg})
+		INSERT INTO small_schedule(memo, is_reservation, cur_date, cur_time, bs_code, service_name, service_jibun, service_lat, service_lng, service_phone, service_img)
+		VALUES (#{memo}, #{isReservation}, #{curDate}, #{curTime}, #{bigSchedule.bsCode}, #{serviceName}, #{serviceJibun}, #{serviceLat},#{serviceLng},#{servicePhone},#{serviceImg})
 	</insert>
 	
 	<select id="selectSc" resultMap="scMap" parameterType="BigSchedule">

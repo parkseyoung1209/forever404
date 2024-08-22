@@ -251,12 +251,10 @@ function searchLocalPlaces() {
   }
 
   $("#ssTest").click(() => {
-	let groupName = localStorage.getItem('groupName');
     $.ajax({
       type: "post",
       url: "/scheduleAdd2",
       data: {
-		groupName : groupName,
         serviceName: title,
         serviceJibun: addr,
         serviceLat: lat,
@@ -264,8 +262,11 @@ function searchLocalPlaces() {
         servicePhone: phone,
         memo: $("#memo").val(),
         isReservation: $("#isReservation").val(),
-        time: $("#time").val(),
+        curTime: $("#time").val(),
       },
+	  success : function() {
+		window.location.href = "/detail";
+	  }
     });
   });
 
