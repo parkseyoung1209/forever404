@@ -4,6 +4,17 @@ import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import java.time.Duration;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
 @SpringBootApplication
 @MapperScan ("mapper")
 public class Forever404Application {
@@ -11,21 +22,24 @@ public class Forever404Application {
 	public static void main(String[] args) throws InterruptedException {
 			
 		SpringApplication.run(Forever404Application.class, args);
+		
 		/*
+	 	String title = "커피해요";
+		
 		// 1. WebDriver와 ChromeDriver 설정
 		// 프로젝트 폴더 기준으로 chromedirver.exe 파일의 위치를 작성
 		System.setProperty("webdriver.chrome.driver", "driver/chromedriver.exe");
 		
-		ChromeOptions options = new ChromeOptions();
-		options.addArguments("headless");
-		WebDriver driver = new ChromeDriver(options);
+//		ChromeOptions options = new ChromeOptions();
+//		options.addArguments("headless");
+		WebDriver driver = new ChromeDriver();
 		
 		// 2. 웹 페이지 접속
 		String baseUrl = "https://www.google.com/";
 		driver.get(baseUrl);
-		String searchKeyword="굽네치킨";
+		String searchKeyword=title;
 		
-		WebElement search = driver.findElement(By.className("gLFyf"));
+		WebElement search = driver.findElement(By.className("YmvwI"));
 		// 원하는 값 입력하기
 		search.sendKeys(searchKeyword);
 		search.sendKeys(Keys.ENTER);
@@ -43,7 +57,8 @@ public class Forever404Application {
         String imageSrc = imageElement.getAttribute("src"); // 이미지의 src 속성 값 가져오기
         System.out.println("Image URL: " + imageSrc);
         Thread.sleep(1000);
-        driver.close();*/
+        driver.close();
+        */
 	}
 
 }

@@ -17,6 +17,7 @@ document.addEventListener("DOMContentLoaded", function () {
         .innerText.split(" ")[0];
       const clickedDate = info.dateStr;
       const selectedMonth = info.date.getMonth(); // 0부터 시작하는 월 인덱스
+      localStorage.setItem("date", clickedDate);
       // 예: 7월 (8월의 경우 7로 설정)
       if (selectedMonth === 0 && month === "January") {
         showModal(clickedDate);
@@ -54,17 +55,17 @@ document.addEventListener("DOMContentLoaded", function () {
       modal.slideUp(400);
     }
   }
-/*
+  /*
   document.getElementById("X").addEventListener("click", function () {
     document.getElementById("bigModal").style.display = "none";
   });*/
-    $("#X").click(function () {
-      $("#bigModal").slideUp(400);
-    });
+  $("#X").click(function () {
+    $("#bigModal").slideUp(400);
   });
+});
 
 $("#six").click(function () {
-	$("#detModal").slideDown(400);
+  $("#detModal").slideDown(400);
   $("#detModal").css("display", "block");
   $("#bigModal").css("display", "none");
 });
@@ -73,7 +74,6 @@ $("#X2").click(function () {
   $("#detModal").slideUp(400);
   $("#bigModal").css("display", "block");
 });
-
 
 $("#groupmake").click(function () {
   $("#modal1").css("display", "block");
@@ -113,7 +113,6 @@ $("#calendar-container").mouseover((e) => {
   }
 });
 
-
 $("#grouppart").click(function () {
   $("#modal2").css("display", "block");
 });
@@ -133,7 +132,6 @@ $(document).keydown(function (event) {
     $(".modal").css("display", "none");
   }
 });
-
 
 $(".user").click(function () {
   $(".mymodal").css("display", "block");

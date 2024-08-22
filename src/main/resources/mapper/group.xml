@@ -71,6 +71,10 @@
 	</resultMap>
 
 	<!-- 여기에 select문 필요 (나중에) -->
+	<select id="selectBg" parameterType="int" resultMap="BscheduleAddMap">
+		SELECT * FROM big_schedule
+		WHERE bg_group_code = #{bigGroup.bgGroupCode}
+	</select>
 	
 	<select id="searchBsCode" resultMap="BscheduleAddMap" parameterType="int">
 	SELECT * FROM big_schedule
@@ -83,19 +87,32 @@
 	
 	
 	<!-- 세부 일정 만들기(small schedule) -->
-	<!--<resultMap type="BigSchedule" id="BscheduleAddMap">
+	<resultMap type="SmallSchedule" id="scMap">
+		<id column="ss_code" property="ssCode"></id>
+		<result column="memo" property="memo"/>
+		<result column="is_reservation" property="isReservation"/>
+		<result column="use_money" property="useMoney"/>
+		<result column="left_money" property="leftMoney"/>
+		<result column="buying_list" property="buyingList"/>
+		<result column="cur_date" property="curDate"/>
+		<result column="cur_time" property="curTime"/>
+		<result column="service_name" property="serviceName"/>
+		<result column="service_jibun" property="serviceJibun"/>
+		<result column="service_lat" property="serviceLat"/>
+		<result column="service_lng" property="serviceLng"/>
+		<result column="service_phone" property="servicePhone"/>
+		<result column="service_img" property="serviceImg"/>
+		<association property="bigSchedule" javaType="BigSchedule">
 		<id column="bs_code" property="bsCode"></id>
-		<result column="start_date" property="startDate"/>
-		<result column="end_date" property="endDate"/>
-		<result column="title" property="title"/>
-		
-		<association property="bigGroup" javaType="BigGroup">
-		<id column="bg_group_code" property="bgGroupCode"/>
-		<result column="group_name" property="groupName"/>
 		</association>
-		
-	</resultMap>  -->
+	</resultMap>
 	<insert id="scheduleAdd2" parameterType="SmallSchedule">
-		INSERT INTO small_schedule(memo, items, is_reservation, bs_code) VALUES (#{memo}, #{items}, #{isReservation}, #{bigSchedule.bsCode})
+		INSERT INTO small_schedule(memo, is_reservation, cur_date, cur_time, use_money, left_money, buying_list, bs_code, service_name, service_jibun, service_lat, service_lng, service_phone, service_img)
+		VALUES (#{memo}, #{isReservation}, #{cur_date}, #{cur_time}, #{use_money}, #{left_money}, #{buying_list}, #{bigSchedule.bsCode}, #{serviceName}, #{serviceJibun}, #{serviceLat},#{serviceLng},#{servicePhone},#{serviceImg})
 	</insert>
+	
+	<select id="selectSc" resultMap="scMap" parameterType="BigSchedule">
+		SELELCT * FROM small_schedule
+		WHERE bs_code = #{bigSchedule.bsCode}
+	</select>
 </mapper>

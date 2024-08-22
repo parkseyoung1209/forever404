@@ -18,5 +18,9 @@ public interface GroupMapper {
 	void addSmGroup(SmallGroup smallGroup);
 	void scheduleAdd(BigSchedule bgs);
 	void scheduleAdd2(SmallSchedule sgs);
-	BigSchedule searchBsCode(int num); 
+	List<BigSchedule> searchBsCode(int num);
+	List<BigSchedule> selectBg(BigSchedule bs);
+	List<SmallSchedule> selectSc(BigSchedule bs);
+	
+	
 }
