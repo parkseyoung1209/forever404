@@ -225,21 +225,23 @@ uri="http://java.sun.com/jsp/jstl/core"%>
 
       <script>
         $(".add2").click(() => {
-          const title = $("#textbox").val().trim;
+        	const title1 = $("#textbox").val();
+          const title = $("#textbox").val().trim();
+          const miniTitle = title.substring(0, 2);
           $.ajax({
             type: "post",
             url: "/addGroup",
-            data: "groupName=" + title,
+            data: { groupName : title },
             // <button><i class="fa-solid fa-plus"></i></button>
             success: function (result) {
               console.log(result);
-              if (result == true) {
-                $(".group").prepend(
+              if (result === true) {
+                $(".group").append(
                   "<button type='button' class='groupButton' id='" +
-                    title +
-                    "'>" +
-                    "<i class='fa-solid fa-user-group'></i></button><span>" +
-                    title +
+                    miniTitle +
+                    "'>" + miniTitle +
+                    "</button><span>" +
+                    title1 +
                     "</span>"
                 );
               } else {
