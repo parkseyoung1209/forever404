@@ -26,7 +26,7 @@ uri="http://java.sun.com/jsp/jstl/core"%>
           <div id="calendar"></div>
         </div>
       </div>
-	<a href="/detail">세부일정으로</a>
+	<a href="/detail" id="detailPage" >세부일정으로</a>
       <!--  
    <div>
     <h1>큰그룹 정보</h1>
@@ -138,8 +138,9 @@ uri="http://java.sun.com/jsp/jstl/core"%>
       </script>
      
       <div id="allList">
+       ${groupName}
         <c:forEach items="${bsList}" var="bs">
-          ${bs.title} : 총 경비 ${bs.entireMoney}원, ${bs.startDate} ~ ${bs.endDate}<br>
+        ${bs.title} : ${bs.bsCode} / 총 경비 ${bs.entireMoney}원, ${bs.startDate} ~ ${bs.endDate}<br>
         </c:forEach>
       </div>
 
@@ -155,7 +156,8 @@ uri="http://java.sun.com/jsp/jstl/core"%>
           <button class="modsection" id="six">추가</button>
         </div>
       </div>
-
+      
+      
       <div id="detModal" style="display: none">
         <div id="modalContent4">
           <header class="mdl-header2">
@@ -289,10 +291,7 @@ uri="http://java.sun.com/jsp/jstl/core"%>
       </script>
       
       <script>
-      <!--
-      
-      
-      
+     /*
       $("#calendar").click(function(e){
     	  let groupName = localStorage.getItem('groupName');
     	  let date = sessionStorage.getItem('date');
@@ -306,8 +305,7 @@ uri="http://java.sun.com/jsp/jstl/core"%>
     	 		console.log(t);
     	 	}
     	 }) 
-      });
-      -->
+      });  */
       </script>
       
     
@@ -338,6 +336,7 @@ uri="http://java.sun.com/jsp/jstl/core"%>
 	    schedule.end = "${item.endDate}" ;
 	    schedule.money = "${item.entireMoney}";
 	    schedule.color = "${item.scheduleColor}";
+	    schedule.bsCode = "${item.bsCode}";
     	bigSchedules.push(schedule);
     	schedule = {};
     </c:forEach>

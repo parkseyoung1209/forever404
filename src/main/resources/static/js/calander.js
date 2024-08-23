@@ -1,3 +1,5 @@
+let linkbs;
+
 document.addEventListener("DOMContentLoaded", function () {
   const Calendar = FullCalendar.Calendar;
 
@@ -36,6 +38,7 @@ document.addEventListener("DOMContentLoaded", function () {
 		const modal = $("#bigModal");
 		$("#addMemoh1").text(info.event.title);
 		$("#addMemop").text(`${info.event.start.toLocaleString()}`);
+		linkbs = info.event.extendedProps.bsCode;
 		const endDate = new Date(info.event.end);
 		    endDate.setDate(endDate.getDate() - 1);
 		    $("#addMemop2").text(`${endDate.toLocaleString()}`);
@@ -44,7 +47,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
 		if (modal.css("display") === "none") {
 		    modal.slideUp(400);
-			}
+			}			
+			
 	},
 	
     dateClick: function (info) {
@@ -199,3 +203,19 @@ $("#calendar-container").mouseover((e) => {
     content.fadeOut(200);
   }
 });
+
+
+const detailButton = document.querySelector(".modsection");
+	detailButton.addEventListener("click", () => {
+		const code = linkbs;
+		localStorage.setItem("bsCode", code);
+		
+		const url = new URL(location.href + "/detail");
+		const urlParams = url.searchParams;
+		
+		urlParams.append("bsCode", code);
+		
+		console.log(url.href);		
+		
+		location.href = url;
+	})

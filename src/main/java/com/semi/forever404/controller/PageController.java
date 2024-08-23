@@ -46,11 +46,6 @@ public class PageController {
 		return "kakaomap2";
 	}
 	
-	@GetMapping("/detail")
-	public String detail() {
-		return "detail2";
-	}
-	
 	@GetMapping("/{groupName}")
 	public String select(@PathVariable("groupName") String groupName, BigSchedule bigSchedule, HttpServletRequest request, Model model) {
 		HttpSession session = request.getSession();
@@ -62,4 +57,12 @@ public class PageController {
 		session.setAttribute("groupName", groupName);
 		return "main";
 	}
+	
+	@GetMapping("/{groupName}/detail")
+	public String detail(@PathVariable("groupName") String groupName, int bsCode) {
+		System.out.println("groupName : " + groupName);
+		System.out.println("bsCode : " + bsCode);
+		return "detail2";
+	}
+		
 }
