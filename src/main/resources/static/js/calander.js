@@ -150,7 +150,7 @@ $(document).keydown(function (event) {
   }
 });
 
-$("#addgroup").mouseover((e) => {
+$("#addgroup3").mouseover((e) => {
   setTimeout(() => {
     let content = $(".modalgroup");
 
@@ -213,4 +213,23 @@ detailButton.addEventListener("click", () => {
   console.log(url.href);
 
   location.href = url;
+});
+$(".user").mouseout((e) => {
+  let content = $(".mymodal");
+
+  if (content.css("display") != "none") {
+    setTimeout(function () {
+      content.fadeOut(200);
+    }, 3000);
+  }
+});
+
+$("#addgroup3").mouseout((e) => {
+  let content = $(".modalgroup");
+
+  if (content.css("display") != "none") {
+    setTimeout(function () {
+      content.fadeOut(200);
+    }, 3000);
+  }
 });

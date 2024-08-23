@@ -1,33 +1,28 @@
-	<%@ page language="java" contentType="text/html; charset=UTF-8"
-pageEncoding="UTF-8"%> <%@ taglib prefix="c"
-uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8" />
-    <title>Insert title here</title>
-    <link
-      rel="stylesheet"
-      href="${pageContext.request.contextPath}/css/reset.css"
-    />
-    <link
-      rel="stylesheet"
-      href="${pageContext.request.contextPath}css/calander.css"
-    />
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-    <script src="${pageContext.request.contextPath}js/index.global.min.js"></script>
-  </head>
-  <body>
-    <c:if test="${not empty user}">
-      <jsp:include page="header.jsp" />
+<head>
+<meta charset="UTF-8" />
+<title>Insert title here</title>
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/css/reset.css" />
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}css/calander.css" />
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="${pageContext.request.contextPath}js/index.global.min.js"></script>
+</head>
+<body>
+	<c:if test="${not empty user}">
+		<jsp:include page="header.jsp" />
 
       <div>
         <div id="calendar-container">
           <div id="calendar"></div>
         </div>
       </div>
-	<a href="/detail" id="detailPage" >세부일정으로</a>
-      <!--  
+		<!--  
    <div>
     <h1>큰그룹 정보</h1>
 			여행 이름 : <input type="text" id="testTitle" name="title"><br/>
@@ -44,78 +39,48 @@ uri="http://java.sun.com/jsp/jstl/core"%>
 			<input type="button" value="작은그룹" id="add2">
 		</form>
 	-->
-      <div id="modal1" class="modal">
-        <div class="modalcontent">
-          <p class="close">&times</p>
-          <h2>그룹 추가</h2>
-          <hr />
-          <br />
-          <p>
-            새로운 그룹에 이름을 부여해 <br />
-            동료들과 함께해 보세요
-          </p>
-          <section class="mid">
-            <h3>새 그룹 명</h3>
-            <br />
-            <input type="text" id="textbox" />
-            <div class="add">
-              <button id="addGroup" class="add2">만들기</button>
-              <div id="successText"></div>
-              >
-            </div>
-          </section>
-        </div>
-      </div>
-      
-       <script>
-        $("#addGroup").click(() => {
-          const title = $("#textbox").val();
-          $.ajax({
-            type: "post",
-            url: "/addGroup",
-            data: "groupName=" + title,
-            // <button><i class="fa-solid fa-plus"></i></button>
-            success: function (result) {
-              console.log(result);
-              if (result == true) {
-                $("#group").prepend(
-                  "<button type='button' class='groupButton' id='" +
-                    title +
-                    "'>" +
-                    "<i class='fa-solid fa-user-group'></i></button><span>" +
-                    title +
-                    "</span>"
-                );
-              } else {
-                $("#successText").text("사용할 수 없는 그룹명입니다.");
-              }
-            },
-          });
-        });
-      </script>
+		<div id="modal1" class="modal">
+			<div class="modalcontent">
+				<p class="close">&times</p>
+				<h2>그룹 추가</h2>
+				<hr />
+				<br />
+				<p>
+					새로운 그룹에 이름을 부여해 <br /> 동료들과 함께해 보세요
+				</p>
+				<section class="mid">
+					<h3>새 그룹 명</h3>
+					<br /> <input type="text" id="textbox" />
+					<div class="add">
+						<button id="addGroup" class="add2">만들기</button>
+						<div id="successText"></div>
+						>
+					</div>
+				</section>
+			</div>
+		</div>
 
-      <div id="modal2" class="modal">
-        <div class="modalcontent">
-          <p class="close">&times</p>
-          <h2>그룹 참가</h2>
-          <hr />
-          <br />
-          <p>
-            아래에 전달받은 그룹코드를 입력해<br />
-            그룹에 참여해보세요
-          </p>
-          <section class="mid">
-            <h3>그룹 코드</h3>
-            <br />
-            <input type="text" placeholder="ex) Forever404" id="inputatt" />
-            <div class="add">
-              <button id="attend" class="add2">그룹 참가하기</button>
-            </div>
-          </section>
-        </div>
-      </div>
-      
-       <script>
+		<div id="modal2" class="modal">
+			<div class="modalcontent">
+				<p class="close">&times</p>
+				<h2>그룹 참가</h2>
+				<hr />
+				<br />
+				<p>
+					아래에 전달받은 그룹코드를 입력해<br /> 그룹에 참여해보세요
+				</p>
+				<section class="mid">
+					<h3>그룹 코드</h3>
+					<br /> <input type="text" placeholder="ex) Forever404"
+						id="inputatt" />
+					<div class="add">
+						<button id="attend" class="add2">그룹 참가하기</button>
+					</div>
+				</section>
+			</div>
+		</div>
+
+		<script>
         $("#attend").click(() => {
           const title = $("#inputatt").val();
           $.ajax({
@@ -208,12 +173,10 @@ uri="http://java.sun.com/jsp/jstl/core"%>
         </div>
       </div>
 
-      <script
-        src="https://kit.fontawesome.com/ef885bd654.js"
-        crossorigin="anonymous"
-      ></script>
+		<script src="https://kit.fontawesome.com/ef885bd654.js"
+			crossorigin="anonymous"></script>
 
-      <script>
+		<script>
         //	$(document).on('click', '.groupButton', function() {
         //       buttonId = $(this).attr('id');
         //       $.ajax({
@@ -262,26 +225,27 @@ uri="http://java.sun.com/jsp/jstl/core"%>
           });
         });
       </script>
-      
-      <script>
+
+		<script>
         $(".add2").click(() => {
-          const title = $("#textbox").val().trim;
+         const title = $("#textbox").val().trim();
+         const miniTitle = title.substring(0, 2);
           $.ajax({
             type: "post",
             url: "/addGroup",
-            data: "groupName=" + title,
-            // <button><i class="fa-solid fa-plus"></i></button>
-            success: function (result) {
-              console.log(result);
-              if (result == true) {
-                $("#group").append(
-                  "<button type='button' class='groupButton' id='" +
-                    title +
-                    "'>" +
-                    "<i class='fa-solid fa-user-group'></i></button><span>" +
+            data: { groupName : title },
+            success: function (response) {
+              if (response) {
+                $(".group").append(
+                  "<button type='button' data-code='" + title + "' class='groupButton' id='" +
+                  	miniTitle +
+                    "'>" + miniTitle +
+                    "</button><span>" +
                     title +
                     "</span>"
                 );
+                //$('.modal').css("display", "none");
+                location.href = "/main";
               } else {
                 $("#successText").text("사용할 수 없는 그룹명입니다.");
               }
@@ -291,7 +255,10 @@ uri="http://java.sun.com/jsp/jstl/core"%>
         
         
       </script>
-      
+
+		<!--
+      $(document).click(function(e){
+     
       <script>
      /*
       $("#calendar").click(function(e){
@@ -309,7 +276,7 @@ uri="http://java.sun.com/jsp/jstl/core"%>
     	 }) 
       });  */
       </script>
-      
+    -->
     
     </c:if>
     <!-- 로그아웃 cif -->
@@ -320,16 +287,16 @@ uri="http://java.sun.com/jsp/jstl/core"%>
         location.reload();
         window.location.href = "redirect:/";
       </script>
-    </c:if>
-    
-    <!-- 
+	</c:if>
+
+	<!-- 
     
     <c:forEach items="${bsList}" var="bs">
           ${bs.title} ${bs.entireMoney} ${bs.startDate} ${bs.endDate}
         </c:forEach>
      -->
-    
-    <script>
+
+	<script>
     const bigSchedules = [];
     let schedule = {};
     <c:forEach items="${bsList}" var="item">
@@ -344,7 +311,7 @@ uri="http://java.sun.com/jsp/jstl/core"%>
     </c:forEach>
     console.log(bigSchedules);
     </script>
-    
-    <script src="${pageContext.request.contextPath}/js/calander.js"></script>
-  </body>
+
+	<script src="${pageContext.request.contextPath}/js/calander.js"></script>
+</body>
 </html>

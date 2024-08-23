@@ -63,6 +63,7 @@ public class GroupController {
 		User user = (User) session.getAttribute("user");
 		String id =user.getId();
 		List<SmallGroup> list = service.allInfoGroup(id);
+
 		model.addAttribute("list", list);
 		return list;
 	}
