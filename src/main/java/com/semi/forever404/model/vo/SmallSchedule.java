@@ -25,29 +25,8 @@ public class SmallSchedule {
 	private String servicePhone;
 	private String serviceImg;
 	
-	public SmallSchedule(String memo, char isReservation, int useMoney, int leftMoney, String buyingList,
-			String curDate, String curTime) {
-		this.memo = memo;
-		this.isReservation = isReservation;
-		this.useMoney = useMoney;
-		this.leftMoney = leftMoney;
-		this.buyingList = buyingList;
-		this.curDate = curDate;
-		this.curTime = curTime;
-	}
-	
 	public SmallSchedule(BigSchedule bigSchedule) {
 		this.bigSchedule = bigSchedule;
-	}
-	
-	public SmallSchedule(String serviceName, String serviceJibun, Double serviceLat, Double serviceLng,
-			String servicePhone, String serviceImg) {
-		this.serviceName = serviceName;
-		this.serviceJibun = serviceJibun;
-		this.serviceLat = serviceLat;
-		this.serviceLng = serviceLng;
-		this.servicePhone = servicePhone;
-		this.serviceImg = serviceImg;
 	}
 	
 }

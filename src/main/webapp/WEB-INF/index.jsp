@@ -16,6 +16,7 @@
   <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script> 
+  <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
   </head>
   <body>
   <c:if test="${not empty user}">
@@ -23,6 +24,12 @@
   	window.location.href = "/movement";
   	</script>
   </c:if>
+ 
+  <script>
+  Kakao.init('416439531d0e4d8f33eb240c9b791ffb');
+  Kakao.Auth.logout();
+  </script>
+ 
     <header id="header">
       <nav id="a1">
       <a href="">
@@ -134,22 +141,20 @@
           	 <a href="javascript:kakaoLogin();">
             <img src="${pageContext.request.contextPath}/image/main/kakao.png" alt="카카오 로그인 버튼" />
             </a>
-            <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
-            <script>
-              Kakao.init('416439531d0e4d8f33eb240c9b791ffb');
-            </script>
             <script>
             function kakaoLogin() {
             	  window.Kakao.Auth.login({
-            	    scope: 'account_email, name, birthyear, phone_number',
+            	    scope: 'account_email, name, birthyear, phone_number, birthday',
             	    success: function(authObj) {
             	      const accessToken = authObj.access_token;
-            	      window.Kakao.Auth.setAccessToken(accessToken);
+            	      Kakao.Auth.setAccessToken(accessToken);
 
             	      window.Kakao.API.request({
             	        url: '/v2/user/me',
             	        success: function(res) {
             	          const kakao_account = res.kakao_account;
+            	          const  birthday = kakao_account.birthday;
+            	          console.log(birthday);
             	          const formData = {
             	            email: kakao_account.email,
             	            name: kakao_account.name,
@@ -158,7 +163,7 @@
             	            phone: kakao_account.phone_number,
             	            token: accessToken
             	          };
-
+						
             	          // jQuery AJAX 요청
             	          $.ajax({
             	            url: '/kakaoLogin',
@@ -180,6 +185,7 @@
             	    fail: function(error) {
             	      console.error('Kakao login failed: ', error);
             	    }
+            		
             	  });
             	}
             </script>

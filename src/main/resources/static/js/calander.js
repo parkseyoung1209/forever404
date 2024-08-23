@@ -32,7 +32,19 @@ document.addEventListener("DOMContentLoaded", function () {
         .innerText.split(" ")[0];
       const clickedDate = info.dateStr;
       const selectedMonth = info.date.getMonth(); // 0부터 시작하는 월 인덱스
-      localStorage.setItem("date", clickedDate);
+     	sessionStorage.setItem("date", clickedDate);
+		let groupName = localStorage.getItem('groupName');
+		let date = sessionStorage.getItem('date');
+		    		$.ajax({
+		    		 type: "post",
+		    	 	 url: "/mola",
+		    	 	 data : {groupName : groupName,
+		    	 			localDate : date, 
+		    	 	 },
+		    	 	success: function(response) {
+						console.log(response);
+		    	 	}
+		    	 });
       // 예: 7월 (8월의 경우 7로 설정)
       if (selectedMonth === 0 && month === "January") {
         showModal(clickedDate);

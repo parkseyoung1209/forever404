@@ -3,6 +3,7 @@ package com.semi.forever404.controller;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -10,8 +11,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -39,7 +38,12 @@ public class GroupController {
 	@PostMapping("/addGroup")
 	public boolean addGroup(BigGroup bigGroup, String groupName, HttpServletRequest request) {
 			List<BigGroup> list = service.userGroup();
-			System.out.println(list);
+			for(BigGroup bg : list) {
+				if(groupName.equals(bg.getGroupName()) && bg!=null) {
+					return false;
+				}
+			}
+//			System.out.println(list);
 			HttpSession session = request.getSession();
 			User user = (User) session.getAttribute("user");
 			service.addGroup(bigGroup);
@@ -60,6 +64,24 @@ public class GroupController {
 		List<SmallGroup> list = service.allInfoGroup(id);
 		model.addAttribute("list", list);
 		return list;
+	}
+	
+	// 그룹 참여
+	@ResponseBody
+	@PostMapping("/attendGroup")
+	public boolean attendGroup(HttpServletRequest request, String groupName) {
+		BigGroup bg = service.searchBgCode(groupName);
+		HttpSession session = request.getSession();
+		User user = (User) session.getAttribute("user");
+		if(bg != null) {
+			SmallGroup sg = new SmallGroup(user, bg);
+			service.attendGroup(sg);
+			return true;
+		} else {
+			System.out.println("없는 그룹");
+			return false;
+		}
+
 	}
 	
 	
@@ -122,49 +144,83 @@ public class GroupController {
 			service.scheduleAdd(bigSchedule);
 		}
 
-//		추가하기전에 BigSchedule 리스트를 일단 가져오고
-//		내가 추가버튼을 누르는 순간 가져온 BigSchedule 객체 하나만 가지고 비교
-		
-		/*
-		 * count = 0;
-		  for(element : list) {
-		    if(시작, 끝 날짜가 list의 시작날짜보다 작을 때){
-		      continue; 하면은 for문이 처음으로 돌아가요 => 그 다음 리스트를 부르기 시작
-		    } else if(시작, 끝 날짜가 list의 끝 날짜보다 클 때) {
-		      continue; 하면은 for문이 처음으로 돌아가요 => 그 다음 리스트를 부르기 시작
-		    } else {
-		      count++;
-		    }
-		  }
-		
-		  if(count >= 1)
-		  print("추가안됨");
-		  추가안함
-		  return redirect:/groupName
-		  else if (count = 0)
-		  service.scheduleAdd(bigSchedule);
-		  추가
-		  return redirect:/groupName
-		 */
 	}
 	
+	@ResponseBody
+	@PostMapping("/mola")
+	public BigSchedule mola(String groupName, String localDate, HttpServletRequest request) throws ParseException {
+		BigSchedule selectB = selectAllSchedule(groupName, localDate);
+		HttpSession session = request.getSession();
+		session.setAttribute("selectB",selectB);
+//		System.out.println(selectB);
+		return selectB;
+	}
+	
+	 public List<LocalDate> getDateRange(LocalDate startDate, LocalDate endDate) {
+	        List<LocalDate> dates = new ArrayList<>();
+	        LocalDate currentDate = startDate;
+
+	        // 날짜 목록에 포함할 날짜가 끝 날짜보다 이전이거나 같을 때까지 반복
+	        while (!currentDate.isAfter(endDate)) {
+	            dates.add(currentDate);
+	            currentDate = currentDate.plusDays(1); // 하루씩 더하기
+	        }
+
+	        return dates;
+	    }
+	
 	// 메서드
-	public void selectAllSchedule(String groupName) {
+	public BigSchedule selectAllSchedule(String groupName, String localDate) throws ParseException {
 		BigGroup bg = service.searchBgCode(groupName);
 		int num = bg.getBgGroupCode();
 		List<BigSchedule> bs = service.searchBsCode(num);
+		
+		for(BigSchedule b : bs) {
+			String startDate = b.getStartDate();
+			String endDate = b.getEndDate();
+			
+			LocalDate startDate2 = LocalDate.parse(startDate);
+	        LocalDate endDate2 = LocalDate.parse(endDate);
+	        LocalDate localDate2 = LocalDate.parse(localDate);
+	        
+	        List<LocalDate> dateRange = getDateRange(startDate2,endDate2);
+	        
+	        for(LocalDate d : dateRange) {
+	        	if(d.equals(localDate2)) {
+	        		return b;
+	        	}
+	        }
+		}
+		return null;
 	}
 	
 	@ResponseBody
 	@PostMapping("/scheduleAdd2")
-	public void scheduleAdd2(HttpServletRequest request, SmallSchedule smallSchedule, String groupName) throws InterruptedException {
-		BigGroup bg = service.searchBgCode(groupName);
-		int num = bg.getBgGroupCode();
+	public void scheduleAdd2(HttpServletRequest request, SmallSchedule smallSchedule)  {
+		HttpSession session = request.getSession();
+		BigSchedule bigSchedule = (BigSchedule)session.getAttribute("selectB");
+		
+		String url;
+//		try {
+//			url = crawling.getImgUrl(smallSchedule.getServiceName());
+//			smallSchedule.setServiceImg(url);
+//		} catch (InterruptedException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+		
+		smallSchedule.setBigSchedule(bigSchedule);
+		
+//		CurDate 값 수정 필요
+		smallSchedule.setCurDate("2024-08-22");
+		
+		System.out.println(smallSchedule);
+		service.scheduleAdd2(smallSchedule);
 //		#{memo} o, #{isReservation} o, #{cur_date}x, #{cur_time}x, #{use_money}x, #{left_money}x, #{buying_list}, #{bigSchedule.bsCode}, #{serviceName}, 
 //		#{serviceJibun}, #{serviceLat},#{serviceLng},#{servicePhone},#{serviceImg}
-//		String url = crawling.getImgUrl(smallSchedule.getServiceName());
+	
 //		Thread.sleep(10000);
-//		smallSchedule.setServiceImg(url);
+		
 	}
 
 }
