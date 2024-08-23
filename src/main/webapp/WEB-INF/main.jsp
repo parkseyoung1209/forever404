@@ -336,8 +336,7 @@ uri="http://java.sun.com/jsp/jstl/core"%>
     </c:forEach>
     console.log(bigSchedules);
     </script>
-    <script>
-</script>
+    
     <script src="${pageContext.request.contextPath}/js/calander.js"></script>
   </body>
 </html>
