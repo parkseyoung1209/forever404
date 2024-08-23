@@ -68,12 +68,12 @@ public class PageController {
 //		System.out.println("groupName : " + groupName);
 //		System.out.println("bsCode : " + bsCode);
 
-		SmallSchedule smallSchedule = service.selectOneSc(bsCode);
+		List<SmallSchedule> smallSchedule = service.selectOneSc(bsCode);
 		
 		System.out.println(smallSchedule);
 		
-		String startDate = smallSchedule.getBigSchedule().getStartDate();
-		String endDate = smallSchedule.getBigSchedule().getEndDate();
+		String startDate = smallSchedule.get(0).getBigSchedule().getStartDate();
+		String endDate = smallSchedule.get(0).getBigSchedule().getEndDate();
 		
 		LocalDate startDate2 = LocalDate.parse(startDate);
         LocalDate endDate2 = LocalDate.parse(endDate);

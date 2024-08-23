@@ -52,7 +52,7 @@ public class GroupService {
 		return mapper.selectSc(bs);
 	}
 	
-	public SmallSchedule selectOneSc(int num) {
+	public List<SmallSchedule> selectOneSc(int num) {
 		return mapper.selectOneSc(num);
 	}
 }
