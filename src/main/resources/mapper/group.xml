@@ -3,6 +3,12 @@
 	<insert id="addGroup" parameterType="BigGroup">
 		INSERT INTO big_group(group_name) VALUES(#{groupName})
 	</insert>
+	
+	<insert id="attendGroup" parameterType="SmallGroup">
+		INSERT INTO small_group(id, bg_group_code)
+		VALUES (#{user.id}, #{bigGroup.bgGroupCode})
+	</insert>
+	
 	<!-- biggroup -->
 	<resultMap type="BigGroup" id="bgMap">
 		<id column="bg_group_code" property="bgGroupCode"/>

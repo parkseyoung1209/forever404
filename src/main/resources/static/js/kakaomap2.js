@@ -1,8 +1,3 @@
-let title;
-let addr;
-let lat;
-let lng;
-let phone;
 // 마커를 클릭했을 때 해당 장소의 상세정보를 보여줄 커스텀오버레이입니다
 var placeOverlay = new kakao.maps.CustomOverlay({ zIndex: 1 }),
   contentNode = document.createElement("div"), // 커스텀 오버레이의 컨텐츠 엘리먼트 입니다
@@ -18,7 +13,7 @@ var mapContainer = document.getElementById("map"), // 지도를 표시할 div
 // 지도 생성
 var map = new kakao.maps.Map(mapContainer, mapOption);
 
-/*
+/* 지역 선택
 var areas = {
         'gyeonggi': {center: new kakao.maps.LatLng(37.4138, 127.5183), level: 11}, // 경기도 중심좌표
         'gangwon': {center: new kakao.maps.LatLng(37.8228, 128.1555), level: 11}, // 강원도 중심좌표
@@ -37,6 +32,7 @@ var areas = {
         }
     }
 */
+
 // 장소 검색 객체를 생성합니다
 var ps = new kakao.maps.services.Places(map);
 
@@ -139,20 +135,27 @@ function searchLocalPlaces() {
   }
 
   // 마커를 생성하고 지도 위에 마커를 표시하는 함수입니다
-  function addMarker(position, order) {
-    var imageSrc =
-        "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/places_category.png", // 마커 이미지 url, 스프라이트 이미지를 씁니다
-      imageSize = new kakao.maps.Size(27, 28), // 마커 이미지의 크기
-      imgOptions = {
-        spriteSize: new kakao.maps.Size(72, 208), // 스프라이트 이미지의 크기
-        spriteOrigin: new kakao.maps.Point(46, order * 36), // 스프라이트 이미지 중 사용할 영역의 좌상단 좌표
-        offset: new kakao.maps.Point(11, 28), // 마커 좌표에 일치시킬 이미지 내에서의 좌표
-      },
-      markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize, imgOptions),
-      marker = new kakao.maps.Marker({
+  function addMarker(position, order, order2) {
+    var imageSrc = "../image/qibla_9989353.png";
+    //'https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/places_category.png', // 마커 이미지 url, 스프라이트 이미지를 씁니다
+    (imageSize = new kakao.maps.Size(27, 28)), // 마커 이미지의 크기
+      (imgOptions = {
+        spriteSize: new kakao.maps.Size(27, 28), // 스프라이트 이미지의 크기
+        /*
+            spriteSize : new kakao.maps.Size(72, 208), // 스프라이트 이미지의 크기
+            spriteOrigin : new kakao.maps.Point(46, (order*36)), // 스프라이트 이미지 중 사용할 영역의 좌상단 좌표
+            offset: new kakao.maps.Point(11, 28) // 마커 좌표에 일치시킬 이미지 내에서의 좌표
+			*/
+      }),
+      (markerImage = new kakao.maps.MarkerImage(
+        imageSrc,
+        imageSize,
+        imgOptions
+      )),
+      (marker = new kakao.maps.Marker({
         position: position, // 마커의 위치
         image: markerImage,
-      });
+      }));
 
     marker.setMap(map); // 지도 위에 마커를 표출합니다
     markers.push(marker); // 배열에 생성된 마커를 추가합니다
@@ -216,40 +219,31 @@ function searchLocalPlaces() {
     placeOverlay.setMap(map);
 
     $("#btn").click(() => {
-      title = place.place_name;
-      addr = place.address_name;
-      lat = place.x;
-      lng = place.y;
-      phone = place.phone;
-
-      const serviceName = document.querySelector("#serviceName");
-      const serviceJibun = document.querySelector("#serviceJibun");
-      const servicePhone = document.querySelector("#servicePhone");
-
-      serviceName.innerHTML = "장소 이름 : " + title;
-      serviceJibun.innerHTML = "주소 : " + addr;
-      servicePhone.innerHTML = "전화번호 : " + phone;
-
-      //   $.ajax({
-      //     type: "get",
-      //     url: "/addinfo",
-      //     data: {
-      //       type: type,
-      //       title: title,
-      //       addr: addr,
-      //       lat: lat,
-      //       lng: lng,
-      //       phone: phone,
-      //     },
-      //     success: function (result) {
-      //       const aa = document.querySelector("#serviceName");
-      //       aa.innerHTML = "장소이름 : " + title;
-      //       alert("!");
-      //     },
-      //   });
+      const type = place.category_group_code;
+      const title = place.place_name;
+      const addr = place.address_name;
+      const lat = place.x;
+      const lng = place.y;
+      const phone = place.phone;
+      $.ajax({
+        type: "get",
+        url: "/addinfo",
+        data: {
+          type: type,
+          title: title,
+          addr: addr,
+          lat: lat,
+          lng: lng,
+          phone: phone,
+        },
+        success: function (result) {
+          alert("!");
+        },
+      });
     });
   }
 
+  // 각 카테고리에 클릭 이벤트를 등록합니다
   $("#ssTest").click(() => {
     $.ajax({
       type: "post",
@@ -264,9 +258,9 @@ function searchLocalPlaces() {
         isReservation: $("#isReservation").val(),
         curTime: $("#time").val(),
       },
-	  success : function() {
-		window.location.href = "/detail";
-	  }
+      success: function () {
+        window.location.href = "/detail";
+      },
     });
   });
 
@@ -313,5 +307,3 @@ function searchLocalPlaces() {
     }
   }
 }
-
-// window.onload = initMap;
