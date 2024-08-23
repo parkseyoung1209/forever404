@@ -18,6 +18,11 @@
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script> 
   </head>
   <body>
+  <c:if test="${not empty user}">
+  	<script>
+  	window.location.href = "/movement";
+  	</script>
+  </c:if>
     <header id="header">
       <nav id="a1">
       <a href="">
@@ -190,9 +195,11 @@
 					id: $("#id").val(),
 					password: $("#password").val()
 				},
-				success : function() {
-					window.location.href = '/main';
-					location.reload();
+				success : function(response) {
+					if(response == true) {
+						window.location.href = "/movement";
+						location.reload();
+					}
 				}
 			})
 		});

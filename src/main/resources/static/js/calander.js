@@ -11,12 +11,28 @@ document.addEventListener("DOMContentLoaded", function () {
     },
     selectable: true,
     editable: true,
+	events:bigSchedules, eventColor: 'rgba(0, 0, 0, 0.5)', eventTextColor:'black',
+	events: bigSchedules.map(event => {
+		let endDate = new Date(event.end);
+		endDate.setDate(endDate.getDate() + 1);
+		return {
+			...event,
+			end: endDate.toISOString().split('T')[0]
+		};
+	 }),/*
+	 eventContent: {
+		html: `<div><i class="fa-solid fa-pencil"></i></div>` -> 나중에 생일할때 이용하면 좋을것같음
+	 },*/
+	eventClick: function(info) {
+	console.log(info.event.extendedProps.money);
+	},
     dateClick: function (info) {
       const month = calendarEl
         .querySelector(".fc-toolbar-title")
         .innerText.split(" ")[0];
       const clickedDate = info.dateStr;
       const selectedMonth = info.date.getMonth(); // 0부터 시작하는 월 인덱스
+      localStorage.setItem("date", clickedDate);
       // 예: 7월 (8월의 경우 7로 설정)
       if (selectedMonth === 0 && month === "January") {
         showModal(clickedDate);
@@ -44,6 +60,7 @@ document.addEventListener("DOMContentLoaded", function () {
         showModal(clickedDate);
       }
     },
+
   });
 
   calendar.render();
@@ -54,17 +71,17 @@ document.addEventListener("DOMContentLoaded", function () {
       modal.slideUp(400);
     }
   }
-/*
+  /*
   document.getElementById("X").addEventListener("click", function () {
     document.getElementById("bigModal").style.display = "none";
   });*/
-    $("#X").click(function () {
-      $("#bigModal").slideUp(400);
-    });
+  $("#X").click(function () {
+    $("#bigModal").slideUp(400);
   });
+});
 
 $("#six").click(function () {
-	$("#detModal").slideDown(400);
+  $("#detModal").slideDown(400);
   $("#detModal").css("display", "block");
   $("#bigModal").css("display", "none");
 });
@@ -74,6 +91,11 @@ $("#X2").click(function () {
   $("#bigModal").css("display", "block");
 });
 
+
+$("#final").click(function () {
+  $("#detModal").css("display", "none");
+  $("#bigModal").css("display", "block");
+});
 
 $("#groupmake").click(function () {
   $("#modal1").css("display", "block");
@@ -113,7 +135,6 @@ $("#calendar-container").mouseover((e) => {
   }
 });
 
-
 $("#grouppart").click(function () {
   $("#modal2").css("display", "block");
 });
@@ -133,7 +154,6 @@ $(document).keydown(function (event) {
     $(".modal").css("display", "none");
   }
 });
-
 
 $(".user").click(function () {
   $(".mymodal").css("display", "block");

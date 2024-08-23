@@ -40,10 +40,11 @@ public class UserController {
 	}
 	@ResponseBody
 	@PostMapping("/login")
-		public String login(HttpServletRequest request, User user) {
+		public boolean login(HttpServletRequest request, User user) {
 			HttpSession session = request.getSession();
 			session.setAttribute("user", service.login(user));
-			return "main";
+			if(session.getAttribute("user")!=null) return true;
+			else return false;
 		}
 	
 	// check!
@@ -52,14 +53,12 @@ public class UserController {
 		HttpSession session = request.getSession();
 		if(session.getAttribute("user")!=null) {
 		session.invalidate();
-		
 		}
-		return "redirect:/";}
-		
+		return "redirect:/";
+	}	
 	// check
-	@PostMapping("/register")
+	/*@PostMapping("/register")
 	public String register(String id, String password, String phone, String name, String email, @RequestParam(name="birth", required=false) String birth) {
-			System.out.println(birth);
 		try {
 			if(!birth.equals("")) {
 			SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd"); 
@@ -70,13 +69,9 @@ public class UserController {
 				User user = new User(id, password, phone, name, email, null);
 				service.register(user);
 			}
-			
 		} catch (ParseException e) {} 
-
-		
-		
 		return "main";
-	}
+	}*/
 	@ResponseBody
 	@PostMapping("/kakaoLogin")
 	public String kakaoLogin(@RequestParam("email") String email,
@@ -111,25 +106,4 @@ public class UserController {
 		}
 		 
 	}
-	
-	@GetMapping("/main")
-	public String main(HttpServletRequest request, User user, Model model) {
-		// ajax ->> session 담겨져 있고..!
-		
-		HttpSession session = request.getSession();
-	    user = (User) session.getAttribute("user");
-	    if(user!=null) {
-	    	model.addAttribute("user", user);
-	    }else if(user==null){
-	    	return "redirect:/";
-	    }
-		return "main";
-	}
-	
-	
-	@GetMapping("/kakaomap")
-	public String kakaomap() {
-		return "kakaomap2";
-	}
-	
 }

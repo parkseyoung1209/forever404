@@ -41,7 +41,14 @@ public class GroupService {
 		mapper.scheduleAdd2(sgs);
 	}
 	
-	public BigSchedule searchBsCode(int num) {
+	public List<BigSchedule> searchBsCode(int num) {
 		return mapper.searchBsCode(num);
+	}
+	
+	public List<BigSchedule> selectBg(BigSchedule bs) {
+		return mapper.selectBg(bs);
+	}
+	public List<SmallSchedule> selectSc(BigSchedule bs) {
+		return mapper.selectSc(bs);
 	}
 }

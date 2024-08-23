@@ -9,30 +9,24 @@ import lombok.NoArgsConstructor;
 
 @Data @NoArgsConstructor @AllArgsConstructor
 public class SmallSchedule {
-	private String groupName;
 	private int ssCode;
 	private String memo;
 	private char isReservation;
 	private int useMoney;
 	private int leftMoney;
 	private String buyingList;
-	private Date curDate;
-	private LocalDateTime curTime;
+	private String curDate;
+	private String curTime;
 	private BigSchedule bigSchedule;
-	private ServiceInfo siCode;
-
+	private String serviceName;
+	private String serviceJibun;
+	private Double serviceLat;
+	private Double serviceLng;
+	private String servicePhone;
+	private String serviceImg;
 	
-	
-	public SmallSchedule(String memo, char isReservation, BigSchedule bigSchedule) {
-		this.memo = memo;
-		this.isReservation = isReservation;
-		this.bigSchedule = bigSchedule;
-	}
-
-
-
-	public SmallSchedule(String memo, char isReservation, int useMoney, int leftMoney, String buyingList, Date curDate,
-			LocalDateTime curTime, BigSchedule bigSchedule, ServiceInfo siCode) {
+	public SmallSchedule(String memo, char isReservation, int useMoney, int leftMoney, String buyingList,
+			String curDate, String curTime) {
 		this.memo = memo;
 		this.isReservation = isReservation;
 		this.useMoney = useMoney;
@@ -40,12 +34,20 @@ public class SmallSchedule {
 		this.buyingList = buyingList;
 		this.curDate = curDate;
 		this.curTime = curTime;
-		this.bigSchedule = bigSchedule;
-		this.siCode = siCode;
 	}
-
-
-
-
-
+	
+	public SmallSchedule(BigSchedule bigSchedule) {
+		this.bigSchedule = bigSchedule;
+	}
+	
+	public SmallSchedule(String serviceName, String serviceJibun, Double serviceLat, Double serviceLng,
+			String servicePhone, String serviceImg) {
+		this.serviceName = serviceName;
+		this.serviceJibun = serviceJibun;
+		this.serviceLat = serviceLat;
+		this.serviceLng = serviceLng;
+		this.servicePhone = servicePhone;
+		this.serviceImg = serviceImg;
+	}
+	
 }
