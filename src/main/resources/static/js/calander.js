@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", function () {
     },
     selectable: true,
     editable: true,
-	events:bigSchedules, eventColor: 'rgba(0, 0, 0, 0.5)', eventTextColor:'black',
+	events:bigSchedules, eventColor: 'black', eventTextColor:'black',
 	events: bigSchedules.map(event => {
 		let endDate = new Date(event.end);
 		endDate.setDate(endDate.getDate() + 1);
@@ -176,5 +176,25 @@ $("#calendar-container").mouseover((e) => {
 
   if (content.css("display") != "none") {
     content.fadeOut(200);
+  }
+});
+
+$(".user").mouseout((e) => {
+  let content = $(".mymodal");
+
+  if (content.css("display") != "none") {
+    setTimeout(function () {
+      content.fadeOut(200);
+    }, 3000);
+  }
+});
+
+$("#addgroup").mouseout((e) => {
+  let content = $(".modalgroup");
+
+  if (content.css("display") != "none") {
+    setTimeout(function () {
+      content.fadeOut(200);
+    }, 3000);
   }
 });
