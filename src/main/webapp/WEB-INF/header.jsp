@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 pageEncoding="UTF-8"%> <%@ taglib prefix="c"
-uri="http://java.sun.com/jsp/jstl/core"%>
+uri="http://java.sun.com/jsp/jstl/core"%> <%@ taglib prefix="fn"
+uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html>
   <head>
@@ -36,16 +37,37 @@ uri="http://java.sun.com/jsp/jstl/core"%>
       </div>
 
       <div class="mymodal">
-        <button type="button" onclick="location.href='/logout'" id="logout">
-          로그아웃
-        </button>
+        <c:if test="${empty token}">
+          <button type="button" id="logout">로그아웃</button>
+        </c:if>
+        <c:if test="${not empty token}">
+          <button type="button" id="logout2">로그아웃</button>
+        </c:if>
       </div>
 
       <div class="group" id="group"></div>
       <div class="user">
         <i class="fa-regular fa-user"></i>
       </div>
+
+      <!-- 
+           <div class="group-container">
+      <div class="grouptest" id="grouptest"></div>
+      <i class="fa-regular fa-user"></i>
+       
+    </div>-->
     </header>
+    <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+    <script>
+      /* $(document).ready(function () {
+        Kakao.init("416439531d0e4d8f33eb240c9b791ffb");*/
+      $("#logout2").click(function () {
+        $.ajax({
+          type: "post",
+          url: "/logout",
+        });
+      });
+    </script>
     <script>
       $(document).ready(function () {
         $.ajax({
@@ -55,7 +77,7 @@ uri="http://java.sun.com/jsp/jstl/core"%>
             const groupList = list.map((item) => item.bigGroup);
             const nameList = groupList.map((value) => value.groupName);
             nameList.forEach((value) => {
-              $("#group").append(
+              $(".group").append(
                 "<button type='button' data-code='" +
                   value +
                   "'class='groupButton' id='" +

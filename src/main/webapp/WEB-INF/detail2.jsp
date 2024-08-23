@@ -138,7 +138,17 @@
         </div>
       </div>
     </div>
-
+	<script>
+	$(document).ready(() => {
+		$.ajax ({
+			type: "post",
+			url : "dateInfo",
+			success : function () {
+				console.log("!");
+			}
+		});
+	});
+	</script>
     <script>
       $(".btn").click((e) => {
         let content = $(".btn1");
@@ -183,7 +193,6 @@
       $("#button5").click(function () {
         $("#modal3").css("display", "block");
       });
-
       // $("#schedule").click(function () {
       // $(".section").show().css("display", "block");
       // });
