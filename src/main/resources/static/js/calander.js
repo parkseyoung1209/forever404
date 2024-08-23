@@ -11,61 +11,61 @@ document.addEventListener("DOMContentLoaded", function () {
     },
     selectable: true,
     editable: true,
-	events:bigSchedules, eventTextColor:'black',
-	events: bigSchedules.map(event => {
-		let endDate = new Date(event.end);
-		endDate.setDate(endDate.getDate() + 1);
-		return {
-			...event,
-			end: endDate.toISOString().split('T')[0]
-		};
-	 }),/*
+    events: bigSchedules,
+    eventTextColor: "black",
+    events: bigSchedules.map((event) => {
+      let endDate = new Date(event.end);
+      endDate.setDate(endDate.getDate() + 1);
+      return {
+        ...event,
+        end: endDate.toISOString().split("T")[0],
+      };
+    }) /*
 	 eventContent: {
 		html: `<div><i class="fa-solid fa-pencil"></i></div>` -> 나중에 생일할때 이용하면 좋을것같음
-	 },*/
-	eventClick: function(info) {
-	console.log(info.event.extendedProps.money);
-	},
-	eventClick: function showModal() {
-		$("#bigModal").slideDown();
-		if (modal.css("display") === "none") {
-		  modal.slideUp(400);
-		  }
-	},
-	eventClick: function(info) {
-		const modal = $("#bigModal");
-		$("#addMemoh1").text(info.event.title);
-		$("#addMemop").text(`${info.event.start.toLocaleString()}`);
-		const endDate = new Date(info.event.end);
-		    endDate.setDate(endDate.getDate() - 1);
-		    $("#addMemop2").text(`${endDate.toLocaleString()}`);
-		$("#addMemop3").text(info.event.extendedProps.money);
-		modal.slideDown();
+	 },*/,
+    eventClick: function (info) {
+      console.log(info.event.extendedProps.money);
+    },
+    eventClick: function showModal() {
+      $("#bigModal").slideDown();
+      if (modal.css("display") === "none") {
+        modal.slideUp(400);
+      }
+    },
+    eventClick: function (info) {
+      const modal = $("#bigModal");
+      $("#addMemoh1").text(info.event.title);
+      $("#addMemop").text(`${info.event.start.toLocaleString()}`);
+      linkbs = info.event.extendedProps.bsCode;
+      const endDate = new Date(info.event.end);
+      endDate.setDate(endDate.getDate() - 1);
+      $("#addMemop2").text(`${endDate.toLocaleString()}`);
+      $("#addMemop3").text(info.event.extendedProps.money);
+      modal.slideDown();
 
-		if (modal.css("display") === "none") {
-		    modal.slideUp(400);
-			}
-	},
-	
+      if (modal.css("display") === "none") {
+        modal.slideUp(400);
+      }
+    },
+
     dateClick: function (info) {
       const month = calendarEl
         .querySelector(".fc-toolbar-title")
         .innerText.split(" ")[0];
       const clickedDate = info.dateStr;
       const selectedMonth = info.date.getMonth(); // 0부터 시작하는 월 인덱스
-     	sessionStorage.setItem("date", clickedDate);
-		let groupName = localStorage.getItem('groupName');
-		let date = sessionStorage.getItem('date');
-		    		$.ajax({
-		    		 type: "post",
-		    	 	 url: "/mola",
-		    	 	 data : {groupName : groupName,
-		    	 			localDate : date, 
-		    	 	 },
-		    	 	success: function(response) {
-						console.log(response);
-		    	 	}
-		    	 });
+      sessionStorage.setItem("date", clickedDate);
+      let groupName = localStorage.getItem("groupName");
+      let date = sessionStorage.getItem("date");
+      $.ajax({
+        type: "post",
+        url: "/mola",
+        data: { groupName: groupName, localDate: date },
+        success: function (response) {
+          console.log(response);
+        },
+      });
       // 예: 7월 (8월의 경우 7로 설정)
       if (selectedMonth === 0 && month === "January") {
         showModal(clickedDate);
@@ -93,7 +93,6 @@ document.addEventListener("DOMContentLoaded", function () {
         showModal(clickedDate);
       }
     },
-
   });
 
   calendar.render();
@@ -123,7 +122,6 @@ $("#X2").click(function () {
   $("#detModal").slideUp(400);
   $("#bigModal").css("display", "block");
 });
-
 
 $("#final").click(function () {
   $("#detModal").css("display", "none");
