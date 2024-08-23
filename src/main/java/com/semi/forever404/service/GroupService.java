@@ -51,4 +51,8 @@ public class GroupService {
 	public List<SmallSchedule> selectSc(BigSchedule bs) {
 		return mapper.selectSc(bs);
 	}
+	
+	public SmallSchedule selectOneSc(int num) {
+		return mapper.selectOneSc(num);
+	}
 }

@@ -210,10 +210,9 @@ detailButton.addEventListener("click", () => {
 
   urlParams.append("bsCode", code);
 
-  console.log(url.href);
-
   location.href = url;
 });
+
 $(".user").mouseout((e) => {
   let content = $(".mymodal");
 

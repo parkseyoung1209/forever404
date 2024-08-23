@@ -1,5 +1,7 @@
 package com.semi.forever404.controller;
 
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import com.semi.forever404.model.vo.BigGroup;
 import com.semi.forever404.model.vo.BigSchedule;
+import com.semi.forever404.model.vo.SmallSchedule;
 import com.semi.forever404.model.vo.User;
 import com.semi.forever404.service.GroupService;
 
@@ -20,6 +23,7 @@ import jakarta.servlet.http.HttpSession;
 public class PageController {
 	@Autowired
 	private GroupService service;
+	
 	@GetMapping("/")
 	public String index() {
 		return "index";
@@ -41,6 +45,7 @@ public class PageController {
 	public String main() {
 		return "main";
 	}
+	
 	@GetMapping("/kakaomap")
 	public String kakaomap() {
 		return "kakaomap2";
@@ -59,10 +64,41 @@ public class PageController {
 	}
 	
 	@GetMapping("/{groupName}/detail")
-	public String detail(@PathVariable("groupName") String groupName, int bsCode) {
-		System.out.println("groupName : " + groupName);
-		System.out.println("bsCode : " + bsCode);
+	public String detail(@PathVariable("groupName") String groupName, int bsCode, HttpServletRequest request) {
+//		System.out.println("groupName : " + groupName);
+//		System.out.println("bsCode : " + bsCode);
+
+		SmallSchedule smallSchedule = service.selectOneSc(bsCode);
+		
+		System.out.println(smallSchedule);
+		
+		String startDate = smallSchedule.getBigSchedule().getStartDate();
+		String endDate = smallSchedule.getBigSchedule().getEndDate();
+		
+		LocalDate startDate2 = LocalDate.parse(startDate);
+        LocalDate endDate2 = LocalDate.parse(endDate);
+        
+        List<LocalDate> dateRange = getDateRange(startDate2,endDate2);
+		
+		HttpSession session = request.getSession();
+		session.setAttribute("selectS", smallSchedule);
+		session.setAttribute("selectSRange", dateRange);
+		
+		System.out.println(dateRange);
+		
 		return "detail2";
 	}
-		
+	
+	public List<LocalDate> getDateRange(LocalDate startDate, LocalDate endDate) {
+        List<LocalDate> dates = new ArrayList<>();
+        LocalDate currentDate = startDate;
+
+        // 날짜 목록에 포함할 날짜가 끝 날짜보다 이전이거나 같을 때까지 반복
+        while (!currentDate.isAfter(endDate)) {
+            dates.add(currentDate);
+            currentDate = currentDate.plusDays(1); // 하루씩 더하기
+        }
+
+        return dates;
+    }
 }

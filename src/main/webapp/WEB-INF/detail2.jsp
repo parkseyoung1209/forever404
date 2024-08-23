@@ -78,6 +78,9 @@
         <i class="bi bi-plus-circle-fill"></i>
       </button>
     </section>
+    <script>
+    
+    </script>
 
     <div id="modal1" class="modal">
       <div class="modalcontent">
@@ -166,10 +169,12 @@
         }
       });
 
+      
       $("#button3").click(function () {
         $("#modal1").css("display", "block");
       });
-
+		
+		
       $(".close").click(function () {
         $(".modal").css("display", "none");
       });
