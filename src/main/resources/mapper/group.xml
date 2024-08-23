@@ -130,4 +130,9 @@
 		LEFT JOIN big_schedule USING (bs_code)
 		WHERE bs_code = #{bsCode}
 	</select>
+	
+	<select id="selectOneBs" parameterType="int" resultMap="BscheduleAddMap">
+		SELECT * FROM big_schedule
+		WHERE bs_code = #{bsCode}
+	</select>
 </mapper>

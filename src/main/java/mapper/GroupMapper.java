@@ -22,4 +22,5 @@ public interface GroupMapper {
 	List<BigSchedule> selectBg(BigSchedule bs);
 	List<SmallSchedule> selectSc(BigSchedule bs);
 	List<SmallSchedule> selectOneSc(int num);
+	BigSchedule selectOneBs(int num);
 }

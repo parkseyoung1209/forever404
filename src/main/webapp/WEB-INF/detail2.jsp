@@ -33,6 +33,15 @@
     <main>
       <section class="section1">
         <div id="pay">
+        <c:forEach items="${selectS}" var="ssss">
+    		${ssss.bigSchedule.bsCode}
+    		
+    	<c:set var="num1" value="${ssss.bigSchedule.entireMoney}"/>
+    	<c:set var="num2" value="${ssss.useMoney}"/>
+    	<c:set var="addd" value="${num1-num2}"/>
+    	${addd}
+    	</c:forEach>
+        
           <p>남은금액 : 300,000원</p>
           <br />
           <p>총 지불금액 : 250,000원</p>
@@ -78,10 +87,15 @@
         <i class="bi bi-plus-circle-fill"></i>
       </button>
     </section>
-    <script>
     
+    <script>
+    const kakaobtn = document.querySelector("#button3");
+    kakaobtn.addEventListener("click", () => {
+     	
+    	window.location.href="/kakao/map"
+    })
     </script>
-
+<!-- 
     <div id="modal1" class="modal">
       <div class="modalcontent">
         <span class="close">&times</span>
@@ -114,7 +128,7 @@
         </div>
       </div>
     </div>
-
+-->
     <div id="modal2" class="modal">
       <div class="modalcontent">
         <span class="close">&times</span>
@@ -169,11 +183,11 @@
         }
       });
 
-      
+      /*
       $("#button3").click(function () {
         $("#modal1").css("display", "block");
       });
-		
+		*/
 		
       $(".close").click(function () {
         $(".modal").css("display", "none");

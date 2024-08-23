@@ -46,8 +46,11 @@ public class PageController {
 		return "main";
 	}
 	
-	@GetMapping("/kakaomap")
-	public String kakaomap() {
+	@GetMapping("/kakao/map")
+	public String kakaomap(HttpServletRequest request) {	
+//		HttpSession session = request.getSession();
+//		List<SmallSchedule> smallSchedule = (List<SmallSchedule>) session.getAttribute("selectS");
+		
 		return "kakaomap2";
 	}
 	
