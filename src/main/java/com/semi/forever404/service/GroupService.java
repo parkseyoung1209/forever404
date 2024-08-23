@@ -33,13 +33,6 @@ public class GroupService {
 		return mapper.allInfoGroup(id);
 	}
 	
-	// 그룹참여
-	public void attendGroup(SmallGroup sg) {
-		
-		mapper.attendGroup(sg);	
-	}
-	
-	
 	// 스케줄 관련
 	public void scheduleAdd(BigSchedule bgs) {
 		mapper.scheduleAdd(bgs);

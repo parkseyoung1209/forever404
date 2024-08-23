@@ -16,14 +16,12 @@
 <body>
 	<c:if test="${not empty user}">
 		<jsp:include page="header.jsp" />
-
-		<div>
-			<div id="calendar-container">
-				<div id="calendar"></div>
-			</div>
-		</div>
-		<a href="/detail">세부일정으로</a>
-		<!--  
+      <div>
+        <div id="calendar-container">
+          <div id="calendar"></div>
+        </div>
+      </div>
+		<!--
    <div>
     <h1>큰그룹 정보</h1>
 			여행 이름 : <input type="text" id="testTitle" name="title"><br/>
@@ -60,7 +58,6 @@
 				</section>
 			</div>
 		</div>
-
 		<div id="modal2" class="modal">
 			<div class="modalcontent">
 				<p class="close">&times</p>
@@ -80,7 +77,6 @@
 				</section>
 			</div>
 		</div>
-
 		<script>
         $("#attend").click(() => {
           const title = $("#inputatt").val();
@@ -90,7 +86,7 @@
             data: "groupName=" + title,
             success: function (check) {
             	if(check === true){
-            		alert("그룹 참여 성공:)"); 
+            		alert("그룹 참여 성공:)");
             	} else {
             		alert("없는 그룹입니다");
             	}
@@ -102,57 +98,75 @@
           });
         });
       </script>
-
-		<div id="allList">
-			<c:forEach items="${bsList}" var="bs">
-          ${bs.title} : 총 경비 ${bs.entireMoney}원, ${bs.startDate} ~ ${bs.endDate}<br>
-			</c:forEach>
-		</div>
-
-		<div id="bigModal" style="display: none">
-			<div id="modalContent3">
-				<header class="mdl-header">
-					<p class="head-wrd">일정 추가하기</p>
-					<i class="fa-solid fa-xmark" id="X"></i>
-				</header>
-				<!-- <div id="addMemo"><h1>안녕하세요</h1></div> -->
-				<div class="modsection" id=addMemo></div>
-				<button class="modsection" id="six">추가</button>
-			</div>
-		</div>
-
-		<div id="detModal" style="display: none">
-			<div id="modalContent4">
-				<header class="mdl-header2">
-					<p class="head-wrd2">세부 일정 추가</p>
-					<i class="fa-solid fa-xmark" id="X2"></i>
-				</header>
-				<div class="inpt-brder" id="title">
-					<i class="fa-solid fa-pencil"></i> <input type="text"
-						placeholder="일정 이름" class="tripinfo" id="title2" />
-				</div>
-				<div class="inpt-brder">
-					<i class="fa-solid fa-plane-departure"></i> <input type="date"
-						placeholder="시작 날짜" class="tripinfo" max="9999-12-31"
-						id="startDate" />
-				</div>
-				<div class="inpt-brder">
-					<i class="fa-solid fa-plane-arrival"></i> <input type="date"
-						placeholder="종료 날짜" class="tripinfo" max="9999-12-31" id="endDate" />
-				</div>
-				<div class="inpt-brder" id="date">
-					<i class="fa-solid fa-coins"></i> <input type="text"
-						placeholder="여행 총 경비" class="tripinfo" id="entireMoney" />
-				</div>
-				<div>
-					<button class="submit" id="final">추가하기</button>
-				</div>
-			</div>
-		</div>
-
+      <div id="allList">
+       ${groupName}
+        <c:foreach items="${bsList}" var="bs">
+        ${bs.title} : ${bs.bsCode} / 총 경비 ${bs.entireMoney}원, ${bs.startDate} ~ ${bs.endDate}<br>
+        </c:foreach>
+      </div>
+      <div id="bigModal" style="display: none">
+        <div id="modalContent3">
+          <header class="mdl-header">
+            <p class="head-wrd">일정 추가하기</p>
+            <i class="fa-solid fa-xmark" id="X"></i>
+          </header>
+          <!-- <div id="addMemo"><h1>안녕하세요</h1></div> -->
+          <div class="modsection" id=addMemo>
+            <button id=addMemoh1></button>
+          <p id=addMemop></p><p id=addMemop2></p><p id=addMemop3></p>
+          </div>
+          <button class="modsection" id="six">추가</button>
+        </div>
+      </div>
+      <div id="detModal" style="display: none">
+        <div id="modalContent4">
+          <header class="mdl-header2">
+            <p class="head-wrd2">세부 일정 추가</p>
+            <i class="fa-solid fa-xmark" id="X2"></i>
+          </header>
+          <div class="inpt-brder" id="title">
+            <i class="fa-solid fa-pencil"></i>
+            <input
+              type="text"
+              placeholder="일정 이름"
+              class="tripinfo"
+              id="title2"
+            />
+          </div>
+          <div class="inpt-brder">
+            <i class="fa-solid fa-plane-departure"></i>
+            <input
+              type="date"
+              placeholder="시작 날짜"
+              class="tripinfo"
+              max="9999-12-31"
+              id="startDate"
+            />
+          </div>
+          <div class="inpt-brder">
+            <i class="fa-solid fa-plane-arrival"></i>
+            <input
+              type="date"
+              placeholder="종료 날짜"
+              class="tripinfo"
+              max="9999-12-31"
+              id="endDate"
+            />
+          </div>
+          <div class="inpt-brder" id="date">
+            <i class="fa-solid fa-coins"></i>
+            <input
+              type="text"
+              placeholder="여행 총 경비"
+              class="tripinfo"
+              id="entireMoney"
+            />
+          </div>
+          <div><button class="submit" id="final">추가하기</button></div>
+        </div>
+      </div>
 		<script src="https://kit.fontawesome.com/ef885bd654.js"
 			crossorigin="anonymous"></script>
-
 		<script>
         //	$(document).on('click', '.groupButton', function() {
         //       buttonId = $(this).attr('id');
@@ -161,11 +175,9 @@
         //       	url : 'selectGroup',
         //      	data : {groupName : buttonId},
         //     		success : function(result) {
-
         //		}
         //     });
         // });
-        
     $("#final").click(() => {
         $.ajax({
           type: "post",
@@ -177,7 +189,7 @@
             entireMoney: $("#entireMoney").val(),
           },
           success: function (result) {
-        	  
+        	 
           	alert("추가됐음!");
           	const id = $("#title2").val();
           	$("#addMemo").html("<button>"+id+"</button>");
@@ -185,9 +197,6 @@
           },
         });
       });
-
-
-        
         $("#add2").click(() => {
           $.ajax({
             type: "post",
@@ -202,7 +211,6 @@
           });
         });
       </script>
-
 		<script>
         $(".add2").click(() => {
          const title = $("#textbox").val().trim();
@@ -229,45 +237,41 @@
             },
           });
         });
-        
-        
-      </script>
 
+      </script>
 		<!--
-      $("#calendar").click(function(e){
-     
+      $(document).click(function(e){
       <script>
-      $(document).ready(function(){
+     /*
+      $("#calendar").click(function(e){
     	  let groupName = localStorage.getItem('groupName');
     	  let date = sessionStorage.getItem('date');
     		$.ajax({
     		 type: "post",
     	 	 url: "/mola",
     	 	 data : {groupName : groupName,
-    	 			localDate : date	 
+    	 			localDate : date	
     	 	 },
-    	 	success: function() {
-
+    	 	success: function(t) {
+    	 		console.log(t);
     	 	}
-    	 }) 
-      });
-      -->
-
-	</c:if>
-	<c:if test="${empty user}">
-		<script>
+    	 })
+      });  */
+      </script>
+    -->
+    </c:if>
+    <!-- 로그아웃 cif -->
+    <c:if test="${empty user}">
+      <script>
         location.reload();
         window.location.href = "redirect:/";
       </script>
 	</c:if>
-
-	<!-- 
-    
+	<!--
     <c:forEach items="${bsList}" var="bs">
           ${bs.title} ${bs.entireMoney} ${bs.startDate} ${bs.endDate}
         </c:forEach>
      -->
-
 	<script>
     const bigSchedules = [];
     let schedule = {};
@@ -277,12 +281,12 @@
 	    schedule.end = "${item.endDate}" ;
 	    schedule.money = "${item.entireMoney}";
 	    schedule.color = "${item.scheduleColor}";
+	    schedule.bsCode = "${item.bsCode}";
     	bigSchedules.push(schedule);
     	schedule = {};
     </c:forEach>
     console.log(bigSchedules);
     </script>
-
 	<script src="${pageContext.request.contextPath}/js/calander.js"></script>
 </body>
 </html>
