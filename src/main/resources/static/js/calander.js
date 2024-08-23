@@ -1,3 +1,5 @@
+let linkbs;
+
 document.addEventListener("DOMContentLoaded", function () {
   const Calendar = FullCalendar.Calendar;
 
@@ -196,4 +198,19 @@ $("#calendar-container").mouseover((e) => {
   if (content.css("display") != "none") {
     content.fadeOut(200);
   }
+});
+
+const detailButton = document.querySelector(".modsection");
+detailButton.addEventListener("click", () => {
+  const code = linkbs;
+  localStorage.setItem("bsCode", code);
+
+  const url = new URL(location.href + "/detail");
+  const urlParams = url.searchParams;
+
+  urlParams.append("bsCode", code);
+
+  console.log(url.href);
+
+  location.href = url;
 });
