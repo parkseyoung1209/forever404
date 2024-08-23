@@ -210,7 +210,10 @@ public class GroupController {
 //		}
 		
 		smallSchedule.setBigSchedule(bigSchedule);
+		
+//		CurDate 값 수정 필요
 		smallSchedule.setCurDate("2024-08-22");
+		
 		System.out.println(smallSchedule);
 		service.scheduleAdd2(smallSchedule);
 //		#{memo} o, #{isReservation} o, #{cur_date}x, #{cur_time}x, #{use_money}x, #{left_money}x, #{buying_list}, #{bigSchedule.bsCode}, #{serviceName}, 

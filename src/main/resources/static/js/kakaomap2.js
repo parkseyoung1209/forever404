@@ -1,3 +1,9 @@
+let title;
+let addr;
+let lat;
+let lng;
+let phone;
+
 // 마커를 클릭했을 때 해당 장소의 상세정보를 보여줄 커스텀오버레이입니다
 var placeOverlay = new kakao.maps.CustomOverlay({ zIndex: 1 }),
   contentNode = document.createElement("div"), // 커스텀 오버레이의 컨텐츠 엘리먼트 입니다
@@ -218,28 +224,22 @@ function searchLocalPlaces() {
     placeOverlay.setPosition(new kakao.maps.LatLng(place.y, place.x));
     placeOverlay.setMap(map);
 
+	
+	
     $("#btn").click(() => {
-      const type = place.category_group_code;
-      const title = place.place_name;
-      const addr = place.address_name;
-      const lat = place.x;
-      const lng = place.y;
-      const phone = place.phone;
-      $.ajax({
-        type: "get",
-        url: "/addinfo",
-        data: {
-          type: type,
-          title: title,
-          addr: addr,
-          lat: lat,
-          lng: lng,
-          phone: phone,
-        },
-        success: function (result) {
-          alert("!");
-        },
-      });
+      title = place.place_name;
+      addr = place.address_name;
+      lat = place.x;
+      lng = place.y;
+      phone = place.phone;
+	  
+	  const serviceName = document.querySelector("#serviceName");
+	  const serviceJibun = document.querySelector("#serviceJibun");
+	  const servicePhone = document.querySelector("#servicePhone");
+	  
+	  serviceName.innerHTML = "장소 이름 : " + title;
+	  serviceJibun.innerHTML = "주소 : " + addr;
+	  servicePhone.innerHTML = "전화번호" + phone;
     });
   }
 
