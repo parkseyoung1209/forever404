@@ -27,20 +27,17 @@ document.addEventListener("DOMContentLoaded", function () {
 	console.log(info.event.extendedProps.money);
 	},
 	eventClick: function showModal() {
-		$("#bigModal").slideDown();
-		if (modal.css("display") === "none") {
-		  modal.slideUp(400);
-		  }
+		$("#bigModal").css("display", "block");
 	},
 	eventClick: function(info) {
 		const modal = $("#bigModal");
 		$("#addMemoh1").text(info.event.title);
-		$("#addMemop").text(`${info.event.start.toLocaleString()}`);
+		$("#addMemop").text(`${info.event.start.toLocaleDateString()}`);
 		const endDate = new Date(info.event.end);
 		    endDate.setDate(endDate.getDate() - 1);
-		    $("#addMemop2").text(`${endDate.toLocaleString()}`);
+		    $("#addMemop2").text(`${endDate.toLocaleDateString()}`);
 		$("#addMemop3").text(info.event.extendedProps.money);
-		modal.slideDown();
+		modal.css("display", "block");
 
 		if (modal.css("display") === "none") {
 		    modal.slideUp(400);
@@ -99,28 +96,24 @@ document.addEventListener("DOMContentLoaded", function () {
   calendar.render();
 
   function showModal() {
-    $("#bigModal").slideDown();
-    if (modal.css("display") === "none") {
-      modal.slideUp(400);
-    }
+    $("#bigModal").css("display", "block");
   }
   /*
   document.getElementById("X").addEventListener("click", function () {
     document.getElementById("bigModal").style.display = "none";
   });*/
   $("#X").click(function () {
-    $("#bigModal").slideUp(400);
+    $("#bigModal").css("display", "none");
   });
 });
 
 $("#six").click(function () {
-  $("#detModal").slideDown(400);
   $("#detModal").css("display", "block");
   $("#bigModal").css("display", "none");
 });
 
 $("#X2").click(function () {
-  $("#detModal").slideUp(400);
+  $("#detModal").css("display", "none");
   $("#bigModal").css("display", "block");
 });
 
