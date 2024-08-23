@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+	<%@ page language="java" contentType="text/html; charset=UTF-8"
 pageEncoding="UTF-8"%> <%@ taglib prefix="c"
 uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
@@ -150,7 +150,8 @@ uri="http://java.sun.com/jsp/jstl/core"%>
             <i class="fa-solid fa-xmark" id="X"></i>
           </header>
           <!-- <div id="addMemo"><h1>안녕하세요</h1></div> -->
-          <div class="modsection" id=addMemo></div>
+          <div class="modsection" id=addMemo><button id=addMemoh1></button>
+          <p id=addMemop></p><p id=addMemop2></p><p id=addMemop3></p></div>
           <button class="modsection" id="six">추가</button>
         </div>
       </div>
@@ -257,7 +258,7 @@ uri="http://java.sun.com/jsp/jstl/core"%>
           });
         });
       </script>
-
+      
       <script>
         $(".add2").click(() => {
           const title = $("#textbox").val().trim;
