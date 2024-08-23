@@ -149,8 +149,8 @@ uri="http://java.sun.com/jsp/jstl/core"%>
             <p class="head-wrd">일정 추가하기</p>
             <i class="fa-solid fa-xmark" id="X"></i>
           </header>
-          <div id="addMemo"></div>
-          <div class="modsection"></div>
+          <!-- <div id="addMemo"><h1>안녕하세요</h1></div> -->
+          <div class="modsection" id=addMemo></div>
           <button class="modsection" id="six">추가</button>
         </div>
       </div>
@@ -220,23 +220,29 @@ uri="http://java.sun.com/jsp/jstl/core"%>
         //		}
         //     });
         // });
-		
-        $("#final").click(() => {
-  
-          $.ajax({
-            type: "post",
-            url: "/scheduleAdd",
-            data: {
-              title: $("#title2").val(),
-              startDate: $("#startDate").val(),
-              endDate: $("#endDate").val(),
-              entireMoney: $("#entireMoney").val(),
-            },
-            success: function () {
-     
-            },
-          });
+        
+    $("#final").click(() => {
+        $.ajax({
+          type: "post",
+          url: "/scheduleAdd",
+          data: {
+            title: $("#title2").val(),
+            startDate: $("#startDate").val(),
+            endDate: $("#endDate").val(),
+            entireMoney: $("#entireMoney").val(),
+          },
+          success: function (result) {
+        	  
+          	alert("추가됐음!");
+          	const id = $("#title2").val();
+          	$("#addMemo").html("<button>"+id+"</button>");
+          	location.reload();
+          },
         });
+      });
+
+
+        
         $("#add2").click(() => {
           $.ajax({
             type: "post",
@@ -253,8 +259,8 @@ uri="http://java.sun.com/jsp/jstl/core"%>
       </script>
 
       <script>
-        $("#addGroup").click(() => {
-          const title = $("#textbox").val();
+        $(".add2").click(() => {
+          const title = $("#textbox").val().trim;
           $.ajax({
             type: "post",
             url: "/addGroup",
@@ -277,6 +283,8 @@ uri="http://java.sun.com/jsp/jstl/core"%>
             },
           });
         });
+        
+        
       </script>
       
       <!--
@@ -306,6 +314,30 @@ uri="http://java.sun.com/jsp/jstl/core"%>
         window.location.href = "redirect:/";
       </script>
     </c:if>
+    
+    <!-- 
+    
+    <c:forEach items="${bsList}" var="bs">
+          ${bs.title} ${bs.entireMoney} ${bs.startDate} ${bs.endDate}
+        </c:forEach>
+     -->
+    
+    <script>
+    const bigSchedules = [];
+    let schedule = {};
+    <c:forEach items="${bsList}" var="item">
+	    schedule.title = "${item.title}";
+	    schedule.start = "${item.startDate}";
+	    schedule.end = "${item.endDate}" ;
+	    schedule.money = "${item.entireMoney}";
+	    schedule.color = "${item.scheduleColor}";
+    	bigSchedules.push(schedule);
+    	schedule = {};
+    </c:forEach>
+    console.log(bigSchedules);
+    </script>
+    <script>
+</script>
     <script src="${pageContext.request.contextPath}/js/calander.js"></script>
   </body>
 </html>

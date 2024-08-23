@@ -87,7 +87,7 @@ public class GroupController {
 	
 	@ResponseBody
 	@PostMapping("/scheduleAdd")
-	public void schduleAdd(HttpServletRequest request, BigSchedule bigSchedule, Model model) throws ParseException {	
+	public void schduleAdd(HttpServletRequest request, BigSchedule bigSchedule, Model model) throws ParseException {
 		String groupName = request.getHeader("referer").substring(22);
 		
 		BigGroup bg = service.searchBgCode(groupName);

@@ -29,8 +29,6 @@ uri="http://java.sun.com/jsp/jstl/functions" %>
           <i class="fa-solid fa-plus"></i>
           <p>그룹 생성</p>
         </button>
-        
-        
 
         <button id="grouppart" class="addgroup2">
           <i class="fa-solid fa-plus"></i>
@@ -46,10 +44,18 @@ uri="http://java.sun.com/jsp/jstl/functions" %>
           <button type="button" id="logout2">로그아웃</button>
         </c:if>
       </div>
+
       <div class="group" id="group"></div>
       <div class="user">
         <i class="fa-regular fa-user"></i>
       </div>
+
+      <!-- 
+           <div class="group-container">
+      <div class="grouptest" id="grouptest"></div>
+      <i class="fa-regular fa-user"></i>
+       
+    </div>-->
     </header>
     <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
     <script>
@@ -71,7 +77,7 @@ uri="http://java.sun.com/jsp/jstl/functions" %>
             const groupList = list.map((item) => item.bigGroup);
             const nameList = groupList.map((value) => value.groupName);
             nameList.forEach((value) => {
-              $("#group").append(
+              $(".group").append(
                 "<button type='button' data-code='" +
                   value +
                   "'class='groupButton' id='" +

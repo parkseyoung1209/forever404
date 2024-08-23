@@ -11,6 +11,21 @@ document.addEventListener("DOMContentLoaded", function () {
     },
     selectable: true,
     editable: true,
+	events:bigSchedules, eventColor: 'rgba(0, 0, 0, 0.5)', eventTextColor:'black',
+	events: bigSchedules.map(event => {
+		let endDate = new Date(event.end);
+		endDate.setDate(endDate.getDate() + 1);
+		return {
+			...event,
+			end: endDate.toISOString().split('T')[0]
+		};
+	 }),/*
+	 eventContent: {
+		html: `<div><i class="fa-solid fa-pencil"></i></div>` -> 나중에 생일할때 이용하면 좋을것같음
+	 },*/
+	eventClick: function(info) {
+	console.log(info.event.extendedProps.money);
+	},
     dateClick: function (info) {
       const month = calendarEl
         .querySelector(".fc-toolbar-title")
@@ -57,6 +72,7 @@ document.addEventListener("DOMContentLoaded", function () {
         showModal(clickedDate);
       }
     },
+
   });
 
   calendar.render();
@@ -84,6 +100,12 @@ $("#six").click(function () {
 
 $("#X2").click(function () {
   $("#detModal").slideUp(400);
+  $("#bigModal").css("display", "block");
+});
+
+
+$("#final").click(function () {
+  $("#detModal").css("display", "none");
   $("#bigModal").css("display", "block");
 });
 
