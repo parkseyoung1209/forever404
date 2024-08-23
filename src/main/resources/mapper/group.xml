@@ -4,16 +4,15 @@
 		INSERT INTO big_group(group_name) VALUES(#{groupName})
 	</insert>
 	
-	<insert id="attendGroup" parameterType="SmallGroup">
-		INSERT INTO small_group(id, bg_group_code)
-		VALUES (#{user.id}, #{bigGroup.bgGroupCode})
-	</insert>
 	
 	<!-- biggroup -->
 	<resultMap type="BigGroup" id="bgMap">
 		<id column="bg_group_code" property="bgGroupCode"/>
 		<result column="group_name" property="groupName"/>
 	</resultMap>
+	
+	
+	
 	<select id="userGroup" resultMap="bgMap">
 	SELECT *
 	FROM big_group
@@ -88,7 +87,7 @@
 	WHERE bg_group_code = #{bgGroupCode}
 	</select>
 	<insert id="scheduleAdd" parameterType="BigSchedule">
-		INSERT INTO big_schedule(bg_group_code, id, start_date, end_date, title, entire_money) VALUES (#{bigGroup.bgGroupCode},#{user.id},#{startDate},#{endDate},#{title},#{entireMoney})
+		INSERT INTO big_schedule(bg_group_code, id, start_date, end_date, title, entire_money, schedule_color) VALUES (#{bigGroup.bgGroupCode},#{user.id},#{startDate},#{endDate},#{title},#{entireMoney},#{scheduleColor})
 	</insert>
 	
 	

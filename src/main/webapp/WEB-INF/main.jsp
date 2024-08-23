@@ -287,11 +287,12 @@ uri="http://java.sun.com/jsp/jstl/core"%>
         
       </script>
       
-      <!--
-      $("#calendar").click(function(e){
-     
       <script>
-      $(document).ready(function(){
+      <!--
+      
+      
+      
+      $("#calendar").click(function(e){
     	  let groupName = localStorage.getItem('groupName');
     	  let date = sessionStorage.getItem('date');
     		$.ajax({
@@ -300,14 +301,19 @@ uri="http://java.sun.com/jsp/jstl/core"%>
     	 	 data : {groupName : groupName,
     	 			localDate : date	 
     	 	 },
-    	 	success: function() {
-
+    	 	success: function(t) {
+    	 		console.log(t);
     	 	}
     	 }) 
       });
       -->
+      </script>
       
+    
     </c:if>
+    <!-- 로그아웃 cif -->
+    
+    
     <c:if test="${empty user}">
       <script>
         location.reload();

@@ -7,6 +7,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -75,7 +76,7 @@ public class GroupController {
 		User user = (User) session.getAttribute("user");
 		if(bg != null) {
 			SmallGroup sg = new SmallGroup(user, bg);
-			service.attendGroup(sg);
+			service.addSmGroup(sg);
 			return true;
 		} else {
 			System.out.println("없는 그룹");
@@ -100,7 +101,17 @@ public class GroupController {
 		bigSchedule.setBigGroup(bg);
 		bigSchedule.setUser(user);
 		
+		// 컬러 추가
+		Random random = new Random();
 
+		int rand1 = (int)(Math.random()*256);
+		int rand2 = (int)(Math.random()*256);
+		int rand3 = (int)(Math.random()*256);
+		
+		String color = "rgba(" + rand1 + "," + rand2 + "," + rand3 + ", 0.5)";
+		bigSchedule.setScheduleColor(color);
+		
+		
 		String addStartDate = bigSchedule.getStartDate();
 		String addEndDate = bigSchedule.getEndDate();
 		
@@ -146,6 +157,7 @@ public class GroupController {
 
 	}
 	
+	/*
 	@ResponseBody
 	@PostMapping("/mola")
 	public BigSchedule mola(String groupName, String localDate, HttpServletRequest request) throws ParseException {
@@ -193,6 +205,7 @@ public class GroupController {
 		}
 		return null;
 	}
+	*/
 	
 	@ResponseBody
 	@PostMapping("/scheduleAdd2")

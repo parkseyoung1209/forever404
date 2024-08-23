@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", function () {
     },
     selectable: true,
     editable: true,
-	events:bigSchedules, eventColor: 'rgba(0, 0, 0, 0.5)', eventTextColor:'black',
+	events:bigSchedules, eventTextColor:'black',
 	events: bigSchedules.map(event => {
 		let endDate = new Date(event.end);
 		endDate.setDate(endDate.getDate() + 1);
