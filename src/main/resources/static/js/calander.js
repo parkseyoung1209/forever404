@@ -26,6 +26,27 @@ document.addEventListener("DOMContentLoaded", function () {
 	eventClick: function(info) {
 	console.log(info.event.extendedProps.money);
 	},
+	eventClick: function showModal() {
+		$("#bigModal").slideDown();
+		if (modal.css("display") === "none") {
+		  modal.slideUp(400);
+		  }
+	},
+	eventClick: function(info) {
+		const modal = $("#bigModal");
+		$("#addMemoh1").text(info.event.title);
+		$("#addMemop").text(`${info.event.start.toLocaleString()}`);
+		const endDate = new Date(info.event.end);
+		    endDate.setDate(endDate.getDate() - 1);
+		    $("#addMemop2").text(`${endDate.toLocaleString()}`);
+		$("#addMemop3").text(info.event.extendedProps.money);
+		modal.slideDown();
+
+		if (modal.css("display") === "none") {
+		    modal.slideUp(400);
+			}
+	},
+	
     dateClick: function (info) {
       const month = calendarEl
         .querySelector(".fc-toolbar-title")
