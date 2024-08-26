@@ -47,13 +47,17 @@ public class GroupController {
 //			System.out.println(list);
 			HttpSession session = request.getSession();
 			User user = (User) session.getAttribute("user");
-			service.addGroup(bigGroup);
-			BigGroup bg = service.searchBgCode(groupName);
-			String id =user.getId();
-			int bgGroupCode = bg.getBgGroupCode();
-			SmallGroup smGroup = new SmallGroup(new User(id), new BigGroup(bgGroupCode));
-			service.addSmGroup(smGroup);
-			return true;
+			if(!bigGroup.getGroupName().equals("")) {
+				service.addGroup(bigGroup);
+				BigGroup bg = service.searchBgCode(groupName);
+				String id =user.getId();
+				int bgGroupCode = bg.getBgGroupCode();
+				SmallGroup smGroup = new SmallGroup(new User(id), new BigGroup(bgGroupCode));
+				service.addSmGroup(smGroup);
+				return true;
+			} else return false;
+			
+			
 	}
 	
 	@ResponseBody
@@ -85,7 +89,27 @@ public class GroupController {
 		}
 
 	}
-	
+	// 그룹 삭제
+	@ResponseBody
+	@PostMapping("/deleteGroup")
+	public void deleteGroup(String groupName) {
+		BigGroup bg = service.searchBgCode(groupName);
+		int bgCode = bg.getBgGroupCode();
+		
+		List<BigSchedule> bs = service.searchBsCode(bgCode);
+		for(int i=0; i<bs.size(); i++) {
+			int bsCode = bs.get(i).getBsCode();
+			List<SmallSchedule> smallSchedule = service.selectOneSc(bsCode);
+			for(int j=0; j<smallSchedule.size(); j++) {
+				// 스몰스케쥴 ss_code로 money테이블 조회해서 삭제하고
+				service.deleteGroup1(smallSchedule.get(j).getSsCode()); // money 테이블
+			}
+			service.deleteGroup2(bsCode);
+		}
+		service.deleteGroup3(bgCode);
+		service.deleteGroup4(bgCode);
+		service.deleteGroup5(bgCode);
+	}
 	
 	@ResponseBody
 	@PostMapping("/scheduleAdd")
@@ -215,13 +239,12 @@ public class GroupController {
 		BigSchedule bigSchedule = (BigSchedule)session.getAttribute("selectB");
 		
 		String url;
-//		try {
-//			url = crawling.getImgUrl(smallSchedule.getServiceName());
-//			smallSchedule.setServiceImg(url);
-//		} catch (InterruptedException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
+		try {
+			url = crawling.getImgUrl(smallSchedule.getServiceName());
+			smallSchedule.setServiceImg(url);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
 		
 		smallSchedule.setBigSchedule(bigSchedule);
 		

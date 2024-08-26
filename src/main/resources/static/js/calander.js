@@ -60,14 +60,7 @@ document.addEventListener("DOMContentLoaded", function () {
       sessionStorage.setItem("date", clickedDate);
       let groupName = localStorage.getItem("groupName");
       let date = sessionStorage.getItem("date");
-      $.ajax({
-        type: "post",
-        url: "/mola",
-        data: { groupName: groupName, localDate: date },
-        success: function (response) {
-          console.log(response);
-        },
-      });
+     
       // 예: 7월 (8월의 경우 7로 설정)
       if (selectedMonth === 0 && month === "January") {
         showModal(clickedDate);

@@ -11,7 +11,31 @@
 		<result column="group_name" property="groupName"/>
 	</resultMap>
 	
+	<!-- 그룹삭제 -->
+	<delete id="deleteGroup1" parameterType="int">
+	DELETE FROM money
+	WHERE ss_code = #{ssCode}
+	</delete>
 	
+	<delete id="deleteGroup2" parameterType="int">
+	DELETE FROM small_schedule
+	WHERE bs_code = #{bsCode}
+	</delete>
+	
+	<delete id="deleteGroup3" parameterType="int">
+	DELETE FROM big_schedule
+	WHERE bg_group_code = #{bgGroupCode}
+	</delete>
+	
+	<delete id="deleteGroup4" parameterType="int">
+	DELETE FROM small_group
+	WHERE bg_group_code = #{bgGroupCode}
+	</delete>
+	
+	<delete id="deleteGroup5" parameterType="int">
+	DELETE FROM big_group
+	WHERE bg_group_code = #{bgGroupCode}
+	</delete>
 	
 	<select id="userGroup" resultMap="bgMap">
 	SELECT *
@@ -129,5 +153,44 @@
 		SELECT * FROM small_schedule
 		LEFT JOIN big_schedule USING (bs_code)
 		WHERE bs_code = #{bsCode}
+	</select>
+	
+	<select id="selectOneBs" parameterType="int" resultMap="BscheduleAddMap">
+		SELECT * FROM big_schedule
+		WHERE bs_code = #{bsCode}
+	</select>
+	
+	<!-- 돈 관련 테이블(money) -->
+	<resultMap type="Money" id="moneyMap">
+		<id column="m_code" property="MCode"></id>
+		<result column="use_money" property="useMoney"/>
+		<result column="buying_list" property="buyingList"/>
+		<association property="smallSchedule" javaType="SmallSchedule">
+		<id column="ss_code" property="ssCode"></id>
+		</association>
+	</resultMap>
+	
+	<select id="selectMoney" parameterType="int" resultMap="moneyMap">
+		SELECT * FROM money
+		WHERE ss_code = #{ssCode}
+	</select>
+	
+	<insert id="insertMoney" parameterType="Money">
+		INSERT INTO money(use_money, buying_list, ss_code) VALUES (#{useMoney}, #{buyingList}, #{smallSchedule.ssCode})
+	</insert>
+	<resultMap type="Photo" id="photoMap">
+	<id column="photo_code" property="photoCode"></id>
+	<result column="photo_url" property="photoUrl"/>
+	<association property="bigSchedule" javaType="Bigschedule">
+	<id column="bs_code" property="bsCode"/>
+	</association>
+	</resultMap>
+	<!-- photo 테이블에 이미지 추가 -->
+	<insert id="imgLoad" parameterType="Photo">
+		INSERT INTO photo(photo_url, bs_code) VALUES(#{photoUrl}, #{bsCode})
+	</insert>
+	
+	<select id="selectMyImg" resultMap="photoMap" parameterType="int">
+	SELECT * FROM photo WHERE bs_code=#{bsCode}
 	</select>
 </mapper>

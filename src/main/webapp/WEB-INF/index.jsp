@@ -171,6 +171,7 @@
             	            data: formData,
             	            success: function(response) {
             	              // 요청이 성공했을 때 수행할 작업
+            	              
             	            	window.location.href = '/main';
             	              	location.reload();
             	            },
