@@ -246,9 +246,8 @@
         
         
       </script>
+      
 
-		
-     <!--   $(document).click(function(e){-->
 		<!--
       $(document).click(function(e){
       <script>

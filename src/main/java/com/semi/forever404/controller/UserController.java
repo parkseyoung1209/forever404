@@ -1,6 +1,7 @@
 package com.semi.forever404.controller;
 
 import java.io.IOException;
+import java.net.http.HttpRequest;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -110,4 +111,14 @@ public class UserController {
 		}
 		 
 	}
+	
+	@ResponseBody
+	@PostMapping("/myPage")
+	public User myPage(User user, HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		user = (User) session.getAttribute("user");
+		return user;
+	}
+	
+	
 }
