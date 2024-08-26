@@ -100,9 +100,9 @@
       </script>
       <div id="allList">
        ${groupName}
-        <c:foreach items="${bsList}" var="bs">
+        <c:forEach items="${bsList}" var="bs">
         ${bs.title} : ${bs.bsCode} / 총 경비 ${bs.entireMoney}원, ${bs.startDate} ~ ${bs.endDate}<br>
-        </c:foreach>
+        </c:forEach>
       </div>
       <div id="bigModal" style="display: none">
         <div id="modalContent3">
@@ -239,6 +239,8 @@
         });
 
       </script>
+      
+
 		<!--
       $(document).click(function(e){
       <script>

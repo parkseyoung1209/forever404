@@ -38,7 +38,7 @@
 		 <header id="myHeader"></header>
         <i class="fa-solid fa-plane" id="myImg"></i>
         <div id="nameSection">
-          <h1 id="myName">테스트</h1>
+          <h1 id="myName"></h1>
           <p id="myId">test1234</p>
           </div>
 			<c:if test="${empty token}">
@@ -51,7 +51,7 @@
 
 		<div class="group" id="group"></div>
 		<div class="user">
-			<i class="fa-solid fa-user"></i>
+			<i class="fa-solid fa-user" id=myUser></i>
 		</div>
 
 		<!-- 
@@ -103,6 +103,22 @@
           },
         });
       });
+    </script>
+    
+    <script>
+	$(".user").click(function () {
+		$.ajax({
+			type: "post",
+			url: "/myPage",
+			success: function (result) { 
+				$("#myName").text(result.id);
+				$("#myId").text(result.name);
+			},
+			});
+		});
+		
+    	
+    	
     </script>
 </body>
 </html>
