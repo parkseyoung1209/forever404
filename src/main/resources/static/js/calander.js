@@ -31,6 +31,8 @@ document.addEventListener("DOMContentLoaded", function () {
       if (modal.css("display") === "none") {
         modal.slideUp(400);
       }
+      let groupName = localStorage.getItem("groupName");
+      let date = sessionStorage.getItem("date");
     },
     eventClick: function (info) {
       const modal = $("#bigModal");
@@ -174,14 +176,17 @@ $("#calendar-container").mouseover((e) => {
     content.fadeOut(200);
   }
 });
+
 const detailButton = document.querySelector(".modsection");
 detailButton.addEventListener("click", () => {
   const code = linkbs;
   localStorage.setItem("bsCode", code);
+
   const url = new URL(location.href + "/detail");
   const urlParams = url.searchParams;
+
   urlParams.append("bsCode", code);
-  console.log(url.href);
+
   location.href = url;
 });
 

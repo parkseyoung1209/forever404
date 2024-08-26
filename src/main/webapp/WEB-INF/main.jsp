@@ -98,12 +98,14 @@
           });
         });
       </script>
+     
       <div id="allList">
        ${groupName}
         <c:forEach items="${bsList}" var="bs">
         ${bs.title} : ${bs.bsCode} / 총 경비 ${bs.entireMoney}원, ${bs.startDate} ~ ${bs.endDate}<br>
         </c:forEach>
       </div>
+
       <div id="bigModal" style="display: none">
         <div id="modalContent3">
           <header class="mdl-header">
@@ -118,6 +120,8 @@
           <button class="modsection" id="six">추가</button>
         </div>
       </div>
+      
+      
       <div id="detModal" style="display: none">
         <div id="modalContent4">
           <header class="mdl-header2">
@@ -165,6 +169,7 @@
           <div><button class="submit" id="final">추가하기</button></div>
         </div>
       </div>
+
 		<script src="https://kit.fontawesome.com/ef885bd654.js"
 			crossorigin="anonymous"></script>
 		<script>
@@ -211,6 +216,7 @@
           });
         });
       </script>
+
 		<script>
         $(".add2").click(() => {
          const title = $("#textbox").val().trim();
@@ -261,6 +267,12 @@
       });  */
       </script>
     -->
+
+		
+     <!--   $(document).click(function(e){-->
+     
+    
+    
     </c:if>
     <!-- 로그아웃 cif -->
     <c:if test="${empty user}">

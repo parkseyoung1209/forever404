@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.semi.forever404.model.vo.BigGroup;
 import com.semi.forever404.model.vo.BigSchedule;
+import com.semi.forever404.model.vo.Money;
 import com.semi.forever404.model.vo.SmallGroup;
 import com.semi.forever404.model.vo.SmallSchedule;
 import com.semi.forever404.model.vo.User;
@@ -207,34 +208,45 @@ public class GroupController {
 		return null;
 	}
 	*/
-	
 	@ResponseBody
 	@PostMapping("/scheduleAdd2")
-	public void scheduleAdd2(HttpServletRequest request, SmallSchedule smallSchedule)  {
-		HttpSession session = request.getSession();
-		BigSchedule bigSchedule = (BigSchedule)session.getAttribute("selectB");
+	public void scheduleAdd2(HttpServletRequest request, SmallSchedule smallSchedule, int bsCode)  {
+//		HttpSession session = request.getSession();
+//		BigSchedule bigSchedule = (BigSchedule)session.getAttribute("selectB");
+//		
+//		System.out.println(bigSchedule);
+		
+		System.out.println(bsCode);
 		
 		String url;
 //		try {
 //			url = crawling.getImgUrl(smallSchedule.getServiceName());
 //			smallSchedule.setServiceImg(url);
 //		} catch (InterruptedException e) {
-//			// TODO Auto-generated catch block
 //			e.printStackTrace();
 //		}
 		
-		smallSchedule.setBigSchedule(bigSchedule);
+		smallSchedule.setBigSchedule(service.selectOneBs(bsCode));
+		System.out.println(smallSchedule.getBigSchedule());
 		
-//		CurDate 값 수정 필요
+//		CurDate 값 수정 필요(front한테 받기)
 		smallSchedule.setCurDate("2024-08-22");
 		
 		System.out.println(smallSchedule);
 		service.scheduleAdd2(smallSchedule);
+		
 //		#{memo} o, #{isReservation} o, #{cur_date}x, #{cur_time}x, #{use_money}x, #{left_money}x, #{buying_list}, #{bigSchedule.bsCode}, #{serviceName}, 
 //		#{serviceJibun}, #{serviceLat},#{serviceLng},#{servicePhone},#{serviceImg}
-	
-//		Thread.sleep(10000);
-		
 	}
 
+	@ResponseBody
+	@PostMapping("/insertMoney")
+	public void insertMoney(Money money) {
+		int ssCode = 1;
+		SmallSchedule sm = new SmallSchedule();
+		sm.setSsCode(ssCode);
+		money.setSmallSchedule(sm);
+		System.out.println(money);
+		service.insertMoney(money);
+	}
 }

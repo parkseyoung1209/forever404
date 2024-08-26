@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -33,6 +34,12 @@
     <main>
       <section class="section1">
         <div id="pay">
+        <c:forEach items="${selectS}" var="ssss">
+    		${ssss.bigSchedule.bsCode}
+    	</c:forEach>
+        <c:forEach items="${moneyL}" var="m">
+        	${m.useMoney}
+        </c:forEach>
           <p>남은금액 : 300,000원</p>
           <br />
           <p>총 지불금액 : 250,000원</p>
@@ -78,7 +85,18 @@
         <i class="bi bi-plus-circle-fill"></i>
       </button>
     </section>
-
+    
+    <script>
+    const kakaobtn = document.querySelector("#button3");
+    kakaobtn.addEventListener("click", () => {
+     	
+    	window.location.href="/kakao/map"
+    })
+    </script>
+    
+    
+    
+<!-- 
     <div id="modal1" class="modal">
       <div class="modalcontent">
         <span class="close">&times</span>
@@ -111,7 +129,7 @@
         </div>
       </div>
     </div>
-
+-->
     <div id="modal2" class="modal">
       <div class="modalcontent">
         <span class="close">&times</span>
@@ -130,14 +148,29 @@
         <span class="close">&times</span>
         <h2>지불 품목</h2>
         <hr />
-        지불 품목 : <input type="text" class="money" /> <br />
+        지불 품목 : <input type="text" class="money" id="buyingList" /> <br />
         사용 금액 :
-        <input type="text" class="money" />
+        <input type="text" class="money" id="useMoney" />
         <div class="add">
-          <button class="add2">추가</button>
+          <button class="add2" id="moneyBtn">추가</button>
         </div>
       </div>
     </div>
+    <script>
+    $("#moneyBtn").click(() => {
+    		$.ajax ({
+    			type: "post",
+    			url: "/insertMoney",
+    			data: {
+    				buyingList: $("#buyingList").val(),
+    				useMoney: $("#useMoney").val()
+    			},
+    			success: function() {
+
+    			}
+    		});
+    	});
+    </script>
 	<script>
 	$(document).ready(() => {
 		$.ajax ({
@@ -166,10 +199,12 @@
         }
       });
 
+      /*
       $("#button3").click(function () {
         $("#modal1").css("display", "block");
       });
-
+		*/
+		
       $(".close").click(function () {
         $(".modal").css("display", "none");
       });

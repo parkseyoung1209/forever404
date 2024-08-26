@@ -90,15 +90,12 @@
 		INSERT INTO big_schedule(bg_group_code, id, start_date, end_date, title, entire_money, schedule_color) VALUES (#{bigGroup.bgGroupCode},#{user.id},#{startDate},#{endDate},#{title},#{entireMoney},#{scheduleColor})
 	</insert>
 	
-	
 	<!-- 세부 일정 만들기(small schedule) -->
 	<resultMap type="SmallSchedule" id="scMap">
 		<id column="ss_code" property="ssCode"></id>
 		<result column="memo" property="memo"/>
 		<result column="is_reservation" property="isReservation"/>
-		<result column="use_money" property="useMoney"/>
 		<result column="left_money" property="leftMoney"/>
-		<result column="buying_list" property="buyingList"/>
 		<result column="cur_date" property="curDate"/>
 		<result column="cur_time" property="curTime"/>
 		<result column="service_name" property="serviceName"/>
@@ -109,6 +106,11 @@
 		<result column="service_img" property="serviceImg"/>
 		<association property="bigSchedule" javaType="BigSchedule">
 		<id column="bs_code" property="bsCode"></id>
+		<result column="start_date" property="startDate"/>
+		<result column="end_date" property="endDate"/>
+		<result column="title" property="title"/>
+		<result column="entire_money" property="entireMoney"/>
+		<result column="schedule_color" property="scheduleColor"/>
 		</association>
 	</resultMap>
 	<insert id="scheduleAdd2" parameterType="SmallSchedule">
@@ -120,4 +122,35 @@
 		SELELCT * FROM small_schedule
 		WHERE bs_code = #{bigSchedule.bsCode}
 	</select>
+	
+	<select id="selectOneSc" parameterType="int" resultMap="scMap">
+		SELECT * FROM small_schedule
+		LEFT JOIN big_schedule USING (bs_code)
+		WHERE bs_code = #{bsCode}
+	</select>
+	
+	<select id="selectOneBs" parameterType="int" resultMap="BscheduleAddMap">
+		SELECT * FROM big_schedule
+		WHERE bs_code = #{bsCode}
+	</select>
+	
+	<!-- 돈 관련 테이블(money) -->
+	<resultMap type="Money" id="moneyMap">
+		<id column="m_code" property="MCode"></id>
+		<result column="use_money" property="useMoney"/>
+		<result column="buying_list" property="buyingList"/>
+		<association property="smallSchedule" javaType="SmallSchedule">
+		<id column="ss_code" property="ssCode"></id>
+		</association>
+	</resultMap>
+	
+	<select id="selectMoney" parameterType="int" resultMap="moneyMap">
+		SELECT * FROM money
+		WHERE ss_code = #{ssCode}
+	</select>
+	
+	<insert id="insertMoney" parameterType="Money">
+		INSERT INTO money(use_money, buying_list, ss_code) VALUES (#{useMoney}, #{buyingList}, #{smallSchedule.ssCode})
+	</insert>
+	
 </mapper>

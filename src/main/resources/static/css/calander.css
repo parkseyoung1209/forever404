@@ -7,6 +7,10 @@
 	margin-left:200px;
 }
 
+#detailPage {
+	margin-left:300px;
+}
+
 header {
   display: flex;
   align-items: center;

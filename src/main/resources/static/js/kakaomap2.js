@@ -3,6 +3,7 @@ let addr;
 let lat;
 let lng;
 let phone;
+let bsCode;
 
 // 마커를 클릭했을 때 해당 장소의 상세정보를 보여줄 커스텀오버레이입니다
 var placeOverlay = new kakao.maps.CustomOverlay({ zIndex: 1 }),
@@ -232,6 +233,7 @@ function searchLocalPlaces() {
       lat = place.x;
       lng = place.y;
       phone = place.phone;
+	  bsCode = localStorage.getItem("bsCode");
 	  
 	  const serviceName = document.querySelector("#serviceName");
 	  const serviceJibun = document.querySelector("#serviceJibun");
@@ -257,6 +259,7 @@ function searchLocalPlaces() {
         memo: $("#memo").val(),
         isReservation: $("#isReservation").val(),
         curTime: $("#time").val(),
+		bsCode: bsCode,
       },
       success: function () {
         window.location.href = "/detail";
