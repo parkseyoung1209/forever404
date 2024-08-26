@@ -152,9 +152,9 @@ uri="http://java.sun.com/jsp/jstl/core"%>
           <!-- <div id="addMemo"><h1>안녕하세요</h1></div> -->
           <div class="modsection" id=addMemo>
           <button id=addMemoh1></button>
-          <p id=addMemop></p>
-          <p id=addMemop2></p>
-          <p id=addMemop3></p>
+          <div  id="memoSection1">여행 시작 :<p id=addMemop></p></div>
+          <div  id="memoSection2">여행 끝 :<p id=addMemop2></p></div>
+          <div  id="memoSection3">여행 경비 :<p id=addMemop3></p>원</div>
           </div>
           <button class="modsection" id="six">추가</button>
         </div>
