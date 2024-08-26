@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Mapper;
 
 import com.semi.forever404.model.vo.BigGroup;
 import com.semi.forever404.model.vo.BigSchedule;
+import com.semi.forever404.model.vo.Money;
 import com.semi.forever404.model.vo.SmallGroup;
 import com.semi.forever404.model.vo.SmallSchedule;
 
@@ -23,4 +24,6 @@ public interface GroupMapper {
 	List<SmallSchedule> selectSc(BigSchedule bs);
 	List<SmallSchedule> selectOneSc(int num);
 	BigSchedule selectOneBs(int num);
+	List<Money> selectMoney(int num);
+	void insertMoney(Money money);
 }

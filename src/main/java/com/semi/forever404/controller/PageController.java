@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import com.semi.forever404.model.vo.BigGroup;
 import com.semi.forever404.model.vo.BigSchedule;
+import com.semi.forever404.model.vo.Money;
 import com.semi.forever404.model.vo.SmallSchedule;
 import com.semi.forever404.model.vo.User;
 import com.semi.forever404.service.GroupService;
@@ -70,25 +71,33 @@ public class PageController {
 	public String detail(@PathVariable("groupName") String groupName, int bsCode, HttpServletRequest request) {
 //		System.out.println("groupName : " + groupName);
 //		System.out.println("bsCode : " + bsCode);
-
+		HttpSession session = request.getSession();
+//		BigSchedule bg = (BigSchedule) session.getAttribute("selectB");
+//		System.out.println(bg);
+		
 		List<SmallSchedule> smallSchedule = service.selectOneSc(bsCode);
+		BigSchedule tmp = service.selectOneBs(bsCode);
 		
-		System.out.println(smallSchedule);
-		
-		String startDate = smallSchedule.get(0).getBigSchedule().getStartDate();
-		String endDate = smallSchedule.get(0).getBigSchedule().getEndDate();
+		String startDate = tmp.getStartDate();
+		String endDate = tmp.getEndDate();
 		
 		LocalDate startDate2 = LocalDate.parse(startDate);
         LocalDate endDate2 = LocalDate.parse(endDate);
         
         List<LocalDate> dateRange = getDateRange(startDate2,endDate2);
 		
-		HttpSession session = request.getSession();
-		session.setAttribute("selectS", smallSchedule);
+		if(!smallSchedule.isEmpty()) {
+		
+        
+        List<Money> MoneyList = service.selectMoney(2);
+        
+		
+		session.setAttribute("moneyL", MoneyList);
+		
+		}
 		session.setAttribute("selectSRange", dateRange);
-		
 		System.out.println(dateRange);
-		
+		session.setAttribute("selectS", smallSchedule);
 		return "detail2";
 	}
 	

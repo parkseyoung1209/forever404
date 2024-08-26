@@ -50,9 +50,6 @@
 
 <div class="testtesttest">
     <h1>테스트</h1>
-    <c:forEach items="${selectS}" var="ssss">
-    	${ssss.bigSchedule.bsCode}
-    </c:forEach>
    			메모 : <input type="text" id="memo" name="memo"><br/>
 			<p>예약
 			<select id="isReservation">

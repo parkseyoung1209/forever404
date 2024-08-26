@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -35,13 +36,10 @@
         <div id="pay">
         <c:forEach items="${selectS}" var="ssss">
     		${ssss.bigSchedule.bsCode}
-    		
-    	<c:set var="num1" value="${ssss.bigSchedule.entireMoney}"/>
-    	<c:set var="num2" value="${ssss.useMoney}"/>
-    	<c:set var="addd" value="${num1-num2}"/>
-    	${addd}
     	</c:forEach>
-        
+        <c:forEach items="${moneyL}" var="m">
+        	${m.useMoney}
+        </c:forEach>
           <p>남은금액 : 300,000원</p>
           <br />
           <p>총 지불금액 : 250,000원</p>
@@ -95,6 +93,9 @@
     	window.location.href="/kakao/map"
     })
     </script>
+    
+    
+    
 <!-- 
     <div id="modal1" class="modal">
       <div class="modalcontent">
@@ -147,14 +148,29 @@
         <span class="close">&times</span>
         <h2>지불 품목</h2>
         <hr />
-        지불 품목 : <input type="text" class="money" /> <br />
+        지불 품목 : <input type="text" class="money" id="buyingList" /> <br />
         사용 금액 :
-        <input type="text" class="money" />
+        <input type="text" class="money" id="useMoney" />
         <div class="add">
-          <button class="add2">추가</button>
+          <button class="add2" id="moneyBtn">추가</button>
         </div>
       </div>
     </div>
+    <script>
+    $("#moneyBtn").click(() => {
+    		$.ajax ({
+    			type: "post",
+    			url: "/insertMoney",
+    			data: {
+    				buyingList: $("#buyingList").val(),
+    				useMoney: $("#useMoney").val()
+    			},
+    			success: function() {
+
+    			}
+    		});
+    	});
+    </script>
 	<script>
 	$(document).ready(() => {
 		$.ajax ({

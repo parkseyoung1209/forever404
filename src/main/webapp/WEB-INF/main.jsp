@@ -256,27 +256,10 @@
         
       </script>
 
-		<!--
-      $(document).click(function(e){
+		
+     <!--   $(document).click(function(e){-->
      
-      <script>
-     /*
-      $("#calendar").click(function(e){
-    	  let groupName = localStorage.getItem('groupName');
-    	  let date = sessionStorage.getItem('date');
-    		$.ajax({
-    		 type: "post",
-    	 	 url: "/mola",
-    	 	 data : {groupName : groupName,
-    	 			localDate : date	 
-    	 	 },
-    	 	success: function(t) {
-    	 		console.log(t);
-    	 	}
-    	 }) 
-      });  */
-      </script>
-    -->
+    
     
     </c:if>
     <!-- 로그아웃 cif -->

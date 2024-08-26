@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.semi.forever404.model.vo.BigGroup;
 import com.semi.forever404.model.vo.BigSchedule;
+import com.semi.forever404.model.vo.Money;
 import com.semi.forever404.model.vo.SmallGroup;
 import com.semi.forever404.model.vo.SmallSchedule;
 
@@ -58,5 +59,13 @@ public class GroupService {
 	
 	public BigSchedule selectOneBs(int num) {
 		return mapper.selectOneBs(num);
+	}
+	
+	public List<Money> selectMoney(int num) {
+		return mapper.selectMoney(num);
+	}
+	
+	public void insertMoney(Money money) {
+		mapper.insertMoney(money);
 	}
 }

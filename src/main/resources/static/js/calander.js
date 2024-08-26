@@ -34,6 +34,9 @@ document.addEventListener("DOMContentLoaded", function () {
       if (modal.css("display") === "none") {
         modal.slideUp(400);
       }
+	  let groupName = localStorage.getItem('groupName');
+	      	  let date = sessionStorage.getItem('date');
+	      		
     },
     eventClick: function (info) {
       const modal = $("#bigModal");

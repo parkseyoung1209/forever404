@@ -95,9 +95,7 @@
 		<id column="ss_code" property="ssCode"></id>
 		<result column="memo" property="memo"/>
 		<result column="is_reservation" property="isReservation"/>
-		<result column="use_money" property="useMoney"/>
 		<result column="left_money" property="leftMoney"/>
-		<result column="buying_list" property="buyingList"/>
 		<result column="cur_date" property="curDate"/>
 		<result column="cur_time" property="curTime"/>
 		<result column="service_name" property="serviceName"/>
@@ -135,4 +133,24 @@
 		SELECT * FROM big_schedule
 		WHERE bs_code = #{bsCode}
 	</select>
+	
+	<!-- 돈 관련 테이블(money) -->
+	<resultMap type="Money" id="moneyMap">
+		<id column="m_code" property="MCode"></id>
+		<result column="use_money" property="useMoney"/>
+		<result column="buying_list" property="buyingList"/>
+		<association property="smallSchedule" javaType="SmallSchedule">
+		<id column="ss_code" property="ssCode"></id>
+		</association>
+	</resultMap>
+	
+	<select id="selectMoney" parameterType="int" resultMap="moneyMap">
+		SELECT * FROM money
+		WHERE ss_code = #{ssCode}
+	</select>
+	
+	<insert id="insertMoney" parameterType="Money">
+		INSERT INTO money(use_money, buying_list, ss_code) VALUES (#{useMoney}, #{buyingList}, #{smallSchedule.ssCode})
+	</insert>
+	
 </mapper>
