@@ -16,13 +16,12 @@
 <body>
 	<c:if test="${not empty user}">
 		<jsp:include page="header.jsp" />
-
       <div>
         <div id="calendar-container">
           <div id="calendar"></div>
         </div>
       </div>
-		<!--  
+		<!--
    <div>
     <h1>큰그룹 정보</h1>
 			여행 이름 : <input type="text" id="testTitle" name="title"><br/>
@@ -59,7 +58,6 @@
 				</section>
 			</div>
 		</div>
-
 		<div id="modal2" class="modal">
 			<div class="modalcontent">
 				<p class="close">&times</p>
@@ -79,7 +77,6 @@
 				</section>
 			</div>
 		</div>
-
 		<script>
         $("#attend").click(() => {
           const title = $("#inputatt").val();
@@ -89,7 +86,7 @@
             data: "groupName=" + title,
             success: function (check) {
             	if(check === true){
-            		alert("그룹 참여 성공:)"); 
+            		alert("그룹 참여 성공:)");
             	} else {
             		alert("없는 그룹입니다");
             	}
@@ -175,7 +172,6 @@
 
 		<script src="https://kit.fontawesome.com/ef885bd654.js"
 			crossorigin="anonymous"></script>
-
 		<script>
         //	$(document).on('click', '.groupButton', function() {
         //       buttonId = $(this).attr('id');
@@ -184,11 +180,9 @@
         //       	url : 'selectGroup',
         //      	data : {groupName : buttonId},
         //     		success : function(result) {
-
         //		}
         //     });
         // });
-        
     $("#final").click(() => {
         $.ajax({
           type: "post",
@@ -200,7 +194,7 @@
             entireMoney: $("#entireMoney").val(),
           },
           success: function (result) {
-        	  
+        	 
           	alert("추가됐음!");
           	const id = $("#title2").val();
           	$("#addMemo").html("<button>"+id+"</button>");
@@ -208,9 +202,6 @@
           },
         });
       });
-
-
-        
         $("#add2").click(() => {
           $.ajax({
             type: "post",
@@ -258,27 +249,39 @@
 
 		
      <!--   $(document).click(function(e){-->
-     
-    
-    
+		<!--
+      $(document).click(function(e){
+      <script>
+     /*
+      $("#calendar").click(function(e){
+    	  let groupName = localStorage.getItem('groupName');
+    	  let date = sessionStorage.getItem('date');
+    		$.ajax({
+    		 type: "post",
+    	 	 url: "/mola",
+    	 	 data : {groupName : groupName,
+    	 			localDate : date	
+    	 	 },
+    	 	success: function(t) {
+    	 		console.log(t);
+    	 	}
+    	 })
+      });  */
+      </script>
+    -->
     </c:if>
     <!-- 로그아웃 cif -->
-    
-    
     <c:if test="${empty user}">
       <script>
         location.reload();
         window.location.href = "redirect:/";
       </script>
 	</c:if>
-
-	<!-- 
-    
+	<!--
     <c:forEach items="${bsList}" var="bs">
           ${bs.title} ${bs.entireMoney} ${bs.startDate} ${bs.endDate}
         </c:forEach>
      -->
-
 	<script>
     const bigSchedules = [];
     let schedule = {};
@@ -294,7 +297,6 @@
     </c:forEach>
     console.log(bigSchedules);
     </script>
-
 	<script src="${pageContext.request.contextPath}/js/calander.js"></script>
 </body>
 </html>

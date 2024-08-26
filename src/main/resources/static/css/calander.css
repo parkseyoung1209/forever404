@@ -38,7 +38,7 @@ header {
 .groupButton {
   background-color: transparent;
   border: none;
-  margin-top: 40px;
+  margin-top: 30px;
   cursor: pointer;
 }
 button i {
@@ -59,11 +59,20 @@ button i {
   font-size: 30px;
 }
 .user i {
-  font-size: 60px;
+font-size: 50px;
   position: absolute;
   bottom: 50px;
   left: 40px;
   cursor: pointer;
+  background-color: white;
+  width: 65px;
+  height: 60px;
+  padding-top: 10px;
+  padding-left: 11px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
 }
 .date {
   padding-left: 10px;
@@ -276,7 +285,7 @@ button i {
 
 .mymodal {
   position: absolute;
-  background-color: lightgrey;
+  background-color: white;
   border: #999;
   width: 250px;
   height: 250px;
@@ -294,8 +303,41 @@ button i {
 #logout {
   position: absolute;
   bottom: 10px;
-  left: 100px;
+  border: none;
+  width: 100%;
+  height: 30px;
+  font-weight: bold;
+      border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
 }
+
+#logout:hover {
+  background-color: #0b57d0;
+  color: white;
+  border: none;
+    border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+#logout2 {
+  position: absolute;
+  bottom: 10px;
+  border: none;
+  width: 100%;
+  height: 30px;
+  font-weight: bold;
+      border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+#logout2:hover {
+  background-color: #0b57d0;
+  color: white;
+  border: none;
+    border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
 
 #frm {
   margin-left: 200px;
@@ -619,17 +661,63 @@ button i {
 
 
 .groupButton {
-    width: 70px;
-    height: 70px;
+    width: 80px;
+    height: 80px;
     display: flex;
     justify-content: center;
     align-items: center;
     border-radius: 50%;
     font-size: 24px;
     color: #fff;
-    background-color: #007bff;
-    margin: 10px;
+    background-color: #999;
+    padding: 15px;
+    margin-left: 12px;
     line-height: 1;
     border: none;
     cursor: pointer;
+}
+
+.groupButton:hover {
+	background-color: lightgray;
+}
+
+
+#myHeader {
+  background-color: #fca31d;
+  width: 252px;
+  height: 80px;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+}
+
+#myImg {
+  position: absolute;
+  width: 90px;
+  height: 90px;
+  background-color: #fca31d;
+  font-size: 50px;
+  margin-left: 82px;
+  margin-top: 30px;
+  text-align: center;
+  padding-top: 15px;
+  padding-left: 7px;
+  border: 6px solid black;
+  border-radius: 50%;
+}
+
+#nameSection {
+  width: 100%;
+  height: 80px;
+  background-color: transparent;
+  position: absolute;
+  margin-top: 140px;
+  font-weight: bold;
+  font-size: 1.3rem;
+  text-align: center;
+}
+
+#myId {
+  padding-top: 15px;
+  font-weight: 100;
+  font-size: 1.1rem;
 }
