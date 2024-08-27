@@ -236,6 +236,7 @@
         });
       </script>
  	
+
 		<script>
         $(".add2").click(() => {
          const title = $("#textbox").val().trim();
@@ -289,6 +290,12 @@
       });  */
       </script>
     -->
+
+		
+     <!--   $(document).click(function(e){-->
+     
+    
+    
     </c:if>
     <!-- 로그아웃 cif -->
     <c:if test="${empty user}">

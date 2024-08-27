@@ -208,4 +208,5 @@
 	<select id="selectMyImg" resultMap="photoMap" parameterType="int">
 	SELECT * FROM photo WHERE bs_code=#{bsCode}
 	</select>
+
 </mapper>

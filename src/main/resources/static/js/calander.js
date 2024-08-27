@@ -58,7 +58,7 @@ document.addEventListener("DOMContentLoaded", function () {
       sessionStorage.setItem("date", clickedDate);
       let groupName = localStorage.getItem("groupName");
       let date = sessionStorage.getItem("date");
-     
+
       // 예: 7월 (8월의 경우 7로 설정)
       if (selectedMonth === 0 && month === "January") {
         showModal(clickedDate);
@@ -169,19 +169,6 @@ $("#calendar-container").mouseover((e) => {
   if (content.css("display") != "none") {
     content.fadeOut(200);
   }
-});
-
-const detailButton = document.querySelector(".modsection");
-detailButton.addEventListener("click", () => {
-  const code = linkbs;
-  localStorage.setItem("bsCode", code);
-
-  const url = new URL(location.href + "/detail");
-  const urlParams = url.searchParams;
-
-  urlParams.append("bsCode", code);
-
-  location.href = url;
 });
 
 $(".user").mouseout((e) => {

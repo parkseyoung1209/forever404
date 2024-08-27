@@ -1,6 +1,8 @@
 package com.semi.forever404.service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -93,5 +95,13 @@ public class GroupService {
 	}
 	public List<Photo> selectMyImg(int num) {
 		return mapper.selectMyImg(num);
+	public Map<String, Object> getDateRange(int bsCode) {
+		return mapper.getDateRange(bsCode);
+	}
+	public List<Map<String, Object>> getDateList(String stdDate, String endDate) {
+		 Map<String, Object> paramMap = new HashMap<>();
+	        paramMap.put("stdDate", stdDate);
+	        paramMap.put("endDate", endDate);
+	        return mapper.getDatesList(paramMap);
 	}
 }
