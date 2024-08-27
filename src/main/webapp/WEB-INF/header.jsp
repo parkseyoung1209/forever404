@@ -63,12 +63,24 @@
 	</header>
 	<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
 	<script>
+	$("#logout").click(function () {
+        $.ajax({
+          type: "post",
+          url: "/logout",
+          success : function() {
+        	  window.location.href = "/";
+          }
+        });
+      });
       /* $(document).ready(function () {
         Kakao.init("416439531d0e4d8f33eb240c9b791ffb");*/
       $("#logout2").click(function () {
         $.ajax({
           type: "post",
           url: "/logout",
+          success : function() {
+        	  window.location.href = "/";
+          }
         });
       });
     </script>

@@ -25,12 +25,11 @@
   </head>
   <body>
     <header>
-      <div id="group"><button type="text">그룹</button></div>
+      <div id="group"><a href="/${groupName}">그룹</a></div>
       <section id="date">
         <h1>2024-08-05</h1>
       </section>
     </header>
-
     <main>
       <section class="section1">
         <div id="pay">
@@ -135,14 +134,16 @@
         <span class="close">&times</span>
         <h2>사진 추가</h2>
         <hr />
-        <p>213</p>
-        <p>456</p>
+        <form action="/testupload" method="post" enctype="multipart/form-data">
+        <input type="file" name="files" multiple accept="image/*">
+        <input type="submit" value="전송">
+        
         <div class="add">
-          <button class="add2">추가</button>
+        	<button class="add2">추가</button>
         </div>
+        </form>
       </div>
     </div>
-
     <div id="modal3" class="modal">
       <div class="modalcontent">
         <span class="close">&times</span>

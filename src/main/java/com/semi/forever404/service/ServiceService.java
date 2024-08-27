@@ -46,7 +46,7 @@ public class ServiceService {
 				break;
 			}
 		}
-		
+		Thread.sleep(1000);
 		WebElement tmp2 = driver.findElement(By.xpath("//*[@id=\"rso\"]/div/div/div[1]/div/div/div[1]/div[2]/h3/a/div/div/div/g-img"));
 		tmp2.click();
 		

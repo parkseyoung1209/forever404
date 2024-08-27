@@ -12,6 +12,7 @@
 	href="${pageContext.request.contextPath}css/calander.css" />
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 <script src="${pageContext.request.contextPath}js/index.global.min.js"></script>
+
 </head>
 <body>
 	<c:if test="${not empty user}">
@@ -21,7 +22,25 @@
           <div id="calendar"></div>
         </div>
       </div>
-		<!--
+		
+      
+      <button id="deleteGroup" class="add2">삭제</button>
+      
+      <script>
+      $("#deleteGroup").click(() => {
+    	  let groupName = localStorage.getItem("groupName");
+    	 $.ajax({
+    		 url : '/deleteGroup',
+    		 type : 'post',
+    		 data : 'groupName=' + groupName,
+    		 success : function () {
+    			 window.location.href = "/main";
+    			 
+    		 }
+    	 }); 
+      });
+      </script>
+      <!--
    <div>
     <h1>큰그룹 정보</h1>
 			여행 이름 : <input type="text" id="testTitle" name="title"><br/>
@@ -216,7 +235,7 @@
           });
         });
       </script>
-
+ 	
 		<script>
         $(".add2").click(() => {
          const title = $("#textbox").val().trim();
@@ -235,8 +254,10 @@
                     title +
                     "</span>"
                 );
+             // 사용할 앱의 JavaScript 키를 설정해 주세요.
+              
                 //$('.modal').css("display", "none");
-                location.href = "/main";
+       
               } else {
                 $("#successText").text("사용할 수 없는 그룹명입니다.");
               }

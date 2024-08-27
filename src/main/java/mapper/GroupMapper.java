@@ -7,6 +7,7 @@ import org.apache.ibatis.annotations.Mapper;
 import com.semi.forever404.model.vo.BigGroup;
 import com.semi.forever404.model.vo.BigSchedule;
 import com.semi.forever404.model.vo.Money;
+import com.semi.forever404.model.vo.Photo;
 import com.semi.forever404.model.vo.SmallGroup;
 import com.semi.forever404.model.vo.SmallSchedule;
 
@@ -26,4 +27,15 @@ public interface GroupMapper {
 	BigSchedule selectOneBs(int num);
 	List<Money> selectMoney(int num);
 	void insertMoney(Money money);
+	
+	//그룹 삭제
+	void deleteGroup1 (int num);
+	void deleteGroup2 (int num);
+	void deleteGroup3 (int num);
+	void deleteGroup4 (int num);
+	void deleteGroup5 (int num);
+	
+	//이미지 추가 및 선택
+	void imgLoad (Photo photo); //추가
+	List<Photo> selectMyImg (int num); //선택
 }

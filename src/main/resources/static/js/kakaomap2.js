@@ -262,7 +262,7 @@ function searchLocalPlaces() {
 		bsCode: bsCode,
       },
       success: function () {
-        window.location.href = "/detail";
+        window.location.href = history.back();
       },
     });
   });
