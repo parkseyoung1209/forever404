@@ -15,8 +15,7 @@ import com.semi.forever404.model.vo.BigSchedule;
 import com.semi.forever404.model.vo.Photo;
 import com.semi.forever404.service.GroupService;
 
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpSession;
+
 
 @Controller
 public class ScheduleController {
@@ -25,9 +24,12 @@ public class ScheduleController {
 	@Autowired
 	private GroupService service;
 	
+	@ResponseBody
 	@PostMapping("/testupload")
-	public String testupload(List<MultipartFile> files) throws IllegalStateException, IOException {
+	public void testupload(List<MultipartFile> files, String bsCode) throws IllegalStateException, IOException {
 		Photo photo;
+		
+		int code = Integer.parseInt(bsCode);
 		for(MultipartFile f : files) {
 			UUID uuid = UUID.randomUUID();
 			String fileName = uuid.toString() + "_" + f.getOriginalFilename();
@@ -37,10 +39,10 @@ public class ScheduleController {
 			
 			String url = path + fileName;
 			BigSchedule bg = new BigSchedule();
-			bg.setBsCode(1);
+			bg.setBsCode(code);
 			photo = new Photo(url, bg);
 			service.imgLoad(photo);
 		}
-		return "redirect:/";
+
 	}
 }

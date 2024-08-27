@@ -64,7 +64,9 @@ public class PageController {
 		List<BigSchedule> bsList = service.selectBg(bigSchedule);
 		model.addAttribute("bsList", bsList);
 		session.setAttribute("groupName", groupName);
-		return "main";
+		if(user!=null) return "main";
+		else if(user==null) return "redirect:/";
+		else return null;
 	}
 	
 	@GetMapping("/{groupName}/detail")
@@ -72,6 +74,7 @@ public class PageController {
 //		System.out.println("groupName : " + groupName);
 //		System.out.println("bsCode : " + bsCode);
 		HttpSession session = request.getSession();
+		
 //		BigSchedule bg = (BigSchedule) session.getAttribute("selectB");
 //		System.out.println(bg);
 		
@@ -98,7 +101,8 @@ public class PageController {
 		session.setAttribute("selectSRange", dateRange);
 		System.out.println(dateRange);
 		session.setAttribute("selectS", smallSchedule);
-		return "detail2";
+		if(session.getAttribute("user")!=null) return "detail2";
+		else return "redirect:/";
 	}
 	
 	public List<LocalDate> getDateRange(LocalDate startDate, LocalDate endDate) {

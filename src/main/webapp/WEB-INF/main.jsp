@@ -293,7 +293,6 @@
     <!-- 로그아웃 cif -->
     <c:if test="${empty user}">
       <script>
-        location.reload();
         window.location.href = "redirect:/";
       </script>
 	</c:if>

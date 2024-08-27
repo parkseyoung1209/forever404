@@ -186,7 +186,7 @@
 	</resultMap>
 	<!-- photo 테이블에 이미지 추가 -->
 	<insert id="imgLoad" parameterType="Photo">
-		INSERT INTO photo(photo_url, bs_code) VALUES(#{photoUrl}, #{bsCode})
+		INSERT INTO photo(photo_url, bs_code) VALUES(#{photoUrl}, #{bigSchedule.bsCode})
 	</insert>
 	
 	<select id="selectMyImg" resultMap="photoMap" parameterType="int">

@@ -18,5 +18,4 @@ public class Photo {
 		this.bigSchedule = bigSchedule;
 	}
 	
-	
 }

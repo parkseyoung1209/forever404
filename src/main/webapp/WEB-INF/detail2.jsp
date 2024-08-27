@@ -134,14 +134,49 @@
         <span class="close">&times</span>
         <h2>사진 추가</h2>
         <hr />
-        <form action="/testupload" method="post" enctype="multipart/form-data">
-        <input type="file" name="files" multiple accept="image/*">
-        <input type="submit" value="전송">
+        <form id="fileForm" method="post" enctype="multipart/form-data">
+        <input type="file" name="files" multiple accept="image/*" onchange="imgShow(event)">
         
+        <div id="image_container"></div> 
+        </form>   
         <div class="add">
-        	<button class="add2">추가</button>
+        	<button class="add2" id='fileSubmit'>추가</button>
         </div>
-        </form>
+        <script>
+        let bsCode = localStorage.getItem("bsCode");
+        
+        function imgShow(event) {
+          const container = document.getElementById('image_container');
+          container.innerHTML = ''; // Clear existing images
+          Array.from(event.target.files).forEach(file => {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+              const img = document.createElement('img');
+              img.setAttribute('src', e.target.result);
+              img.style.width = '200px'; // Adjust image size if needed
+              container.appendChild(img);
+            };
+            reader.readAsDataURL(file);
+          });
+        }
+          
+        $("#fileSubmit").click(() => {
+        	const files = new FormData($('#fileForm')[0]);
+        	files.append("bsCode", bsCode);
+        	$.ajax({
+        		type: "POST",
+        		enctype: 'multipart/form-data',	// 필수
+        		data: files,	// 필수
+        		processData: false,	// 필수
+        		contentType: false,	// 필수
+        		cache: false,
+        		url : '/testupload',
+        		success : function() {
+        			console.log('!');
+        		}
+        	});
+        });
+        </script>
       </div>
     </div>
     <div id="modal3" class="modal">
@@ -172,17 +207,6 @@
     		});
     	});
     </script>
-	<script>
-	$(document).ready(() => {
-		$.ajax ({
-			type: "post",
-			url : "dateInfo",
-			success : function () {
-				console.log("!");
-			}
-		});
-	});
-	</script>
     <script>
       $(".btn").click((e) => {
         let content = $(".btn1");
