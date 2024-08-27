@@ -170,6 +170,7 @@ $("#calendar-container").mouseover((e) => {
     content.fadeOut(200);
   }
 });
+
 const detailButton = document.querySelector(".modsection");
 detailButton.addEventListener("click", () => {
   const code = linkbs;
@@ -179,6 +180,7 @@ detailButton.addEventListener("click", () => {
   urlParams.append("bsCode", code);
   location.href = url;
 });
+
 $(".user").mouseout((e) => {
   let content = $(".mymodal");
   if (content.css("display") != "none") {

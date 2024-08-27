@@ -216,7 +216,7 @@ uri="http://java.sun.com/jsp/jstl/core"%>
         });
       });
     </script>
-    <script>
+    <script><%--
       $(".btn").click((e) => {
         let content = $(".btn1");
 
@@ -226,7 +226,7 @@ uri="http://java.sun.com/jsp/jstl/core"%>
           content.slideUp(150);
         }
       });
-
+	--%>
       $(window).resize(() => {
         let content = $(".btn1");
         if ($(window).width() < 1200) {
