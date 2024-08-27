@@ -171,6 +171,16 @@ $("#calendar-container").mouseover((e) => {
   }
 });
 
+const detailButton = document.querySelector(".modsection");
+detailButton.addEventListener("click", () => {
+  const code = linkbs;
+  localStorage.setItem("bsCode", code);
+  const url = new URL(location.href + "/detail");
+  const urlParams = url.searchParams;
+  urlParams.append("bsCode", code);
+  location.href = url;
+});
+
 $(".user").mouseout((e) => {
   let content = $(".mymodal");
   if (content.css("display") != "none") {

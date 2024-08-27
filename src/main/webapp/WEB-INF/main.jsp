@@ -190,8 +190,7 @@
       </div>
 
 		<script src="https://kit.fontawesome.com/ef885bd654.js"
-			crossorigin="anonymous"></script>
-		<script>
+			crossorigin="anonymous"></script><!-- 
         //	$(document).on('click', '.groupButton', function() {
         //       buttonId = $(this).attr('id');
         //       $.ajax({
@@ -201,7 +200,9 @@
         //     		success : function(result) {
         //		}
         //     });
-        // });
+        // }); -->
+        
+    <script>
     $("#final").click(() => {
         $.ajax({
           type: "post",

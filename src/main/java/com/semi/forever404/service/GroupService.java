@@ -95,6 +95,7 @@ public class GroupService {
 	}
 	public List<Photo> selectMyImg(int num) {
 		return mapper.selectMyImg(num);
+	}
 	public Map<String, Object> getDateRange(int bsCode) {
 		return mapper.getDateRange(bsCode);
 	}
