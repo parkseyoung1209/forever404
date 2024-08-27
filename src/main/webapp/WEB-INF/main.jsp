@@ -40,23 +40,6 @@
     	 }); 
       });
       </script>
-      <!--
-   <div>
-    <h1>큰그룹 정보</h1>
-			여행 이름 : <input type="text" id="testTitle" name="title"><br/>
-			시작 날짜 : <input type="text" name="startDate"><br/>
-			종료 날짜 : <input type="text" name="endDate"><br/>
-			총 경비 : <input type="text" name="entireMoney"><br/>
-			<input type="submit" value="큰그룹정보" id="add">
-	</div>
-	<h1>작은그룹 정보</h1>
-		<form id="frm2">
-			메모 : <input type="text" name="memo" id="memo"><br/>
-			종류 : <input type="text" name="items" id="items"><br/>
-			예약여부 : <input type="text" name="isReservation" id="isReservation"><br/>
-			<input type="button" value="작은그룹" id="add2">
-		</form>
-	-->
 		<div id="modal1" class="modal">
 			<div class="modalcontent">
 				<p class="close">&times</p>
@@ -191,17 +174,7 @@
 
 		<script src="https://kit.fontawesome.com/ef885bd654.js"
 			crossorigin="anonymous"></script>
-		<script>
-        //	$(document).on('click', '.groupButton', function() {
-        //       buttonId = $(this).attr('id');
-        //       $.ajax({
-        //       	type : 'post',
-        //       	url : 'selectGroup',
-        //      	data : {groupName : buttonId},
-        //     		success : function(result) {
-        //		}
-        //     });
-        // });
+	<script>	
     $("#final").click(() => {
         $.ajax({
           type: "post",
@@ -235,8 +208,7 @@
           });
         });
       </script>
- 	
-
+ 
 		<script>
         $(".add2").click(() => {
          const title = $("#textbox").val().trim();
@@ -265,37 +237,9 @@
             },
           });
         });
-        
-        
-      </script>
-      
 
-		<!--
-      $(document).click(function(e){
-      <script>
-     /*
-      $("#calendar").click(function(e){
-    	  let groupName = localStorage.getItem('groupName');
-    	  let date = sessionStorage.getItem('date');
-    		$.ajax({
-    		 type: "post",
-    	 	 url: "/mola",
-    	 	 data : {groupName : groupName,
-    	 			localDate : date	
-    	 	 },
-    	 	success: function(t) {
-    	 		console.log(t);
-    	 	}
-    	 })
-      });  */
       </script>
-    -->
 
-		
-     <!--   $(document).click(function(e){-->
-     
-    
-    
     </c:if>
     <!-- 로그아웃 cif -->
     <c:if test="${empty user}">
@@ -303,11 +247,6 @@
         window.location.href = "redirect:/";
       </script>
 	</c:if>
-	<!--
-    <c:forEach items="${bsList}" var="bs">
-          ${bs.title} ${bs.entireMoney} ${bs.startDate} ${bs.endDate}
-        </c:forEach>
-     -->
 	<script>
     const bigSchedules = [];
     let schedule = {};

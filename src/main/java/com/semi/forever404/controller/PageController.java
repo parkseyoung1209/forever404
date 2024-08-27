@@ -149,19 +149,5 @@ public class PageController {
 
 		return dates;
 	}
-	 @PostMapping("/mola")
-	    @ResponseBody
-	    public Map<String, Object> processGroupName(@RequestBody Map<String, String> requestData) {
-	        String groupName = requestData.get("groupName");
 
-	        // 데이터 처리 로직
-	        System.out.println("Group Name: " + groupName);
-
-	        // 응답 데이터 준비
-	        Map<String, Object> response = new HashMap<>();
-	        response.put("status", "success");
-	        response.put("groupName", groupName);
-
-	        return response;
-	    }
 }
