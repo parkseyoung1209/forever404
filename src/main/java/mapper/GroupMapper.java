@@ -1,6 +1,7 @@
 package mapper;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
 
@@ -26,4 +27,6 @@ public interface GroupMapper {
 	BigSchedule selectOneBs(int num);
 	List<Money> selectMoney(int num);
 	void insertMoney(Money money);
+	List<Map<String, Object>> getDatesList (Map<String, Object> paramMap);
+	Map<String, Object> getDateRange(int bsCode);
 }

@@ -134,6 +134,22 @@
 		WHERE bs_code = #{bsCode}
 	</select>
 	
+	<select id="getDateRange" parameterType="int" resultType="map">
+    SELECT startDate AS stdDate, endDate AS endDate
+    FROM Schedule
+    WHERE bsCode = #{bsCode}
+</select>
+	
+	<select id="getDatesList" parameterType="map" resultType="map">
+		WITH RECURSIVE T AS (
+			SELECT #{stdDate} AS date
+			UNION ALL
+			SELECT date + INTERVAL 1 DAY
+			  FROM T WHERE date <![CDATA[ < ]]> #{endDate}
+			)
+			SELECT * FROM T;
+	</select>
+	
 	<!-- 돈 관련 테이블(money) -->
 	<resultMap type="Money" id="moneyMap">
 		<id column="m_code" property="MCode"></id>
@@ -153,4 +169,5 @@
 		INSERT INTO money(use_money, buying_list, ss_code) VALUES (#{useMoney}, #{buyingList}, #{smallSchedule.ssCode})
 	</insert>
 	
+
 </mapper>

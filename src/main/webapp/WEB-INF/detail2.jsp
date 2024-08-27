@@ -25,15 +25,18 @@
   </head>
   <body>
     <header>
-      <div id="group"><button type="text">그룹</button></div>
+      <div id="group"><button type="text" class="group">그룹</button></div>
       <section id="date">
-        <h1>2024-08-05</h1>
+      <c:forEach items="${selectSRange}" var="date">
+      <div class="date" data-date="${date}"></div>
+		</c:forEach>
+				<h1 id="h1date">"${date}"</h1>
       </section>
     </header>
 
     <main>
       <section class="section1">
-        <div id="pay">
+        <div id="pay"> <span id="bsCode" style="display: none"> ${param.bsCode} </span>
         <c:forEach items="${selectS}" var="ssss">
     		${ssss.bigSchedule.bsCode}
     	</c:forEach>
@@ -41,12 +44,10 @@
         	${m.useMoney}
         </c:forEach>
           <p>남은금액 : 300,000원</p>
-          <br />
           <p>총 지불금액 : 250,000원</p>
-          <br />
           <p>지불품목 : 바닐라라떼, 케이크</p>
-          <br />
           <p>사용금액 : 50,000원</p>
+          <button id="payPlus">추가</button>
         </div>
       </section>
       <div id="time1" class="time"><p>09:00</p></div>
@@ -59,6 +60,7 @@
             <div class="title"><h2>타이틀</h2></div>
             <p>위치</p>
             <p>영업시간</p>
+            <button id="imgPlus">추가</button>
           </div>
         </section>
       </div>
@@ -82,12 +84,12 @@
       <button id="button4" class="btn1">사진 추가</button>
       <button id="button5" class="btn1">지불 품목</button>
       <button id="plus" class="btn">
-        <i class="bi bi-plus-circle-fill"></i>
+        <i class="bi bi-plus-square"></i>
       </button>
     </section>
     
     <script>
-    const kakaobtn = document.querySelector("#button3");
+    const kakaobtn = document.querySelector("#plus");
     kakaobtn.addEventListener("click", () => {
      	
     	window.location.href="/kakao/map"
@@ -172,7 +174,7 @@
     	});
     </script>
 	<script>
-	$(document).ready(() => {
+	/* $(document).ready(() => {
 		$.ajax ({
 			type: "post",
 			url : "dateInfo",
@@ -180,9 +182,11 @@
 				console.log("!");
 			}
 		});
-	});
+	}); */
 	</script>
-    <script>
+	
+	
+    <script>/*
       $(".btn").click((e) => {
         let content = $(".btn1");
 
@@ -192,6 +196,7 @@
           content.slideUp(150);
         }
       });
+    */
       $(window).resize(() => {
         let content = $(".btn1");
         if ($(window).width() < 1200) {
@@ -204,33 +209,125 @@
         $("#modal1").css("display", "block");
       });
 		*/
-		
-      $(".close").click(function () {
-        $(".modal").css("display", "none");
-      });
+		/*
+		  $(".btn").click(function () {
+		        $("#modal1").css("display", "block");
+		      });
+*/
+		      $(".close").click(function () {
+		        $(".modal").css("display", "none");
+		      });
 
-      $(window).click(function (event) {
-        if ($(event.target).is(".modal")) {
-          $(".modal").css("display", "none");
-        }
-      });
+		      $(window).click(function (event) {
+		        if ($(event.target).is(".modal")) {
+		          $(".modal").css("display", "none");
+		        }
+		      });
 
-      $(document).keydown(function (event) {
-        if (event.keyCode == 27) {
-          $(".modal").css("display", "none");
-        }
-      });
+		      $(document).keydown(function (event) {
+		        if (event.keyCode == 27) {
+		          $(".modal").css("display", "none");
+		        }
+		      });
 
-      $("#button4").click(function () {
-        $("#modal2").css("display", "block");
-      });
+		      $("#imgPlus").click(function () {
+		        $("#modal2").css("display", "block");
+		      });
 
-      $("#button5").click(function () {
-        $("#modal3").css("display", "block");
-      });
+		      $("#payPlus").click(function () {
+		        $("#modal3").css("display", "block");
+		      });
       // $("#schedule").click(function () {
       // $(".section").show().css("display", "block");
       // });
     </script>
+    
+     <script type="text/javascript">
+        const dateList = ${selectSRange};
+    </script>
+    
+   <script>
+   <%--
+   $(document).ready(function () {
+	   const bsCode = $('#bsCode').text();
+	   //stdDate, endDate는 main-modal에서 click event 발생할 때 가져와서 세팅한다
+	   const data = { bsCode: bsCode }
+	    $.ajax({
+		   type: "post",
+		   url: "/{groupName}/detail/selectList",
+		   data: JSON.stringify(data),
+		   dataType: 'json',
+		   contentType: 'application/json; charset=utf-8',
+		   success : function(result) {
+			   //시작일 ~ 종료일 배열값을 배열변수 dateList에 넣는다
+			   dateList = result.list; 
+			   //시작일을 #h1date에 세팅한다
+			   $("#h1date").text(dateList[0].date);
+			   //버튼처리를 위한 함수
+			   bindEvents(dateList);
+		   },
+	   });
+   });
+--%>
+
+
+
+   	$(document).ready(function () {
+   	  const dateElements = document.querySelectorAll('.date');
+   	  const dateList = Array.from(dateElements).map(el => el.getAttribute('data-date'));
+	    <%-- const dateList = ${selectSRange}; --%>
+	    let currentIndex = 0;
+
+	    function updateDate(index) {
+	        if (index >= 0 && index < dateList.length) {
+	            $("#h1date").text(dateList[index]);
+	        }
+	    }
+	    
+		$('#nextBtn1').click(() => {
+			console.log("클릭반응!");
+	        if (currentIndex < dateList.length - 1) {
+	            currentIndex++;
+	            updateDate(currentIndex);
+	        }
+	    });
+
+	    $('#nextBtn2').click(() => {
+	    	console.log("클릭반응222");
+	        if (currentIndex > 0) {
+	            currentIndex--;
+	            updateDate(currentIndex);
+	        }
+	    });
+
+
+	    
+	    if(dateList.length > 0) {
+	    	updateDate(currentIndex);
+	    }
+   	});
+   
+   </script>
+   
+   <script>
+   $(document).ready(function() {
+	      let groupName = localStorage.getItem("groupName");
+	      $.ajax({
+	        type: "post",
+	        url: "/mola",
+	        contentType: "application/json; charset=utf-8",
+	        data: JSON.stringify({ groupName: groupName }),
+	        dataType: "json",
+	        success: function(response) {
+	        	let miniTitle = response.groupName.substring(0, 2);
+	        	$('.group').text(miniTitle);
+	        },
+	        error: function(xhr, status, error) {
+	          console.error("Error:", error);
+	        }
+	      });
+	    });
+   </script>
+   
   </body>
 </html>

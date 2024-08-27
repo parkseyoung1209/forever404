@@ -229,6 +229,7 @@ public class GroupController {
 		smallSchedule.setBigSchedule(service.selectOneBs(bsCode));
 		System.out.println(smallSchedule.getBigSchedule());
 		
+		
 //		CurDate 값 수정 필요(front한테 받기)
 		smallSchedule.setCurDate("2024-08-22");
 		
@@ -249,4 +250,6 @@ public class GroupController {
 		System.out.println(money);
 		service.insertMoney(money);
 	}
+	
+	
 }
