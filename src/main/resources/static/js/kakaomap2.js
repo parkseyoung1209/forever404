@@ -19,6 +19,7 @@ var mapContainer = document.getElementById("map"), // 지도를 표시할 div
 
 // 지도 생성
 var map = new kakao.maps.Map(mapContainer, mapOption);
+var category = document.getElementById('category');
 
 /* 지역 선택
 var areas = {
@@ -50,12 +51,13 @@ function searchLocalPlaces() {
     if (status === kakao.maps.services.Status.OK) {
       const place1 = result[0]; // 검색 결과의 첫 번째 항목 선택
       const latLng = new kakao.maps.LatLng(place1.y, place1.x);
-
+	
       // 지도 중심을 검색된 위치로 이동하고, 줌 레벨을 조정
       map.setCenter(latLng);
       map.setLevel(8); // 레벨은 1에서 14까지 조정 가능 (작을수록 확대)
 
       // 검색 결과를 마커로 표시
+	  category.style.display='block';
       new kakao.maps.Marker({
         map: map,
         position: latLng,
@@ -110,9 +112,9 @@ function searchLocalPlaces() {
       // 정상적으로 검색이 완료됐으면 지도에 마커를 표출합니다
       displayPlaces(data);
     } else if (status === kakao.maps.services.Status.ZERO_RESULT) {
-      // 검색결과가 없는경우 해야할 처리
+      alert("검색 결과가 없습니다!")
     } else if (status === kakao.maps.services.Status.ERROR) {
-      // 에러로 인해 검색결과가 나오지 않은 경우 해야할 처리
+      alert("다시 입력해주세요")
     }
   }
 
@@ -247,6 +249,7 @@ function searchLocalPlaces() {
 
   // 각 카테고리에 클릭 이벤트를 등록합니다
   $("#ssTest").click(() => {
+	let curDate = sessionStorage.getItem("date");
     $.ajax({
       type: "post",
       url: "/scheduleAdd2",
@@ -260,6 +263,7 @@ function searchLocalPlaces() {
         isReservation: $("#isReservation").val(),
         curTime: $("#time").val(),
 		bsCode: bsCode,
+		curDate : curDate
       },
       success: function () {
         window.location.href = history.back();

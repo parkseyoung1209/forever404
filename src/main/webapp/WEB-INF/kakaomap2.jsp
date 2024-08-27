@@ -12,6 +12,7 @@
 <script src="https://kit.fontawesome.com/ef885bd654.js" crossorigin="anonymous"></script>
 </head>
 <body>
+
 <div class="search_menu">
 		<div>
 			<form onsubmit="searchLocalPlaces(); return false;">

@@ -60,6 +60,10 @@
 	<result column="birth" property="birth"></result>
 	</collection>
 	</resultMap>
+	<select id="selectSmallGroup" resultMap="groupMap" parameterType="String">
+	SELECT * FROM small_group
+	WHERE id = #{id}
+	</select>
 	<insert id="addSmGroup" parameterType="SmallGroup">
 	INSERT INTO small_group(id, bg_group_code) VALUES(#{user.id}, #{bigGroup.bgGroupCode})
 	</insert>
