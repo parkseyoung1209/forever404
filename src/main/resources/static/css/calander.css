@@ -502,6 +502,20 @@ button i {
   margin-top: 10px;
   cursor: pointer;
 }
+#seven {
+	font-size: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  background-color: black;
+  width: 80px;
+  height: 80px;
+  border-radius: 100px;
+  margin-left: 410px;
+  margin-top: 10px;
+  cursor: pointer;
+}
 #detModal {
   display: none;
   position: fixed;

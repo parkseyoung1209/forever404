@@ -157,6 +157,7 @@ uri="http://java.sun.com/jsp/jstl/core"%>
           <div  id="memoSection3">여행 경비 :<p id=addMemop3></p>원</div>
           </div>
           <button class="modsection" id="six">추가</button>
+          <button class="modsection" id="seven">앨범</button>
         </div>
       </div>
 
