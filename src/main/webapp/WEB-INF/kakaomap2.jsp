@@ -143,14 +143,14 @@
       });
 
       const apiUrl = "https://api.openai.com/v1/chat/completions";
-      const apiKey = "sk-XOqUmArii_dNjTqmEdt0U7FhdfvS2KRrJhh0I3W79GT3BlbkFJTbqKK1RFu1-Q1TlgWGDLm7mx5nWlIWCmKK45XDevgA";
+      
       async function fetchData(apiUrl) {
         try {
     // fetch를 사용하여 API를 호출합니다.
     const response = await fetch(apiUrl ,{
         method : 'POST',
         headers : {
-          'Authorization': `Bearer sk-XOqUmArii_dNjTqmEdt0U7FhdfvS2KRrJhh0I3W79GT3BlbkFJTbqKK1RFu1-Q1TlgWGDLm7mx5nWlIWCmKK45XDevgA`, // API 문서에 따라 Authorization 헤더 사용
+          'Authorization': `Bearer `, // API 문서에 따라 Authorization 헤더 사용
           'Content-Type': 'application/json'
         },
         body : JSON.stringify({
