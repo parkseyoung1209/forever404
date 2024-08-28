@@ -16,11 +16,40 @@ var mapContainer = document.getElementById("map"), // 지도를 표시할 div
     center: new kakao.maps.LatLng(36.5, 127.5), // 지도 초기 중심 좌표 (한국 중앙)
     level: 13, // 지도의 확대 레벨
   };
+/*
+function currentLocation() {
+	// HTML5의 geolocation으로 사용할 수 있는지 확인합니다
+	if (navigator.geolocation) {
 
 // 지도 생성
 var map = new kakao.maps.Map(mapContainer, mapOption);
 var category = document.getElementById('category');
+		// GeoLocation을 이용해서 접속 위치를 얻어옵니다
+		navigator.geolocation.getCurrentPosition(function(position) {
 
+			lat = position.coords.latitude, // 위도
+			lng = position.coords.longitude; // 경도
+
+			mapOption = {
+				center: new kakao.maps.LatLng(lat, lng),
+				level:8,
+			}; // 마커가 표시될 위치를 geolocation으로 얻어온 좌표로 생성합니다
+			var message = '<div style="padding:5px;">현위치</div>'; // 인포윈도우에 표시될 내용입니다
+			 // 지도 생성
+            map = new kakao.maps.Map(mapContainer, mapOption);
+            
+            // 마커와 인포윈도우를 표시합니다
+            displayMarker(map, mapOption, message);
+        });
+    } else {
+        alert("Geolocation is not supported by this browser.");
+    }
+}
+
+// 지도 생성 시 currentLocation 함수 호출
+currentLocation();
+
+*/
 /* 지역 선택
 var areas = {
         'gyeonggi': {center: new kakao.maps.LatLng(37.4138, 127.5183), level: 11}, // 경기도 중심좌표
@@ -41,6 +70,9 @@ var areas = {
     }
 */
 
+// 지도 생성
+var map = new kakao.maps.Map(mapContainer, mapOption);
+
 // 장소 검색 객체를 생성합니다
 var ps = new kakao.maps.services.Places(map);
 
@@ -51,13 +83,13 @@ function searchLocalPlaces() {
     if (status === kakao.maps.services.Status.OK) {
       const place1 = result[0]; // 검색 결과의 첫 번째 항목 선택
       const latLng = new kakao.maps.LatLng(place1.y, place1.x);
-	
+
       // 지도 중심을 검색된 위치로 이동하고, 줌 레벨을 조정
       map.setCenter(latLng);
       map.setLevel(8); // 레벨은 1에서 14까지 조정 가능 (작을수록 확대)
 
       // 검색 결과를 마커로 표시
-	  category.style.display='block';
+      category.style.display = "block";
       new kakao.maps.Marker({
         map: map,
         position: latLng,
@@ -112,9 +144,9 @@ function searchLocalPlaces() {
       // 정상적으로 검색이 완료됐으면 지도에 마커를 표출합니다
       displayPlaces(data);
     } else if (status === kakao.maps.services.Status.ZERO_RESULT) {
-      alert("검색 결과가 없습니다!")
+      alert("검색 결과가 없습니다!");
     } else if (status === kakao.maps.services.Status.ERROR) {
-      alert("다시 입력해주세요")
+      alert("다시 입력해주세요");
     }
   }
 
@@ -227,29 +259,27 @@ function searchLocalPlaces() {
     placeOverlay.setPosition(new kakao.maps.LatLng(place.y, place.x));
     placeOverlay.setMap(map);
 
-	
-	
     $("#btn").click(() => {
       title = place.place_name;
       addr = place.address_name;
       lat = place.x;
       lng = place.y;
       phone = place.phone;
-	  bsCode = localStorage.getItem("bsCode");
-	  
-	  const serviceName = document.querySelector("#serviceName");
-	  const serviceJibun = document.querySelector("#serviceJibun");
-	  const servicePhone = document.querySelector("#servicePhone");
-	  
-	  serviceName.innerHTML = "장소 이름 : " + title;
-	  serviceJibun.innerHTML = "주소 : " + addr;
-	  servicePhone.innerHTML = "전화번호" + phone;
+      bsCode = localStorage.getItem("bsCode");
+
+      const serviceName = document.querySelector("#serviceName");
+      const serviceJibun = document.querySelector("#serviceJibun");
+      const servicePhone = document.querySelector("#servicePhone");
+
+      serviceName.innerHTML = "장소 이름 : " + title;
+      serviceJibun.innerHTML = "주소 : " + addr;
+      servicePhone.innerHTML = "전화번호" + phone;
     });
   }
 
   // 각 카테고리에 클릭 이벤트를 등록합니다
   $("#ssTest").click(() => {
-	let curDate = sessionStorage.getItem("date");
+    let curDate = sessionStorage.getItem("date");
     $.ajax({
       type: "post",
       url: "/scheduleAdd2",
@@ -262,8 +292,8 @@ function searchLocalPlaces() {
         memo: $("#memo").val(),
         isReservation: $("#isReservation").val(),
         curTime: $("#time").val(),
-		bsCode: bsCode,
-		curDate : curDate
+        bsCode: bsCode,
+        curDate: curDate,
       },
       success: function () {
         window.location.href = history.back();
