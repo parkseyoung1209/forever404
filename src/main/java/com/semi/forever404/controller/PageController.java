@@ -35,8 +35,11 @@ public class PageController {
 
 	
 	@GetMapping("/")
-	public String index() {
-		return "index";
+	public String index(HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		User user = (User) session.getAttribute("user");
+		if(user!=null) return "movement";
+		else return "index";
 	}
 	@GetMapping("/register")
 	public String register() {

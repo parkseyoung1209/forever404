@@ -21,6 +21,7 @@
   <body>
   <c:if test="${not empty user}">
   	<script>
+  	location.reload();
   	window.location.href = "/movement";
   	</script>
   </c:if>

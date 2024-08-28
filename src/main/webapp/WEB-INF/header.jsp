@@ -112,9 +112,9 @@
             data: "groupName=" + title,
             success: function (check) {
             	if(check === true){
-            		alert("그룹 참여 성공:)");
+            		alert("그룹 참여 성공");
             	} else {
-            		alert("없는 그룹입니다");
+            		alert("그룹 참여 실패");
             	}
             	location.reload();
             },
