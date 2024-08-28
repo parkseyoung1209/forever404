@@ -138,26 +138,26 @@ uri="http://java.sun.com/jsp/jstl/core"%>
       </div>
     </div>
 -->
-    <div id="modal2" class="modal">
-      <div class="modalcontent">
-        <span class="close">&times</span>
-        <h2>사진 추가</h2>
-        <hr />
-        <form id="fileForm" method="post" enctype="multipart/form-data">
-          <input
-            type="file"
-            name="files"
-            multiple
-            accept="image/*"
-            onchange="imgShow(event)"
-          />
+	<div id="modal2" class="modal">
+		<div class="modalcontent">
+			<span class="close">&times</span>
+			<h2>사진 추가</h2>
+			<hr />
+			<form id="fileForm" method="post" enctype="multipart/form-data">
+				<div class=fileContainer>
+					<label for="file" class="upload"><div>+</div></label> <input
+						id="file" type="file" name="files" multiple accept="image/*"
+						onchange="imgShow(event)" value="+" placeholder="+" />
+					<div id="image_container"></div>
+				</div>
 
-          <div id="image_container"></div>
-        </form>
-        <div class="add">
-          <button class="add2" id="fileSubmit">추가</button>
-        </div>
-        <script>
+			</form>
+			<section class="addSection">
+				<button class="add2" id="fileSubmit">업로드</button>
+			</section>
+		</div>
+	</div>
+	<script>
           let bsCode = localStorage.getItem("bsCode");
 
           function imgShow(event) {
@@ -168,7 +168,6 @@ uri="http://java.sun.com/jsp/jstl/core"%>
               reader.onload = function (e) {
                 const img = document.createElement("img");
                 img.setAttribute("src", e.target.result);
-                img.style.width = "200px"; // Adjust image size if needed
                 container.appendChild(img);
               };
               reader.readAsDataURL(file);
@@ -298,7 +297,6 @@ uri="http://java.sun.com/jsp/jstl/core"%>
       	    }
 						
       		$('#nextBtn1').click(() => {
-      			console.log("클릭반응!");
       	        if (currentIndex < dateList.length - 1) {
       	            currentIndex++;
       	            updateDate(currentIndex);
@@ -306,7 +304,6 @@ uri="http://java.sun.com/jsp/jstl/core"%>
       	    });
 
       	    $('#nextBtn2').click(() => {
-      	    	console.log("클릭반응222");
       	        if (currentIndex > 0) {
       	            currentIndex--;
       	            updateDate(currentIndex);
@@ -339,6 +336,9 @@ uri="http://java.sun.com/jsp/jstl/core"%>
           },
         });
       });
+    </script>
+    
+    <script>
     </script>
   </body>
 </html>
