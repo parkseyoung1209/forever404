@@ -29,9 +29,6 @@ import jakarta.servlet.http.HttpSession;
 public class UserController {
 	@Autowired
 	private UserService service;
-	@Autowired
-	private GroupService gpService;
-	
 	
 	@ResponseBody
 	@PostMapping("/signUp")

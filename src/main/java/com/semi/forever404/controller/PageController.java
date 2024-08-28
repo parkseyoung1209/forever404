@@ -61,7 +61,6 @@ public class PageController {
 		if(user!=null) {
 		List<SmallGroup> list = service.selectSmallGroup(user.getId());
 		session.setAttribute("smlist", list);
-		System.out.println(list);
 		
 		if(list.isEmpty()) {
 			session.setAttribute("check", false);
@@ -102,12 +101,9 @@ public class PageController {
 	
 	@GetMapping("/{groupName}/detail")
 	public String detail(@PathVariable String groupName, @RequestParam int bsCode, HttpServletRequest request, Model model) {
-		
 	
 		HttpSession session = request.getSession();
-		
-//		BigSchedule bg = (BigSchedule) session.getAttribute("selectB");
-		
+
 		List<SmallSchedule> smallSchedule = service.selectOneSc(bsCode);
 		BigSchedule tmp = service.selectOneBs(bsCode);
 		
@@ -125,10 +121,9 @@ public class PageController {
 		}
 		session.setAttribute("selectSRange", dateRange);
 		model.addAttribute("selectSRange", dateRange.stream().map(LocalDate::toString).collect(Collectors.toList()));
-		System.out.println(dateRange);
 		session.setAttribute("selectS", smallSchedule);
-		if(session.getAttribute("user")!=null) return "detail2";
-		else return "redirect:/";
+		return "detail2";
+		
 	}
 	/*
 	@ResponseBody
@@ -177,8 +172,7 @@ public class PageController {
     @ResponseBody
     public Map<String, Object> processGroupName(@RequestBody Map<String, String> requestData) {
         String groupName = requestData.get("groupName");
-        // 데이터 처리 로직
-        System.out.println("Group Name: " + groupName);
+    
         // 응답 데이터 준비
         Map<String, Object> response = new HashMap<>();
         response.put("status", "success");

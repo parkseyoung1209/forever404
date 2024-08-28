@@ -133,19 +133,22 @@
           success : function() {
         	  alert("로그아웃 처리 되었습니다!");
         	  localStorage.clear();
+        	  sessionStorage.clear();
         	  window.location.href = "/";
           }
         });
       });
-      /* $(document).ready(function () {
-        Kakao.init("416439531d0e4d8f33eb240c9b791ffb");*/
+      /* $(document).ready(function () {*/
+        Kakao.init("416439531d0e4d8f33eb240c9b791ffb");
       $("#logout2").click(function () {
         $.ajax({
           type: "post",
           url: "/logout",
           success : function() {
+        	  Kakao.Auth.logout();
         	  alert("로그아웃 처리 되었습니다!");
         	  localStorage.clear();
+        	  sessionStorage.clear();
         	  window.location.href = "/";
           }
         });

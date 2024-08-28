@@ -30,6 +30,12 @@ uri="http://java.sun.com/jsp/jstl/core"%>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
   </head>
   <body>
+  	<script>
+  	<c:if test="${empty user}">
+  	alert("로그인 세션 만료!");
+  	window:location.href = "/";
+  	</c:if>
+  	</script>
     <header>
       <!-- <div id="group"><a href="/${groupName}">그룹</a></div> -->
       <div id="group"><button type="text" class="group" onclick="location.href='/${groupName}';">그룹</button></div>

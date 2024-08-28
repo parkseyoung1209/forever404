@@ -86,7 +86,7 @@ function searchLocalPlaces() {
 
       // 지도 중심을 검색된 위치로 이동하고, 줌 레벨을 조정
       map.setCenter(latLng);
-      map.setLevel(8); // 레벨은 1에서 14까지 조정 가능 (작을수록 확대)
+      map.setLevel(3); // 레벨은 1에서 14까지 조정 가능 (작을수록 확대)
 
       // 검색 결과를 마커로 표시
       category.style.display = "block";

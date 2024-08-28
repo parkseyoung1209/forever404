@@ -47,7 +47,7 @@ public class GroupController {
 			}
 			HttpSession session = request.getSession();
 			User user = (User) session.getAttribute("user");
-			if(!bigGroup.getGroupName().equals("")) {
+			if(!bigGroup.getGroupName().equals("") && !bigGroup.getGroupName().contains(" ")) {
 				service.addGroup(bigGroup);
 				BigGroup bg = service.searchBgCode(groupName);
 				String id =user.getId();
@@ -123,21 +123,18 @@ public class GroupController {
 	
 	@ResponseBody
 	@PostMapping("/scheduleAdd")
-	public void schduleAdd(HttpServletRequest request, BigSchedule bigSchedule, Model model) throws ParseException {
+	public boolean schduleAdd(HttpServletRequest request, BigSchedule bigSchedule, Model model) throws ParseException {
 		String groupName = request.getHeader("referer").substring(22);
-		
 		BigGroup bg = service.searchBgCode(groupName);
 		int num = bg.getBgGroupCode();
 		List<BigSchedule> bs = service.searchBsCode(num);
 		
 		HttpSession session = request.getSession();
 		User user = (User) session.getAttribute("user");
-		String id = user.getId();
 		bigSchedule.setBigGroup(bg);
 		bigSchedule.setUser(user);
 		
 		// 컬러 추가
-		Random random = new Random();
 
 		int rand1 = (int)(Math.random()*256);
 		int rand2 = (int)(Math.random()*256);
@@ -182,17 +179,15 @@ public class GroupController {
 				count++;
 			}
 		}
-		
 		if(count >= 1) {
-			System.out.println("추가 불가");
+			return false;
 		} else {
-			System.out.println("추가 성공");
 			service.scheduleAdd(bigSchedule);
+			return true;
 		}
 
 	}
 	
-
 	@ResponseBody
 	@PostMapping("/scheduleAdd2")
 	public void scheduleAdd2(HttpServletRequest request, SmallSchedule smallSchedule, int bsCode, String curDate)  {

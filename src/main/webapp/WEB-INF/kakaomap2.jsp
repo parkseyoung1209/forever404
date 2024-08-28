@@ -141,6 +141,39 @@
             $("#button1").css("marginLeft", "0px");
           });
       });
+
+      const apiUrl = "https://api.openai.com/v1/chat/completions";
+      const apiKey = "sk-XOqUmArii_dNjTqmEdt0U7FhdfvS2KRrJhh0I3W79GT3BlbkFJTbqKK1RFu1-Q1TlgWGDLm7mx5nWlIWCmKK45XDevgA";
+      async function fetchData(apiUrl) {
+        try {
+    // fetch를 사용하여 API를 호출합니다.
+    const response = await fetch(apiUrl ,{
+        method : 'POST',
+        headers : {
+          'Authorization': `Bearer sk-XOqUmArii_dNjTqmEdt0U7FhdfvS2KRrJhh0I3W79GT3BlbkFJTbqKK1RFu1-Q1TlgWGDLm7mx5nWlIWCmKK45XDevgA`, // API 문서에 따라 Authorization 헤더 사용
+          'Content-Type': 'application/json'
+        },
+        body : JSON.stringify({
+          "model": "gpt-4o-mini",
+          "temperature": 0.7,
+          "messages": [{"role": "user", "content": "서울 여행지 하나 추천해줘"}]
+        })
+    });
+    const data = await response.json();
+    return data;
+      } catch (error) {
+    // 오류를 처리합니다.
+    console.error('Error fetching data:', error);
+    throw error; // 호출자에게 오류를 전달합니다.
+  }
+    }
+      fetchData(apiUrl , apiKey)
+          .then(data => {
+              console.log('Data received:', data);
+              })
+              .catch(error => {
+                 console.error('Error:', error);
+              });
     </script>
 </body>
 </html>
