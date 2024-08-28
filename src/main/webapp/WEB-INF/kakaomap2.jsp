@@ -7,20 +7,20 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-<link rel="stylesheet"
-      href="${pageContext.request.contextPath}/css/kakaomap2.css" />
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/kakaomap2.css" />
 <script src="https://kit.fontawesome.com/ef885bd654.js" crossorigin="anonymous"></script>
 </head>
 <body>
+<img src="http://192.168.10.28:8080/storage/b2ba4bea-0122-4990-9059-52fd75476474_hoseob.jpg" width="200px" />
+
 <div class="search_menu">
-		<div>
-			<form onsubmit="searchLocalPlaces(); return false;">
-				위치 검색 : <input type="text" id="keyword" size="15">
-				<button type="submit" id="bttn"><i class="fa-solid fa-magnifying-glass"></i></button>
-			</form>
-		</div>
+	<div>
+		<form onsubmit="searchLocalPlaces(); return false;">
+			위치 검색 : <input type="text" id="keyword" size="15">
+			<button type="submit" id="bttn"><i class="fa-solid fa-magnifying-glass"></i></button>
+		</form>
 	</div>
-	
+</div>
 
 <div class="map_wrap">
 	<div id="map" style="width:900px;height:500px;position:relative;overflow:hidden;"></div>
@@ -49,15 +49,15 @@
 </div>
 
 <div class="testtesttest">
-    <h1>테스트</h1>
-   			메모 : <input type="text" id="memo" name="memo"><br/>
-			<p>예약
+   <h1>테스트</h1>
+		메모 : <input type="text" id="memo" name="memo"><br/>
+		<p>예약
 			<select id="isReservation">
 				<option value="Y">Y</option>
 				<option value="N">N</option>
 			</select>
-			</p>
-			<p>시간
+		</p>
+		<p>시간
 			<select id="time">
 				<option value="0">0시</option>
 				<option value="1">1시</option>
@@ -84,17 +84,16 @@
 				<option value="22">22시</option>
 				<option value="23">23시</option>
 			</select>
-			</p>
-			<span id="serviceName"></span><br>
-			<span id="serviceJibun"></span><br>
-			<span id="servicePhone"></span><br>
-			<input type="submit" value="테스트" id="ssTest">
-	</div>
+		</p>
+		<span id="serviceName"></span><br>
+		<span id="serviceJibun"></span><br>
+		<span id="servicePhone"></span><br>
+		<input type="submit" value="테스트" id="ssTest">
+</div>
 	
 <script
 	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=416439531d0e4d8f33eb240c9b791ffb&libraries=services"></script>
 <script src="${pageContext.request.contextPath}/js/kakaomap2.js"></script>
-
 
 </body>
 </html>
