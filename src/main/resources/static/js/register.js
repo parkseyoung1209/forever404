@@ -88,7 +88,7 @@ $("#submit").click(() => {
         location.href = "/";
       },
       error: function (xhr, status, error) {
-        console.error("오류 발생:", status, error);
+        alert("회원가입 실패!");
       },
     });
   }
