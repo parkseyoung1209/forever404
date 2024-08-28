@@ -20,7 +20,7 @@ public class ChatGptService {
     public HttpEntity<ChatGptRequestDto> buildHttpEntity(ChatGptRequestDto requestDto) {
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.parseMediaType(ChatGptConfig.MEDIA_TYPE));
-        headers.add(ChatGptConfig.AUTHORIZATION, ChatGptConfig.BEARER + ChatGptConfig.API_KEY);
+        headers.add(ChatGptConfig.AUTHORIZATION, ChatGptConfig.BEARER);
         return new HttpEntity<>(requestDto, headers);
     }
 
