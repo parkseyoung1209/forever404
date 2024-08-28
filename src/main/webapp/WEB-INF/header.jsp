@@ -131,6 +131,7 @@
           type: "post",
           url: "/logout",
           success : function() {
+        	  alert("로그아웃 처리 되었습니다!");
         	  localStorage.clear();
         	  window.location.href = "/";
           }
@@ -143,6 +144,7 @@
           type: "post",
           url: "/logout",
           success : function() {
+        	  alert("로그아웃 처리 되었습니다!");
         	  localStorage.clear();
         	  window.location.href = "/";
           }

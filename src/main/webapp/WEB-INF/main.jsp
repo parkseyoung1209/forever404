@@ -196,7 +196,8 @@
     <!-- 로그아웃 cif -->
     <c:if test="${empty user}">
       <script>
-        window.location.href = "redirect:/";
+      	alert("로그아웃 처리 되었습니다!");
+        window.location.href = "/";
       </script>
 	</c:if>
 	<script>

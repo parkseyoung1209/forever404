@@ -75,7 +75,7 @@ uri="http://java.sun.com/jsp/jstl/core"%>
           <h2>타이틀</h2>
           <p>위치</p>
           <p>영업시간</p>
-          <img src='\\192.168.10.28\forever404\storage\e57df5a0-f6c8-431d-8e1c-b29c6cd2b756_image.png'>
+       
         </div>
       </section>
       <button id="nextBtn2" class="button2">&#10094;</button>

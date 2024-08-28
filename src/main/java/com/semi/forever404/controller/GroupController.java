@@ -45,7 +45,6 @@ public class GroupController {
 					return false;
 				}
 			}
-//			System.out.println(list);
 			HttpSession session = request.getSession();
 			User user = (User) session.getAttribute("user");
 			if(!bigGroup.getGroupName().equals("")) {
@@ -53,6 +52,7 @@ public class GroupController {
 				BigGroup bg = service.searchBgCode(groupName);
 				String id =user.getId();
 				int bgGroupCode = bg.getBgGroupCode();
+				System.out.println(bgGroupCode);
 				SmallGroup smGroup = new SmallGroup(new User(id), new BigGroup(bgGroupCode));
 				service.addSmGroup(smGroup);
 				return true;

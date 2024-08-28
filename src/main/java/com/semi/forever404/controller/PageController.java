@@ -55,6 +55,7 @@ public class PageController {
 	public String main(HttpServletRequest request) {
 		HttpSession session = request.getSession();
 		User user = (User) session.getAttribute("user");
+		if(user!=null) {
 		List<SmallGroup> list = service.selectSmallGroup(user.getId());
 		session.setAttribute("smlist", list);
 		System.out.println(list);
@@ -63,6 +64,7 @@ public class PageController {
 			session.setAttribute("check", false);
 		} else {
 			session.setAttribute("check", true);
+		}
 		}
 		return "main";
 	}
