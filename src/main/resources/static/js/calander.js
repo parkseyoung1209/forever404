@@ -36,6 +36,7 @@ document.addEventListener("DOMContentLoaded", function () {
       const btn2 = $("#seven");
       $("#addMemoh1").text(info.event.title);
       $("#addMemop").text(`${info.event.start.toLocaleDateString()}`);
+	  linkbs = info.event.extendedProps.bsCode;
       const endDate = new Date(info.event.end);
       endDate.setDate(endDate.getDate() - 1);
       $("#addMemop2").text(`${endDate.toLocaleDateString()}`);
@@ -193,7 +194,7 @@ $("#calendar-container").mouseover((e) => {
   }
 });
 
-const detailButton = document.querySelector(".modsection");
+const detailButton = document.querySelector("#addMemoh1");
 detailButton.addEventListener("click", () => {
   const code = linkbs;
   localStorage.setItem("bsCode", code);
