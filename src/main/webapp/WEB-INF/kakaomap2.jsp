@@ -37,9 +37,9 @@
 
       <div class="testtesttest">
       <div id="testI">
-        <i class="fa-solid fa-location-dot" id="testI1"></i><span id="serviceName"></span><br />
-        <i class="fa-solid fa-turn-up" id="testI2"></i><span id="serviceJibun"></span><br />
-        <i class="fa-solid fa-phone" id="testI3"></i><span id="servicePhone"></span><br />
+        <i class="fa-solid fa-location-dot" id="testI1"></i><p id="serviceName"></p><br />
+        <i class="fa-solid fa-turn-up" id="testI2"></i><p id="serviceJibun"></p><br />
+        <i class="fa-solid fa-phone" id="testI3"></i><p id="servicePhone"></p><br />
         </div>
         <p>
           예약
