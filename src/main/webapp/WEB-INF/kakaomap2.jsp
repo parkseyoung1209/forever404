@@ -11,8 +11,6 @@
 <script src="https://kit.fontawesome.com/ef885bd654.js" crossorigin="anonymous"></script>
 </head>
 <body>
-<img src="http://192.168.10.28:8080/storage/b2ba4bea-0122-4990-9059-52fd75476474_hoseob.jpg" width="200px" />
-
 <div class="search_menu">
 	<div>
 		<form onsubmit="searchLocalPlaces(); return false;">

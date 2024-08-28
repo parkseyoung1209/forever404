@@ -14,13 +14,11 @@ var placeOverlay = new kakao.maps.CustomOverlay({ zIndex: 1 }),
 
   
 var mapContainer = document.getElementById("map"), // 지도를 표시할 div
-	mapOption;
-	map;
-  /*mapOption = {
+  mapOption = {
     center: new kakao.maps.LatLng(36.5, 127.5), // 지도 초기 중심 좌표 (한국 중앙)
     level: 13, // 지도의 확대 레벨
-  };*/
-  
+ }
+  /*
 function currentLocation() {
 	// HTML5의 geolocation으로 사용할 수 있는지 확인합니다
 	if (navigator.geolocation) {
@@ -50,7 +48,7 @@ function currentLocation() {
 // 지도 생성 시 currentLocation 함수 호출
 currentLocation();
 
-
+*/
 /* 지역 선택
 var areas = {
         'gyeonggi': {center: new kakao.maps.LatLng(37.4138, 127.5183), level: 11}, // 경기도 중심좌표
@@ -70,6 +68,10 @@ var areas = {
         }
     }
 */
+
+// 지도 생성
+var	map = new kakao.maps.Map(mapContainer, mapOption);
+           
 
 // 장소 검색 객체를 생성합니다
 var ps = new kakao.maps.services.Places(map);
@@ -313,7 +315,6 @@ function searchLocalPlaces() {
 
   // 카테고리를 클릭했을 때 호출되는 함수입니다
   function onClickCategory() {
-	alert("@!@")
     var id = this.id,
       className = this.className;
 
@@ -321,7 +322,6 @@ function searchLocalPlaces() {
 
     if (className === "on") {
       currCategory = "";
-	  alert("###");
       changeCategoryClass();
       removeMarker();
     } else {
