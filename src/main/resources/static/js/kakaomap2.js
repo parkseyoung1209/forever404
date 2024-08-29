@@ -271,9 +271,9 @@ function searchLocalPlaces() {
       const serviceJibun = document.querySelector("#serviceJibun");
       const servicePhone = document.querySelector("#servicePhone");
 
-      serviceName.innerHTML = "장소 이름 : " + title;
-      serviceJibun.innerHTML = "주소 : " + addr;
-      servicePhone.innerHTML = "전화번호" + phone;
+      serviceName.value =  title;
+      serviceJibun.value =  addr;
+      servicePhone.value =  phone;
     });
   }
 

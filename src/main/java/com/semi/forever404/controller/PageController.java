@@ -2,6 +2,8 @@ package com.semi.forever404.controller;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -116,23 +118,29 @@ public class PageController {
 		List<LocalDate> dateRange = getDateRange(startDate2, endDate2);
 		
 		if(!smallSchedule.isEmpty()) {
-			List<Money> MoneyList = service.selectMoney(2);
+			List<Money> MoneyList = service.selectMoney(1);
 			session.setAttribute("moneyL", MoneyList);
+			System.out.println(MoneyList);
 		}
+		
 		session.setAttribute("selectSRange", dateRange);
 		model.addAttribute("selectSRange", dateRange.stream().map(LocalDate::toString).collect(Collectors.toList()));
+		//System.out.println(dateRange);
 		session.setAttribute("selectS", smallSchedule);
-		return "detail2";
+		//System.out.println(smallSchedule);
 		
+		if(session.getAttribute("user")!=null) return "detail2";
+		else return "redirect:/";
 	}
+	
 	/*
 	@ResponseBody
 	@PostMapping("/{groupName}/detail/selectList")
-	public  Map<String, Object> selectData (@RequestBody Map<String, Object> paramMap){
+	public Map<String, Object> selectData (@RequestBody Map<String, Object> paramMap){
 		
 		Map<String, Object> result = new HashMap<>();
 		
-
+		
 		  Object bsCode = paramMap.get("bsCode");
 
 	        // 일정의 시작일과 종료일을 가져오기 위한 코드 (가정)
@@ -146,6 +154,7 @@ public class PageController {
 		
 		
 	        List<Map<String, Object>> list = service.getDateList(stdDate, endDate);
+		
 		Map<String, Object> detail = null; //service.detailselect(paramMap); //파라미터로 bsCode, groupName들어감
 		
 		result.put("result", true); 

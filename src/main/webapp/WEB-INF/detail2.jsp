@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-pageEncoding="UTF-8"%> <%@ taglib prefix="c"
-uri="http://java.sun.com/jsp/jstl/core"%>
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -37,6 +37,9 @@ uri="http://java.sun.com/jsp/jstl/core"%>
   	</c:if>
   	</script>
     <header>
+      <!--<c:forEach items="${selectS}" var="ssss">
+            ${ssss.bigSchedule.bsCode}
+          </c:forEach>-->
       <!-- <div id="group"><a href="/${groupName}">그룹</a></div> -->
       <div id="group"><button type="text" class="group" onclick="location.href='/${groupName}';">그룹</button></div>
       <section id="date">
@@ -52,19 +55,43 @@ uri="http://java.sun.com/jsp/jstl/core"%>
           <span id="bsCode" style="display: none"> ${param.bsCode} </span>
           <c:forEach items="${selectS}" var="ssss">
             ${ssss.bigSchedule.bsCode}
+          </c:forEach>-->
+				<!--<c:forEach items="${moneyL}" var="m"> ${m.useMoney} </c:forEach>-->
+				<c:forEach items="${selectS}" var="ssss">
+            총금액 : ${ssss.bigSchedule.entireMoney}</br>
           </c:forEach>
-          <c:forEach items="${moneyL}" var="m"> ${m.useMoney} </c:forEach>
-          <p>남은금액 : 300,000원</p>
-          <p>총 지불금액 : 250,000원</p>
-          <p>지불품목 : 바닐라라떼, 케이크</p>
-          <p>사용금액 : 50,000원</p>
-          <button id="payPlus">추가</button>
-        </div>
-      </section>
-      <div id="time1" class="time"><p>09:00</p></div>
-      <button id="nextBtn1" class="button1">&#10095;</button>
+				<c:forEach items="${moneyL}" var="m"> 
+          지불금액 : ${m.useMoney}</br>
+          지불품목 : ${m.buyingList}</br>
+          </c:forEach>
+           <c:set var="total" value="0" />
+    <c:forEach items="${selectS}" var="ssss">
+        <c:set var="total" value="${ssss.bigSchedule.entireMoney}" />
+    </c:forEach>
+    
+    <c:set var="using" value="0" />
+    <c:forEach items="${moneyL}" var="m">
+        <c:set var="using" value="${using + m.useMoney}" />
+    </c:forEach>
 
-      <div class="sectioncontainer">
+   남은금액 : <c:set var="remainingAmount" value="${total - using}" />
+${remainingAmount}
+				<button id="payPlus">추가</button>
+			</div>
+		</section>
+
+
+		<!-- 일정디테일 데이터 세팅 -->
+		<c:forEach items="${selectS}" var="c" varStatus="status">
+			<c:if test="${status.first}">
+				<div id="time1" class="time">
+					${c.curTime}:00
+				</div>
+			</c:if>
+		</c:forEach>
+		<button id="nextBtn1" class="button1">&#10095;</button>
+
+ <div class="sectioncontainer">
         <section class="section">
           <div class="img">image</div>
           <div>
@@ -75,33 +102,28 @@ uri="http://java.sun.com/jsp/jstl/core"%>
           </div>
         </section>
       </div>
-      <section class="section">
-      <div class="img">image</div>
-        <div>
-          <h2>타이틀</h2>
-          <p>위치</p>
-          <p>영업시간</p>
-       
-        </div>
-      </section>
-      <button id="nextBtn2" class="button2">&#10094;</button>
+		
+		<button id="nextBtn2" class="button2">&#10094;</button>
 
-      <section class="time" id="time2">
-        <div><p>18:00</p></div>
-      </section>
-    </main>
+		<section class="time" id="time2">
+			<div>
+				<p>18:00</p>
+			</div>
+		</section>
+	</main>
 
-    <section id="btncontainer">
-      <button id="button3" class="btn1">일정 추가</button>
-      <button id="button4" class="btn1">사진 추가</button>
-      <button id="button5" class="btn1">지불 품목</button>
-      <button id="plus" class="btn">
-        <i class="bi bi-plus-square"></i>
-      </button>
-    </section>
+	<section id="btncontainer">
+		<button id="button3" class="btn1">일정 추가</button>
+		<button id="button4" class="btn1">사진 추가</button>
+		<!--  <button id="button5" class="btn1">지불 품목</button> -->
+		<button id="plus" class="btn">
+			<i class="bi bi-plus-square"></i>
+		</button>
+	</section>
 
-    <script>
-      const kakaobtn = document.querySelector("#plus");
+	<script>
+
+      const kakaobtn = document.querySelector("#button3");
       kakaobtn.addEventListener("click", () => {
     	  $.ajax({
     		  
@@ -110,7 +132,7 @@ uri="http://java.sun.com/jsp/jstl/core"%>
       });
     </script>
 
-    <!-- 
+	<!-- 
     <div id="modal1" class="modal">
       <div class="modalcontent">
         <span class="close">&times</span>
@@ -145,25 +167,50 @@ uri="http://java.sun.com/jsp/jstl/core"%>
     </div>
 -->
 	<div id="modal2" class="modal">
-		<div class="modalcontent">
+		<div class="bigmodalcontent">
 			<span class="close">&times</span>
 			<h2>사진 추가</h2>
 			<hr />
-			<form id="fileForm" method="post" enctype="multipart/form-data">
-				<div class=fileContainer>
-					<label for="file" class="upload"><div>+</div></label> <input
-						id="file" type="file" name="files" multiple accept="image/*"
-						onchange="imgShow(event)" value="+" placeholder="+" />
-					<div id="image_container"></div>
-				</div>
+			<div class="modalcontent">
 
-			</form>
+				<form id="fileForm" method="post" enctype="multipart/form-data">
+					<div class=fileContainer>
+						<label for="file" class="upload"><div>+</div></label> <input
+							id="file" type="file" name="files" multiple accept="image/*"
+							onchange="imgShow(event)" value="+" placeholder="+" />
+						<div id="image_container"></div>
+					</div>
+
+				</form>
+
+			</div>
 			<section class="addSection">
 				<button class="add2" id="fileSubmit">업로드</button>
 			</section>
 		</div>
 	</div>
 	<script>
+	// 사진이 오른쪽부터 나오게하는 기능
+	    $('#file').on('change', function(event) {
+	        const imageContainer = $('#image_container');
+		    const files = event.target.files;
+
+	        for (const i = 0; i < files.length; i++) {
+	            const file = files[i];
+	            const reader = new FileReader();
+
+	            reader.onload = (function(theFile) {
+	                return function(e) {
+	                    const img = $('<img>').attr('src', e.target.result);
+	                    imageContainer.append(img);
+	                };
+	            })(file);
+
+	            reader.readAsDataURL(file);
+	        }
+	    });
+	
+	
           let bsCode = localStorage.getItem("bsCode");
 
           function imgShow(event) {
@@ -197,22 +244,21 @@ uri="http://java.sun.com/jsp/jstl/core"%>
             });
           });
         </script>
-      </div>
-    </div>
-    <div id="modal3" class="modal">
-      <div class="modalcontent">
-        <span class="close">&times</span>
-        <h2>지불 품목</h2>
-        <hr />
-        지불 품목 : <input type="text" class="money" id="buyingList" /> <br />
-        사용 금액 :
-        <input type="text" class="money" id="useMoney" />
-        <div class="add">
-          <button class="add2" id="moneyBtn">추가</button>
-        </div>
-      </div>
-    </div>
-    <script>
+	</div>
+	</div>
+	<div id="modal3" class="modal">
+		<div class="modalcontent" id="modalcontent2">
+			<span class="close">&times</span>
+			<h2>지불 품목</h2>
+			<hr />
+			지불 품목 : <input type="text" class="money" id="buyingList" /> <br />
+			사용 금액 : <input type="text" class="money" id="useMoney" />
+			<div class="add">
+				<button class="add2" id="moneyBtn">추가</button>
+			</div>
+		</div>
+	</div>
+	<script>
       $("#moneyBtn").click(() => {
         $.ajax({
           type: "post",
@@ -228,7 +274,7 @@ uri="http://java.sun.com/jsp/jstl/core"%>
         });
       });
     </script>
-    <script><%--
+	<script>
       $(".btn").click((e) => {
         let content = $(".btn1");
 
@@ -238,7 +284,7 @@ uri="http://java.sun.com/jsp/jstl/core"%>
           content.slideUp(150);
         }
       });
-	--%>
+      
       $(window).resize(() => {
         let content = $(".btn1");
         if ($(window).width() < 1200) {
@@ -272,7 +318,7 @@ uri="http://java.sun.com/jsp/jstl/core"%>
         }
       });
 
-      $("#imgPlus").click(function () {
+      $("#button4").click(function () {
         $("#modal2").css("display", "block");
       });
 
@@ -284,11 +330,11 @@ uri="http://java.sun.com/jsp/jstl/core"%>
       // });
     </script>
 
-    <script type="text/javascript">
+	<script type="text/javascript">
       const dateList = ${selectSRange};
     </script>
 
-    <script>
+	<script>
          	$(document).ready(function () {
          	  const dateElements = document.querySelectorAll('.date');
          	  const dateList = Array.from(dateElements).map(el => el.getAttribute('data-date'));
@@ -306,6 +352,9 @@ uri="http://java.sun.com/jsp/jstl/core"%>
       	        if (currentIndex < dateList.length - 1) {
       	            currentIndex++;
       	            updateDate(currentIndex);
+      	            
+      	            var date = $('#h1date').text();
+      	            
       	        }
       	    });
 
@@ -313,10 +362,9 @@ uri="http://java.sun.com/jsp/jstl/core"%>
       	        if (currentIndex > 0) {
       	            currentIndex--;
       	            updateDate(currentIndex);
+      	            
       	        }
       	    });
-
-
 
       	    if(dateList.length > 0) {
       	    	updateDate(currentIndex);
@@ -324,7 +372,7 @@ uri="http://java.sun.com/jsp/jstl/core"%>
          	});
     </script>
 
-    <script>
+	<script>
       $(document).ready(function () {
         let groupName = localStorage.getItem("groupName");
         $.ajax({
@@ -342,9 +390,28 @@ uri="http://java.sun.com/jsp/jstl/core"%>
           },
         });
       });
+      
+      function dateLoad(date){
+    	  var cur_date = date;
+    	  
+    	  $.ajax({
+              type: "post",
+              url: "/mola",
+              contentType: "application/json; charset=utf-8",
+              data: JSON.stringify({ cur_date: cur_date }),
+              dataType: "json",
+              success: function (response) {
+                let miniTitle = response.groupName.substring(0, 2);
+                $(".group").text(miniTitle);
+              },
+              error: function (xhr, status, error) {
+                console.error("Error:", error);
+              },
+            });
+      }
     </script>
-    
-    <script>
+
+	<script>
     </script>
-  </body>
+</body>
 </html>
