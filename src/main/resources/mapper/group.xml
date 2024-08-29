@@ -228,5 +228,6 @@
 	<select id="curDateSchedule" resultMap="scMap" parameterType="SmallSchedule">
 	SELECT * FROM small_schedule
 	WHERE cur_date=#{curDate}
+	order by cur_time
 	</select>
 </mapper>
