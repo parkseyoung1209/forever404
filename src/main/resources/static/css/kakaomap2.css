@@ -50,7 +50,6 @@
 	}
 	
 #category {
-	display:none;
 	position:absolute;
 	top:10px;
 	left:310px;
@@ -284,36 +283,39 @@ header {
 }
 
 #testI1 {
-	margin-bottom: 30px;
+	margin-bottom: 5px;
 }
 
 #testI2 {
-	margin-bottom: 30px;
+	margin-bottom: 5px;
 
 }
 #testI3 {
-	margin-bottom: 30px;
+	margin-bottom: 5px;
 }
 
 #isReservation {
 	margin-top: 20px;
-	width:40px;
+	padding-left: 10px;
+	width:60px;
 	height: 40px;
 	font-size: 1.2rem;
 	border-top-left-radius: 5px;
   border-top-right-radius: 5px;
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
+  border: 2px solid #777;
 }
 
 #isReservation:focus {
-  border: 2px solid #d95050;
+	border: 2px solid #d95050;
   outline: none;
   
 }
 
 #time {
 	margin-top: 40px;
+	padding-left: 5px;
 	width: 60px;
 	height: 40px;
 	font-size: 1.2rem;
@@ -321,10 +323,11 @@ header {
   border-top-right-radius: 5px;
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
+  border: 2px solid #777;
 }
 
 #time:focus {
-  border: 2px solid #d95050;
+	border: 2px solid #d95050;
   outline: none;
   
 }
@@ -338,25 +341,33 @@ textarea {
 }
 
 textarea:focus {
-  border: 2px solid #d95050;
-  outline: none;
+  outline: 1px solid #d95050;
 }
 
 #memoP {
-	margin-top: 60px;
+	margin-top: 45px;
 }
 
 #memo {
+	margin-top:5px;
   height: 80px;
   width: 250px;
   resize: none;
   padding-top: 7px;
   padding-left: 10px;
+  border: 2px solid #777;
+  font-size:12px;
+}
+
+#memo:focus {
+	  	border: 2px solid #d95050;
+  outline: none;
 }
 
 #ssTest {
+	position: absolute;
 	margin-left: -30px;
-	margin-top: 150px;
+	margin-top: 631px;
 	width: 300px;
 	height: 150px;
 	padding-bottom: 20px;
@@ -374,4 +385,27 @@ textarea:focus {
 	border:none;
 		background: #595959;
 	color: #fff;
+}
+
+#testI input {
+	margin-left: -10px;
+	padding-left: 10px;
+	width: 250px;
+	height: 50px;
+	font-size: 1.2rem;
+	font-weight: bold;
+	border: none;
+}
+
+#testI input:focus {
+	outline: 2px solid #d95050;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+#testI input::placeholder {
+	color: lightgray;
+	outline: none;
 }

@@ -47,18 +47,16 @@ public class GroupController {
 			}
 			HttpSession session = request.getSession();
 			User user = (User) session.getAttribute("user");
-			if(!bigGroup.getGroupName().equals("")) {
+			if(!bigGroup.getGroupName().equals("") && !bigGroup.getGroupName().contains(" ")) {
 				service.addGroup(bigGroup);
 				BigGroup bg = service.searchBgCode(groupName);
 				String id =user.getId();
 				int bgGroupCode = bg.getBgGroupCode();
-				System.out.println(bgGroupCode);
 				SmallGroup smGroup = new SmallGroup(new User(id), new BigGroup(bgGroupCode));
 				service.addSmGroup(smGroup);
 				return true;
 			} else return false;
-			
-			
+
 	}
 	
 	@ResponseBody
@@ -80,15 +78,26 @@ public class GroupController {
 		BigGroup bg = service.searchBgCode(groupName);
 		HttpSession session = request.getSession();
 		User user = (User) session.getAttribute("user");
+		
+		int check = 0;
+		List<SmallGroup> list = service.selectSmallGroup(user.getId());
 		if(bg != null) {
-			SmallGroup sg = new SmallGroup(user, bg);
-			service.addSmGroup(sg);
-			return true;
+			for(SmallGroup sm : list) {
+				if(sm.getBigGroup().getBgGroupCode() == bg.getBgGroupCode()) {
+					check = 1;
+					break;
+				} 
+			}
+			if(check == 1) {
+				return false;
+			} else {
+				SmallGroup sg = new SmallGroup(user, bg);
+				service.addSmGroup(sg);
+				return true;
+			} 
 		} else {
-			System.out.println("없는 그룹");
 			return false;
 		}
-
 	}
 	// 그룹 삭제
 	@ResponseBody
@@ -114,21 +123,18 @@ public class GroupController {
 	
 	@ResponseBody
 	@PostMapping("/scheduleAdd")
-	public void schduleAdd(HttpServletRequest request, BigSchedule bigSchedule, Model model) throws ParseException {
+	public boolean schduleAdd(HttpServletRequest request, BigSchedule bigSchedule, Model model) throws ParseException {
 		String groupName = request.getHeader("referer").substring(22);
-		
 		BigGroup bg = service.searchBgCode(groupName);
 		int num = bg.getBgGroupCode();
 		List<BigSchedule> bs = service.searchBsCode(num);
 		
 		HttpSession session = request.getSession();
 		User user = (User) session.getAttribute("user");
-		String id = user.getId();
 		bigSchedule.setBigGroup(bg);
 		bigSchedule.setUser(user);
 		
 		// 컬러 추가
-		Random random = new Random();
 
 		int rand1 = (int)(Math.random()*256);
 		int rand2 = (int)(Math.random()*256);
@@ -173,65 +179,15 @@ public class GroupController {
 				count++;
 			}
 		}
-		
 		if(count >= 1) {
-			System.out.println("추가 불가");
+			return false;
 		} else {
-			System.out.println("추가 성공");
 			service.scheduleAdd(bigSchedule);
+			return true;
 		}
 
 	}
 	
-	/*
-	@ResponseBody
-	@PostMapping("/mola")
-	public BigSchedule mola(String groupName, String localDate, HttpServletRequest request) throws ParseException {
-		BigSchedule selectB = selectAllSchedule(groupName, localDate);
-		HttpSession session = request.getSession();
-		session.setAttribute("selectB",selectB);
-//		System.out.println(selectB);
-		return selectB;
-	}
-	
-	 public List<LocalDate> getDateRange(LocalDate startDate, LocalDate endDate) {
-	        List<LocalDate> dates = new ArrayList<>();
-	        LocalDate currentDate = startDate;
-
-	        // 날짜 목록에 포함할 날짜가 끝 날짜보다 이전이거나 같을 때까지 반복
-	        while (!currentDate.isAfter(endDate)) {
-	            dates.add(currentDate);
-	            currentDate = currentDate.plusDays(1); // 하루씩 더하기
-	        }
-
-	        return dates;
-	    }
-	
-	// 메서드
-	public BigSchedule selectAllSchedule(String groupName, String localDate) throws ParseException {
-		BigGroup bg = service.searchBgCode(groupName);
-		int num = bg.getBgGroupCode();
-		List<BigSchedule> bs = service.searchBsCode(num);
-		
-		for(BigSchedule b : bs) {
-			String startDate = b.getStartDate();
-			String endDate = b.getEndDate();
-			
-			LocalDate startDate2 = LocalDate.parse(startDate);
-	        LocalDate endDate2 = LocalDate.parse(endDate);
-	        LocalDate localDate2 = LocalDate.parse(localDate);
-	        
-	        List<LocalDate> dateRange = getDateRange(startDate2,endDate2);
-	        
-	        for(LocalDate d : dateRange) {
-	        	if(d.equals(localDate2)) {
-	        		return b;
-	        	}
-	        }
-		}
-		return null;
-	}
-	*/
 	@ResponseBody
 	@PostMapping("/scheduleAdd2")
 	public void scheduleAdd2(HttpServletRequest request, SmallSchedule smallSchedule, int bsCode, String curDate)  {

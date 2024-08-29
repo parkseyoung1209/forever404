@@ -19,7 +19,8 @@
   <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
   </head>
   <body>
-  <c:if test="${not empty user}">
+   
+  	<c:if test="${not empty user}">
   	<script>
   	window.location.href = "/movement";
   	</script>
@@ -193,6 +194,8 @@
           </div>
         </div>
       </div>
+      
+   
 	<script>
 		$("#login2").click(() => {
 			$.ajax({
@@ -204,7 +207,7 @@
 				},
 				success : function(response) {
 					if(response == true) {
-						window.location.href = "/movement";
+					  	window.location.href = "/movement";
 						location.reload();
 					}
 				}

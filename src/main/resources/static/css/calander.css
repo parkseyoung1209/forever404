@@ -51,7 +51,7 @@ button i {
 }
 .group span {
   text-align: center;
-  margin-bottom: 15px;
+  margin-top: 5px;
 }
 .group i {
   font-size: 30px;
@@ -727,7 +727,6 @@ font-size: 50px;
     font-size: 38px;
     color: #fff;
     background-color: #999;
-    margin-left: 12px;
     line-height: 1;
     border: none;
     cursor: pointer;

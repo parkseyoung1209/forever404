@@ -2,6 +2,8 @@ package com.semi.forever404.controller;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -35,8 +37,11 @@ public class PageController {
 
 	
 	@GetMapping("/")
-	public String index() {
-		return "index";
+	public String index(HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		User user = (User) session.getAttribute("user");
+		if(user!=null) return "movement";
+		else return "index";
 	}
 	@GetMapping("/register")
 	public String register() {
@@ -58,7 +63,6 @@ public class PageController {
 		if(user!=null) {
 		List<SmallGroup> list = service.selectSmallGroup(user.getId());
 		session.setAttribute("smlist", list);
-		System.out.println(list);
 		
 		if(list.isEmpty()) {
 			session.setAttribute("check", false);
@@ -99,12 +103,9 @@ public class PageController {
 	
 	@GetMapping("/{groupName}/detail")
 	public String detail(@PathVariable String groupName, @RequestParam int bsCode, HttpServletRequest request, Model model) {
-		
 	
 		HttpSession session = request.getSession();
-		
-//		BigSchedule bg = (BigSchedule) session.getAttribute("selectB");
-		
+
 		List<SmallSchedule> smallSchedule = service.selectOneSc(bsCode);
 		BigSchedule tmp = service.selectOneBs(bsCode);
 		
@@ -117,24 +118,29 @@ public class PageController {
 		List<LocalDate> dateRange = getDateRange(startDate2, endDate2);
 		
 		if(!smallSchedule.isEmpty()) {
-			List<Money> MoneyList = service.selectMoney(2);
+			List<Money> MoneyList = service.selectMoney(1);
 			session.setAttribute("moneyL", MoneyList);
+			System.out.println(MoneyList);
 		}
+		
 		session.setAttribute("selectSRange", dateRange);
 		model.addAttribute("selectSRange", dateRange.stream().map(LocalDate::toString).collect(Collectors.toList()));
-		System.out.println(dateRange);
+		//System.out.println(dateRange);
 		session.setAttribute("selectS", smallSchedule);
+		//System.out.println(smallSchedule);
+		
 		if(session.getAttribute("user")!=null) return "detail2";
 		else return "redirect:/";
 	}
+	
 	/*
 	@ResponseBody
 	@PostMapping("/{groupName}/detail/selectList")
-	public  Map<String, Object> selectData (@RequestBody Map<String, Object> paramMap){
+	public Map<String, Object> selectData (@RequestBody Map<String, Object> paramMap){
 		
 		Map<String, Object> result = new HashMap<>();
 		
-
+		
 		  Object bsCode = paramMap.get("bsCode");
 
 	        // 일정의 시작일과 종료일을 가져오기 위한 코드 (가정)
@@ -148,6 +154,7 @@ public class PageController {
 		
 		
 	        List<Map<String, Object>> list = service.getDateList(stdDate, endDate);
+		
 		Map<String, Object> detail = null; //service.detailselect(paramMap); //파라미터로 bsCode, groupName들어감
 		
 		result.put("result", true); 
@@ -174,8 +181,7 @@ public class PageController {
     @ResponseBody
     public Map<String, Object> processGroupName(@RequestBody Map<String, String> requestData) {
         String groupName = requestData.get("groupName");
-        // 데이터 처리 로직
-        System.out.println("Group Name: " + groupName);
+    
         // 응답 데이터 준비
         Map<String, Object> response = new HashMap<>();
         response.put("status", "success");

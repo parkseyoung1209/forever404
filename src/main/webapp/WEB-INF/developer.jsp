@@ -268,7 +268,7 @@
 					password: $("#password").val()
 				},
 				success : function() {
-					window.location.href = '/main';
+					window.location.href = '/movement';
 					location.reload();
 				}
 			})

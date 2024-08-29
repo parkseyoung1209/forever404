@@ -112,9 +112,9 @@
             data: "groupName=" + title,
             success: function (check) {
             	if(check === true){
-            		alert("그룹 참여 성공:)");
+            		alert("그룹 참여 성공");
             	} else {
-            		alert("없는 그룹입니다");
+            		alert("그룹 참여 실패");
             	}
             	location.reload();
             },
@@ -133,19 +133,22 @@
           success : function() {
         	  alert("로그아웃 처리 되었습니다!");
         	  localStorage.clear();
+        	  sessionStorage.clear();
         	  window.location.href = "/";
           }
         });
       });
-      /* $(document).ready(function () {
-        Kakao.init("416439531d0e4d8f33eb240c9b791ffb");*/
+      /* $(document).ready(function () {*/
+        Kakao.init("416439531d0e4d8f33eb240c9b791ffb");
       $("#logout2").click(function () {
         $.ajax({
           type: "post",
           url: "/logout",
           success : function() {
+        	  Kakao.Auth.logout();
         	  alert("로그아웃 처리 되었습니다!");
         	  localStorage.clear();
+        	  sessionStorage.clear();
         	  window.location.href = "/";
           }
         });

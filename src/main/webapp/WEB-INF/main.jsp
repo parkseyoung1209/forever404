@@ -30,7 +30,7 @@ uri="http://java.sun.com/jsp/jstl/core"%>
 
       <c:if test="${check==true}">
         <c:if test="${not empty groupName}">
-          <div id="calendar-container">
+          <div id="calendar-container"><button id=testT>ㅁㅁㄴㅇㄴㅁㅇㄴㅁㅇ</button>
             <div id="calendar"></div>
           </div>
         </c:if>
@@ -42,7 +42,7 @@ uri="http://java.sun.com/jsp/jstl/core"%>
       <c:if test="${check==false}">
         <p>그룹을 생성하세요</p>
       </c:if>
-      <button id="deleteGroup" class="add2">삭제</button>
+      <button id="deleteGroup" class="add2" style = "margin-left: 1200px;">삭제</button>
 
       <script>
         $("#deleteGroup").click(() => {
@@ -160,10 +160,15 @@ uri="http://java.sun.com/jsp/jstl/core"%>
               entireMoney: $("#entireMoney").val(),
             },
             success: function (result) {
+              if(result === true){
               alert("추가됐음!");
               const id = $("#title2").val();
               $("#addMemo").html("<button>" + id + "</button>");
               location.reload();
+              } else {
+            	  alert("실패");
+            	  location.reload();
+              }
             },
             error: function () {
               alert("다시해라");
@@ -171,7 +176,7 @@ uri="http://java.sun.com/jsp/jstl/core"%>
             },
           });
         });
-        $("#add2").click(() => {
+       /* $("#add2").click(() => {
           $.ajax({
             type: "post",
             url: "/scheduleAdd2",
@@ -183,7 +188,7 @@ uri="http://java.sun.com/jsp/jstl/core"%>
             },
             success: function () {},
           });
-        });
+        });*/
       </script>
 
       <script>
@@ -207,9 +212,6 @@ uri="http://java.sun.com/jsp/jstl/core"%>
                     title +
                     "</span>"
                 );
-                // 사용할 앱의 JavaScript 키를 설정해 주세요.
-
-                //$('.modal').css("display", "none");
               } else {
                 $("#successText").text("사용할 수 없는 그룹명입니다.");
               }
