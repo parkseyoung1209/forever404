@@ -45,6 +45,9 @@ document.addEventListener("DOMContentLoaded", function () {
       $("#addMemoh1").text(info.event.title);
       $("#addMemop").text(`${info.event.start.toLocaleDateString()}`);
 	  linkbs = info.event.extendedProps.bsCode;
+	  
+	  sessionStorage.setItem("bsCode",linkbs);
+	  
       const endDate = new Date(info.event.end);
       endDate.setDate(endDate.getDate() - 1);
       $("#addMemop2").text(`${endDate.toLocaleDateString()}`);
@@ -233,8 +236,21 @@ $("#addgroup3").mouseout((e) => {
   }
 });
 $("#seven").click(function() {
-	$("#albumModal").css("display", "block");
-	$("#bigModal").css("display", "none");
+	
+	let bsCode = sessionStorage.getItem("bsCode");
+	// 이미지 리스트로 뿌림 result에서 추출 잘하세요
+	$.ajax({
+		type : 'post',
+		url : '/selectMyImg',
+		data : {bsCode : bsCode},
+		 success : function(result) {
+			$("#albumModal").css("display", "block");
+			$("#bigModal").css("display", "none");
+			
+			console.log(result);
+			
+		 }
+	})
 });
 $("#close").click(function(){
 	$("#albumModal").css("display", "none");
