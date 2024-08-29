@@ -50,9 +50,6 @@
 		</div>
 
 		<div class="group" id="group"></div>
-		<div class="user">
-			<i class="fa-solid fa-user" id=myUser></i>
-		</div>
 
 		<!-- 
            <div class="group-container">
@@ -62,6 +59,11 @@
     </div>-->
     
    
+	</header>
+	<header id="header2">
+	<div class="user">
+			<i class="fa-solid fa-user" id=myUser></i>
+		</div>
 	</header>
 	
 	 <div id="modal1" class="modal">
