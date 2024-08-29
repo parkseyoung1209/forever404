@@ -22,8 +22,6 @@
                        <button type="submit" id="bttn">
               <i class="fa-solid fa-magnifying-glass"></i>
             </button>
-           
-           </input>
 
           </form>
         </div>
@@ -77,9 +75,13 @@
             <option value="23">23시</option>
           </select>
         </p>
-
+		
          <p id="memoP">메모</p>
           <textarea id="memo" class="memo" rows="1"></textarea>
+         <h2>질문해보세요 gpt입니다</h2>
+          <textarea id="gptTest" class="memo" rows="1"></textarea>
+          <input type="submit" value="test" id="gpt" />
+          <div id="gptAsk"></div>
         <input type="submit" value="추가하기" id="ssTest" />
       </div>
     </header>
@@ -143,37 +145,51 @@
       });
 
       const apiUrl = "https://api.openai.com/v1/chat/completions";
+      const apiKey = '';
+      const gptTest = document.querySelector("#gptTest");
       
-      async function fetchData(apiUrl) {
+      let conversationHistory = []; // 대화 내역을 저장하는 배열
+      async function fetchData(apiUrl, apiKey, messages) {
         try {
-    // fetch를 사용하여 API를 호출합니다.
-    const response = await fetch(apiUrl ,{
-        method : 'POST',
-        headers : {
-          'Authorization': `Bearer `, // API 문서에 따라 Authorization 헤더 사용
-          'Content-Type': 'application/json'
-        },
-        body : JSON.stringify({
-          "model": "gpt-4o-mini",
-          "temperature": 0.7,
-          "messages": [{"role": "user", "content": "서울 여행지 하나 추천해줘"}]
-        })
-    });
-    const data = await response.json();
-    return data;
-      } catch (error) {
-    // 오류를 처리합니다.
-    console.error('Error fetching data:', error);
-    throw error; // 호출자에게 오류를 전달합니다.
-  }
-    }
-      fetchData(apiUrl , apiKey)
-          .then(data => {
-              console.log('Data received:', data);
-              })
-              .catch(error => {
-                 console.error('Error:', error);
-              });
+	    // fetch를 사용하여 API를 호출합니다.
+		    const response = await fetch(apiUrl,{
+	        method : 'POST',
+	        headers : {
+	          'Authorization': `Bearer `, // API 문서에 따라 Authorization 헤더 사용
+	          'Content-Type': 'application/json'
+	        },
+	        body : JSON.stringify({
+	          "model": "gpt-4o-mini",
+	          "temperature": 0.7,
+	          "max_tokens" : 300,
+	          "top_p" : 1.0,
+	          "messages": messages//[{"role": "user", "content": gptTest.value}]
+	        	})
+	    	});
+		    const data = await response.json();
+		    return data;
+      	}catch (error) {
+    	// 오류를 처리합니다.
+	    console.error('Error fetching data:', error);
+	    throw error; // 호출자에게 오류를 전달합니다.
+  		}
+      }
+      
+      
+      $("#gpt").click(() =>{
+    	  const userMessage = gptTest.value;
+    	  conversationHistory.push({ "role": "user", "content": userMessage });
+	      fetchData(apiUrl , apiKey, conversationHistory)
+	          .then(data => {
+	        	  const assistantText = data.choices[0].message.content;
+	        	  conversationHistory.push({ "role": "assistant", "content": assistantText});
+	              $("#gptAsk").text(assistantText);
+	              gptTest.value = '';
+	              })
+	              .catch(error => {
+	                 console.error('Error:', error);
+	              });
+	      });
     </script>
 </body>
 </html>
