@@ -224,5 +224,9 @@
 	<select id="selectMyImg" resultMap="photoMap" parameterType="int">
 	SELECT * FROM photo WHERE bs_code=#{bsCode}
 	</select>
-
+	
+	<select id="curDateSchedule" resultMap="scMap" parameterType="SmallSchedule">
+	SELECT * FROM small_schedule
+	WHERE cur_date=#{curDate}
+	</select>
 </mapper>
