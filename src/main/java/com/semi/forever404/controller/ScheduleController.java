@@ -13,6 +13,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.semi.forever404.model.vo.BigSchedule;
 import com.semi.forever404.model.vo.Photo;
+import com.semi.forever404.model.vo.SmallSchedule;
 import com.semi.forever404.service.GroupService;
 
 
@@ -23,6 +24,13 @@ public class ScheduleController {
 	private String path = "\\\\192.168.10.28\\forever404\\storage\\";
 	@Autowired
 	private GroupService service;
+	
+	@ResponseBody
+	@PostMapping("/curDateSchedule")
+	public List<SmallSchedule> curDateSchedule(String curDate) {
+		return service.curDateSchedule(curDate);
+	}
+	
 	
 	@ResponseBody
 	@PostMapping("/testupload")
@@ -43,6 +51,6 @@ public class ScheduleController {
 			photo = new Photo(url, bg);
 			service.imgLoad(photo);
 		}
-		
 	}
+
 }

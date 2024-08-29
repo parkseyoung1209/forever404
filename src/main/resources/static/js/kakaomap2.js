@@ -14,7 +14,7 @@ var placeOverlay = new kakao.maps.CustomOverlay({ zIndex: 1 }),
 var mapContainer = document.getElementById("map"), // 지도를 표시할 div
   mapOption = {
     center: new kakao.maps.LatLng(36.5, 127.5), // 지도 초기 중심 좌표 (한국 중앙)
-    level: 13, // 지도의 확대 레벨
+    level: 12, // 지도의 확대 레벨
   };
 /*
 function currentLocation() {
@@ -73,6 +73,8 @@ var areas = {
 // 지도 생성
 var map = new kakao.maps.Map(mapContainer, mapOption);
 
+document.getElementById("bttn").addEventListener("click", searchLocalPlaces)
+
 // 장소 검색 객체를 생성합니다
 var ps = new kakao.maps.services.Places(map);
 
@@ -86,7 +88,7 @@ function searchLocalPlaces() {
 
       // 지도 중심을 검색된 위치로 이동하고, 줌 레벨을 조정
       map.setCenter(latLng);
-      map.setLevel(3); // 레벨은 1에서 14까지 조정 가능 (작을수록 확대)
+      map.setLevel(4); // 레벨은 1에서 14까지 조정 가능 (작을수록 확대)
 
       // 검색 결과를 마커로 표시
       category.style.display = "block";

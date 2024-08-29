@@ -225,7 +225,7 @@
 	SELECT * FROM photo WHERE bs_code=#{bsCode}
 	</select>
 	
-	<select id="curDateSchedule" resultMap="scMap" parameterType="SmallSchedule">
+	<select id="curDateSchedule" resultMap="scMap" parameterType="String">
 	SELECT * FROM small_schedule
 	WHERE cur_date=#{curDate}
 	order by cur_time
