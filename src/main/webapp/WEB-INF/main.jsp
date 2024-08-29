@@ -66,7 +66,9 @@ uri="http://java.sun.com/jsp/jstl/core"%>
           </header>
           <!-- <div id="addMemo"><h1>안녕하세요</h1></div> -->
           <div class="modsection" id="addMemo">
+            <div id="memoSection">
             <button id="addMemoh1"></button>
+            </div>
             <div id="memoSection1">
               여행 시작 :
               <p id="addMemop"></p>
@@ -132,6 +134,14 @@ uri="http://java.sun.com/jsp/jstl/core"%>
           </div>
           <div><button class="submit" id="final">추가하기</button></div>
         </div>
+      </div>
+      <div id="albumModal" style="display: none">
+      	<div id="modalContent5">
+      		<header id="mdl-header3">
+      		<button id="delete">삭제</button>
+      		<i class="fa-solid fa-xmark" id="close"></i></header>
+      		<div id="picScroll"></div>
+      	</div>
       </div>
 
       <script

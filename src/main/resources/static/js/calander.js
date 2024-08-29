@@ -53,6 +53,10 @@ document.addEventListener("DOMContentLoaded", function () {
       if ("#addMemoh1" != null) {
         btn2.css("display", "block");
         btn.css("display", "none");
+		$("#addMemoh1").show();
+		$("#memoSection1").show();
+		$("#memoSection2").show();
+		$("#memoSection3").show();
       }
     },
 
@@ -119,10 +123,10 @@ document.addEventListener("DOMContentLoaded", function () {
   calendar.render();
   function showModal() {
     $("#bigModal").css("display", "block");
-    $("#addMemoh1").text("");
-    $("#addMemop").text("");
-    $("#addMemop2").text("");
-    $("#addMemop3").text("");
+    $("#addMemoh1").hide();
+	$("#memoSection1").hide();
+	$("#memoSection2").hide();
+	$("#memoSection3").hide();
     $("#six").css("display", "block");
     $("#seven").css("display", "none");
   }
@@ -227,4 +231,12 @@ $("#addgroup3").mouseout((e) => {
       content.fadeOut(200);
     }, 3000);
   }
+});
+$("#seven").click(function() {
+	$("#albumModal").css("display", "block");
+	$("#bigModal").css("display", "none");
+});
+$("#close").click(function(){
+	$("#albumModal").css("display", "none");
+	$("#bigModal").css("display", "block");
 });
