@@ -145,7 +145,7 @@
       });
 
       const apiUrl = "https://api.openai.com/v1/chat/completions";
-      const apiKey = '';
+      const apiKey = 'sk-XOqUmArii_dNjTqmEdt0U7FhdfvS2KRrJhh0I3W79GT3BlbkFJTbqKK1RFu1-Q1TlgWGDLm7mx5nWlIWCmKK45XDevgA';
       const gptTest = document.querySelector("#gptTest");
       
       let conversationHistory = []; // 대화 내역을 저장하는 배열
@@ -155,7 +155,7 @@
 		    const response = await fetch(apiUrl,{
 	        method : 'POST',
 	        headers : {
-	          'Authorization': `Bearer `, // API 문서에 따라 Authorization 헤더 사용
+	          'Authorization': `Bearer sk-XOqUmArii_dNjTqmEdt0U7FhdfvS2KRrJhh0I3W79GT3BlbkFJTbqKK1RFu1-Q1TlgWGDLm7mx5nWlIWCmKK45XDevgA`, // API 문서에 따라 Authorization 헤더 사용
 	          'Content-Type': 'application/json'
 	        },
 	        body : JSON.stringify({
