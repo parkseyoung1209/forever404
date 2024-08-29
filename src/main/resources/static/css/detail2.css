@@ -60,6 +60,7 @@ header h1 {
 #time1 {
   padding-top: 10px;
   padding-left: 1000px;
+  width: 500px;
 }
 
 .time {
@@ -68,11 +69,10 @@ header h1 {
   justify-content: center;
   align-items: center;
   font-family: "Dongle", sans-serif;
-}
-
-.time p {
   font-size: 7rem;
 }
+
+
 
 .section {
   display: flex;
@@ -103,11 +103,12 @@ header h1 {
 
 .section h2 {
   position: absolute;
-  height: 30px;
+  height: 40px;
   font-size: 1.3rem;
   font-weight: bold;
   margin-bottom: 10px;
   padding-top: 15px;
+  width:600px;
 }
 
 .section p {
@@ -219,15 +220,19 @@ header h1 {
 }
 
 #button3 {
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
   border: 2px solid rgba(0, 0, 0, 0.1);
+  border-bottom: none;
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.1);
 }
 
 #button4 {
+  border-bottom: 2px solid black;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
   border: 2px solid rgba(0, 0, 0, 0.1);
-  border-top: none;
-  border-bottom: none;
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.1);
 }
 
 #button5 {
@@ -248,21 +253,46 @@ header h1 {
   background-color: rgba(0, 0, 0, 0.4);
 }
 
-.modalcontent {
-  position: relative;
+.bigmodalcontent {
+	position: relative;
   background-color: white;
   margin: 10% auto;
   padding: 20px;
   border: 1px solid #999;
-  width: 80%;
-  max-width: 1000px;
+  width: 800px;
   height: 650px;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+
+.modalcontent {
+  position: absolute;
+  background-color: white;
+  width: 750px;
+  height: 500px;
   border-top-left-radius: 20px;
   border-top-right-radius: 20px;
   border-bottom-left-radius: 20px;
   border-bottom-right-radius: 20px;
   overflow-y: scroll;
   overflow-x: hidden;
+}
+
+
+#modalcontent2 {
+  position: relative;
+  background-color: white;
+  margin: 10% auto;
+  padding: 20px;
+  border: 1px solid #999;
+  width: 450px;
+  height: 50vh;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
 }
 
 .modal h2 {
@@ -466,7 +496,7 @@ header h1 {
     align-items: center;
     justify-content: center;
     background-color: lightgray;
-    color: black;
+    color: white;
     border: 2px dashed #999;
     width: 200px;
     height: 200px;
@@ -494,13 +524,18 @@ header h1 {
 .addSection {
 	width: 100%;
 	height:30px;
-	background-color: blue;
 	position: absolute;
 	bottom: 10px;
 	text-align: center;
+	margin-bottom: 15px;
+	margin-left: -40px;
 }
 
 #fileSubmit {
-	width:100px;
+	width:80px;
 	height: 30px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
 }

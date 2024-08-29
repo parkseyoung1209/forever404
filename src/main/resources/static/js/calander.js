@@ -7,12 +7,20 @@ document.addEventListener("DOMContentLoaded", function () {
     headerToolbar: {
       left: "prev,next today",
       center: "title",
-      right: "dayGridMonth,timeGridWeek,timeGridDay",
+      right: "groupcurrent",
     },
     selectable: true,
     editable: true,
     events: bigSchedules,
     eventTextColor: "black",
+	customButtons: {
+		groupcurrent: {
+			text:"그룹 현황",
+			click:(function() {
+				alert("기능 테스트 중입니다!!!!!!!");
+			})
+		}
+	},
     events: bigSchedules.map((event) => {
       let endDate = new Date(event.end);
       endDate.setDate(endDate.getDate() + 1);

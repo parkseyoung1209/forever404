@@ -21,9 +21,7 @@
            <input type="text" id="keyword" size="15" placeholder="장소 검색">
                        <button type="submit" id="bttn">
               <i class="fa-solid fa-magnifying-glass"></i>
-            </button>
-           
-           </input>
+            </button> </input>
 
           </form>
         </div>
@@ -37,15 +35,15 @@
 
       <div class="testtesttest">
       <div id="testI">
-        <i class="fa-solid fa-location-dot" id="testI1"></i><p id="serviceName"></p><br />
-        <i class="fa-solid fa-turn-up" id="testI2"></i><p id="serviceJibun"></p><br />
-        <i class="fa-solid fa-phone" id="testI3"></i><p id="servicePhone"></p><br />
+        <i class="fa-solid fa-location-dot" id="testI1"></i><input id="serviceName" placeholder="ex)KH정보교육원"></input><br />
+        <i class="fa-solid fa-turn-up" id="testI2"></i><input id="serviceJibun" placeholder="ex)서울시 강남구 테헤란로 14"></input><br />
+        <i class="fa-solid fa-phone" id="testI3"></i><input id="servicePhone" placeholder="ex)1544-9970"></input><br />
         </div>
         <p>
           예약
           <select id="isReservation">
-            <option value="Y">Y</option>
             <option value="N">N</option>
+            <option value="Y">Y</option>
           </select>
         </p>
         <p>

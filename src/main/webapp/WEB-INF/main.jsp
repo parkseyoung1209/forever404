@@ -30,7 +30,7 @@ uri="http://java.sun.com/jsp/jstl/core"%>
 
       <c:if test="${check==true}">
         <c:if test="${not empty groupName}">
-          <div id="calendar-container">
+          <div id="calendar-container"><button id=testT>ㅁㅁㄴㅇㄴㅁㅇㄴㅁㅇ</button>
             <div id="calendar"></div>
           </div>
         </c:if>
