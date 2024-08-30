@@ -41,14 +41,39 @@
             ${ssss.bigSchedule.bsCode}
           </c:forEach>-->
       <!-- <div id="group"><a href="/${groupName}">그룹</a></div> -->
-      <div id="group"><button type="text" class="group" onclick="location.href='/${groupName}';">그룹</button></div>
+      
+      
+      <div id="carousel">
+      	<div id="headerContainer">
+      	
+      	<button id="nextBtn1" class="button1">&#10095;</button>
+      	
+      	      <div id="group"><button type="text" class="group" onclick="location.href='/${groupName}';">그룹</button></div>
       <section id="date">
         <c:forEach items="${selectSRange}" var="date">
           <div class="date" data-date="${date}"></div>
         </c:forEach>
         <h1 id="h1date">"${date}"</h1>
       </section>
+      
+      <button id="nextBtn1" class="button1">&#10095;</button>
+      
+      	</div>
+      
+      </div>
+      
+      
+      
+
+      
+      
+      
+      
+      
     </header>
+    
+    
+    
     <main>
       <section class="section1">
         <div id="pay">
@@ -68,7 +93,7 @@
     <c:forEach items="${selectS}" var="ssss">
         <c:set var="total" value="${ssss.bigSchedule.entireMoney}" />
     </c:forEach>
-    
+     
     <c:set var="using" value="0" />
     <c:forEach items="${moneyL}" var="m">
         <c:set var="using" value="${using + m.useMoney}" />

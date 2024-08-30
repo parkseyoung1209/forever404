@@ -126,7 +126,7 @@ public class PageController {
 		
 		session.setAttribute("selectSRange", dateRange);
 		model.addAttribute("selectSRange", dateRange.stream().map(LocalDate::toString).collect(Collectors.toList()));
-		//System.out.println(dateRange);
+		System.out.println(dateRange);
 		session.setAttribute("selectS", smallSchedule);
 		//System.out.println(smallSchedule);
 		
