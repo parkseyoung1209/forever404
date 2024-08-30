@@ -45,7 +45,7 @@ var areas = {
 
 
 function currentLocation() {	
-	console("클릭완");
+	console.log("클릭완");
   	// HTML5의 geolocation으로 사용할 수 있는지 확인합니다
   	if (navigator.geolocation) {
 

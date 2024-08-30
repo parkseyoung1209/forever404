@@ -42,10 +42,15 @@
 	FROM big_group
 	</select>
 	
-	<!-- 그룹을 가지고 있는 회원 찾기용 select -->
+	<!-- 아이디를 가지고 그룹을 가지고 있는 회원 찾기용 select -->
 	<select id="selectSmallGroup" resultMap="groupMap" parameterType="String">
 	SELECT * FROM small_group
 	WHERE id = #{id}
+	</select>
+	<!-- 같은 그룹을 찾는 여러 회원 찾기용 select -->
+	<select id="selectSmallGroup2" resultMap="groupMap" parameterType="int">
+	SELECT * FROM small_group
+	WHERE bg_group_code = ${bgGroupCode}
 	</select>
 	
 	<!-- 그룹 이름으로 프라이머리키 찾는 select -->

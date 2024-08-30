@@ -38,7 +38,7 @@
           Forever
         </h1>
         </a >
-        <a href="/kakaomap"><img src="${pageContext.request.contextPath}/image/main/404.png" /></a>
+        <a href="/"><img src="${pageContext.request.contextPath}/image/main/404.png" /></a>
       </nav>
       <nav id="a2">
         <button
@@ -209,6 +209,8 @@
 					if(response == true) {
 					  	window.location.href = "/movement";
 						location.reload();
+					}else {
+						alert("아이디 혹은 비밀번호가 잘못되었습니다");
 					}
 				}
 			})

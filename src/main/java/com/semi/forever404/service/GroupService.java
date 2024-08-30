@@ -37,6 +37,11 @@ public class GroupService {
 	public List<SmallGroup> selectSmallGroup(String id) {
 		return mapper.selectSmallGroup(id);
 	}
+	
+	// 한 그룹에 여러 회원
+	public List<SmallGroup> selectSmallGroup2(int num) {
+		return mapper.selectSmallGroup2(num);
+	}
 	public List<SmallGroup> allInfoGroup(String id) {
 		return mapper.allInfoGroup(id);
 	}

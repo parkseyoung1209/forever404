@@ -208,7 +208,7 @@ ${remainingAmount}
 	                    const img = $('<img>').attr('src', e.target.result);
 	                    imageContainer.append(img);
 	                };
-	            })(file);
+	            });
 
 	            reader.readAsDataURL(file);
 	        }

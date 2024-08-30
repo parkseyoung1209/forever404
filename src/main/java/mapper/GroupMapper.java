@@ -21,6 +21,9 @@ public interface GroupMapper {
 	//smallgroup select
 	List<SmallGroup> selectSmallGroup(String id);
 	
+	//한 그룹의 여러 사용자 탐색
+	List<SmallGroup> selectSmallGroup2(int num);
+	
 	List<SmallGroup> allInfoGroup(String id);
 	void addSmGroup(SmallGroup smallGroup);
 	void scheduleAdd(BigSchedule bgs);

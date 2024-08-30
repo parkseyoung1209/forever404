@@ -61,11 +61,15 @@ public class PageController {
 	
 	@GetMapping("/main")
 	public String main(HttpServletRequest request) {
+		
 		HttpSession session = request.getSession();
 		User user = (User) session.getAttribute("user");
 		if(user!=null) {
 		List<SmallGroup> list = service.selectSmallGroup(user.getId());
+		// 한 그룹의 여러 회원
+//		
 		session.setAttribute("smlist", list);
+//		session.setAttribute("userList", userList);
 		
 		if(list.isEmpty()) {
 			session.setAttribute("check", false);
@@ -92,6 +96,8 @@ public class PageController {
 			User user = (User) session.getAttribute("user");
 			
 			BigGroup bg = service.searchBgCode(groupName);
+			List<SmallGroup> userList = service.selectSmallGroup2(bg.getBgGroupCode());
+			session.setAttribute("userList", userList);
 			bigSchedule.setBigGroup(bg);
 			List<BigSchedule> bsList = service.selectBg(bigSchedule);
 			model.addAttribute("bsList", bsList);

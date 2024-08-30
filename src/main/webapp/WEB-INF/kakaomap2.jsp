@@ -173,8 +173,9 @@
     	});
 
       const apiUrl = "https://api.openai.com/v1/chat/completions";
-      const apiKey = 'sk-XOqUmArii_dNjTqmEdt0U7FhdfvS2KRrJhh0I3W79GT3BlbkFJTbqKK1RFu1-Q1TlgWGDLm7mx5nWlIWCmKK45XDevgA';
+      const apiKey = 'sk-zW-eQw_d-_JqMF0Vfs7YEixlV3gkLUxq0-oa22q2txT3BlbkFJX_JI2PL7EcNLUqnTwe-7kqm8AepVjkzQBBi7rktI0A';
       const gptTest = document.querySelector("#gptTest");
+      const gptAsk = document.querySelector("#gptAsk");
       
       let conversationHistory = []; // 대화 내역을 저장하는 배열
       async function fetchData(apiUrl, apiKey, messages) {
@@ -183,7 +184,7 @@
 		    const response = await fetch(apiUrl,{
 	        method : 'POST',
 	        headers : {
-	          'Authorization': `Bearer sk-XOqUmArii_dNjTqmEdt0U7FhdfvS2KRrJhh0I3W79GT3BlbkFJTbqKK1RFu1-Q1TlgWGDLm7mx5nWlIWCmKK45XDevgA`, // API 문서에 따라 Authorization 헤더 사용
+	          'Authorization': `Bearer sk-zW-eQw_d-_JqMF0Vfs7YEixlV3gkLUxq0-oa22q2txT3BlbkFJX_JI2PL7EcNLUqnTwe-7kqm8AepVjkzQBBi7rktI0A`, // API 문서에 따라 Authorization 헤더 사용
 	          'Content-Type': 'application/json'
 	        },
 	        body : JSON.stringify({
@@ -206,12 +207,27 @@
       
       $("#gpt").click(() =>{
     	  const userMessage = gptTest.value;
-    	  conversationHistory.push({ "role": "user", "content": userMessage });
+    	  conversationHistory.push({ "role": "user", "content": userMessage});
+    		$("#gptAsk").text("");
 	      fetchData(apiUrl , apiKey, conversationHistory)
 	          .then(data => {
 	        	  const assistantText = data.choices[0].message.content;
 	        	  conversationHistory.push({ "role": "assistant", "content": assistantText});
-	              $("#gptAsk").text(assistantText);
+	        	  const txtSpeed = 20;
+	        	  //const txtDelay = 100;
+	        	  let txtIndex = 0;
+	        	  let typeCotrol = true;
+	        	  function typingEvent(){
+	        		  if(typeCotrol === true){
+	        		    let txtNow = assistantText[txtIndex++];
+	        		    gptAsk.innerHTML += txtNow === "\n" ? "<br>": txtNow;
+	        		    if(txtIndex >= assistantText.length){
+	        		      txtIndex = 0;
+	        		      typeCotrol = false;
+	        		    }
+	        		  }
+	        		}
+	        	  let setTyping = setInterval(typingEvent, txtSpeed);
 	              gptTest.value = '';
 	              })
 	              .catch(error => {
