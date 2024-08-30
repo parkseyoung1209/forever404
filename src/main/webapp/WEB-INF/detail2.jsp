@@ -116,7 +116,7 @@ ${remainingAmount}
 		</c:forEach>
 		<button id="nextBtn1" class="button1">&#10095;</button>
 
- <div class="sectioncontainer">
+ <div class="sectioncontainer" id="secContainer">
         <section class="section">
           <div class="img">image</div>
           <div>
@@ -130,12 +130,10 @@ ${remainingAmount}
 		
 		<button id="nextBtn2" class="button2">&#10094;</button>
 
-		<section class="time" id="time2">
-			<div>
-				<p>18:00</p>
-			</div>
-		</section>
-	</main>
+
+      <section class="time" id="time2">
+        <div><p>18:00</p></div>
+      </section>
 
 	<section id="btncontainer">
 		<button id="button3" class="btn1">일정 추가</button>
@@ -145,9 +143,15 @@ ${remainingAmount}
 			<i class="bi bi-plus-square"></i>
 		</button>
 	</section>
-
+	<!-- curDate + smallSchedule 예시-->
+	<c:forEach items="${totalList}" var="tl">
+			${tl.curDate}
+			<c:forEach items="${tl.list}" var="val">
+				<p id='${val.ssCode}'>태그 테스트, ${val.curTime}</p>
+			</c:forEach>
+	</c:forEach>
 	<script>
-
+	
       const kakaobtn = document.querySelector("#button3");
       kakaobtn.addEventListener("click", () => {
     	  $.ajax({
@@ -381,6 +385,7 @@ ${remainingAmount}
       	            var date = $('#h1date').text();
       	            
       	        }
+      	       
       	    });
 
       	    $('#nextBtn2').click(() => {
@@ -435,6 +440,5 @@ ${remainingAmount}
             });
       }
     </script>
-
 </body>
 </html>

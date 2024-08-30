@@ -153,7 +153,7 @@
 		<result column="schedule_color" property="scheduleColor"/>
 		</association>
 	</resultMap>
-	<insert id="scheduleAdd2" parameterType="SmallSchedule">
+	<insert id="scheduleAdd2" parameterType="SmallSchedule" useGeneratedKeys="true" keyProperty="ssCode" keyColumn="ss_code">
 		INSERT INTO small_schedule(memo, is_reservation, cur_date, cur_time, bs_code, service_name, service_jibun, service_lat, service_lng, service_phone, service_img)
 		VALUES (#{memo}, #{isReservation}, #{curDate}, #{curTime}, #{bigSchedule.bsCode}, #{serviceName}, #{serviceJibun}, #{serviceLat},#{serviceLng},#{servicePhone},#{serviceImg})
 	</insert>

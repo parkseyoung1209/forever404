@@ -13,6 +13,7 @@
       href="${pageContext.request.contextPath}/css/kakaomap2.css" />
 <script src="https://kit.fontawesome.com/ef885bd654.js" crossorigin="anonymous"></script>
 </head>
+
 <body>
     <header>
       <div class="search_menu">
@@ -24,18 +25,18 @@
             </button> </input>
 
           </form>
+          <button id="curLocation">현위치</button>
         </div>
       </div>
 
       <section>
         <button id="button1">&#10094;</button>
-
         <button id="button2">&#10095;</button>
       </section>
       
       
 
-      <div class="testtesttest">
+      <div class="serviceInfo">
       <div id="testI">
         <i class="fa-solid fa-location-dot" id="testI1"><span class="testIP">장소</p></a></i><input id="serviceName" placeholder="KH정보교육원"></input><br />
         <i class="fa-solid fa-turn-up" id="testI2"><span class="testIP">위치</p></i><input id="serviceJibun" placeholder="서울시 강남구 테헤란로 14"></input><br />

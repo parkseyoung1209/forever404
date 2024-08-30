@@ -190,7 +190,7 @@ public class GroupController {
 	
 	@ResponseBody
 	@PostMapping("/scheduleAdd2")
-	public void scheduleAdd2(HttpServletRequest request, SmallSchedule smallSchedule, int bsCode, String curDate)  {
+	public SmallSchedule scheduleAdd2(HttpServletRequest request, SmallSchedule smallSchedule, int bsCode, String curDate)  {
 	
 		String url;
 		try {
@@ -204,11 +204,10 @@ public class GroupController {
 			
 //		CurDate 값 수정 필요(front한테 받기)
 		smallSchedule.setCurDate(curDate);
-	
+		
 		service.scheduleAdd2(smallSchedule);
 		
-		
-		
+		return smallSchedule;
 //		#{memo} o, #{isReservation} o, #{cur_date}x, #{cur_time}x, #{use_money}x, #{left_money}x, #{buying_list}, #{bigSchedule.bsCode}, #{serviceName}, 
 //		#{serviceJibun}, #{serviceLat},#{serviceLng},#{servicePhone},#{serviceImg}
 	}
