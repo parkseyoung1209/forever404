@@ -482,6 +482,7 @@ header h1 {
 
 .fileContainer {
 	display: flex;
+	flex-direction:column;
 	max-height: 300px;
 	align-items: flex-start;
 	margin: 30px;
@@ -505,10 +506,10 @@ header h1 {
     font-size: 3rem;
     cursor: pointer;
     margin-right: 20px; 
-    position: absolute;
 }
 
 #image_container {
+	top: 300px;
 	display: flex;
 	flex-wrap: wrap;
 	gap: 20px;

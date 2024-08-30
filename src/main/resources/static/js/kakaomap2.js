@@ -11,17 +11,16 @@ var placeOverlay = new kakao.maps.CustomOverlay({ zIndex: 1 }),
   markers = [], // 마커를 담을 배열입니다
   currCategory = ""; // 현재 선택된 카테고리를 가지고 있을 변수입니다
 
-var mapContainer = document.getElementById("map"), // 지도를 표시할 div
-  	mapOption = {
-    center: new kakao.maps.LatLng(36.5, 127.5), // 지도 초기 중심 좌표 (한국 중앙)
-    level: 12, // 지도의 확대 레벨
-  };
-  
-  
-  // 지도 생성
- var map = new kakao.maps.Map(mapContainer, mapOption);
- var category = document.getElementById('category');
- 
+var mapContainer = document.getElementById("map"); // 지도를 표시할 div
+
+mapOption = {
+  center: new kakao.maps.LatLng(36.5, 127.5), // 지도 초기 중심 좌표 (한국 중앙)
+  level: 12, // 지도의 확대 레벨
+};
+
+// 지도 생성
+var map = new kakao.maps.Map(mapContainer, mapOption);
+var category = document.getElementById("category");
 
 /* 지역 선택
 var areas = {
@@ -43,48 +42,42 @@ var areas = {
     }
 */
 
+function currentLocation() {
+  // HTML5의 geolocation으로 사용할 수 있는지 확인합니다
+  if (navigator.geolocation) {
+    // GeoLocation을 이용해서 접속 위치를 얻어옵니다
+    navigator.geolocation.getCurrentPosition(function (position) {
+      (lat = position.coords.latitude), // 위도
+        (lng = position.coords.longitude); // 경도
 
-function currentLocation() {	
-	console.log("클릭완");
-  	// HTML5의 geolocation으로 사용할 수 있는지 확인합니다
-  	if (navigator.geolocation) {
+      // Create a LatLng object
+      const latLng = new kakao.maps.LatLng(lat, lng);
 
-	  	// GeoLocation을 이용해서 접속 위치를 얻어옵니다
-	  	navigator.geolocation.getCurrentPosition(function(position) {
+      // 마커가 표시될 위치를 geolocation으로 얻어온 좌표로 생성합니다
+      map.setCenter(latLng);
+      map.setLevel(4);
+      //var message = '<div id="message">현위치</div>'; // 인포윈도우에 표시될 내용입니다
+      // 지도 생성
+      // map = new kakao.maps.Map(mapContainer, mapOption);
 
-  		lat = position.coords.latitude, // 위도
-  		lng = position.coords.longitude; // 경도
+      // 마커와 인포윈도우를 표시합니다
+      // displayMarker(map, mapOption, message);
 
-		// Create a LatLng object
-		const latLng = new kakao.maps.LatLng(lat, lng);
-				
-  		// 마커가 표시될 위치를 geolocation으로 얻어온 좌표로 생성합니다
-  		map.setCenter(latLng);
-  		map.setLevel(4);
-  		console.log("좌표생성완");
-  		//var message = '<div id="message">현위치</div>'; // 인포윈도우에 표시될 내용입니다
-  		 // 지도 생성
-         // map = new kakao.maps.Map(mapContainer, mapOption);
-          
-          // 마커와 인포윈도우를 표시합니다
-         // displayMarker(map, mapOption, message);
-  	   
-  	   category.style.display = "block";
-  	        new kakao.maps.Marker({
-  	          map: map,
-  	          position: latLng,
-  	        });
+      new kakao.maps.Marker({
+        map: map,
+        position: latLng,
       });
-      } else {
-          alert("Geolocation is not supported by this browser.");
-      }
-  };
-  
+    });
+  } else {
+    alert("현위치를 확인할 수 없음");
+  }
+}
 
-document.getElementById('curLocation').addEventListener('click', currentLocation);
+document
+  .getElementById("curLocation")
+  .addEventListener("click", currentLocation);
 
-
-  /*
+/*
   function displayMarker(map, mapOption, message) {
       var markerPosition = mapOption.center; // 마커를 위치시키기 위한 위치
       var marker = new kakao.maps.Marker({
@@ -105,44 +98,39 @@ document.getElementById('curLocation').addEventListener('click', currentLocation
       });
   }*/
 
-  //currentLocation();
+currentLocation();
 
-  // 지도 생성 시 currentLocation 함수 호출
-  //currentLocation();
-
-  
-
-
-
-
-document.getElementById("bttn").addEventListener("click", searchLocalPlaces)
+// 지도 생성 시 currentLocation 함수 호출
+//currentLocation();
 
 // 장소 검색 객체를 생성합니다
 var ps = new kakao.maps.services.Places(map);
 
-document.getElementById("bttn").addEventListener("click", searchLocalPlaces)
+//document.getElementById("bttn").addEventListener("click", searchLocalPlaces)
 
 function searchLocalPlaces() {
   const keyword = document.getElementById("keyword").value;
+  if (keyword == "") {
+    currentLocation();
+  } else {
+    ps.keywordSearch(keyword, function (result, status) {
+      if (status === kakao.maps.services.Status.OK) {
+        const place1 = result[0]; // 검색 결과의 첫 번째 항목 선택
+        const latLng = new kakao.maps.LatLng(place1.y, place1.x);
 
-  ps.keywordSearch(keyword, function (result, status) {
-    if (status === kakao.maps.services.Status.OK) {
-      const place1 = result[0]; // 검색 결과의 첫 번째 항목 선택
-      const latLng = new kakao.maps.LatLng(place1.y, place1.x);
+        // 지도 중심을 검색된 위치로 이동하고, 줌 레벨을 조정
+        map.setCenter(latLng);
+        map.setLevel(4); // 레벨은 1에서 14까지 조정 가능 (작을수록 확대)
 
-      // 지도 중심을 검색된 위치로 이동하고, 줌 레벨을 조정
-      map.setCenter(latLng);
-      map.setLevel(4); // 레벨은 1에서 14까지 조정 가능 (작을수록 확대)
-
-      // 검색 결과를 마커로 표시
-      category.style.display = "block";
-      new kakao.maps.Marker({
-        map: map,
-        position: latLng,
-      });
-    }
-  });
-  
+        // 검색 결과를 마커로 표시
+        category.style.display = "block";
+        new kakao.maps.Marker({
+          map: map,
+          position: latLng,
+        });
+      }
+    });
+  }
 
   // 지도에 idle 이벤트를 등록합니다
   kakao.maps.event.addListener(map, "idle", searchPlaces);
@@ -153,7 +141,8 @@ function searchLocalPlaces() {
   // 커스텀 오버레이의 컨텐츠 노드에 mousedown, touchstart 이벤트가 발생했을때
   // 지도 객체에 이벤트가 전달되지 않도록 이벤트 핸들러로 kakao.maps.event.preventMap 메소드를 등록합니다
   addEventHandle(contentNode, "mousedown", kakao.maps.event.preventMap);
-  addEventHandle(contentNode, "touchstart", kakao.maps.event.preventMap);
+  console.log("mousedown");
+  //addEventHandle(contentNode, "touchstart", kakao.maps.event.preventMap);
 
   // 커스텀 오버레이 컨텐츠를 설정합니다
   placeOverlay.setContent(contentNode);
@@ -165,6 +154,7 @@ function searchLocalPlaces() {
   function addEventHandle(target, type, callback) {
     if (target.addEventListener) {
       target.addEventListener(type, callback);
+      console.log("o");
     } else {
       target.attachEvent("on" + type, callback);
     }
@@ -295,7 +285,7 @@ function searchLocalPlaces() {
     }
 
     content +=
-      '    <span class="tel">' +
+      '<span class="tel">' +
       place.phone +
       "</span>" +
       "</div>" +
@@ -318,14 +308,15 @@ function searchLocalPlaces() {
       const serviceJibun = document.querySelector("#serviceJibun");
       const servicePhone = document.querySelector("#servicePhone");
 
-      serviceName.value =  title;
-      serviceJibun.value =  addr;
-      servicePhone.value =  phone;
+      serviceName.value = title;
+      serviceJibun.value = addr;
+      servicePhone.value = phone;
     });
   }
 
   // 각 카테고리에 클릭 이벤트를 등록합니다
   $("#ssTest").click(() => {
+    const groupName = localStorage.getItem("groupName");
     let curDate = sessionStorage.getItem("date");
     $.ajax({
       type: "post",
@@ -343,7 +334,7 @@ function searchLocalPlaces() {
         curDate: curDate,
       },
       success: function () {
-        window.location.href = history.back();
+        window.location.href = "/" + groupName + "/detail?bsCode=" + bsCode;
       },
     });
   });

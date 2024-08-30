@@ -53,6 +53,7 @@
       <section class="section1">
         <div id="pay">
           <span id="bsCode" style="display: none"> ${param.bsCode} </span>
+         
           <c:forEach items="${selectS}" var="ssss">
             ${ssss.bigSchedule.bsCode}
           </c:forEach>-->
@@ -75,11 +76,10 @@
     </c:forEach>
 
    남은금액 : <c:set var="remainingAmount" value="${total - using}" />
-${remainingAmount}
+			${remainingAmount}
 				<button id="payPlus">추가</button>
 			</div>
 		</section>
-
 
 		<!-- 일정디테일 데이터 세팅 -->
 		<c:forEach items="${selectS}" var="c" varStatus="status">
@@ -179,12 +179,13 @@ ${remainingAmount}
 
 				<form id="fileForm" method="post" enctype="multipart/form-data">
 					<div class=fileContainer>
-						<label for="file" class="upload"><div>+</div></label> <input
-							id="file" type="file" name="files" multiple accept="image/*"
-							onchange="imgShow(event)" value="+" placeholder="+" />
-						<div id="image_container"></div>
+						<div id="image_container">
+						<label for="file" class="upload">
+							<div>+</div>
+							<input id="file" type="file" name="files" multiple accept="image/*" onchange="imgShow(event)" value="+" placeholder="+" />
+						</label> 
+						</div>
 					</div>
-
 				</form>
 
 			</div>
@@ -193,13 +194,14 @@ ${remainingAmount}
 			</section>
 		</div>
 	</div>
+	
 	<script>
 	// 사진이 오른쪽부터 나오게하는 기능
 	    $('#file').on('change', function(event) {
 	        const imageContainer = $('#image_container');
 		    const files = event.target.files;
 
-	        for (const i = 0; i < files.length; i++) {
+	        for (let i = 0; i < files.length; i++) {
 	            const file = files[i];
 	            const reader = new FileReader();
 
@@ -214,12 +216,11 @@ ${remainingAmount}
 	        }
 	    });
 	
-	
           let bsCode = localStorage.getItem("bsCode");
 
           function imgShow(event) {
             const container = document.getElementById("image_container");
-            container.innerHTML = ""; // Clear existing images
+            //container.innerHTML = ""; // Clear existing images
             Array.from(event.target.files).forEach((file) => {
               const reader = new FileReader();
               reader.onload = function (e) {
@@ -230,6 +231,7 @@ ${remainingAmount}
               reader.readAsDataURL(file);
             });
           }
+          
 
           $("#fileSubmit").click(() => {
             const files = new FormData($("#fileForm")[0]);
@@ -243,13 +245,12 @@ ${remainingAmount}
               cache: false,
               url: "/testupload",
               success: function () {
-                console.log("!");
+            	  $('#modal2').css("display", "none");
+            	  $("#image_container").empty();
               },
             });
           });
         </script>
-	</div>
-	</div>
 	<div id="modal3" class="modal">
 		<div class="modalcontent" id="modalcontent2">
 			<span class="close">&times</span>

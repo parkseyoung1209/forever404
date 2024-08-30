@@ -85,7 +85,7 @@ public class PageController {
 //		HttpSession session = request.getSession();
 //		List<SmallSchedule> smallSchedule = (List<SmallSchedule>) session.getAttribute("selectS");
 		
-		return "kakaomap2";
+		return "kakaomap2";	
 	}
 	
 	@GetMapping("/{groupName}")
@@ -114,8 +114,8 @@ public class PageController {
 	public String detail(@PathVariable String groupName, @RequestParam int bsCode, HttpServletRequest request, Model model) {
 	
 		HttpSession session = request.getSession();
-
-		List<SmallSchedule> smallSchedule = service.selectOneSc(bsCode);
+//		System.out.println(bsCode);
+		List<SmallSchedule> sc = service.selectOneSc(bsCode);	
 		BigSchedule tmp = service.selectOneBs(bsCode);
 		
 		String startDate = tmp.getStartDate();
@@ -134,7 +134,7 @@ public class PageController {
 		if(!smallSchedule.isEmpty()) {
 			List<Money> MoneyList = service.selectMoney(1); // 
 			session.setAttribute("moneyL", MoneyList);
-			System.out.println(MoneyList);
+//			System.out.println(MoneyList);
 		}
 		session.setAttribute("selectSRange", dateRange);
 		model.addAttribute("selectSRange", stringDates);
