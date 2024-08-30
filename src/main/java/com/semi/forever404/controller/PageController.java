@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.semi.forever404.model.vo.BigGroup;
 import com.semi.forever404.model.vo.BigSchedule;
 import com.semi.forever404.model.vo.Money;
+import com.semi.forever404.model.vo.Photo;
 import com.semi.forever404.model.vo.SmallGroup;
 import com.semi.forever404.model.vo.SmallSchedule;
 import com.semi.forever404.model.vo.User;
@@ -188,4 +189,14 @@ public class PageController {
         response.put("groupName", groupName);
         return response;
     }
+	
+	@ResponseBody
+	@PostMapping("/selectMyImg")
+	public List<Photo> photoList(HttpServletRequest request, int bsCode) {
+		List<Photo> photoList = service.selectMyImg(bsCode);
+		HttpSession session = request.getSession();
+		
+		session.setAttribute("photoL", photoList);
+		return photoList;
+	}
 }

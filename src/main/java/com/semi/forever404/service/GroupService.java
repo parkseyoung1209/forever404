@@ -109,4 +109,9 @@ public class GroupService {
 	        paramMap.put("endDate", endDate);
 	        return mapper.getDatesList(paramMap);
 	}
+	
+	// 특정 날짜에 따른 
+	public List<SmallSchedule> curDateSchedule(String curDate) {
+		return mapper.curDateSchedule(curDate);
+	}
 }

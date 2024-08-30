@@ -207,20 +207,19 @@ public class GroupController {
 	
 		service.scheduleAdd2(smallSchedule);
 		
+		
+		
 //		#{memo} o, #{isReservation} o, #{cur_date}x, #{cur_time}x, #{use_money}x, #{left_money}x, #{buying_list}, #{bigSchedule.bsCode}, #{serviceName}, 
 //		#{serviceJibun}, #{serviceLat},#{serviceLng},#{servicePhone},#{serviceImg}
 	}
 
 	@ResponseBody
 	@PostMapping("/insertMoney")
-	public void insertMoney(Money money) {
-		int ssCode = 1;
-		SmallSchedule sm = new SmallSchedule();
-		sm.setSsCode(ssCode);
-		money.setSmallSchedule(sm);
-		System.out.println(money);
+	public void insertMoney(Money money, String curDate) {
+//		List<SmallSchedule> list = service.curDateSchedule(curDate);
+//		SmallSchedule sm = new SmallSchedule();
+//		sm.setSsCode(ssCode);
+//		money.setSmallSchedule(sm);
 		service.insertMoney(money);
 	}
-	
-	
 }
