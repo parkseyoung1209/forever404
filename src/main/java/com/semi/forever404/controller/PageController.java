@@ -7,6 +7,7 @@ import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.semi.forever404.model.dto.CalendarDTO;
 import com.semi.forever404.model.vo.BigGroup;
 import com.semi.forever404.model.vo.BigSchedule;
 import com.semi.forever404.model.vo.Money;
@@ -115,56 +117,29 @@ public class PageController {
 		
 		LocalDate startDate2 = LocalDate.parse(startDate);
 		LocalDate endDate2 = LocalDate.parse(endDate);
-
+		List<CalendarDTO> list = new ArrayList<CalendarDTO>(); // 최종 리스트
 		List<LocalDate> dateRange = getDateRange(startDate2, endDate2);
-		
+		List<String> stringDates = dateRange.stream().map(LocalDate::toString).collect(Collectors.toList());
+		List<SmallSchedule> addList = new ArrayList<SmallSchedule>();
+		for(int i=0; i<dateRange.size(); i++) {
+			addList = service.curDateSchedule(stringDates.get(i));
+			list.add(new CalendarDTO(stringDates.get(i), addList));
+		}
 		if(!smallSchedule.isEmpty()) {
-			List<Money> MoneyList = service.selectMoney(1);
+			List<Money> MoneyList = service.selectMoney(1); // 
 			session.setAttribute("moneyL", MoneyList);
 			System.out.println(MoneyList);
 		}
-		
 		session.setAttribute("selectSRange", dateRange);
-		model.addAttribute("selectSRange", dateRange.stream().map(LocalDate::toString).collect(Collectors.toList()));
+		model.addAttribute("selectSRange", stringDates);
 		//System.out.println(dateRange);
 		session.setAttribute("selectS", smallSchedule);
+		session.setAttribute("totalList", list);
 		//System.out.println(smallSchedule);
 		
 		if(session.getAttribute("user")!=null) return "detail2";
 		else return "redirect:/";
 	}
-	
-	/*
-	@ResponseBody
-	@PostMapping("/{groupName}/detail/selectList")
-	public Map<String, Object> selectData (@RequestBody Map<String, Object> paramMap){
-		
-		Map<String, Object> result = new HashMap<>();
-		
-		
-		  Object bsCode = paramMap.get("bsCode");
-
-	        // 일정의 시작일과 종료일을 가져오기 위한 코드 (가정)
-	        Map<String, Object> dateRange =  service.getDateRange((int) bsCode); // bsCode를 이용해 시작일과 종료일을 가져옴
-	        String stdDate = (String) dateRange.get("stdDate");
-	        String endDate = (String) dateRange.get("endDate");
-
-	        // paramMap에 stdDate와 endDate 추가
-	        paramMap.put("stdDate", stdDate);
-	        paramMap.put("endDate", endDate);
-		
-		
-	        List<Map<String, Object>> list = service.getDateList(stdDate, endDate);
-		
-		Map<String, Object> detail = null; //service.detailselect(paramMap); //파라미터로 bsCode, groupName들어감
-		
-		result.put("result", true); 
-		result.put("list", list);
-
-		return result;
-		
-	}
-	*/
 	
 	public List<LocalDate> getDateRange(LocalDate startDate, LocalDate endDate) {
 		List<LocalDate> dates = new ArrayList<>();

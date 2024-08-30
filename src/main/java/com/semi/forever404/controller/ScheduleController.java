@@ -13,7 +13,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.semi.forever404.model.vo.BigSchedule;
 import com.semi.forever404.model.vo.Photo;
-import com.semi.forever404.model.vo.SmallSchedule;
 import com.semi.forever404.service.GroupService;
 
 
