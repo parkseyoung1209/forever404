@@ -356,6 +356,7 @@ ${remainingAmount}
       	            var date = $('#h1date').text();
       	            
       	        }
+      	       
       	    });
 
       	    $('#nextBtn2').click(() => {
