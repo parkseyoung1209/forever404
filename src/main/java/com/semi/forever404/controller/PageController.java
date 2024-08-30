@@ -115,7 +115,7 @@ public class PageController {
 	
 		HttpSession session = request.getSession();
 //		System.out.println(bsCode);
-		List<SmallSchedule> sc = service.selectOneSc(bsCode);	
+		List<SmallSchedule> smallSchedule = service.selectOneSc(bsCode);	
 		BigSchedule tmp = service.selectOneBs(bsCode);
 		
 		String startDate = tmp.getStartDate();
