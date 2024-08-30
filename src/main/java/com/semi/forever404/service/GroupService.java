@@ -7,6 +7,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.semi.forever404.model.dto.CalendarDTO;
 import com.semi.forever404.model.vo.BigGroup;
 import com.semi.forever404.model.vo.BigSchedule;
 import com.semi.forever404.model.vo.Money;
@@ -59,7 +60,7 @@ public class GroupService {
 	public List<SmallSchedule> selectSc(BigSchedule bs) {
 		return mapper.selectSc(bs);
 	}
-	
+		
 	public List<SmallSchedule> selectOneSc(int num) {
 		return mapper.selectOneSc(num);
 	}

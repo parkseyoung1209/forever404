@@ -5,6 +5,11 @@ import java.util.List;
 import com.semi.forever404.model.vo.BigSchedule;
 import com.semi.forever404.model.vo.SmallSchedule;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data @NoArgsConstructor @AllArgsConstructor
 public class CalendarDTO {
 
 	private String curDate;

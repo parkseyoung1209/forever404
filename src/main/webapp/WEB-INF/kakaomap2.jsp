@@ -16,16 +16,16 @@
 
 <body>
     <header>
+	<i class="fa-solid fa-arrow-left" id="back"></i>
       <div class="search_menu">
         <div>
           <form onsubmit="searchLocalPlaces(); return false;">
-           <input type="text" id="keyword" size="15" placeholder="장소 검색">
-                       <button type="submit" id="bttn">
-              <i class="fa-solid fa-magnifying-glass"></i>
-            </button> </input>
-
+           <input type="text" id="keyword" size="15" placeholder="장소 검색"/>
+           <button type="button" id="bttn">
+           		<i class="fa-solid fa-magnifying-glass"></i>
+            </button>
           </form>
-          <button id="curLocation">현위치</button>
+	      <button id="curLocation">현위치</button>
         </div>
       </div>
 
@@ -33,8 +33,6 @@
         <button id="button1">&#10094;</button>
         <button id="button2">&#10095;</button>
       </section>
-      
-      
 
       <div class="serviceInfo">
       <div id="testI">
@@ -218,6 +216,12 @@
 	                 console.error('Error:', error);
 	              });
 	      });
+            
+      $("#back").click(() => {
+    	  const groupName = localStorage.getItem("groupName");
+    	  const bsCode = localStorage.getItem("bsCode");
+    	  window.location.href="/"+groupName+"/detail?bsCode="+bsCode;
+      });
     </script>
 </body>
 </html>

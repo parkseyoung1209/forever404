@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.semi.forever404.model.dto.CalendarDTO;
 import com.semi.forever404.model.vo.BigGroup;
 import com.semi.forever404.model.vo.BigSchedule;
 import com.semi.forever404.model.vo.Money;
@@ -79,7 +80,7 @@ public class PageController {
 //		HttpSession session = request.getSession();
 //		List<SmallSchedule> smallSchedule = (List<SmallSchedule>) session.getAttribute("selectS");
 		
-		return "kakaomap2";
+		return "kakaomap2";	
 	}
 	
 	@GetMapping("/{groupName}")
@@ -106,8 +107,8 @@ public class PageController {
 	public String detail(@PathVariable String groupName, @RequestParam int bsCode, HttpServletRequest request, Model model) {
 	
 		HttpSession session = request.getSession();
-
-		List<SmallSchedule> smallSchedule = service.selectOneSc(bsCode);
+//		System.out.println(bsCode);
+		List<SmallSchedule> sc = service.selectOneSc(bsCode);	
 		BigSchedule tmp = service.selectOneBs(bsCode);
 		
 		String startDate = tmp.getStartDate();
@@ -118,16 +119,16 @@ public class PageController {
 
 		List<LocalDate> dateRange = getDateRange(startDate2, endDate2);
 		
-		if(!smallSchedule.isEmpty()) {
+		if(!sc.isEmpty()) {
 			List<Money> MoneyList = service.selectMoney(1);
 			session.setAttribute("moneyL", MoneyList);
-			System.out.println(MoneyList);
+//			System.out.println(MoneyList);
 		}
 		
 		session.setAttribute("selectSRange", dateRange);
 		model.addAttribute("selectSRange", dateRange.stream().map(LocalDate::toString).collect(Collectors.toList()));
 		//System.out.println(dateRange);
-		session.setAttribute("selectS", smallSchedule);
+		session.setAttribute("selectS", sc);
 		//System.out.println(smallSchedule);
 		
 		if(session.getAttribute("user")!=null) return "detail2";

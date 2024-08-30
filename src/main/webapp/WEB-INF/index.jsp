@@ -209,13 +209,13 @@
 					if(response == true) {
 					  	window.location.href = "/movement";
 						location.reload();
-					}
+					} 
 				}
 			})
 		});
 	</script>
   </body>
-  <script>
+  <script>	
     const header = document.getElementById("header");
     const navLinks = document.querySelectorAll(".nav-link");
 

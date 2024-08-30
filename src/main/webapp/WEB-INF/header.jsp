@@ -35,7 +35,7 @@
 		</div>
 
 		<div class="mymodal">
-		 <header id="myHeader"></header>
+		<header id="myHeader"></header>
         <i class="fa-solid fa-plane" id="myImg"></i>
         <div id="nameSection">
           <h1 id="myName"></h1>
@@ -57,11 +57,9 @@
       <i class="fa-regular fa-user"></i>
        
     </div>-->
-    
-   
-	</header>
-	<header id="header2">
-	<div class="user">
+    </header>
+   <header id="header2">
+	<div class="user" >
 			<i class="fa-solid fa-user" id=myUser></i>
 		</div>
 	</header>
@@ -93,7 +91,7 @@
 				<hr />
 				<br />
 				<p>
-					아래에 전달받은 그룹코드를 입력해<br /> 그룹에 참여해보세요
+					아래에 전달받은 그룹명을 입력해<br /> 그룹에 참여해보세요
 				</p>
 				<section class="mid">
 					<h3>그룹 코드</h3>
