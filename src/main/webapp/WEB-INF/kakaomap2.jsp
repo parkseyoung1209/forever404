@@ -32,21 +32,23 @@
 
         <button id="button2">&#10095;</button>
       </section>
+      
+      
 
       <div class="testtesttest">
       <div id="testI">
-        <i class="fa-solid fa-location-dot" id="testI1"></i><input id="serviceName" placeholder="ex)KH정보교육원"></input><br />
-        <i class="fa-solid fa-turn-up" id="testI2"></i><input id="serviceJibun" placeholder="ex)서울시 강남구 테헤란로 14"></input><br />
-        <i class="fa-solid fa-phone" id="testI3"></i><input id="servicePhone" placeholder="ex)1544-9970"></input><br />
+        <i class="fa-solid fa-location-dot" id="testI1"><span class="testIP">장소</p></a></i><input id="serviceName" placeholder="KH정보교육원"></input><br />
+        <i class="fa-solid fa-turn-up" id="testI2"><span class="testIP">위치</p></i><input id="serviceJibun" placeholder="서울시 강남구 테헤란로 14"></input><br />
+        <i class="fa-solid fa-phone" id="testI3"><span class="testIP">연락처</p></i><input id="servicePhone" placeholder="1544-9970"></input><br /><hr>
         </div>
-        <p>
+        <p class="headerP">
           예약
           <select id="isReservation">
             <option value="N">N</option>
             <option value="Y">Y</option>
           </select>
         </p>
-        <p>
+        <p class="headerP">
           시간
           <select id="time">
             <option value="0">0시</option>
@@ -76,16 +78,19 @@
           </select>
         </p>
 		
-         <p id="memoP">메모</p>
-          <textarea id="memo" class="memo" rows="1"></textarea>
-         <h2>질문해보세요 gpt입니다</h2>
-          <textarea id="gptTest" class="memo" rows="1"></textarea>
-          <input type="submit" value="test" id="gpt" />
-          <div id="gptAsk"></div>
+         <p id="memoP" class="headerP">메모</p>
+          <textarea id="memo" class="memo" rows="1"></textarea><hr>
+		<button id="gptOpen">선택이 어려우신가요?</button>
         <input type="submit" value="추가하기" id="ssTest" />
       </div>
     </header>
 	
+	<section id="gptModal">
+		          <h2 id=gptH2>궁금하신 걸 질문해보세요!</h2>
+          <textarea id="gptTest" class="memo" rows="1"></textarea>
+          <input type="submit" value="입력" id="gpt" />
+          <div id="gptAsk"></div>
+	</section>
 
 <div class="map_wrap">
 	<div id="map" style="width:100%;height:100vh;position:relative;overflow:hidden;"></div>
@@ -143,6 +148,28 @@
             $("#button1").css("marginLeft", "0px");
           });
       });
+      
+      <%--
+      $("#gptOpen").click(function () {
+    	  const moving = $("#gptModal").css("display");
+    	    if (moving === "none") {
+        	  $("#gptModal").css("display", "block")
+    	  } else {
+    		  $("#gptModal").css("display", "none")
+    	  }
+      });--%>
+      
+      $("#gptOpen").click(function () {
+    	    const location = $("#gptModal").css("margin-left");
+    	    
+    	    const locationValue = parseInt(location, 10);
+    	    
+    	    if (locationValue === 320) {
+    	        $("#gptModal").animate({ "margin-left": "-320px" }, 600);
+    	    } else {
+    	        $("#gptModal").animate({ "margin-left": "320px" }, 400);
+    	    }
+    	});
 
       const apiUrl = "https://api.openai.com/v1/chat/completions";
       const apiKey = 'sk-XOqUmArii_dNjTqmEdt0U7FhdfvS2KRrJhh0I3W79GT3BlbkFJTbqKK1RFu1-Q1TlgWGDLm7mx5nWlIWCmKK45XDevgA';

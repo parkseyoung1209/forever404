@@ -225,6 +225,7 @@ header {
   display: flex;
   justify-content: space-between;
   box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.2);
+  z-index: 3;
 }
 
 #button1 {
@@ -283,28 +284,27 @@ header {
 }
 
 #testI1 {
-	margin-bottom: 5px;
+	margin-bottom: 1px;
 }
 
 #testI2 {
-	margin-bottom: 5px;
+	margin-bottom: 1px;
 
 }
 #testI3 {
-	margin-bottom: 5px;
+	margin-bottom: 1px;
+	margin-left: -3px;
 }
 
 #isReservation {
-	margin-top: 20px;
 	padding-left: 10px;
-	width:60px;
-	height: 40px;
-	font-size: 1.2rem;
+	width:70px;
+	height: 25px;
 	border-top-left-radius: 5px;
   border-top-right-radius: 5px;
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
-  border: 2px solid #777;
+  border: 2px solid lightgray;
 }
 
 #isReservation:focus {
@@ -314,16 +314,15 @@ header {
 }
 
 #time {
-	margin-top: 40px;
+	margin-top: 15px;
 	padding-left: 5px;
-	width: 60px;
-	height: 40px;
-	font-size: 1.2rem;
+	width: 70px;
+	height: 25px;
 		border-top-left-radius: 5px;
   border-top-right-radius: 5px;
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
-  border: 2px solid #777;
+  border: 2px solid lightgray;
 }
 
 #time:focus {
@@ -345,7 +344,7 @@ textarea:focus {
 }
 
 #memoP {
-	margin-top: 45px;
+	margin-top: 15px;
 }
 
 #memo {
@@ -355,7 +354,7 @@ textarea:focus {
   resize: none;
   padding-top: 7px;
   padding-left: 10px;
-  border: 2px solid #777;
+  border: 2px solid lightgray;
   font-size:12px;
 }
 
@@ -408,4 +407,81 @@ textarea:focus {
 #testI input::placeholder {
 	color: lightgray;
 	outline: none;
+}
+
+#gptModal {
+	position: fixed;
+	width:300px;
+	height:300px;
+	left: 0px;
+	bottom: 70px;
+	background-color: white;
+	z-index: 2;
+	border: none; 
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2);
+}
+
+#gptOpen {
+	margin-top: 5px;
+	height: 50px;
+	color: white;
+	background-color: #d95050;
+	border: none;
+	box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2);
+	  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  cursor: pointer;
+	}
+	
+#gptH2 {
+	margin-left: 55px;
+	margin-top: 15px;
+}
+
+#gptTest {
+	margin-left: 55px;
+	margin-top: 10px;
+	height: 30px;
+	resize: none;
+}
+
+#gpt {
+	position: absolute;
+	top: 40px;
+	right:33px;
+	height: 30px;
+}
+
+#gptAsk {
+	width:270px;
+	height:200px;
+	margin:15px;
+	margin-left: 15px;
+	border: 2px solid lightgray;
+	  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.headerP {
+	font-size: 16px;
+	font-weight: bold; 
+}
+hr {
+	width:280px;
+	margin-left: -20px;
+	height: 1px;
+	border: 0px;
+	background-color: lightgray;
+}
+
+.testIP {
+	padding-left: 10px;
 }
