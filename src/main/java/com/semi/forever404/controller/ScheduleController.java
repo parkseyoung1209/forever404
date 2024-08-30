@@ -25,12 +25,6 @@ public class ScheduleController {
 	@Autowired
 	private GroupService service;
 	
-	@ResponseBody
-	@PostMapping("/curDateSchedule")
-	public List<SmallSchedule> curDateSchedule(String curDate) {
-		return service.curDateSchedule(curDate);
-	}
-	
 	
 	@ResponseBody
 	@PostMapping("/testupload")
