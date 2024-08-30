@@ -12,44 +12,17 @@ var placeOverlay = new kakao.maps.CustomOverlay({ zIndex: 1 }),
   currCategory = ""; // 현재 선택된 카테고리를 가지고 있을 변수입니다
 
 var mapContainer = document.getElementById("map"), // 지도를 표시할 div
-  mapOption = {
+  	mapOption = {
     center: new kakao.maps.LatLng(36.5, 127.5), // 지도 초기 중심 좌표 (한국 중앙)
-    level: 13, // 지도의 확대 레벨
+    level: 12, // 지도의 확대 레벨
   };
-/*
-function currentLocation() {
-	// HTML5의 geolocation으로 사용할 수 있는지 확인합니다
-	if (navigator.geolocation) {
+  
+  
+  // 지도 생성
+ var map = new kakao.maps.Map(mapContainer, mapOption);
+ var category = document.getElementById('category');
+ 
 
-// 지도 생성
-var map = new kakao.maps.Map(mapContainer, mapOption);
-var category = document.getElementById('category');
-		// GeoLocation을 이용해서 접속 위치를 얻어옵니다
-		navigator.geolocation.getCurrentPosition(function(position) {
-
-			lat = position.coords.latitude, // 위도
-			lng = position.coords.longitude; // 경도
-
-			mapOption = {
-				center: new kakao.maps.LatLng(lat, lng),
-				level:8,
-			}; // 마커가 표시될 위치를 geolocation으로 얻어온 좌표로 생성합니다
-			var message = '<div style="padding:5px;">현위치</div>'; // 인포윈도우에 표시될 내용입니다
-			 // 지도 생성
-            map = new kakao.maps.Map(mapContainer, mapOption);
-            
-            // 마커와 인포윈도우를 표시합니다
-            displayMarker(map, mapOption, message);
-        });
-    } else {
-        alert("Geolocation is not supported by this browser.");
-    }
-}
-
-// 지도 생성 시 currentLocation 함수 호출
-currentLocation();
-
-*/
 /* 지역 선택
 var areas = {
         'gyeonggi': {center: new kakao.maps.LatLng(37.4138, 127.5183), level: 11}, // 경기도 중심좌표
@@ -70,11 +43,82 @@ var areas = {
     }
 */
 
-// 지도 생성
-var map = new kakao.maps.Map(mapContainer, mapOption);
+
+function currentLocation() {	
+	console("클릭완");
+  	// HTML5의 geolocation으로 사용할 수 있는지 확인합니다
+  	if (navigator.geolocation) {
+
+	  	// GeoLocation을 이용해서 접속 위치를 얻어옵니다
+	  	navigator.geolocation.getCurrentPosition(function(position) {
+
+  		lat = position.coords.latitude, // 위도
+  		lng = position.coords.longitude; // 경도
+
+		// Create a LatLng object
+		const latLng = new kakao.maps.LatLng(lat, lng);
+				
+  		// 마커가 표시될 위치를 geolocation으로 얻어온 좌표로 생성합니다
+  		map.setCenter(latLng);
+  		map.setLevel(4);
+  		console.log("좌표생성완");
+  		//var message = '<div id="message">현위치</div>'; // 인포윈도우에 표시될 내용입니다
+  		 // 지도 생성
+         // map = new kakao.maps.Map(mapContainer, mapOption);
+          
+          // 마커와 인포윈도우를 표시합니다
+         // displayMarker(map, mapOption, message);
+  	   
+  	   category.style.display = "block";
+  	        new kakao.maps.Marker({
+  	          map: map,
+  	          position: latLng,
+  	        });
+      });
+      } else {
+          alert("Geolocation is not supported by this browser.");
+      }
+  };
+  
+
+document.getElementById('curLocation').addEventListener('click', currentLocation);
+
+
+  /*
+  function displayMarker(map, mapOption, message) {
+      var markerPosition = mapOption.center; // 마커를 위치시키기 위한 위치
+      var marker = new kakao.maps.Marker({
+          position: markerPosition,
+          map: map
+      });
+      
+      var infowindow = new kakao.maps.InfoWindow({
+          content: message
+      });
+      
+      kakao.maps.event.addListener(marker, 'mouseover', function() {
+          infowindow.open(map, marker);
+      });
+      
+      kakao.maps.event.addListener(marker, 'mouseout', function() {
+          infowindow.close();
+      });
+  }*/
+
+  //currentLocation();
+
+  // 지도 생성 시 currentLocation 함수 호출
+  //currentLocation();
+
+  
+
+
+
 
 // 장소 검색 객체를 생성합니다
 var ps = new kakao.maps.services.Places(map);
+
+document.getElementById("bttn").addEventListener("click", searchLocalPlaces)
 
 function searchLocalPlaces() {
   const keyword = document.getElementById("keyword").value;
@@ -86,7 +130,7 @@ function searchLocalPlaces() {
 
       // 지도 중심을 검색된 위치로 이동하고, 줌 레벨을 조정
       map.setCenter(latLng);
-      map.setLevel(8); // 레벨은 1에서 14까지 조정 가능 (작을수록 확대)
+      map.setLevel(4); // 레벨은 1에서 14까지 조정 가능 (작을수록 확대)
 
       // 검색 결과를 마커로 표시
       category.style.display = "block";
@@ -96,6 +140,7 @@ function searchLocalPlaces() {
       });
     }
   });
+  
 
   // 지도에 idle 이벤트를 등록합니다
   kakao.maps.event.addListener(map, "idle", searchPlaces);

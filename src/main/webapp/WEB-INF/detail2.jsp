@@ -84,6 +84,7 @@ uri="http://java.sun.com/jsp/jstl/core"%>
         <div><p>18:00</p></div>
       </section>
     </main>
+<img src="http://192.168.10.28:8080/storage/3eef53ef-887e-42eb-937d-4bc1c8f83509_image (1).png" width="150px">
 
     <section id="btncontainer">
       <button id="button3" class="btn1">일정 추가</button>
@@ -283,6 +284,7 @@ uri="http://java.sun.com/jsp/jstl/core"%>
     </script>
 
     <script>
+
          	$(document).ready(function () {
          	  const dateElements = document.querySelectorAll('.date');
          	  const dateList = Array.from(dateElements).map(el => el.getAttribute('data-date'));
@@ -301,6 +303,7 @@ uri="http://java.sun.com/jsp/jstl/core"%>
       	            currentIndex++;
       	            updateDate(currentIndex);
       	        }
+      	       
       	    });
 
       	    $('#nextBtn2').click(() => {

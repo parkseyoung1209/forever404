@@ -13,6 +13,7 @@
       href="${pageContext.request.contextPath}/css/kakaomap2.css" />
 <script src="https://kit.fontawesome.com/ef885bd654.js" crossorigin="anonymous"></script>
 </head>
+
 <body>
     <header>
       <div class="search_menu">
@@ -22,20 +23,18 @@
                        <button type="submit" id="bttn">
               <i class="fa-solid fa-magnifying-glass"></i>
             </button>
-           
            </input>
-
           </form>
+          <button id="curLocation">현위치</button>
         </div>
       </div>
 
       <section>
         <button id="button1">&#10094;</button>
-
         <button id="button2">&#10095;</button>
       </section>
 
-      <div class="testtesttest">
+      <div class="serviceInfo">
       <div id="testI">
         <i class="fa-solid fa-location-dot" id="testI1"></i><span id="serviceName"></span><br />
         <i class="fa-solid fa-turn-up" id="testI2"></i><span id="serviceJibun"></span><br />
@@ -80,11 +79,11 @@
 
          <p id="memoP">메모</p>
           <textarea id="memo" class="memo" rows="1"></textarea>
+        <!-- <button id="curLocation">현재 위치</button> -->
         <input type="submit" value="추가하기" id="ssTest" />
       </div>
     </header>
 	
-
 <div class="map_wrap">
 	<div id="map" style="width:100%;height:100vh;position:relative;overflow:hidden;"></div>
 	 <ul id="category">

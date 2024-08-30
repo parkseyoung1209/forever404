@@ -100,9 +100,8 @@ public class PageController {
 	@GetMapping("/{groupName}/detail")
 	public String detail(@PathVariable String groupName, @RequestParam int bsCode, HttpServletRequest request, Model model) {
 		
-	
-		HttpSession session = request.getSession();
 		
+		HttpSession session = request.getSession();
 //		BigSchedule bg = (BigSchedule) session.getAttribute("selectB");
 		
 		List<SmallSchedule> smallSchedule = service.selectOneSc(bsCode);
@@ -122,7 +121,7 @@ public class PageController {
 		}
 		session.setAttribute("selectSRange", dateRange);
 		model.addAttribute("selectSRange", dateRange.stream().map(LocalDate::toString).collect(Collectors.toList()));
-		System.out.println(dateRange);
+//		System.out.println(dateRange);
 		session.setAttribute("selectS", smallSchedule);
 		if(session.getAttribute("user")!=null) return "detail2";
 		else return "redirect:/";

@@ -73,6 +73,15 @@
 	cursor: pointer;
 	}
 	
+#message {
+	padding:15px;
+	text-align: center;
+	width:140px;
+	font-weight: bold;
+	color:blue;
+	font-size:0.8rem;
+}
+	
 #category li.on {
 	background: #595959;
 
@@ -274,7 +283,7 @@ header {
 #keyword::placeholder {
 	color:lightgray;
 }
-.testtesttest {
+.serviceInfo {
 	font-size: 1.5rem;
   margin-bottom: 400px;
   padding: 30px;
@@ -372,6 +381,6 @@ textarea:focus {
 
 #ssTest:hover {
 	border:none;
-		background: #595959;
+	background: #595959;
 	color: #fff;
 }
