@@ -91,7 +91,7 @@ ${remainingAmount}
 		</c:forEach>
 		<button id="nextBtn1" class="button1">&#10095;</button>
 
- <div class="sectioncontainer">
+ <div class="sectioncontainer" id="secContainer">
         <section class="section">
           <div class="img">image</div>
           <div>
@@ -410,6 +410,5 @@ ${remainingAmount}
             });
       }
     </script>
-
 </body>
 </html>
