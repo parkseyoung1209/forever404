@@ -28,7 +28,7 @@ header {
   width: 140px;
   height:140px;
   position: absolute;
-  bottom:0px;
+  bottom:0;
   z-index:2;
 }
 #addgroup3 {
@@ -299,13 +299,13 @@ font-size: 50px;
   width: 300px;
   height: 250px;
   margin-top: 600px;
-  margin-left: 300px;
+  margin-left: 80px;
   border-top-left-radius: 20px;
   border-top-right-radius: 20px;
   border-bottom-left-radius: 20px;
   border-bottom-right-radius: 20px;
   display: none;
-  z-index: 3;
+  z-index: 4;
   box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2);
 }
 
@@ -497,7 +497,7 @@ font-size: 50px;
 #bigModal {
   display: none;
   position: fixed;
-  z-index: 1;
+  z-index: 3;
   left: 0;
   top: 0;
   width: 100%;
@@ -576,7 +576,7 @@ font-size: 50px;
 #detModal {
   display: none;
   position: fixed;
-  z-index: 1;
+  z-index: 3;
   width: 100%;
   height: 100vh;
   left: 0;
@@ -790,7 +790,7 @@ font-size: 50px;
 }
 #albumModal {
   position: fixed;
-  z-index: 1;
+  z-index: 3;
   width: 100%;
   height: 100vh;
   left: 0;
@@ -854,6 +854,7 @@ font-size: 50px;
 	height:100px;
 }
 #picScroll {
+	display:flex;
 	position:relative;
 	background-color:white;
 	width:1850px;
@@ -862,66 +863,40 @@ font-size: 50px;
 	border-bottom-left-radius: 20px;
     border-bottom-right-radius: 20px;
     top:700px;
+    	overflow: hidden;
 }
 #photoSection button {
 	margin-top:150px;
 }
+
 #slideBtn1{
-	font-size: 40px;
-	font-weight:100px;
-	position:absolute;
-	left:10px;
-	width:30px;
-	height:300px;
-	border:none;
-	background-color:#e0e0e0;
-	border-radius:5px;
-	cursor:pointer;
-}
-#slideBtn1:hover{
-	color:white;
-}
-#slideBtn2{
-	font-size: 40px;
-	font-weight:100px;
-	position:absolute;
-	right:10px;
-	width:30px;
-	height:300px;
-	border:none;
-	background-color:#e0e0e0;
-	border-radius:5px;
-	cursor:pointer;
-}
-#slideBtn2:hover{
-	color:white;
-}
-#slideBtn3{
 	font-size:30px;
 	position:absolute;
-	left:5px;
+	left:0px;
 	width:30px;
 	height:150px;
 	border:none;
 	background-color:white;
 	border-bottom-left-radius:20px;
 	cursor:pointer;
+	z-index:2;
 }
-#slideBtn3:hover{
+#slideBtn1:action{
 	color:lightgray;
 }
-#slideBtn4{
+#slideBtn2{
 	font-size:30px;
 	position:absolute;
-	right:5px;
+	right:0px;
 	width:30px;
 	height:150px;
 	border:none;
 	background-color:white;
 	border-bottom-right-radius:20px;
 	cursor:pointer;
+	z-index:2;
 }
-#slideBtn4:hover{
+#slideBtn2:action{
 	color:lightgray;
 }
 #bigImg{
@@ -931,10 +906,17 @@ font-size: 50px;
 	width:1000px;
 	height:500px;
 }
-#smallImg{
-	position:absolute;
+.smallImg{
+	position:relative;
 	left:50px;
 	top:25px;
 	width:150px;
-	height:100px;
+	height:100px; 
+	margin-left:20px;
+	object-fit:cover;
+}
+#slider {
+	display: flex;
+	transition: transform 0.5s ease;
+	width: max-content;
 }

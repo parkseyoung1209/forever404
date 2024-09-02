@@ -246,13 +246,55 @@ $("#seven").click(function() {
 		 success : function(result) {
 			$("#albumModal").css("display", "block");
 			$("#bigModal").css("display", "none");
-			
 			console.log(result);
 			
+			const imgContainer1 = $("#slider");
+			const photo = result.map(function(picture) {
+			    const photo2 = picture.photoUrl;
+				const photoExist = imgContainer1.find(`img[src="${photo2}"]`).length > 0;
+				
+				
+				
+				if(!photoExist) {
+				const imgTag = $("<img>").attr("src", photo2).addClass("smallImg");
+				imgContainer1.append(imgTag);
+				}
+			});
+			setupSlider();
 		 }
 	})
 });
 $("#close").click(function(){
 	$("#albumModal").css("display", "none");
 	$("#bigModal").css("display", "block");
+	$("#picScroll").find("img").remove();
 });
+function setupSlider() {
+	const leftButton = document.querySelector("#slideBtn1");
+	const rightButton = document.querySelector("#slideBtn2");
+	const slideInside = document.querySelector("#slider");
+	const photos = slideInside.querySelectorAll("img");
+	let currentIndex = 0;
+	
+	function showPhoto(index) {
+	const totalPhotos = photos.length;
+	if (index < 0) {
+	                currentIndex = 0;
+	            } else if (index >= totalPhotos) {
+	                currentIndex = totalPhotos - 1;
+	            } else {
+	                currentIndex = index;
+	            }
+	slideInside.style.transform = `translateX(-${currentIndex * 100}%)`;	
+	}
+	
+	leftButton.addEventListener("click", function () {
+		showPhoto(currentIndex -0.3);
+	});
+	
+	rightButton.addEventListener("click", function () {
+		showPhoto(currentIndex +0.3);
+	});
+}
+
+setupSlider();
