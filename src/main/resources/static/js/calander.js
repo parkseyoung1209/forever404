@@ -13,14 +13,14 @@ document.addEventListener("DOMContentLoaded", function () {
     editable: true,
     events: bigSchedules,
     eventTextColor: "black",
-	customButtons: {
-		groupcurrent: {
-			text:"그룹 현황",
-			click:(function() {
-				alert("기능 테스트 중입니다!!!!!!!");
-			})
-		}
-	},
+    customButtons: {
+      groupcurrent: {
+        text: "그룹 현황",
+        click: function () {
+          alert("기능 테스트 중입니다!!!!!!!");
+        },
+      },
+    },
     events: bigSchedules.map((event) => {
       let endDate = new Date(event.end);
       endDate.setDate(endDate.getDate() + 1);
@@ -44,10 +44,10 @@ document.addEventListener("DOMContentLoaded", function () {
       const btn2 = $("#seven");
       $("#addMemoh1").text(info.event.title);
       $("#addMemop").text(`${info.event.start.toLocaleDateString()}`);
-	  linkbs = info.event.extendedProps.bsCode;
-	  
-	  sessionStorage.setItem("bsCode",linkbs);
-	  
+      linkbs = info.event.extendedProps.bsCode;
+
+      sessionStorage.setItem("bsCode", linkbs);
+
       const endDate = new Date(info.event.end);
       endDate.setDate(endDate.getDate() - 1);
       $("#addMemop2").text(`${endDate.toLocaleDateString()}`);
@@ -56,10 +56,10 @@ document.addEventListener("DOMContentLoaded", function () {
       if ("#addMemoh1" != null) {
         btn2.css("display", "block");
         btn.css("display", "none");
-		$("#addMemoh1").show();
-		$("#memoSection1").show();
-		$("#memoSection2").show();
-		$("#memoSection3").show();
+        $("#addMemoh1").show();
+        $("#memoSection1").show();
+        $("#memoSection2").show();
+        $("#memoSection3").show();
       }
     },
 
@@ -77,13 +77,13 @@ document.addEventListener("DOMContentLoaded", function () {
         return clickedDate >= eventStart + 1 && clickedDate <= eventEndDate;
       });
 
-	  /*
+      /*
       if (hasEvent) {
         // 해당 날짜에 이벤트가 있으면 클릭 무시
         return;	
       }
 	  */
-	  
+
       // 이벤트가 없으면 아래 로직 실행
       const month = calendarEl
         .querySelector(".fc-toolbar-title")
@@ -129,9 +129,9 @@ document.addEventListener("DOMContentLoaded", function () {
   function showModal() {
     $("#bigModal").css("display", "block");
     $("#addMemoh1").hide();
-	$("#memoSection1").hide();
-	$("#memoSection2").hide();
-	$("#memoSection3").hide();
+    $("#memoSection1").hide();
+    $("#memoSection2").hide();
+    $("#memoSection3").hide();
     $("#six").css("display", "block");
     $("#seven").css("display", "none");
   }
@@ -237,23 +237,72 @@ $("#addgroup3").mouseout((e) => {
     }, 3000);
   }
 });
-$("#seven").click(function() {
-	
-	let bsCode = sessionStorage.getItem("bsCode");
-	// 이미지 리스트로 뿌림 result에서 추출 잘하세요
-	$.ajax({
-		type : 'post',
-		url : '/selectMyImg',
-		data : {bsCode : bsCode},
-		 success : function(result) {
-			$("#albumModal").css("display", "block");
-			$("#bigModal").css("display", "none");
-			
-			console.log(result);
-			
-		 }
-	})
+$("#seven").click(function () {
+  let bsCode = sessionStorage.getItem("bsCode");
+  // 이미지 리스트로 뿌림 result에서 추출 잘하세요
+  $.ajax({
+    type: "post",
+    url: "/selectMyImg",
+    data: { bsCode: bsCode },
+    success: function (result) {
+      $("#albumModal").css("display", "block");
+      $("#bigModal").css("display", "none");
+      console.log(result);
+
+      const imgContainer1 = $("#slider");
+      const photo = result.map(function (picture) {
+        const photo2 = picture.photoUrl;
+        const photoExist =
+          imgContainer1.find(`img[src="${photo2}"]`).length > 0;
+
+        if (!photoExist) {
+          const imgTag = $("<img>").attr("src", photo2).addClass("smallImg");
+          imgContainer1.append(imgTag);
+        }
+      });
+      setupSlider();
+    },
+  });
 });
-$("#close").click(function(){
-	$("#albumModal").css("display", "none");
+function setupSlider() {
+  const leftButton = document.querySelector("#slideBtn1");
+  const rightButton = document.querySelector("#slideBtn2");
+  const slideInside = document.querySelector("#slider");
+  const photos = slideInside.querySelectorAll("img");
+  let currentIndex = 0;
+
+  function showPhoto(index) {
+    const totalPhotos = photos.length;
+    const photoWidth = photos[0].clientWidth; // 사진 한 장의 너비
+    const visibleWidth = slideInside.clientWidth; // 슬라이더의 가시 영역 너비
+    const photosPerSlide = Math.floor(visibleWidth / photoWidth);
+    if (index < 0) {
+      currentIndex = 0;
+    } else if (index >= totalPhotos) {
+      currentIndex = totalPhotos;
+    } else {
+      currentIndex = index;
+    }
+    slideInside.style.transform = `translateX(-${
+      (currentIndex * 100) / photosPerSlide
+    }%)`;
+  }
+
+  leftButton.addEventListener("click", function () {
+    showPhoto(currentIndex - 5);
+  });
+
+  rightButton.addEventListener("click", function () {
+    showPhoto(currentIndex + 5);
+  });
+}
+$("#close").click(function () {
+  $("#albumModal").css("display", "none");
+  $("#bigModal").css("display", "block");
+  $("#picScroll").find("img").remove();
+  const slideInside = document.querySelector("#slider");
+  slideInside.style.transform = "translateX(0)";
+});
+$("#smallImg").click(function () {
+  const bigImg = document.querySelector("#bigImg");
 });

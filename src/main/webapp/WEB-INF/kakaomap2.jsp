@@ -13,7 +13,8 @@
       href="${pageContext.request.contextPath}/css/kakaomap2.css" />
 <script src="https://kit.fontawesome.com/ef885bd654.js" crossorigin="anonymous"></script>
 </head>
- <div id="loading">
+<body>
+<div id="loading">
 	<div aria-label="Orange and tan hamster running in a metal wheel" role="img" class="wheel-and-hamster">
 		<div class="wheel"></div>
 		<div class="hamster">
@@ -38,7 +39,6 @@
       <label class="label-font" id="stateLabel">${tip}</label>
     </div>
   </div>
-<body>
     <header>
 	<i class="fa-solid fa-arrow-left" id="back"></i>
       <div class="search_menu">

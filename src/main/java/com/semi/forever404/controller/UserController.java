@@ -30,6 +30,7 @@ public class UserController {
 	@Autowired
 	private UserService service;
 	
+	// 회원가입 - 생년월일은 date 타입이라 별도 처리
 	@ResponseBody
 	@PostMapping("/signUp")
 	public void signUp(String id, String password, String phone, String name, String email, @RequestParam(name="birth", required=false) String birth) throws ParseException {
@@ -49,12 +50,6 @@ public class UserController {
 			HttpSession session = request.getSession();
 			session.setAttribute("user", service.login(user));
 			if(session.getAttribute("user")!=null) {
-				
-//				if(list.isEmpty()) {
-//					session.setAttribute("check", false);
-//				} else {
-//					session.setAttribute("check", true);
-//				}
 				return true;
 			}
 			else return false;

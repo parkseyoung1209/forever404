@@ -12,6 +12,7 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.springframework.stereotype.Service;
+import org.springframework.util.ObjectUtils;
 
 @Service
 public class ServiceService {
@@ -28,7 +29,7 @@ public class ServiceService {
 		
 		// 2. 웹 페이지 접속
 		String baseUrl = "https://www.google.com/";
-		driver.get(baseUrl);
+		if(!ObjectUtils.isEmpty(driver)) driver.get(baseUrl);
 		String searchKeyword=title;
 		
 		WebElement search = driver.findElement(By.className("gLFyf"));
@@ -56,7 +57,7 @@ public class ServiceService {
 		WebElement imageElement = popupElement.findElement(By.tagName("img")); // 팝업 내에서 이미지 요소 찾기
         String imageSrc = imageElement.getAttribute("src"); // 이미지의 src 속성 값 가져오기
         System.out.println("Image URL: " + imageSrc);
-        
+        driver.close();
         return imageSrc;
 	}
 }

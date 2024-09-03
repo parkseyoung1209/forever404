@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 @Data @NoArgsConstructor @AllArgsConstructor
 public class CalendarDTO {
 	private String curDate;
-	List<SmallSchedule> list;
+	List<MoneyDTO> list;
 }
 
 // model에 담을 때 List<CalendarDTO> <--- 이렇게 보내줘!

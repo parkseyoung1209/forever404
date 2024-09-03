@@ -142,13 +142,14 @@
       		<i class="fa-solid fa-xmark" id="close"></i></header>
       	<div id="modalContent5">
       		<main id="photoSection">
-      		<button id="slideBtn1" class="slide">&#10094;</button>
-			<button id="slideBtn2" class="slide">&#10095;</button>
+			<img id="bigImg" src="">
       		</main>
       	</div>
       	<div id="picScroll">
-      	<button id="slideBtn3" class="slide">&#10094;</button>
-		<button id="slideBtn4" class="slide">&#10095;</button>
+      	<button id="slideBtn1" class="slide">&#10094;</button>
+		<button id="slideBtn2" class="slide">&#10095;</button>
+		<div id="slider">
+		</div>
       	</div>
       	</div>
       </div>
@@ -201,7 +202,7 @@
 
       <script>
         $(".add2").click(() => {
-          const title = $("#textbox").val().trim();
+          const title = $("#textbox").val().trim(); 
           const miniTitle = title.substring(0, 2);
           $.ajax({
             type: "post",
