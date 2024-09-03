@@ -7,12 +7,14 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.semi.forever404.model.dto.CalendarDTO;
 import com.semi.forever404.model.vo.BigGroup;
 import com.semi.forever404.model.vo.BigSchedule;
 import com.semi.forever404.model.vo.Money;
 import com.semi.forever404.model.vo.Photo;
 import com.semi.forever404.model.vo.SmallGroup;
 import com.semi.forever404.model.vo.SmallSchedule;
+import com.semi.forever404.model.vo.Tip;
 
 import mapper.GroupMapper;
 
@@ -37,6 +39,11 @@ public class GroupService {
 	public List<SmallGroup> selectSmallGroup(String id) {
 		return mapper.selectSmallGroup(id);
 	}
+	
+	// 한 그룹에 여러 회원
+	public List<SmallGroup> selectSmallGroup2(int num) {
+		return mapper.selectSmallGroup2(num);
+	}
 	public List<SmallGroup> allInfoGroup(String id) {
 		return mapper.allInfoGroup(id);
 	}
@@ -59,7 +66,7 @@ public class GroupService {
 	public List<SmallSchedule> selectSc(BigSchedule bs) {
 		return mapper.selectSc(bs);
 	}
-	
+		
 	public List<SmallSchedule> selectOneSc(int num) {
 		return mapper.selectOneSc(num);
 	}
@@ -111,7 +118,11 @@ public class GroupService {
 	}
 	
 	// 특정 날짜에 따른 
-	public List<SmallSchedule> curDateSchedule(String curDate) {
-		return mapper.curDateSchedule(curDate);
+	public List<SmallSchedule> curDateSchedule(SmallSchedule smallSchedule) {
+		return mapper.curDateSchedule(smallSchedule);
+	}
+	//팁 가져오기
+	public List<Tip> tip() {
+		return mapper.tip();
 	}
 }

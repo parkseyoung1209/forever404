@@ -13,19 +13,43 @@
       href="${pageContext.request.contextPath}/css/kakaomap2.css" />
 <script src="https://kit.fontawesome.com/ef885bd654.js" crossorigin="anonymous"></script>
 </head>
-
 <body>
+<div id="loading">
+	<div aria-label="Orange and tan hamster running in a metal wheel" role="img" class="wheel-and-hamster">
+		<div class="wheel"></div>
+		<div class="hamster">
+			<div class="hamster__body">
+				<div class="hamster__head">
+					<div class="hamster__ear"></div>
+					<div class="hamster__eye"></div>
+					<div class="hamster__nose"></div>
+				</div>
+				<div class="hamster__limb hamster__limb--fr"></div>
+				<div class="hamster__limb hamster__limb--fl"></div>
+				<div class="hamster__limb hamster__limb--br"></div>
+				<div class="hamster__limb hamster__limb--bl"></div>
+				<div class="hamster__tail"></div>
+			</div>
+		</div>
+		<div class="spoke"></div>
+	</div>
+    <div class="circle"></div>
+    <div class="shadow"></div>
+    <div class="state-viewer-container">
+      <label class="label-font" id="stateLabel">${tip}</label>
+    </div>
+  </div>
     <header>
+	<i class="fa-solid fa-arrow-left" id="back"></i>
       <div class="search_menu">
         <div>
           <form onsubmit="searchLocalPlaces(); return false;">
-           <input type="text" id="keyword" size="15" placeholder="장소 검색">
-                       <button type="submit" id="bttn">
-              <i class="fa-solid fa-magnifying-glass"></i>
-            </button> </input>
-
+           <input type="text" id="keyword" size="15" placeholder="장소 검색"/>
+           <button type="button" id="bttn">
+           		<i class="fa-solid fa-magnifying-glass"></i>
+            </button>
           </form>
-          <button id="curLocation">현위치</button>
+	      <button id="curLocation">현위치</button>
         </div>
       </div>
 
@@ -33,8 +57,6 @@
         <button id="button1">&#10094;</button>
         <button id="button2">&#10095;</button>
       </section>
-      
-      
 
       <div class="serviceInfo">
       <div id="testI">
@@ -173,8 +195,9 @@
     	});
 
       const apiUrl = "https://api.openai.com/v1/chat/completions";
-      const apiKey = 'sk-XOqUmArii_dNjTqmEdt0U7FhdfvS2KRrJhh0I3W79GT3BlbkFJTbqKK1RFu1-Q1TlgWGDLm7mx5nWlIWCmKK45XDevgA';
+      const apiKey = 'sk-zW-eQw_d-_JqMF0Vfs7YEixlV3gkLUxq0-oa22q2txT3BlbkFJX_JI2PL7EcNLUqnTwe-7kqm8AepVjkzQBBi7rktI0A';
       const gptTest = document.querySelector("#gptTest");
+      const gptAsk = document.querySelector("#gptAsk");
       
       let conversationHistory = []; // 대화 내역을 저장하는 배열
       async function fetchData(apiUrl, apiKey, messages) {
@@ -183,7 +206,7 @@
 		    const response = await fetch(apiUrl,{
 	        method : 'POST',
 	        headers : {
-	          'Authorization': `Bearer sk-XOqUmArii_dNjTqmEdt0U7FhdfvS2KRrJhh0I3W79GT3BlbkFJTbqKK1RFu1-Q1TlgWGDLm7mx5nWlIWCmKK45XDevgA`, // API 문서에 따라 Authorization 헤더 사용
+	          'Authorization': `Bearer sk-zW-eQw_d-_JqMF0Vfs7YEixlV3gkLUxq0-oa22q2txT3BlbkFJX_JI2PL7EcNLUqnTwe-7kqm8AepVjkzQBBi7rktI0A`, // API 문서에 따라 Authorization 헤더 사용
 	          'Content-Type': 'application/json'
 	        },
 	        body : JSON.stringify({
@@ -206,18 +229,39 @@
       
       $("#gpt").click(() =>{
     	  const userMessage = gptTest.value;
-    	  conversationHistory.push({ "role": "user", "content": userMessage });
+    	  conversationHistory.push({ "role": "user", "content": userMessage});
+    		$("#gptAsk").text("");
 	      fetchData(apiUrl , apiKey, conversationHistory)
 	          .then(data => {
 	        	  const assistantText = data.choices[0].message.content;
 	        	  conversationHistory.push({ "role": "assistant", "content": assistantText});
-	              $("#gptAsk").text(assistantText);
+	        	  const txtSpeed = 20;
+	        	  //const txtDelay = 100;
+	        	  let txtIndex = 0;
+	        	  let typeCotrol = true;
+	        	  function typingEvent(){
+	        		  if(typeCotrol === true){
+	        		    let txtNow = assistantText[txtIndex++];
+	        		    gptAsk.innerHTML += txtNow === "\n" ? "<br>": txtNow;
+	        		    if(txtIndex >= assistantText.length){
+	        		      txtIndex = 0;
+	        		      typeCotrol = false;
+	        		    }
+	        		  }
+	        		}
+	        	  let setTyping = setInterval(typingEvent, txtSpeed);
 	              gptTest.value = '';
 	              })
 	              .catch(error => {
 	                 console.error('Error:', error);
 	              });
 	      });
+            
+      $("#back").click(() => {
+    	  const groupName = localStorage.getItem("groupName");
+    	  const bsCode = localStorage.getItem("bsCode");
+    	  window.location.href="/"+groupName+"/detail?bsCode="+bsCode;
+      });
     </script>
 </body>
 </html>

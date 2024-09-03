@@ -10,6 +10,7 @@ import java.util.Map;
 import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
+import org.openqa.selenium.html5.SessionStorage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -28,6 +29,7 @@ import com.semi.forever404.model.vo.Money;
 import com.semi.forever404.model.vo.Photo;
 import com.semi.forever404.model.vo.SmallGroup;
 import com.semi.forever404.model.vo.SmallSchedule;
+import com.semi.forever404.model.vo.Tip;
 import com.semi.forever404.model.vo.User;
 import com.semi.forever404.service.GroupService;
 
@@ -62,11 +64,15 @@ public class PageController {
 	
 	@GetMapping("/main")
 	public String main(HttpServletRequest request) {
+		
 		HttpSession session = request.getSession();
 		User user = (User) session.getAttribute("user");
 		if(user!=null) {
 		List<SmallGroup> list = service.selectSmallGroup(user.getId());
+		// 한 그룹의 여러 회원
+//		
 		session.setAttribute("smlist", list);
+//		session.setAttribute("userList", userList);
 		
 		if(list.isEmpty()) {
 			session.setAttribute("check", false);
@@ -78,9 +84,13 @@ public class PageController {
 	}
 	
 	@GetMapping("/kakao/map")
-	public String kakaomap(HttpServletRequest request) {	
-//		HttpSession session = request.getSession();
-//		List<SmallSchedule> smallSchedule = (List<SmallSchedule>) session.getAttribute("selectS");
+	public String kakaomap(HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		int random = (int)(Math.random()*44);
+		List<Tip> list = service.tip();
+		
+		session.setAttribute("tip", list.get(random).getTip());
+		System.out.println(session.getAttribute("tip"));
 		
 		return "kakaomap2";
 	}
@@ -93,6 +103,8 @@ public class PageController {
 			User user = (User) session.getAttribute("user");
 			
 			BigGroup bg = service.searchBgCode(groupName);
+			List<SmallGroup> userList = service.selectSmallGroup2(bg.getBgGroupCode());
+			session.setAttribute("userList", userList);
 			bigSchedule.setBigGroup(bg);
 			List<BigSchedule> bsList = service.selectBg(bigSchedule);
 			model.addAttribute("bsList", bsList);

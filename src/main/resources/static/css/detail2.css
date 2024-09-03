@@ -1,340 +1,344 @@
 .carousel-container {
-	display: flex;
-	overflow: hidden;
+  display: flex;
+  overflow: hidden;
 }
 
 .carousel-item {
-	width: 100%;
+  width: 100%;
 }
 
-.carousel-item:nth-child(2), .carousel-item:nth-child(3) {
-	display: none;
+.carousel-item:nth-child(2),
+.carousel-item:nth-child(3) {
+  display: none;
 }
 
 .carousel-item header {
-	background: black;
-	color: white;
-	height: 80px;
-	position: fixed;
-	width: 100%;
-	display: flex;
-	align-items: center;
-	z-index: 1;
+  background: black;
+  color: white;
+  height: 80px;
+  position: fixed;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  z-index: 1;
 }
 
 .carousel-item header button {
-	width: 50px;
-	height: 50px;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	border-radius: 50%;
-	font-size: 20px;
-	color: #fff;
-	background-color: #999;
-	border: none;
-	cursor: pointer;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  font-size: 20px;
+  color: #fff;
+  background-color: #999;
+  border: none;
+  cursor: pointer;
 }
 
 .carousel-item header button:hover {
-	background-color: lightgray;
+  background-color: lightgray;
 }
 
 .carousel-item header h1 {
-	display: flex;
-	justify-content: center;
-	font-size: 3rem;
-	font-weight: bold;
-	color: white;
-	flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  font-size: 3rem;
+  font-weight: bold;
+  color: white;
+  flex-grow: 1;
 }
 
 .carousel-item main {
-	padding-top: 80px;
+  padding-top: 80px;
 }
 
 .main-content .time {
-	padding-top: 10px;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	font-family: "Dongle", sans-serif;
-	font-size: 7rem;
+  padding-top: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Dongle", sans-serif;
+  font-size: 7rem;
 }
 
 .detail-content {
-	display: flex;
-	justify-content: center;
-	gap: 15px;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
 }
 
 #pay {
-	padding: 10px;
-	border: 2px solid rgba(0, 0, 0, 0.05);
-	font-size: 1.8rem;
-	border-radius: 20px;
-	box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.1);
-	font-family: "Dongle", sans-serif;
-	width: 250px;
-	height: 200px;
-	padding: 10px;
+  padding: 10px;
+  border: 2px solid rgba(0, 0, 0, 0.05);
+  font-size: 1.8rem;
+  border-radius: 20px;
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.1);
+  font-family: "Dongle", sans-serif;
+  width: 250px;
+  height: 200px;
+  padding: 10px;
 }
 
 .detail-content section {
-	display: flex;
-	border: 2px solid rgba(0, 0, 0, 0.05);
-	border-radius: 10px;
-	box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
-	font-family: "Nanum Gothic", sans-serif;
-	width: 800px;
-	height: 200px;
+  display: flex;
+  border: 2px solid rgba(0, 0, 0, 0.05);
+  border-radius: 10px;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
+  font-family: "Nanum Gothic", sans-serif;
+  width: 800px;
+  height: 200px;
 }
 
 .detail-content section .img {
-	background-color: lightgray;
-	height: 150px;
-	width: 150px;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	margin: 22px;
-	font-size: 1.3rem;
-	color: white;
+  background-color: lightgray;
+  height: 150px;
+  width: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 22px;
+  font-size: 1.3rem;
+  color: white;
 }
 
 .item-content {
-	position: relative;
-	flex-grow: 1;
+  position: relative;
+  flex-grow: 1;
 }
 
 .item-content h2 {
-	font-size: 1.3rem;
-	font-weight: bold;
-	padding-top: 22px;
+  font-size: 1.3rem;
+  font-weight: bold;
+  padding-top: 22px;
 }
 
 .item-content p {
-	font-size: 1.3rem;
-	margin-top: 10px;
+  font-size: 1.3rem;
+  margin-top: 10px;
 }
 
 .item-content button {
-	margin-left: 180px;
-	margin-top: 40px;
-	width: 45px;
-	cursor: pointer;
-	position: absolute;
-	bottom: 5px;
-	right: 5px;
+  margin-left: 180px;
+  margin-top: 40px;
+  width: 45px;
+  cursor: pointer;
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
 }
 
 /* 고정된 애들 */
 #plus {
-	background-color: transparent;
-	position: fixed;
-	right: 105px;
-	bottom: 30px;
-	border: none;
-	font-size: 4.5rem;
-	cursor: pointer;
+  background-color: transparent;
+  position: fixed;
+  right: 105px;
+  bottom: 30px;
+  border: none;
+  font-size: 4.5rem;
+  cursor: pointer;
 }
 
 #plus:hover {
-	color: #999;
+  color: #999;
 }
 
 @media screen and (max-width: 1200px) {
-	#plus {
-		display: none;
-	}
+  #plus {
+    display: none;
+  }
 }
 
 #btncontainer {
-	display: flex;
-	position: fixed;
-	flex-direction: column;
-	bottom: 120px;
-	right: 60px;
+  display: flex;
+  position: fixed;
+  flex-direction: column;
+  bottom: 120px;
+  right: 60px;
 }
 
 .btn1 {
-	width: 180px;
-	height: 45px;
-	cursor: pointer;
-	background-color: white;
-	color: black;
-	font-size: 1.2rem;
-	display: none;
-	border-bottom: none;
-	outline: none;
+  width: 180px;
+  height: 45px;
+  cursor: pointer;
+  background-color: white;
+  color: black;
+  font-size: 1.2rem;
+  display: none;
+  border-bottom: none;
+  outline: none;
 }
 
 .btn1:hover {
-	background-color: #999;
-	color: white;
+  background-color: #999;
+  color: white;
 }
 
 #button3 {
-	border-top-left-radius: 5px;
-	border-top-right-radius: 5px;
-	border: 2px solid rgba(0, 0, 0, 0.1);
-	border-bottom: none;
-	box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.1);
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  border: 2px solid rgba(0, 0, 0, 0.1);
+  border-bottom: none;
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.1);
 }
 
 #button4 {
-	border-bottom: 2px solid black;
-	border-bottom-left-radius: 5px;
-	border-bottom-right-radius: 5px;
-	border: 2px solid rgba(0, 0, 0, 0.1);
-	box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.1);
+  border-bottom: 2px solid black;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  border: 2px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.1);
 }
 
 #button5 {
-	border-bottom: 2px solid black;
-	border-bottom-left-radius: 10px;
-	border-bottom-right-radius: 10px;
-	border: 2px solid rgba(0, 0, 0, 0.1);
+  border-bottom: 2px solid black;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  border: 2px solid rgba(0, 0, 0, 0.1);
 }
 
 .modal {
-	display: none;
-	position: fixed;
-	z-index: 1;
-	left: 0;
-	top: 0;
-	width: 100%;
-	height: 100%;
-	background-color: rgba(0, 0, 0, 0.4);
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
 }
 
 .bigmodalcontent {
-	position: relative;
-	background-color: white;
-	margin: 10% auto;
-	padding: 20px;
-	border: 1px solid #999;
-	width: 800px;
-	height: 650px;
-	border-radius: 20px;
+  position: relative;
+  background-color: white;
+  margin: 10% auto;
+  padding: 20px;
+  border: 1px solid #999;
+  width: 800px;
+  height: 650px;
+  border-radius: 20px;
 }
 
 .modalcontent {
-	position: absolute;
-	background-color: white;
-	width: 750px;
-	height: 500px;
-	border-radius: 20px;
-	overflow-y: scroll;
-	overflow-x: hidden;
+  position: absolute;
+  background-color: white;
+  width: 750px;
+  height: 500px;
+  border-radius: 20px;
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
 
 #modalcontent2 {
-	position: relative;
-	background-color: white;
-	margin: 10% auto;
-	padding: 20px;
-	border: 1px solid #999;
-	width: 450px;
-	height: 50vh;
-	border-radius: 20px;
+  position: relative;
+  background-color: white;
+  margin: 10% auto;
+  padding: 20px;
+  border: 1px solid #999;
+  width: 450px;
+  height: 50vh;
+  border-radius: 20px;
 }
 
 .modal h2 {
-	display: flex;
-	justify-content: center;
-	font-weight: bold;
-	font-size: 2rem;
+  display: flex;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 2rem;
 }
 
 .close {
-	color: #999;
-	float: right;
-	font-size: 28px;
-	font-weight: bold;
-	cursor: pointer;
+  color: #999;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
 }
 
-.close:hover, .close:focus {
-	color: black;
-	text-decoration: none;
-	cursor: pointer;
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
 }
 
 .fileContainer {
-	display: flex;
-	max-height: 300px;
-	align-items: flex-start;
-	margin: 30px;
+  display: flex;
+  flex-direction: column;
+  max-height: 300px;
+  align-items: flex-start;
+  margin: 30px;
 }
 
 #file {
-	display: none;
+  display: none;
 }
 
 #fileForm label {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	background-color: lightgray;
-	color: white;
-	border: 2px dashed #999;
-	width: 200px;
-	height: 200px;
-	text-align: center;
-	font-weight: bold;
-	font-size: 3rem;
-	cursor: pointer;
-	margin-right: 20px;
-	position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: lightgray;
+  color: white;
+  border: 2px dashed #999;
+  width: 200px;
+  height: 200px;
+  text-align: center;
+  font-weight: bold;
+  font-size: 3rem;
+  cursor: pointer;
+  margin-right: 20px;
+  position: absolute;
 }
 
 #image_container {
-	display: flex;
-	flex-wrap: wrap;
-	gap: 20px;
-	width: 100%;
+  top: 300px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  width: 100%;
 }
 
 #image_container img {
-	width: 200px;
-	height: 200px;
-	text-align: center;
+  width: 200px;
+  height: 200px;
+  text-align: center;
 }
 
 #prevBtn {
-	position: fixed;
-	top: 50%;
-	left: 30px;
-	transform: translateY(-50%);
+  position: fixed;
+  top: 50%;
+  left: 30px;
+  transform: translateY(-50%);
 }
 #nextBtn {
-	position: fixed;
-	top: 50%;
-	right: 30px;
-	transform: translateY(-50%);
+  position: fixed;
+  top: 50%;
+  right: 30px;
+  transform: translateY(-50%);
 }
 
 #fileSubmit {
-	width: 80px;
-	height: 30px;
-	border-radius: 5px;
+  width: 80px;
+  height: 30px;
+  border-radius: 5px;
 }
 
 .dongle-bold {
-	font-family: "Dongle", sans-serif;
-	font-weight: 700;
-	font-style: normal;
+  font-family: "Dongle", sans-serif;
+  font-weight: 700;
+  font-style: normal;
 }
 
 .nanum-gothic-regular {
-	font-family: "Nanum Gothic", sans-serif;
-	font-weight: 400;
-	font-style: normal;
+  font-family: "Nanum Gothic", sans-serif;
+  font-weight: 400;
+  font-style: normal;
 }
 
 .nanum-gothic-bold {
-	font-family: "Nanum Gothic", sans-serif;
-	font-weight: 700;
-	font-style: normal;
+  font-family: "Nanum Gothic", sans-serif;
+  font-weight: 700;
+  font-style: normal;
 }

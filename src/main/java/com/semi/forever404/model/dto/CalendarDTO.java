@@ -6,9 +6,8 @@ import com.semi.forever404.model.vo.SmallSchedule;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
+
+@Data @NoArgsConstructor @AllArgsConstructor
 public class CalendarDTO {
 	private String curDate;
 	List<MoneyDTO> list;

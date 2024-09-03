@@ -142,19 +142,22 @@
       		<i class="fa-solid fa-xmark" id="close"></i></header>
       	<div id="modalContent5">
       		<main id="photoSection">
-      		<button id="slideBtn1" class="slide">&#10094;</button>
-			<button id="slideBtn2" class="slide">&#10095;</button>
-			<img id="bigImg" src="//192.168.10.28:8080/storage/3eef53ef-887e-42eb-937d-4bc1c8f83509_image (1).png">
+			<img id="bigImg" src="">
       		</main>
       	</div>
       	<div id="picScroll">
-      	<button id="slideBtn3" class="slide">&#10094;</button>
-		<button id="slideBtn4" class="slide">&#10095;</button>
-		<img id="smallImg" src="//192.168.10.28:8080/storage/3eef53ef-887e-42eb-937d-4bc1c8f83509_image (1).png">
+      	<button id="slideBtn1" class="slide">&#10094;</button>
+		<button id="slideBtn2" class="slide">&#10095;</button>
+		<div id="slider">
+		</div>
       	</div>
       	</div>
       </div>
-
+      	<c:if test="${not empty groupName}">
+		<c:forEach items="${userList}" var="smallGroup">
+			<div style="margin-left: 1200px;">선택한 그룹에 있는 유저 아이디들 : ${smallGroup.user.id}</div>
+		</c:forEach>
+		</c:if>
       <script
         src="https://kit.fontawesome.com/ef885bd654.js"
         crossorigin="anonymous"

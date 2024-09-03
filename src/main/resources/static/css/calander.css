@@ -4,11 +4,11 @@
 }
 
 #allList {
-	margin-left:200px;
+  margin-left: 200px;
 }
 
 #detailPage {
-	margin-left:300px;
+  margin-left: 300px;
 }
 
 header {
@@ -20,16 +20,16 @@ header {
   height: 100vh;
   position: fixed;
 }
-#header2{
-	display: flex;
+#header2 {
+  display: flex;
   align-items: center;
   flex-direction: column;
   background-color: whitesmoke;
   width: 140px;
-  height:140px;
+  height: 140px;
   position: absolute;
-  bottom:0px;
-  z-index:2;
+  bottom: 0px;
+  z-index: 2;
 }
 #addgroup3 {
   background-color: lightgray;
@@ -57,8 +57,8 @@ button i {
 .group {
   display: flex;
   flex-direction: column;
-  margin-left:5px;
-  margin-top:15px;
+  margin-left: 5px;
+  margin-top: 15px;
 }
 .group span {
   text-align: center;
@@ -66,10 +66,9 @@ button i {
 }
 .group i {
   font-size: 30px;
-  
 }
 .user i {
-font-size: 50px;
+  font-size: 50px;
   position: absolute;
   bottom: 50px;
   left: 40px;
@@ -299,13 +298,13 @@ font-size: 50px;
   width: 300px;
   height: 250px;
   margin-top: 600px;
-  margin-left: 300px;
+  margin-left: 80px;
   border-top-left-radius: 20px;
   border-top-right-radius: 20px;
   border-bottom-left-radius: 20px;
   border-bottom-right-radius: 20px;
   display: none;
-  z-index: 3;
+  z-index: 4;
   box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2);
 }
 
@@ -316,7 +315,7 @@ font-size: 50px;
   width: 100%;
   height: 30px;
   font-weight: bold;
-      border-bottom-left-radius: 5px;
+  border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
 }
 
@@ -324,7 +323,7 @@ font-size: 50px;
   background-color: #0b57d0;
   color: white;
   border: none;
-    border-bottom-left-radius: 5px;
+  border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
 }
 
@@ -335,7 +334,7 @@ font-size: 50px;
   width: 100%;
   height: 30px;
   font-weight: bold;
-      border-bottom-left-radius: 5px;
+  border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
 }
 
@@ -343,10 +342,9 @@ font-size: 50px;
   background-color: #0b57d0;
   color: white;
   border: none;
-    border-bottom-left-radius: 5px;
+  border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
 }
-
 
 #frm {
   margin-left: 200px;
@@ -497,12 +495,12 @@ font-size: 50px;
 #bigModal {
   display: none;
   position: fixed;
-  z-index: 1;
+  z-index: 3;
   left: 0;
   top: 0;
   width: 100%;
   height: 100vh;
-  background-color: rgba(0,0,0,0.5);
+  background-color: rgba(0, 0, 0, 0.5);
 }
 #modalContent3 {
   position: relative;
@@ -560,7 +558,7 @@ font-size: 50px;
   cursor: pointer;
 }
 #seven {
-	font-size: 20px;
+  font-size: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -576,12 +574,12 @@ font-size: 50px;
 #detModal {
   display: none;
   position: fixed;
-  z-index: 1;
+  z-index: 3;
   width: 100%;
   height: 100vh;
   left: 0;
   top: 0;
-  background-color: rgba(0,0,0,0.5);
+  background-color: rgba(0, 0, 0, 0.5);
 }
 #modalContent4 {
   z-index: 2;
@@ -607,7 +605,7 @@ font-size: 50px;
 }
 
 #X2:hover {
-	color: #999;
+  color: #999;
 }
 .mdl-header2 {
   display: flex;
@@ -667,57 +665,57 @@ font-size: 50px;
 }
 
 #addMemo {
-	height: 155px;
-	width: 100%;
-	display:flex;
-	flex-direction:column;
+  height: 155px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
 }
 #memoSection1 {
-		display:flex;
-	flex-direction:row;
-	font-size: 20px;
-	margin-left: 10px;
-	margin-top: 10px;
+  display: flex;
+  flex-direction: row;
+  font-size: 20px;
+  margin-left: 10px;
+  margin-top: 10px;
 }
 #memoSection2 {
-		display:flex;
-	flex-direction:row;
-	font-size: 20px;
-	margin-left: 30px;
-	margin-top:10px;
+  display: flex;
+  flex-direction: row;
+  font-size: 20px;
+  margin-left: 30px;
+  margin-top: 10px;
 }
 #memoSection3 {
-		display:flex;
-	flex-direction:row;
-	font-size: 20px;
-	margin-left: 10px;
-	margin-top:10px;
+  display: flex;
+  flex-direction: row;
+  font-size: 20px;
+  margin-left: 10px;
+  margin-top: 10px;
 }
 #addMemoh1 {
-	margin-left:19px;
-	margin-top:5px;
-	height: 50px;
-	border-radius: 0px;
-	border: 1px solid lightgray;
-	font-size:25px;
-	cursor:pointer;
-	width:460px;
+  margin-left: 19px;
+  margin-top: 5px;
+  height: 50px;
+  border-radius: 0px;
+  border: 1px solid lightgray;
+  font-size: 25px;
+  cursor: pointer;
+  width: 460px;
 }
 #addMemoh1:hover {
-	color: white;
-	background-color: #2c3e50;
+  color: white;
+  background-color: #2c3e50;
 }
 #addMemop {
-	margin-left:10px;
+  margin-left: 10px;
 }
 #addMemop2 {
-	margin-left:10px;
+  margin-left: 10px;
 }
 .Memo2 {
-	margin-left:20px;
+  margin-left: 20px;
 }
 #addMemop3 {
-	margin-left:10px;
+  margin-left: 10px;
 }
 .fc-day-sun a {
   color: red;
@@ -727,27 +725,25 @@ font-size: 50px;
   color: blue;
 }
 
-
 .groupButton {
-    width: 80px;
-    height: 80px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 50%;
-    font-size: 38px;
-    color: #fff;
-    background-color: #999;
-    margin-left: 12px;
-    line-height: 1;
-    border: none;
-    cursor: pointer;
+  width: 80px;
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  font-size: 38px;
+  color: #fff;
+  background-color: #999;
+  margin-left: 12px;
+  line-height: 1;
+  border: none;
+  cursor: pointer;
 }
 
 .groupButton:hover {
-	background-color: lightgray;
+  background-color: lightgray;
 }
-
 
 #myHeader {
   background-color: #fca31d;
@@ -790,151 +786,134 @@ font-size: 50px;
 }
 #albumModal {
   position: fixed;
-  z-index: 1;
+  z-index: 3;
   width: 100%;
   height: 100vh;
   left: 0;
   top: 0;
-  background-color: rgba(0,0,0,0.5);
+  background-color: rgba(0, 0, 0, 0.5);
 }
 #modalContent5 {
   position: absolute;
   background-color: #e0e0e0;
   border: 1px solid #999;
-  margin:20px auto;
-  margin-top:100px;
+  margin: 20px auto;
+  margin-top: 100px;
   width: 1850px;
-  height:600px;
-  border:none;
+  height: 600px;
+  border: none;
 }
 #modalContent6 {
-	position: relative;
+  position: relative;
   background-color: #e0e0e0;
   border: 1px solid #999;
-  margin:20px auto;
-  margin-top:70px;
+  margin: 20px auto;
+  margin-top: 70px;
   width: 1850px;
-  height:850px;
-  border-radius:20px;
-  border:none;
+  height: 850px;
+  border-radius: 20px;
+  border: none;
 }
 #mdl-header3 {
-	display:flex;
-	flex-direction: row;
-	align-items:center;
-	background-color:white;
-	width:1850px;
-	height:100px;
-	border-top-left-radius: 20px;
-    border-top-right-radius: 20px;
-    border: none;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background-color: white;
+  width: 1850px;
+  height: 100px;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  border: none;
 }
-#close{
-	font-size:70px;
-	cursor:pointer;
-	margin-left:730px;
+#close {
+  font-size: 70px;
+  cursor: pointer;
+  margin-left: 730px;
 }
-#delete{
-	background-color:red;
-	color:white;
-	font-size: 30px;
-	width:150px;
-	height:50px;
-	border:none;
-	border-radius:10px;
-	cursor:pointer;
-	margin-left:20px;
+#delete {
+  background-color: red;
+  color: white;
+  font-size: 30px;
+  width: 150px;
+  height: 50px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  margin-left: 20px;
 }
 #delete:active {
-	background-color:white;
-	color:red;
+  background-color: white;
+  color: red;
 }
 #photoSection {
-	width:500px;
-	height:100px;
+  width: 500px;
+  height: 100px;
 }
 #picScroll {
-	position:relative;
-	background-color:white;
-	width:1850px;
-	height:150px;
-	border:none;
-	border-bottom-left-radius: 20px;
-    border-bottom-right-radius: 20px;
-    top:700px;
+  display: flex;
+  position: relative;
+  background-color: white;
+  width: 1850px;
+  height: 150px;
+  border: none;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  top: 700px;
+  overflow: hidden;
 }
 #photoSection button {
-	margin-top:150px;
+  margin-top: 150px;
 }
-#slideBtn1{
-	font-size: 40px;
-	font-weight:100px;
-	position:absolute;
-	left:10px;
-	width:30px;
-	height:300px;
-	border:none;
-	background-color:#e0e0e0;
-	border-radius:5px;
-	cursor:pointer;
+
+#slideBtn1 {
+  font-size: 30px;
+  position: absolute;
+  left: 0px;
+  width: 30px;
+  height: 150px;
+  border: none;
+  background-color: white;
+  border-bottom-left-radius: 20px;
+  cursor: pointer;
+  z-index: 2;
 }
-#slideBtn1:hover{
-	color:white;
+#slideBtn1:action {
+  color: lightgray;
 }
-#slideBtn2{
-	font-size: 40px;
-	font-weight:100px;
-	position:absolute;
-	right:10px;
-	width:30px;
-	height:300px;
-	border:none;
-	background-color:#e0e0e0;
-	border-radius:5px;
-	cursor:pointer;
+#slideBtn2 {
+  font-size: 30px;
+  position: absolute;
+  right: 0px;
+  width: 30px;
+  height: 150px;
+  border: none;
+  background-color: white;
+  border-bottom-right-radius: 20px;
+  cursor: pointer;
+  z-index: 2;
 }
-#slideBtn2:hover{
-	color:white;
+#slideBtn2:action {
+  color: lightgray;
 }
-#slideBtn3{
-	font-size:30px;
-	position:absolute;
-	left:5px;
-	width:30px;
-	height:150px;
-	border:none;
-	background-color:white;
-	border-bottom-left-radius:20px;
-	cursor:pointer;
+#bigImg {
+  position: absolute;
+  left: 425px;
+  top: 50px;
+  width: 1000px;
+  height: 500px;
 }
-#slideBtn3:hover{
-	color:lightgray;
+.smallImg {
+  position: relative;
+  left: 50px;
+  top: 25px;
+  width: 150px;
+  height: 100px;
+  margin-left: 15px;
+  margin-right: 15px;
+  object-fit: cover;
 }
-#slideBtn4{
-	font-size:30px;
-	position:absolute;
-	right:5px;
-	width:30px;
-	height:150px;
-	border:none;
-	background-color:white;
-	border-bottom-right-radius:20px;
-	cursor:pointer;
-}
-#slideBtn4:hover{
-	color:lightgray;
-}
-#bigImg{
-	position:absolute;
-	left:425px;
-	top:50px;
-	width:1000px;
-	height:500px;
-}
-#smallImg{
-	position:absolute;
-	left:50px;
-	top:25px;
-	width:150px;
-	height:100px;
+#slider {
+  display: flex;
+  transition: transform 0.5s ease;
+  width: max-content;
 }

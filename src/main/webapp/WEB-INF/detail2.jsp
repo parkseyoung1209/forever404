@@ -111,12 +111,13 @@
 
 				<form id="fileForm" method="post" enctype="multipart/form-data">
 					<div class=fileContainer>
-						<label for="file" class="upload"><div>+</div></label> <input
-							id="file" type="file" name="files" multiple accept="image/*"
-							onchange="imgShow(event)" value="+" placeholder="+" />
-						<div id="image_container"></div>
+						<div id="image_container">
+						<label for="file" class="upload">
+							<div>+</div>
+							<input id="file" type="file" name="files" multiple accept="image/*" onchange="imgShow(event)" value="+" placeholder="+" />
+						</label> 
+						</div>
 					</div>
-
 				</form>
 
 			</div>
@@ -165,18 +166,16 @@
 	                    const img = $('<img>').attr('src', e.target.result);
 	                    imageContainer.append(img);
 	                };
-	            })
-
+	        	});
 	            reader.readAsDataURL(file);
 	        }
 	    });
-	
 	
           let bsCode = localStorage.getItem("bsCode");
 
           function imgShow(event) {
             const container = document.getElementById("image_container");
-            container.innerHTML = ""; // Clear existing images
+            //container.innerHTML = ""; // Clear existing images
             Array.from(event.target.files).forEach((file) => {
               const reader = new FileReader();
               reader.onload = function (e) {
@@ -187,6 +186,7 @@
               reader.readAsDataURL(file);
             });
           }
+          
 
           $("#fileSubmit").click(() => {
             const files = new FormData($("#fileForm")[0]);
@@ -200,8 +200,8 @@
               cache: false,
               url: "/testupload",
               success: function () {
-                $("#modal2").css("display", "none");
-                $("#image_container").empty();
+            	  $('#modal2').css("display", "none");
+            	  $("#image_container img").remove(); // img 태그만 삭제하려면 
               },
             });
           });
@@ -250,8 +250,9 @@
 		        $("#modal1").css("display", "block");
 		      });
 */
-      $(".close").click(function () {
+      $(".").click(function () {
         $(".modal").css("display", "none");
+        $("#image_container img").remove();
       });
 
       $(window).click(function (event) {

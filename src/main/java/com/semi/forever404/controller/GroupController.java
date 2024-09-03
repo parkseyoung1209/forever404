@@ -121,6 +121,7 @@ public class GroupController {
 		service.deleteGroup5(bgCode);
 	}
 	
+	
 	@ResponseBody
 	@PostMapping("/scheduleAdd")
 	public boolean schduleAdd(HttpServletRequest request, BigSchedule bigSchedule, Model model) throws ParseException {
