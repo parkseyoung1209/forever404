@@ -313,11 +313,39 @@ function searchLocalPlaces() {
       servicePhone.value = phone;
     });
   }
-
+  function loadingStart() {
+    const loading = document.querySelector("#loading");
+    const stateLabel = document.querySelector("#stateLabel");
+    let labelText = stateLabel.value;
+    const txtSpeed = 20;
+    let txtIndex = 0;
+    let typeCotrol = true;
+    function typingEvent() {
+      if (typeCotrol === true) {
+        let txtNow = labelText[txtIndex++];
+        stateLabel.innerHTML += txtNow === "\n" ? "<br>" : txtNow;
+        if (txtIndex >= labelText.length) {
+          txtIndex = 0;
+          typeCotrol = false;
+        }
+      }
+    }
+    let setTyping = setInterval(typingEvent, txtSpeed);
+    loading.style.display = "block";
+    document.body.style.pointerEvents = "none";
+    document.body.style.cursor = "none";
+  }
+  function loadingEnd() {
+    const loading = document.querySelector("#loading");
+    loading.style.display = "none";
+    document.body.style.pointerEvents = "auto";
+    document.body.style.cursor = "auto";
+  }
   // 각 카테고리에 클릭 이벤트를 등록합니다
   $("#ssTest").click(() => {
     const groupName = localStorage.getItem("groupName");
     let curDate = sessionStorage.getItem("date");
+    loadingStart();
     $.ajax({
       type: "post",
       url: "/scheduleAdd2",
@@ -334,6 +362,7 @@ function searchLocalPlaces() {
         curDate: curDate,
       },
       success: function () {
+        loadingEnd();
         window.location.href = "/" + groupName + "/detail?bsCode=" + bsCode;
       },
     });

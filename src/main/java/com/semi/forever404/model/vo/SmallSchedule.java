@@ -23,5 +23,10 @@ public class SmallSchedule {
 	public SmallSchedule(BigSchedule bigSchedule) {
 		this.bigSchedule = bigSchedule;
 	}
+
+	public SmallSchedule(String curDate, BigSchedule bigSchedule) {
+		this.curDate = curDate;
+		this.bigSchedule = bigSchedule;
+	}
 	
 }

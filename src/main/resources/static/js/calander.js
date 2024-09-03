@@ -77,11 +77,13 @@ document.addEventListener("DOMContentLoaded", function () {
         return clickedDate >= eventStart + 1 && clickedDate <= eventEndDate;
       });
 
+	  /*
       if (hasEvent) {
         // 해당 날짜에 이벤트가 있으면 클릭 무시
-        return;
+        return;	
       }
-
+	  */
+	  
       // 이벤트가 없으면 아래 로직 실행
       const month = calendarEl
         .querySelector(".fc-toolbar-title")
@@ -254,5 +256,4 @@ $("#seven").click(function() {
 });
 $("#close").click(function(){
 	$("#albumModal").css("display", "none");
-	$("#bigModal").css("display", "block");
 });

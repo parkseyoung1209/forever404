@@ -14,6 +14,7 @@ import com.semi.forever404.model.vo.Money;
 import com.semi.forever404.model.vo.Photo;
 import com.semi.forever404.model.vo.SmallGroup;
 import com.semi.forever404.model.vo.SmallSchedule;
+import com.semi.forever404.model.vo.Tip;
 
 import mapper.GroupMapper;
 
@@ -117,7 +118,11 @@ public class GroupService {
 	}
 	
 	// 특정 날짜에 따른 
-	public List<SmallSchedule> curDateSchedule(String curDate) {
-		return mapper.curDateSchedule(curDate);
+	public List<SmallSchedule> curDateSchedule(SmallSchedule smallSchedule) {
+		return mapper.curDateSchedule(smallSchedule);
+	}
+	//팁 가져오기
+	public List<Tip> tip() {
+		return mapper.tip();
 	}
 }

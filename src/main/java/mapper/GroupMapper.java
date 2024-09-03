@@ -11,6 +11,7 @@ import com.semi.forever404.model.vo.Money;
 import com.semi.forever404.model.vo.Photo;
 import com.semi.forever404.model.vo.SmallGroup;
 import com.semi.forever404.model.vo.SmallSchedule;
+import com.semi.forever404.model.vo.Tip;
 
 @Mapper
 public interface GroupMapper {
@@ -50,5 +51,8 @@ public interface GroupMapper {
 	Map<String, Object> getDateRange(int bsCode);
 	
 	// 날짜에 따른 세부일정 출력
-	List<SmallSchedule> curDateSchedule(String curDate);
+	List<SmallSchedule> curDateSchedule(SmallSchedule smallSchedule);
+	
+	// 팁 가져오기
+	List<Tip> tip();
 }
