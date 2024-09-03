@@ -10,6 +10,7 @@ import java.util.Map;
 import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
+import org.openqa.selenium.html5.SessionStorage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -90,6 +91,7 @@ public class PageController {
 		
 		session.setAttribute("tip", list.get(random).getTip());
 		System.out.println(session.getAttribute("tip"));
+		
 		return "kakaomap2";
 	}
 	
@@ -140,9 +142,9 @@ public class PageController {
 		if(!smallSchedule.isEmpty()) {
 			for(int i=0; i<smallSchedule.size(); i++) {
 				MoneyList.add(new MoneyDTO(smallSchedule.get(i).getSsCode(), service.selectMoney(smallSchedule.get(i).getSsCode())));
-				session.setAttribute("moneyL", MoneyList);
 			}
 		}
+		session.setAttribute("moneyL", MoneyList);
 		session.setAttribute("selectSRange", stringDates);
 
 		session.setAttribute("selectS", smallSchedule);

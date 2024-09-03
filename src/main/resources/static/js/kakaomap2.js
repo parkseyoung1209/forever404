@@ -315,25 +315,9 @@ function searchLocalPlaces() {
   }
   function loadingStart() {
     const loading = document.querySelector("#loading");
-    const stateLabel = document.querySelector("#stateLabel");
-    let labelText = stateLabel.value;
-    const txtSpeed = 20;
-    let txtIndex = 0;
-    let typeCotrol = true;
-    function typingEvent() {
-      if (typeCotrol === true) {
-        let txtNow = labelText[txtIndex++];
-        stateLabel.innerHTML += txtNow === "\n" ? "<br>" : txtNow;
-        if (txtIndex >= labelText.length) {
-          txtIndex = 0;
-          typeCotrol = false;
-        }
-      }
-    }
-    let setTyping = setInterval(typingEvent, txtSpeed);
     loading.style.display = "block";
     document.body.style.pointerEvents = "none";
-    document.body.style.cursor = "none";
+    document.body.style.cursor = "wait";           
   }
   function loadingEnd() {
     const loading = document.querySelector("#loading");
