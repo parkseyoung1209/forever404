@@ -88,10 +88,9 @@ public class PageController {
 		HttpSession session = request.getSession();
 		int random = (int)(Math.random()*44);
 		List<Tip> list = service.tip();
-		
+
 		session.setAttribute("tip", list.get(random).getTip());
-		System.out.println(session.getAttribute("tip"));
-		
+
 		return "kakaomap2";
 	}
 	
@@ -147,8 +146,7 @@ public class PageController {
 		}
 		
 		session.setAttribute("totalList", list);
-		
-		//System.out.println(smallSchedule);
+
 		
 		if(session.getAttribute("user")!=null) return "detail2";
 		else return "redirect:/";

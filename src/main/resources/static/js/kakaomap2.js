@@ -328,7 +328,7 @@ function searchLocalPlaces() {
   // 각 카테고리에 클릭 이벤트를 등록합니다
   $("#ssTest").click(() => {
     const groupName = localStorage.getItem("groupName");
-    let curDate = sessionStorage.getItem("date");
+    let curDate = sessionStorage.getItem("curDate");
     loadingStart();
     $.ajax({
       type: "post",

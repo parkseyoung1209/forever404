@@ -36,7 +36,7 @@
 				<header>
 					<button type="button" class="group"
 						onclick="location.href='/${groupName}';">그룹</button>
-					<h1 id="h1date">< ${total.curDate} ></h1>
+					<h1 class="h1date" id='${total.curDate}'>${total.curDate}</h1>
 				</header>
 
 				<main>
@@ -250,7 +250,7 @@
 		        $("#modal1").css("display", "block");
 		      });
 */
-      $(".").click(function () {
+      $(".close").click(function () {
         $(".modal").css("display", "none");
         $("#image_container img").remove();
       });
