@@ -3,171 +3,105 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link
-      rel="stylesheet"
-      href="${pageContext.request.contextPath}/css/reset.css"
-    />
-    <link
-      rel="stylesheet"
-      href="${pageContext.request.contextPath}/css/detail2.css"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css"
-    />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Dongle:wght@700&family=Nanum+Gothic:wght@400;700&display=swap"
-      rel="stylesheet"
-    />
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-  </head>
-  <body>
-  	<script>
-  	<c:if test="${empty user}">
-  	alert("로그인 세션 만료!");
-  	window:location.href = "/";
-  	</c:if>
-  	</script>
-    <header>
-      <!--<c:forEach items="${selectS}" var="ssss">
-            ${ssss.bigSchedule.bsCode}
-          </c:forEach>-->
-      <!-- <div id="group"><a href="/${groupName}">그룹</a></div> -->
-      <div id="group"><button type="text" class="group" onclick="location.href='/${groupName}';">그룹</button></div>
-      <section id="date">
-        <c:forEach items="${selectSRange}" var="date">
-          <div class="date" data-date="${date}"></div>
-        </c:forEach>
-        <h1 id="h1date">"${date}"</h1>
-      </section>
-    </header>
-    <main>
-      <section class="section1">
-        <div id="pay">
-          <span id="bsCode" style="display: none"> ${param.bsCode} </span>
-         
-          <c:forEach items="${selectS}" var="ssss">
-            ${ssss.bigSchedule.bsCode}
-          </c:forEach>
-				
-				<c:forEach items="${selectS}" var="ssss">
-            총금액 : ${ssss.bigSchedule.entireMoney}<br/>
-          </c:forEach>
-           <c:set var="total" value="0" />
-    <c:forEach items="${selectS}" var="ssss">
-        <c:set var="total" value="${ssss.bigSchedule.entireMoney}" />
-    </c:forEach>
-    
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Document</title>
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/css/reset.css" />
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/css/detail2.css" />
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+	href="https://fonts.googleapis.com/css2?family=Dongle:wght@700&family=Nanum+Gothic:wght@400;700&display=swap"
+	rel="stylesheet" />
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+<body>
+	<script>
+		<c:if test="${empty user}">
+		alert("로그인 세션 만료!");
+		window: location.href = "/";
+		</c:if>
+	</script>
 
-   남은금액 : <c:set var="remainingAmount" value="${total - using}" />
-			${remainingAmount}
-				<button id="payPlus">추가</button>
+	<div class="carousel-container">
+		<c:forEach items="${totalList}" var="total">
+			<div class="carousel-item">
+				<header>
+					<button type="button" class="group"
+						onclick="location.href='/${groupName}';">그룹</button>
+					<h1 id="h1date">< ${total.curDate} ></h1>
+				</header>
+
+				<main>
+					<c:forEach items="${total.list}" var="item">
+						<div class="main-content">
+							<div id="time1" class="time">
+								<c:choose>
+									<c:when test="${item.schedule.curTime < 10}">
+									0${item.schedule.curTime}:00
+								</c:when>
+									<c:otherwise>
+									${item.schedule.curTime}:00
+								</c:otherwise>
+								</c:choose>
+							</div>
+							<div class="detail-content">
+								<!-- 여기까지가 머니 섹션 -->
+								<div id="pay">
+									<p>총금액 : ${item.schedule.bigSchedule.entireMoney}</p>
+									<c:set var="using" value="0" />
+									<c:forEach items="${item.moneyList}" var="money">
+										<c:set var="using" value="${using + money.useMoney}" />
+										<p>지불금액 : ${money.useMoney}</p>
+										<p>지불품목 : ${money.buyingList}</p>
+									</c:forEach>
+									<c:set var="remainingAmount" value="${item.schedule.bigSchedule.entireMoney - using}" />
+									<p>남은금액 : ${remainingAmount}</p>
+								</div>
+								<section>
+									<c:choose>
+										<c:when test="${item.schedule.serviceImg == null}">
+											<div class="img">image</div>
+										</c:when>
+										<c:otherwise>
+											<img src="${item.schedule.serviceImg}" class="img">
+										</c:otherwise>
+									</c:choose>
+									<div class="item-content">
+										<h2>타이틀 : ${item.schedule.serviceName}</h2>
+										<p>위치 : ${item.schedule.serviceJibun}</p>
+										<p>연락처 : ${item.schedule.servicePhone}</p>
+										<button>추가</button>
+									</div>
+								</section>
+							</div>
+						</div>
+					</c:forEach>
+
+				</main>
 			</div>
-		</section>
-
-		<!-- 일정디테일 데이터 세팅 -->
-		<c:forEach items="${selectS}" var="c" varStatus="status">
-			<c:if test="${status.first}">
-				<div id="time1" class="time">
-					${c.curTime}:00
-				</div>
-			</c:if>
 		</c:forEach>
-		<button id="nextBtn1" class="button1">&#10095;</button>
+	</div>
 
- <div class="sectioncontainer" id="secContainer">
-        <section class="section">
-          <div class="img">image</div>
-          <div>
-            <div class="title"><h2>타이틀</h2></div>
-            <p>위치</p>
-            <p>영업시간</p>
-            <button id="imgPlus">추가</button>
-          </div>
-        </section>
-      </div>
-		
-		<button id="nextBtn2" class="button2">&#10094;</button>
-
-
-      <section class="time" id="time2">
-        <div><p>18:00</p></div>
-      </section>
-
+	<!-- 고정 되어 있어야 함 -->
 	<section id="btncontainer">
 		<button id="button3" class="btn1">일정 추가</button>
 		<button id="button4" class="btn1">사진 추가</button>
-		<!--  <button id="button5" class="btn1">지불 품목</button> -->
 		<button id="plus" class="btn">
 			<i class="bi bi-plus-square"></i>
 		</button>
 	</section>
-	<!-- curDate + smallSchedule 테이블-->
-	<c:forEach items="${totalList}" var="tl">
-			${tl.curDate}
-			<c:forEach items="${tl.list}" var="val">
-				<p id='${val.ssCode}'>태그 테스트, ${val.curTime}</p>
-			</c:forEach>
-	</c:forEach>
-	<!-- ssCode + money 테이블 -->
-	<c:forEach items="${moneyL}" var="ml">
-			현 일정 코드 : ${ml.ssCode}
-			<c:forEach items="${ml.list}" var="value">
-				<p>현 일정의 지불 품목 : ${value.buyingList} / ${value.useMoney}원</p>
-			</c:forEach>
-	</c:forEach>
-	<script>
-      const kakaobtn = document.querySelector("#button3");
-      kakaobtn.addEventListener("click", () => {
-    	  $.ajax({
-    		  
-    	  });
-        window.location.href = "/kakao/map";
-      });
-    </script>
 
-	<!-- 
-    <div id="modal1" class="modal">
-      <div class="modalcontent">
-        <span class="close">&times</span>
-        <h2>일정 추가</h2>
-        <hr />
-        <div class="ps">
-          <p>시작시간 :</p>
-          <select id="start">
-            <option value="09:00">09:00</option>
-            <option value="10:00">10:00</option>
-          </select>
-        </div>
-        <div class="ps">
-          <p>종료시간 :</p>
-          <select id="finish">
-            <option value="09:00">18:00</option>
-            <option value="10:00">19:00</option>
-          </select>
-        </div>
-        <div class="ps">
-          <p>위치 :</p>
-          <input type="text" />
-        </div>
-        <div class="ps">
-          <p>영업시간 :</p>
-          <input type="text" />
-        </div>
-        <div class="add">
-          <button id="schedule" class="add2">추가</button>
-        </div>
-      </div>
-    </div>
--->
+	<button id="prevBtn" class="movingBtn">&#10094;</button>
+	<button id="nextBtn" class="movingBtn">&#10095;</button>
+
 	<div id="modal2" class="modal">
 		<div class="bigmodalcontent">
 			<span class="close">&times</span>
@@ -192,7 +126,31 @@
 			</section>
 		</div>
 	</div>
+
+	<div id="modal3" class="modal">
+		<div class="modalcontent" id="modalcontent2">
+			<span class="close">&times</span>
+			<h2>지불 품목</h2>
+			<hr />
+			지불 품목 : <input type="text" class="money" id="buyingList" /> <br />
+			사용 금액 : <input type="text" class="money" id="useMoney" />
+			<div class="add">
+				<button class="add2" id="moneyBtn">추가</button>
+			</div>
+		</div>
+	</div>
+
+	<script>
 	
+      const kakaobtn = document.querySelector("#button3");
+      kakaobtn.addEventListener("click", () => {
+    	  $.ajax({
+    		  
+    	  });
+        window.location.href = "/kakao/map";
+      });
+    </script>
+
 	<script>
 	// 사진이 오른쪽부터 나오게하는 기능
 	    $('#file').on('change', function(event) {
@@ -208,8 +166,7 @@
 	                    const img = $('<img>').attr('src', e.target.result);
 	                    imageContainer.append(img);
 	                };
-	            });
-
+	        	});
 	            reader.readAsDataURL(file);
 	        }
 	    });
@@ -249,18 +206,6 @@
             });
           });
         </script>
-	<div id="modal3" class="modal">
-		<div class="modalcontent" id="modalcontent2">
-			<span class="close">&times</span>
-			<h2>지불 품목</h2>
-			<hr />
-			지불 품목 : <input type="text" class="money" id="buyingList" /> <br />
-			사용 금액 : <input type="text" class="money" id="useMoney" />
-			<div class="add">
-				<button class="add2" id="moneyBtn">추가</button>
-			</div>
-		</div>
-	</div>
 	<script>
       $("#moneyBtn").click(() => {
         $.ajax({
@@ -326,55 +271,12 @@
         $("#modal2").css("display", "block");
       });
 
-      $("#payPlus").click(function () {
+      $(".payPlus").click(function () {
         $("#modal3").css("display", "block");
       });
       // $("#schedule").click(function () {
       // $(".section").show().css("display", "block");
       // });
-    </script>
-
-	<script type="text/javascript">
-      const dateList = ${selectSRange};
-    </script>
-
-	<script>
-         	$(document).ready(function () {
-         	  const dateElements = document.querySelectorAll('.date');
-         	  const dateList = Array.from(dateElements).map(el => el.getAttribute('data-date'));
-      	    <%-- const dateList = ${selectSRange}; --%>
-      	    let currentIndex = 0;
-
-      	    function updateDate(index) {
-      	        if (index >= 0 && index < dateList.length) {
-      	            $("#h1date").text(dateList[index]);
-      	    		sessionStorage.setItem("date", $("#h1date").text());
-      	        }
-      	    }
-						
-      		$('#nextBtn1').click(() => {
-      	        if (currentIndex < dateList.length - 1) {
-      	            currentIndex++;
-      	            updateDate(currentIndex);
-      	            
-      	            var date = $('#h1date').text();
-      	            
-      	        }
-      	       
-      	    });
-
-      	    $('#nextBtn2').click(() => {
-      	        if (currentIndex > 0) {
-      	            currentIndex--;
-      	            updateDate(currentIndex);
-      	            
-      	        }
-      	    });
-
-      	    if(dateList.length > 0) {
-      	    	updateDate(currentIndex);
-      	    }
-         	});
     </script>
 
 	<script>
@@ -408,12 +310,17 @@
               success: function (response) {
                 let miniTitle = response.groupName.substring(0, 2);
                 $(".group").text(miniTitle);
+                
               },
               error: function (xhr, status, error) {
                 console.error("Error:", error);
               },
             });
       }
+    </script>
+
+	<script src="${pageContext.request.contextPath}/js/detail2.js">
+    
     </script>
 </body>
 </html>

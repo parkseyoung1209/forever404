@@ -121,8 +121,10 @@ public class PageController {
 	public String detail(@PathVariable String groupName, @RequestParam int bsCode, HttpServletRequest request, Model model) {
 	
 		HttpSession session = request.getSession();
-//		System.out.println(bsCode);
-		List<SmallSchedule> smallSchedule = service.selectOneSc(bsCode);	
+
+		List<CalendarDTO> list = new ArrayList<CalendarDTO>(); // 최종 리스트
+		List<SmallSchedule> smallSchedule = service.selectOneSc(bsCode);
+		
 		BigSchedule tmp = service.selectOneBs(bsCode);
 		
 		String startDate = tmp.getStartDate();
@@ -130,26 +132,23 @@ public class PageController {
 		
 		LocalDate startDate2 = LocalDate.parse(startDate);
 		LocalDate endDate2 = LocalDate.parse(endDate);
-		List<CalendarDTO> list = new ArrayList<CalendarDTO>(); // 최종 리스트
+		
 		List<LocalDate> dateRange = getDateRange(startDate2, endDate2);
 		List<String> stringDates = dateRange.stream().map(LocalDate::toString).collect(Collectors.toList());
-		List<SmallSchedule> addList = new ArrayList<SmallSchedule>();
+		
 		for(int i=0; i<dateRange.size(); i++) {
-			addList = service.curDateSchedule(new SmallSchedule(stringDates.get(i), tmp));
+			List<MoneyDTO> addList = new ArrayList<>();
+			for(SmallSchedule ss : smallSchedule) {
+				if(ss.getCurDate().equals(stringDates.get(i))) {
+					addList.add(new MoneyDTO(ss, service.selectMoney(smallSchedule.get(i).getSsCode())));
+				}
+			}
 			list.add(new CalendarDTO(stringDates.get(i), addList));
 		}
-		List<MoneyDTO> MoneyList = new ArrayList<MoneyDTO>();
-		if(!smallSchedule.isEmpty()) {
-			for(int i=0; i<smallSchedule.size(); i++) {
-				MoneyList.add(new MoneyDTO(smallSchedule.get(i).getSsCode(), service.selectMoney(smallSchedule.get(i).getSsCode())));
-			}
-		}
-		session.setAttribute("moneyL", MoneyList);
-		session.setAttribute("selectSRange", stringDates);
-
-		session.setAttribute("selectS", smallSchedule);
+		
 		session.setAttribute("totalList", list);
-	
+		
+		//System.out.println(smallSchedule);
 		
 		if(session.getAttribute("user")!=null) return "detail2";
 		else return "redirect:/";

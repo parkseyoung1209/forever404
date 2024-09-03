@@ -202,7 +202,7 @@
 
       <script>
         $(".add2").click(() => {
-          const title = $("#textbox").val().trim();
+          const title = $("#textbox").val().trim(); 
           const miniTitle = title.substring(0, 2);
           $.ajax({
             type: "post",

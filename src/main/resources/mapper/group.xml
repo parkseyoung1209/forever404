@@ -172,6 +172,7 @@
 		SELECT * FROM small_schedule
 		LEFT JOIN big_schedule USING (bs_code)
 		WHERE bs_code = #{bsCode}
+		ORDER BY cur_time
 	</select>
 	
 	<select id="selectOneBs" parameterType="int" resultMap="BscheduleAddMap">
