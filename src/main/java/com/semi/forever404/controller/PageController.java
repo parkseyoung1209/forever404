@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.semi.forever404.model.dto.CalendarDTO;
+import com.semi.forever404.model.dto.MoneyDTO;
 import com.semi.forever404.model.vo.BigGroup;
 import com.semi.forever404.model.vo.BigSchedule;
 import com.semi.forever404.model.vo.Money;
@@ -109,7 +110,9 @@ public class PageController {
 	
 		HttpSession session = request.getSession();
 
+		List<CalendarDTO> list = new ArrayList<CalendarDTO>(); // 최종 리스트
 		List<SmallSchedule> smallSchedule = service.selectOneSc(bsCode);
+		
 		BigSchedule tmp = service.selectOneBs(bsCode);
 		
 		String startDate = tmp.getStartDate();
@@ -117,24 +120,22 @@ public class PageController {
 		
 		LocalDate startDate2 = LocalDate.parse(startDate);
 		LocalDate endDate2 = LocalDate.parse(endDate);
-		List<CalendarDTO> list = new ArrayList<CalendarDTO>(); // 최종 리스트
+		
 		List<LocalDate> dateRange = getDateRange(startDate2, endDate2);
 		List<String> stringDates = dateRange.stream().map(LocalDate::toString).collect(Collectors.toList());
-		List<SmallSchedule> addList = new ArrayList<SmallSchedule>();
+		
 		for(int i=0; i<dateRange.size(); i++) {
-			addList = service.curDateSchedule(stringDates.get(i));
+			List<MoneyDTO> addList = new ArrayList<>();
+			for(SmallSchedule ss : smallSchedule) {
+				if(ss.getCurDate().equals(stringDates.get(i))) {
+					addList.add(new MoneyDTO(ss, service.selectMoney(smallSchedule.get(i).getSsCode())));
+				}
+			}
 			list.add(new CalendarDTO(stringDates.get(i), addList));
 		}
-		if(!smallSchedule.isEmpty()) {
-			List<Money> MoneyList = service.selectMoney(1); // 
-			session.setAttribute("moneyL", MoneyList);
-			System.out.println(MoneyList);
-		}
-		session.setAttribute("selectSRange", dateRange);
-		model.addAttribute("selectSRange", stringDates);
-		//System.out.println(dateRange);
-		session.setAttribute("selectS", smallSchedule);
+		
 		session.setAttribute("totalList", list);
+		
 		//System.out.println(smallSchedule);
 		
 		if(session.getAttribute("user")!=null) return "detail2";
