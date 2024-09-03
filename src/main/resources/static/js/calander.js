@@ -264,11 +264,6 @@ $("#seven").click(function() {
 		 }
 	})
 });
-$("#close").click(function(){
-	$("#albumModal").css("display", "none");
-	$("#bigModal").css("display", "block");
-	$("#picScroll").find("img").remove();
-});
 function setupSlider() {
 	const leftButton = document.querySelector("#slideBtn1");
 	const rightButton = document.querySelector("#slideBtn2");
@@ -278,23 +273,35 @@ function setupSlider() {
 	
 	function showPhoto(index) {
 	const totalPhotos = photos.length;
+	const photoWidth = photos[0].clientWidth; // 사진 한 장의 너비
+	const visibleWidth = slideInside.clientWidth; // 슬라이더의 가시 영역 너비
+	const photosPerSlide = Math.floor(visibleWidth / photoWidth);
 	if (index < 0) {
 	                currentIndex = 0;
 	            } else if (index >= totalPhotos) {
-	                currentIndex = totalPhotos - 1;
+	                currentIndex = totalPhotos;
 	            } else {
 	                currentIndex = index;
 	            }
-	slideInside.style.transform = `translateX(-${currentIndex * 100}%)`;	
+	slideInside.style.transform = `translateX(-${currentIndex * 100 / photosPerSlide}%)`;	
+	
 	}
 	
 	leftButton.addEventListener("click", function () {
-		showPhoto(currentIndex -0.3);
+		showPhoto(currentIndex -5);
 	});
 	
 	rightButton.addEventListener("click", function () {
-		showPhoto(currentIndex +0.3);
+		showPhoto(currentIndex +5);
 	});
 }
-
-setupSlider();
+$("#close").click(function(){
+	$("#albumModal").css("display", "none");
+	$("#bigModal").css("display", "block");
+	$("#picScroll").find("img").remove();
+	const slideInside = document.querySelector("#slider");
+	    slideInside.style.transform = "translateX(0)";
+});
+$("#smallImg").click(function(){
+	const bigImg = document.querySelector("#bigImg");
+})
