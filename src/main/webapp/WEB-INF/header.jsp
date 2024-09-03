@@ -57,12 +57,12 @@
       <i class="fa-regular fa-user"></i>
        
     </div>-->
-    </header>
-   <header id="header2">
-	<div class="user" >
+ 
+
+	<div class="user" id="header2">
 			<i class="fa-solid fa-user" id=myUser></i>
 		</div>
-	</header>
+   </header>
 	
 	 <div id="modal1" class="modal">
 			<div class="modalcontent">

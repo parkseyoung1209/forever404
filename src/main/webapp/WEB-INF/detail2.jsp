@@ -246,7 +246,7 @@
               url: "/testupload",
               success: function () {
             	  $('#modal2').css("display", "none");
-            	  $("#image_container").empty();
+            	  $("#image_container img").remove(); // img 태그만 삭제하려면 
               },
             });
           });
@@ -307,8 +307,9 @@
 		        $("#modal1").css("display", "block");
 		      });
 */
-      $(".close").click(function () {
+      $(".").click(function () {
         $(".modal").css("display", "none");
+        $("#image_container img").remove();
       });
 
       $(window).click(function (event) {
