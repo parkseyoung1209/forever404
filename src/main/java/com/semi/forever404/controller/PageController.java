@@ -21,12 +21,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.semi.forever404.model.dto.CalendarDTO;
+import com.semi.forever404.model.dto.MoneyDTO;
 import com.semi.forever404.model.vo.BigGroup;
 import com.semi.forever404.model.vo.BigSchedule;
 import com.semi.forever404.model.vo.Money;
 import com.semi.forever404.model.vo.Photo;
 import com.semi.forever404.model.vo.SmallGroup;
 import com.semi.forever404.model.vo.SmallSchedule;
+import com.semi.forever404.model.vo.Tip;
 import com.semi.forever404.model.vo.User;
 import com.semi.forever404.service.GroupService;
 
@@ -81,10 +83,13 @@ public class PageController {
 	}
 	
 	@GetMapping("/kakao/map")
-	public String kakaomap(HttpServletRequest request) {	
-//		HttpSession session = request.getSession();
-//		List<SmallSchedule> smallSchedule = (List<SmallSchedule>) session.getAttribute("selectS");
+	public String kakaomap(HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		int random = (int)(Math.random()*44);
+		List<Tip> list = service.tip();
 		
+		session.setAttribute("tip", list.get(random).getTip());
+		System.out.println(session.getAttribute("tip"));
 		return "kakaomap2";
 	}
 	
@@ -128,20 +133,21 @@ public class PageController {
 		List<String> stringDates = dateRange.stream().map(LocalDate::toString).collect(Collectors.toList());
 		List<SmallSchedule> addList = new ArrayList<SmallSchedule>();
 		for(int i=0; i<dateRange.size(); i++) {
-			addList = service.curDateSchedule(stringDates.get(i));
+			addList = service.curDateSchedule(new SmallSchedule(stringDates.get(i), tmp));
 			list.add(new CalendarDTO(stringDates.get(i), addList));
 		}
+		List<MoneyDTO> MoneyList = new ArrayList<MoneyDTO>();
 		if(!smallSchedule.isEmpty()) {
-			List<Money> MoneyList = service.selectMoney(1); // 
-			session.setAttribute("moneyL", MoneyList);
-			System.out.println(MoneyList);
+			for(int i=0; i<smallSchedule.size(); i++) {
+				MoneyList.add(new MoneyDTO(smallSchedule.get(i).getSsCode(), service.selectMoney(smallSchedule.get(i).getSsCode())));
+				session.setAttribute("moneyL", MoneyList);
+			}
 		}
-		session.setAttribute("selectSRange", dateRange);
-		model.addAttribute("selectSRange", stringDates);
-		//System.out.println(dateRange);
+		session.setAttribute("selectSRange", stringDates);
+
 		session.setAttribute("selectS", smallSchedule);
 		session.setAttribute("totalList", list);
-		//System.out.println(smallSchedule);
+	
 		
 		if(session.getAttribute("user")!=null) return "detail2";
 		else return "redirect:/";

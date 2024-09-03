@@ -55,24 +55,16 @@
           <span id="bsCode" style="display: none"> ${param.bsCode} </span>
           <c:forEach items="${selectS}" var="ssss">
             ${ssss.bigSchedule.bsCode}
-          </c:forEach>-->
-				<!--<c:forEach items="${moneyL}" var="m"> ${m.useMoney} </c:forEach>-->
-				<c:forEach items="${selectS}" var="ssss">
-            총금액 : ${ssss.bigSchedule.entireMoney}</br>
           </c:forEach>
-				<c:forEach items="${moneyL}" var="m"> 
-          지불금액 : ${m.useMoney}</br>
-          지불품목 : ${m.buyingList}</br>
+				
+				<c:forEach items="${selectS}" var="ssss">
+            총금액 : ${ssss.bigSchedule.entireMoney}<br/>
           </c:forEach>
            <c:set var="total" value="0" />
     <c:forEach items="${selectS}" var="ssss">
         <c:set var="total" value="${ssss.bigSchedule.entireMoney}" />
     </c:forEach>
     
-    <c:set var="using" value="0" />
-    <c:forEach items="${moneyL}" var="m">
-        <c:set var="using" value="${using + m.useMoney}" />
-    </c:forEach>
 
    남은금액 : <c:set var="remainingAmount" value="${total - using}" />
 ${remainingAmount}
@@ -118,15 +110,21 @@ ${remainingAmount}
 			<i class="bi bi-plus-square"></i>
 		</button>
 	</section>
-	<!-- curDate + smallSchedule 예시-->
+	<!-- curDate + smallSchedule 테이블-->
 	<c:forEach items="${totalList}" var="tl">
 			${tl.curDate}
 			<c:forEach items="${tl.list}" var="val">
 				<p id='${val.ssCode}'>태그 테스트, ${val.curTime}</p>
 			</c:forEach>
 	</c:forEach>
+	<!-- ssCode + money 테이블 -->
+	<c:forEach items="${moneyL}" var="ml">
+			현 일정 코드 : ${ml.ssCode}
+			<c:forEach items="${ml.list}" var="value">
+				<p>현 일정의 지불 품목 : ${value.buyingList} / ${value.useMoney}원</p>
+			</c:forEach>
+	</c:forEach>
 	<script>
-	
       const kakaobtn = document.querySelector("#button3");
       kakaobtn.addEventListener("click", () => {
     	  $.ajax({

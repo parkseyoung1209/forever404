@@ -181,7 +181,9 @@
               e.addEventListener("click", () => {
                 const code = e.getAttribute("data-code");
                 localStorage.setItem("groupName", code);
+                let groupName = localStorage.getItem("groupName");
                 window.location.href = "/" + code;
+             
               });
             });
           },
