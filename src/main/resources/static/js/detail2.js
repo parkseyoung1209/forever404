@@ -3,12 +3,16 @@ document.addEventListener("DOMContentLoaded", function() {
 	const nextButton = document.querySelector("#nextBtn");
 	const items = document.querySelectorAll(".carousel-item");
 	let currentIndex = 1;
+	
+
 
 	prevButton.addEventListener("click", function() {
 		if (currentIndex > 1) {
 			$(`.carousel-item:nth-child(${currentIndex - 1})`).css({ display: 'block' });
 			$(`.carousel-item:nth-child(${currentIndex})`).css({ display: 'none' });
+			console.log($(`.carousel-item:nth-child(${currentIndex - 1})`).innerText);
 			currentIndex--;
+
 		}
 	});
 

@@ -36,7 +36,7 @@
 				<header>
 					<button type="button" class="group"
 						onclick="location.href='/${groupName}';">그룹</button>
-					<h1 id="h1date">< ${total.curDate} ></h1>
+					<h1 id="h1date" >${total.curDate}</h1>
 				</header>
 
 				<main>
@@ -78,7 +78,7 @@
 										<h2>타이틀 : ${item.schedule.serviceName}</h2>
 										<p>위치 : ${item.schedule.serviceJibun}</p>
 										<p>연락처 : ${item.schedule.servicePhone}</p>
-										<button>추가</button>
+										<button class="payPlus">추가</button>
 									</div>
 								</section>
 							</div>
@@ -278,9 +278,6 @@
       // });
     </script>
 
-	<script type="text/javascript">
-      const dateList = ${selectSRange};
-    </script>
 	<script>
       $(document).ready(function () {
         let groupName = localStorage.getItem("groupName");
