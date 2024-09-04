@@ -222,4 +222,5 @@ public class GroupController {
 //		money.setSmallSchedule(sm);
 		service.insertMoney(money);
 	}
+	
 }

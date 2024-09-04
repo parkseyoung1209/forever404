@@ -1,5 +1,6 @@
 package com.semi.forever404.controller;
 
+import java.io.File;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -185,5 +186,22 @@ public class PageController {
 		
 		session.setAttribute("photoL", photoList);
 		return photoList;
+	}
+	
+
+	@ResponseBody
+	@PostMapping("/deletePhoto")
+	public void deletePhoto(String photoUrl, int photoCode) {
+		//System.out.println("URL : " + photoUrl);
+		System.out.println("code : " + photoCode);
+		String url = photoUrl.replace("http://192.168.10.28:8080/storage/","\\\\192.168.10.28\\forever404\\storage\\");
+		System.out.println("storage : " + url);
+		if(photoUrl!=null) {
+			File file = new File (url);
+			file.delete();
+		}
+		
+		service.deleteImg(photoCode);
+		
 	}
 }
