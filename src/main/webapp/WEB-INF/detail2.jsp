@@ -76,10 +76,12 @@
 										</c:otherwise>
 									</c:choose>
 									<div class="item-content">
+										<input type="hidden" value="${item.schedule.ssCode}">
 										<h2>타이틀 : ${item.schedule.serviceName}</h2>
 										<p>위치 : ${item.schedule.serviceJibun}</p>
 										<p>연락처 : ${item.schedule.servicePhone}</p>
 										<button class="payPlus">추가</button>
+										<input type="submit" class="deleteSc" value="삭제">
 									</div>
 								</section>
 							</div>
@@ -207,22 +209,7 @@
             });
           });
         </script>
-	<script>
-      $("#moneyBtn").click(() => {
-        $.ajax({
-          type: "post",
-          url: "/insertMoney",
-          data: {
-            buyingList: $("#buyingList").val(),
-            useMoney: $("#useMoney").val(),
-          },
-          success: function () {},
-          error: function() {
-        	  alert("다시입력");
-          }
-        });
-      });
-    </script>
+	
 	<script>
       $(".btn").click((e) => {
         let content = $(".btn1");
@@ -272,9 +259,51 @@
         $("#modal2").css("display", "block");
       });
 
+      let ssCode;
+      
       $(".payPlus").click(function () {
         $("#modal3").css("display", "block");
+        ssCode = $(this).siblings('input[type="hidden"]').val();
+        console.log("+ : " + ssCode);
       });
+      
+      $("#moneyBtn").click(() => {
+        $.ajax({
+          type: "post",
+          url: "/insertMoney",
+          data: {
+            buyingList: $("#buyingList").val(),
+            useMoney: $("#useMoney").val(),
+            ssCode: ssCode,
+          },
+          success: function () {
+        	  alert("!");
+          },
+          error: function() {
+        	  alert("다시입력");
+          }
+        });
+      });
+     
+      //스케줄 삭제
+      $(".deleteSc").click(function () {
+    	  ssCode = $(this).siblings('input[type="hidden"]').val();
+    	  console.log("삭제");
+    	  console.log(ssCode);
+    	  $.ajax({
+    		  type: "get",
+    		  url:"/deleteSc",
+    		  data: {
+    			  ssCode: ssCode,
+    		  },
+    		  success: function(){
+    			  alert("삭제되었습니다.");
+    			  location.reload();
+    		  }
+    	  });
+      });
+      
+      
       // $("#schedule").click(function () {
       // $(".section").show().css("display", "block");
       // });

@@ -86,7 +86,10 @@
 	WHERE bg_group_code = #{bgGroupCode}
 	</delete>
 	
-	
+	<delete id="deleteSc" parameterType="int">
+	DELETE FROM small_schedule
+	WHERE ss_code = #{ssCode}
+	</delete>
 	
 	<select id="allInfoGroup" resultMap="groupMap" parameterType="String">
 	select * 
