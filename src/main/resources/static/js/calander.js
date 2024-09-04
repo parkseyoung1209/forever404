@@ -297,12 +297,32 @@ $("#seven").click(function () {
 });
 
 $("#delete").click(() => {
-  const bigImgUrl = document.querySelector("#bigImg");
-  console.log(bigImgUrl);
-  var bImgSrc = bigImgUrl.getAttribute(src);
-  console.log(bImgSrc);
-  var bImgCode = bigImgUrl.getAttribute();
-});
+          const bigImg = document.querySelector("#bigImg");
+          var imgSrc = bigImg.getAttribute("src");
+          var imgCode = bigImg.getAttribute("alt");
+          console.log(imgSrc);
+          console.log(imgCode);
+          $.ajax({
+				
+            type: "post",
+            url: "/deletePhoto",
+            data: {
+              photoUrl: imgSrc,
+              photoCode: imgCode,
+            },
+            success: function () {
+
+              alert("성공적으로 삭제되었습니다");
+              //console.log($('.smallImg img[alt="' + imgCode + '"]'));
+              $('img[alt="' + imgCode + '"]').remove();
+            },
+            error: function () {
+
+              alert("삭제되지 않았습니다");
+              location.reload();
+            },
+          });
+      });
 
 function setupSlider() {
   const leftButton = document.querySelector("#slideBtn1");
