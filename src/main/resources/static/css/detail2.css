@@ -4,7 +4,7 @@
 }
 
 .carousel-item {
-  width: 100%;
+  width: 100vw;
 }
 
 .carousel-item:nth-child(2),
@@ -21,6 +21,7 @@
   display: flex;
   align-items: center;
   z-index: 1;
+
 }
 
 .carousel-item header button {
@@ -35,6 +36,7 @@
   background-color: #999;
   border: none;
   cursor: pointer;
+  margin-left: 50px;
 }
 
 .carousel-item header button:hover {
@@ -48,6 +50,7 @@
   font-weight: bold;
   color: white;
   flex-grow: 1;
+    margin-left: -75px;
 }
 
 .carousel-item main {
@@ -138,6 +141,7 @@
   border: none;
   font-size: 4.5rem;
   cursor: pointer;
+  outline: none;
 }
 
 #plus:hover {
@@ -230,6 +234,7 @@
   overflow-x: hidden;
 }
 
+
 #modalcontent2 {
   position: relative;
   background-color: white;
@@ -239,6 +244,7 @@
   width: 450px;
   height: 50vh;
   border-radius: 20px;
+  overflow-y: hidden;
 }
 
 .modal h2 {
@@ -311,18 +317,43 @@
   top: 50%;
   left: 30px;
   transform: translateY(-50%);
+  border:none;
+  background-color: transparent;
+  font-size: 4rem;
+  cursor: pointer;
 }
 #nextBtn {
   position: fixed;
   top: 50%;
   right: 30px;
   transform: translateY(-50%);
+  border:none;
+  background-color: transparent;
+  font-size: 4rem;
+  cursor: pointer;
+}
+
+#prevBtn:hover {
+	color:lightgray;
+}
+
+#nextBtn:hover {
+	color:lightgray;
 }
 
 #fileSubmit {
   width: 80px;
   height: 30px;
   border-radius: 5px;
+  position:absolute;
+  bottom:20px;
+  right: 50%;
+    transform: translateX(+50%);
+    cursor:pointer;
+}
+
+#fileSubmit:hover {
+	color:lightgray; 
 }
 
 .dongle-bold {
@@ -341,4 +372,18 @@
   font-family: "Nanum Gothic", sans-serif;
   font-weight: 700;
   font-style: normal;
+}
+
+.paging {
+	width:100%;
+	height:100px;
+	background-color: transparent;
+}
+
+
+
+#modal3 input {
+	display:flex;
+	
+	margin: 10px;
 }

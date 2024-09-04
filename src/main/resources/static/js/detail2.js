@@ -3,6 +3,9 @@ document.addEventListener("DOMContentLoaded", function () {
   const nextButton = document.querySelector("#nextBtn");
   const items = document.querySelectorAll(".carousel-item");
   let currentIndex = 1;
+  
+	
+  
 
   const curDateNodes = document.querySelectorAll(".h1date");
   let curDate;
@@ -56,3 +59,5 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 });
+
+	

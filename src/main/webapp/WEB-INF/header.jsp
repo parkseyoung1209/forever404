@@ -38,21 +38,6 @@ uri="http://java.sun.com/jsp/jstl/functions"%>
         </button>
       </div>
 
-      <div class="mymodal">
-        <header id="myHeader"></header>
-        <i class="fa-solid fa-plane" id="myImg"></i>
-        <div id="nameSection">
-          <h1 id="myName"></h1>
-          <p id="myId">test1234</p>
-        </div>
-        <c:if test="${empty token}">
-          <button type="button" id="logout">로그아웃</button>
-        </c:if>
-        <c:if test="${not empty token}">
-          <button type="button" id="logout2">로그아웃</button>
-        </c:if>
-      </div>
-
       <div class="group" id="group"></div>
 
       <!-- 

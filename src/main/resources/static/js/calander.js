@@ -288,11 +288,16 @@ function setupSlider() {
     }%)`;
   }
 
+
+	
+
   leftButton.addEventListener("click", function () {
     showPhoto(currentIndex - 5);
+
   });
 
   rightButton.addEventListener("click", function () {
+
     showPhoto(currentIndex + 5);
   });
 }

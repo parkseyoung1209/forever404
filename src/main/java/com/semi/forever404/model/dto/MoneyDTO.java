@@ -13,4 +13,5 @@ import lombok.NoArgsConstructor;
 public class MoneyDTO {
 	private SmallSchedule schedule;
 	private List<Money> moneyList;
+
 }
