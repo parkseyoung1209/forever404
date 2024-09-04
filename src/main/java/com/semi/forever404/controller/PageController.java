@@ -209,7 +209,7 @@ public class PageController {
 	@ResponseBody
 	@GetMapping("/deleteSc")
 	public void deleteSc(int ssCode) {
-		System.out.println(ssCode);
+		//System.out.println(ssCode);
 		
 		service.deleteGroup1(ssCode);
 		service.deleteSc(ssCode);

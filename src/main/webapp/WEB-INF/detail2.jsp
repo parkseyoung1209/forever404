@@ -288,8 +288,6 @@
       //스케줄 삭제
       $(".deleteSc").click(function () {
     	  ssCode = $(this).siblings('input[type="hidden"]').val();
-    	  console.log("삭제");
-    	  console.log(ssCode);
     	  $.ajax({
     		  type: "get",
     		  url:"/deleteSc",
