@@ -30,10 +30,6 @@ uri="http://java.sun.com/jsp/jstl/core"%>
 
       <c:if test="${check==true}">
         <c:if test="${not empty groupName}">
-          <button id="teamBtn">
-            <i id="teamUser" class="fa-solid fa-user"></i>
-            <h1></h1>
-          </button>
           <div id="calendar-container">
             <button id="teamBtn">
               <i id="teamUser" class="fa-solid fa-user"></i>

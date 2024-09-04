@@ -415,3 +415,8 @@ $("#close").click(function () {
   const slideInside = document.querySelector("#slider");
   slideInside.style.transform = "translateX(0)";
 });
+const Calendar = FullCalendar.Calendar;
+const Users = $("#users");
+if(Calendar == null) {
+	Users.css("display", "none");
+}
