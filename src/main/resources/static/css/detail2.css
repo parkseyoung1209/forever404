@@ -37,6 +37,7 @@
   border: none;
   cursor: pointer;
   margin-left: 50px;
+  z-index: 2;
 }
 
 .carousel-item header button:hover {

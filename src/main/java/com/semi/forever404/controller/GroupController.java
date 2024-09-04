@@ -113,12 +113,17 @@ public class GroupController {
 			for(int j=0; j<smallSchedule.size(); j++) {
 				// 스몰스케쥴 ss_code로 money테이블 조회해서 삭제하고
 				service.deleteGroup1(smallSchedule.get(j).getSsCode()); // money 테이블
+				System.out.println("삭제111111111");
 			}
 			service.deleteGroup2(bsCode);
+			System.out.println("삭제2222222222");
 		}
 		service.deleteGroup3(bgCode);
+		System.out.println("삭제333333333");
 		service.deleteGroup4(bgCode);
+		System.out.println("삭제444444444");
 		service.deleteGroup5(bgCode);
+		System.out.println("삭제5555555555");
 	}
 	
 	

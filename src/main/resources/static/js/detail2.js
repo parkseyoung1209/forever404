@@ -3,7 +3,9 @@ document.addEventListener("DOMContentLoaded", function () {
   const nextButton = document.querySelector("#nextBtn");
   const items = document.querySelectorAll(".carousel-item");
   let currentIndex = 1;
-  
+  for (let i = 2; i <= items.length; i++) {
+      $(`.carousel-item:nth-child(${i})`).css({ display: "none" });
+    }
 	
   
 

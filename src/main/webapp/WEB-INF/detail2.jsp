@@ -75,11 +75,11 @@
 											<img src="${item.schedule.serviceImg}" class="img">
 										</c:otherwise>
 									</c:choose>
-									<div class="item-content">
+									<div class="item-content" id="${item.schedule.ssCode}">
 										<h2>타이틀 : ${item.schedule.serviceName}</h2>
 										<p>위치 : ${item.schedule.serviceJibun}</p>
 										<p>연락처 : ${item.schedule.servicePhone}</p>
-										<button class="payPlus">추가</button>
+										<button class="payPlus" id="${item.schedule.ssCode}">추가</button>
 									</div>
 								</section>
 							</div>
@@ -216,7 +216,9 @@
             buyingList: $("#buyingList").val(),
             useMoney: $("#useMoney").val(),
           },
-          success: function () {},
+          success: function () {
+			alert("추가성공!");
+          },
           error: function() {
         	  alert("다시입력");
           }
