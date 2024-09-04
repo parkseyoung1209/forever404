@@ -64,6 +64,7 @@
 									</c:forEach>
 									<c:set var="remainingAmount" value="${item.schedule.bigSchedule.entireMoney - using}" />
 									<p>남은금액 : ${remainingAmount}</p>
+								
 								</div>
 								<section>
 									<c:choose>
@@ -78,13 +79,13 @@
 										<h2>타이틀 : ${item.schedule.serviceName}</h2>
 										<p>위치 : ${item.schedule.serviceJibun}</p>
 										<p>연락처 : ${item.schedule.servicePhone}</p>
-										<button>추가</button>
+										<button class="payPlus">추가</button>
 									</div>
 								</section>
 							</div>
 						</div>
 					</c:forEach>
-
+							<section class="paging"></section>
 				</main>
 			</div>
 		</c:forEach>
@@ -104,7 +105,7 @@
 
 	<div id="modal2" class="modal">
 		<div class="bigmodalcontent">
-			<span class="close">&times</span>
+		<span class="close">&times</span>
 			<h2>사진 추가</h2>
 			<hr />
 			<div class="modalcontent">
@@ -132,8 +133,8 @@
 			<span class="close">&times</span>
 			<h2>지불 품목</h2>
 			<hr />
-			지불 품목 : <input type="text" class="money" id="buyingList" /> <br />
-			사용 금액 : <input type="text" class="money" id="useMoney" />
+			지불 품목 <input type="text" class="money" id="buyingList" />
+			사용 금액 <input type="text" class="money" id="useMoney" />
 			<div class="add">
 				<button class="add2" id="moneyBtn">추가</button>
 			</div>

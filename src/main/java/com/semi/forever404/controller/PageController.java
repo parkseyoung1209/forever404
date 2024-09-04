@@ -146,6 +146,7 @@ public class PageController {
 			list.add(new CalendarDTO(stringDates.get(i), addList));
 		}
 		
+	
 		session.setAttribute("totalList", list);
 
 		
