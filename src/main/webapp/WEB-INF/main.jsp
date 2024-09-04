@@ -42,7 +42,6 @@ uri="http://java.sun.com/jsp/jstl/core"%>
       <c:if test="${check==false}">
         <p>그룹을 생성하세요</p>
       </c:if>
-      <<<<<<< HEAD ======= >>>>>>> jinjoo
 
       <div id="bigModal" style="display: none">
         <div id="modalContent3">
