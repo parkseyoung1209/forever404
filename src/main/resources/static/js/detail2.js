@@ -15,11 +15,6 @@ document.addEventListener("DOMContentLoaded", function() {
 		}
 	});
 	
-	/*
-	const array = temp.map(function(value) {
-		console.log(value);
-	});
-	*/
 	
 	prevButton.addEventListener("click", function() {
 		if (currentIndex > 1) {

@@ -15,6 +15,7 @@
 </head>
 <body>
 <div id="loading">
+	<div id='fixedTag'>
 	<div aria-label="Orange and tan hamster running in a metal wheel" role="img" class="wheel-and-hamster">
 		<div class="wheel"></div>
 		<div class="hamster">
@@ -33,11 +34,10 @@
 		</div>
 		<div class="spoke"></div>
 	</div>
-    <div class="circle"></div>
-    <div class="shadow"></div>
     <div class="state-viewer-container">
       <label class="label-font" id="stateLabel">${tip}</label>
     </div>
+  </div>
   </div>
     <header>
 	<i class="fa-solid fa-arrow-left" id="back"></i>

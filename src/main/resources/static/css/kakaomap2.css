@@ -505,11 +505,14 @@ hr {
 }
 
 .state-viewer-container {
-  margin-top: 10px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, 150%);
+      width: 100%;
+    height: 40px;
+    /* margin-top: 50px; */
+    position: absolute;
+    top: 70%;
+    left: 60%;
+    right: 50%;
+    transform: translate(-50%, 150%);
 }
 
 .circle {
@@ -614,13 +617,13 @@ hr {
 /*라이브러리 테스트*/
 /* From Uiverse.io by Nawsome */
 .wheel-and-hamster {
-  right: 2px;
-  bottom: 2px;
-  --dur: 1s;
-  position: absolute;
-  width: 400px;
-  height: 400px;
-  font-size: 14px;
+  top: 40px;
+    right: 250px;
+    --dur: 1s;
+    position: absolute;
+    width: 400PX;
+    height: 400PX;
+    font-size: 14px;
 }
 
 .wheel,
@@ -967,4 +970,12 @@ hr {
   to {
     transform: rotate(-1turn);
   }
+}
+#fixedTag {
+	top: 70px;
+    position: relative;
+    width: 50%;
+    height: 600px;
+    margin-right: 25%;
+    margin-left: 25%
 }
