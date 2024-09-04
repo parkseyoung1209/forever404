@@ -42,21 +42,6 @@
       <c:if test="${check==false}">
         <p>그룹을 생성하세요</p>
       </c:if>
-      <button id="deleteGroup" class="add2">삭제</button>
-
-      <script>
-        $("#deleteGroup").click(() => {
-          let groupName = localStorage.getItem("groupName");
-          $.ajax({
-            url: "/deleteGroup",
-            type: "post",
-            data: "groupName=" + groupName,
-            success: function () {
-              window.location.href = "/main";
-            },
-          });
-        });
-      </script>
 
       <div id="bigModal" style="display: none">
         <div id="modalContent3">
@@ -154,6 +139,27 @@
       	</div>
       	</div>
       </div>
+      
+      <script>
+      $("#delete").click(() => {
+    	  const bigImgUrl = document.querySelector("#bigImg");
+    	  console.log(bigImgUrl);
+    	  var bImgSrc = bigImgUrl.getAttribute(src);
+    	  console.log(bImgSrc);
+    	  console.log(pCode);
+          $.ajax({
+				
+            },
+            success: function () {
+
+            },
+            error: function () {
+
+            },
+          });
+      });
+      </script>
+      
       	<c:if test="${not empty groupName}">
 		<c:forEach items="${userList}" var="smallGroup">
 			<div style="margin-left: 1200px;">선택한 그룹에 있는 유저 아이디들 : ${smallGroup.user.id}</div>
@@ -220,11 +226,11 @@
                     miniTitle +
                     "</button><span>" +
                     title +
-                    "</span>"
+                    "</span>"  
                 );
                 // 사용할 앱의 JavaScript 키를 설정해 주세요.
-
                 //$('.modal').css("display", "none");
+                window.location.reload();
               } else {
                 $("#successText").text("사용할 수 없는 그룹명입니다.");
               }
