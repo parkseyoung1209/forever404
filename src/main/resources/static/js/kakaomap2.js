@@ -98,15 +98,25 @@ document
       });
   }*/
 
-currentLocation();
+//currentLocation();
 
 // 지도 생성 시 currentLocation 함수 호출
-//currentLocation();
+currentLocation();
 
 // 장소 검색 객체를 생성합니다
 var ps = new kakao.maps.services.Places(map);
 
 //document.getElementById("bttn").addEventListener("click", searchLocalPlaces)
+
+function handleSubmit(event) {
+    event.preventDefault(); // Prevent default form submission
+    searchLocalPlaces();    // Call the search function
+}
+
+// Adding event listener on DOMContentLoaded to attach the event handler
+document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById('searchForm').addEventListener('submit', handleSubmit);
+});
 
 function searchLocalPlaces() {
   const keyword = document.getElementById("keyword").value;

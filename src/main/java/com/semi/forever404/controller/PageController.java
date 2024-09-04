@@ -105,6 +105,7 @@ public class PageController {
 			BigGroup bg = service.searchBgCode(groupName);
 			List<SmallGroup> userList = service.selectSmallGroup2(bg.getBgGroupCode());
 			session.setAttribute("userList", userList);
+			request.setAttribute("userListSize", userList.size());
 			bigSchedule.setBigGroup(bg);
 			List<BigSchedule> bsList = service.selectBg(bigSchedule);
 			model.addAttribute("bsList", bsList);
