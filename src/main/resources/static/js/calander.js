@@ -17,15 +17,15 @@ document.addEventListener("DOMContentLoaded", function () {
       groupcurrent: {
         text: "그룹 삭제",
         click: function () {
-	          let groupName = localStorage.getItem("groupName");
-	          $.ajax({
-	            url: "/deleteGroup",
-	            type: "post",
-	            data: "groupName=" + groupName,
-	            success: function () {
-	              window.location.href = "/main";
-	            },
-	          });
+          let groupName = localStorage.getItem("groupName");
+          $.ajax({
+            url: "/deleteGroup",
+            type: "post",
+            data: "groupName=" + groupName,
+            success: function () {
+              window.location.href = "/main";
+            },
+          });
         },
       },
     },
@@ -260,19 +260,36 @@ $("#seven").click(function () {
       const imgContainer1 = $("#slider");
       const photo = result.map(function (picture) {
         const photo2 = picture.photoUrl;
-		const photoCode = picture.photoCode;
+        const photoCode = picture.photoCode;
         const photoExist =
           imgContainer1.find(`img[src="${photo2}"]`).length > 0;
 
         if (!photoExist) {
-          const imgTag = $("<img>").attr("src", photo2).addClass("smallImg").attr("alt",photoCode);
+          const imgTag = $("<img>")
+            .attr("src", photo2)
+            .addClass("smallImg")
+            .attr("alt", photoCode);
           imgContainer1.append(imgTag);
         }
       });
       $(".smallImg").click(function () {
-        const SRC = $(this).attr("src");
-		const pCode = $(this).attr("alt");
-        $("#bigImg").attr("src", SRC).attr("alt", pCode);
+        const src = $(this).attr("src"); // 클릭한 이미지의 src 속성 값
+        const pCode = $(this).attr("alt");
+        // .bigImg가 이미 존재하는지 확인
+        let bigImg = $("#bigImg");
+
+        if (bigImg.length === 0) {
+          // .bigImg가 존재하지 않으면 새로 생성하여 body에 추가
+          bigImg = $("<img>")
+            .attr("id", "bigImg")
+            .addClass("bigImg")
+            .attr("src", src)
+            .attr("alt", pCode);
+          $("#mainImg").append(bigImg);
+        } else {
+          // .bigImg가 이미 존재하면 src 속성만 변경
+          bigImg.attr("src", src).attr("alt", pCode);
+        }
       });
       setupSlider();
     },
@@ -280,13 +297,12 @@ $("#seven").click(function () {
 });
 
 $("#delete").click(() => {
-   	  const bigImgUrl = document.querySelector("#bigImg");
-   	  console.log(bigImgUrl);
-   	  var bImgSrc = bigImgUrl.getAttribute(src);
-   	  console.log(bImgSrc);
-	  var bImgCode = bigImgUrl.getAttribute();
-		
-     });
+  const bigImgUrl = document.querySelector("#bigImg");
+  console.log(bigImgUrl);
+  var bImgSrc = bigImgUrl.getAttribute(src);
+  console.log(bImgSrc);
+  var bImgCode = bigImgUrl.getAttribute();
+});
 
 function setupSlider() {
   const leftButton = document.querySelector("#slideBtn1");
@@ -324,7 +340,7 @@ $("#close").click(function () {
   $("#albumModal").css("display", "none");
   $("#bigModal").css("display", "block");
   $("#picScroll").find("img").remove();
-  $("#bigImg").attr("src", "");
+  $("#mainImg").find("#bigImg").remove();
   const slideInside = document.querySelector("#slider");
   slideInside.style.transform = "translateX(0)";
 });

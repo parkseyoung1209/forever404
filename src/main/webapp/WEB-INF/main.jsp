@@ -128,7 +128,6 @@
       	<div id="modalContent5">
       		<main id="photoSection">
       		<div id="mainImg"></div>
-			<img id="bigImg" src="">
       		</main>
       	</div>
       	<div id="picScroll">
