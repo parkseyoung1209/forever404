@@ -220,10 +220,12 @@ public class GroupController {
 
 	@ResponseBody
 	@PostMapping("/insertMoney")
-	public void insertMoney(Money money, String curDate) {
+	public void insertMoney(Money money, int ssCode) {
 		SmallSchedule sm = new SmallSchedule();
 		sm.setSsCode(ssCode);
 		money.setSmallSchedule(sm);
+//		System.out.println(money);
+
 		service.insertMoney(money);
 	}
 	

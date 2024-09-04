@@ -204,4 +204,16 @@ public class PageController {
 		service.deleteImg(photoCode);
 		
 	}
+	
+	// 세부스케줄 삭제
+	@ResponseBody
+	@GetMapping("/deleteSc")
+	public void deleteSc(int ssCode) {
+		//System.out.println(ssCode);
+		
+		service.deleteGroup1(ssCode);
+		service.deleteSc(ssCode);
+	}
+	
+	
 }

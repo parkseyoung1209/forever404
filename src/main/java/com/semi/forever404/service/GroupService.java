@@ -100,6 +100,11 @@ public class GroupService {
 		mapper.deleteGroup5(num);
 	}
 	
+	// 세부 스케줄 삭제
+	public void deleteSc(int ssCode) {
+		mapper.deleteSc(ssCode);
+	}
+	
 	// 이미지 추가 및 선택
 	public void imgLoad (Photo photo) {
 		mapper.imgLoad(photo);

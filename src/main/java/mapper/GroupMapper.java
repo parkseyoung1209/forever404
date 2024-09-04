@@ -44,6 +44,9 @@ public interface GroupMapper {
 	void deleteGroup4 (int num);
 	void deleteGroup5 (int num);
 	
+	// 세부 스케줄 삭제
+	void deleteSc(int ssCode);
+	
 	//이미지 추가 및 선택
 	void imgLoad (Photo photo); //추가
 	List<Photo> selectMyImg (int num); //선택

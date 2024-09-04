@@ -15,4 +15,5 @@ public class Money {
 		this.smallSchedule = smallSchedule;
 	}
 	
+	
 }
