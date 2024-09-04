@@ -2,6 +2,10 @@ document.addEventListener("DOMContentLoaded", function() {
 	const prevButton = document.querySelector("#prevBtn");
 	const nextButton = document.querySelector("#nextBtn");
 	const items = document.querySelectorAll(".carousel-item");
+	console.log(items.length); // 0-4
+	for(let i = 2; i<=items.length; i++) {
+		$(`.carousel-item:nth-child(${i})`).css({ display: 'none' });
+	}
 	let currentIndex = 1;
 
 	const curDateNodes = document.querySelectorAll(".h1date");
