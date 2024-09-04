@@ -30,10 +30,7 @@ uri="http://java.sun.com/jsp/jstl/core"%>
 
       <c:if test="${check==true}">
         <c:if test="${not empty groupName}">
-          <button id="teamBtn">
-            <i id="teamUser" class="fa-solid fa-user"></i>
-            <h1></h1>
-          </button>
+          
           <div id="calendar-container">
             <button id="teamBtn">
               <i id="teamUser" class="fa-solid fa-user"></i>
@@ -244,11 +241,15 @@ uri="http://java.sun.com/jsp/jstl/core"%>
       const bigSchedules = [];
       let schedule = {};
       <c:forEach items="${bsList}" var="item">
-        schedule.title = "${item.title}"; schedule.start = "${item.startDate}";
-        schedule.end = "${item.endDate}"; schedule.money = "${item.entireMoney}
-        "; schedule.color = "${item.scheduleColor}"; schedule.bsCode = "$
-        {item.bsCode}"; bigSchedules.push(schedule); schedule = {};
-      </c:forEach>;
+        schedule.title = "${item.title}"; 
+        schedule.start = "${item.startDate}";
+        schedule.end = "${item.endDate}"; 
+        schedule.money = "${item.entireMoney}"; 
+        schedule.color = "${item.scheduleColor}"; 
+        schedule.bsCode = "${item.bsCode}"; 
+        bigSchedules.push(schedule); 
+  		schedule = {};
+      </c:forEach>
       console.log(bigSchedules);
     </script>
     <script src="${pageContext.request.contextPath}/js/calander.js"></script>
