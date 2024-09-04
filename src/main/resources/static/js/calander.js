@@ -90,14 +90,48 @@ document.addEventListener("DOMContentLoaded", function () {
 
         return clickedDate >= eventStart + 1 && clickedDate <= eventEndDate;
       });
+	  
+	  // 클릭한 날짜에 해당하는 이벤트 찾기
+	      const eventOnClickedDate = events.find((event) => {
+	          const eventStart = event.start.toISOString().split("T")[0];
+	          const eventEnd = new Date(event.end);
+	          eventEnd.setDate(eventEnd.getDate()); // 하루 빼기
+	          const eventEndDate = eventEnd.toISOString().split("T")[0];
 
-      /*
-      if (hasEvent) {
-        // 해당 날짜에 이벤트가 있으면 클릭 무시
-        return;	
-      }
-	  */
+	          // 클릭한 날짜가 이벤트 기간 내에 있는지 확인
+	          return clickedDate >= eventStart + 1 && clickedDate <= eventEndDate;
+	      });
 
+		  if (eventOnClickedDate) {
+		          // 해당 날짜에 이벤트가 있으면 eventClick과 동일한 로직 실행
+		          const modal = $("#bigModal");
+		          const btn = $("#six");
+		          const btn2 = $("#seven");
+
+		          $("#addMemoh1").text(eventOnClickedDate.title);
+		          $("#addMemop").text(`${eventOnClickedDate.start.toLocaleDateString()}`);
+		          const linkbs = eventOnClickedDate.extendedProps.bsCode;
+		          sessionStorage.setItem("bsCode", linkbs);
+
+		          const endDate = new Date(eventOnClickedDate.end);
+		          endDate.setDate(endDate.getDate() - 1);
+		          $("#addMemop2").text(`${endDate.toLocaleDateString()}`);
+		          $("#addMemop3").text(eventOnClickedDate.extendedProps.money);
+
+		          modal.css("display", "block");
+
+		          if ($("#addMemoh1").length) {
+		              btn2.css("display", "block");
+		              btn.css("display", "none");
+		              $("#addMemoh1").show();
+		              $("#memoSection1").show();
+		              $("#memoSection2").show();
+		              $("#memoSection3").show();
+		          }
+
+		          // 클릭한 날짜에 이벤트가 있으므로 추가 로직은 실행하지 않음
+		          return;
+		      }
       // 이벤트가 없으면 아래 로직 실행
       const month = calendarEl
         .querySelector(".fc-toolbar-title")
