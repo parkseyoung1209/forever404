@@ -43,9 +43,9 @@
 	<i class="fa-solid fa-arrow-left" id="back"></i>
       <div class="search_menu">
         <div>
-          <form onsubmit="searchLocalPlaces(); return false;">
-           <input type="text" id="keyword" size="15" placeholder="장소 검색"/>
-           <button type="button" id="bttn">
+           <form id="searchForm">
+	        <input type="text" id="keyword" size="15" placeholder="장소 검색" />
+	        <button type="submit" id="bttn">
            		<i class="fa-solid fa-magnifying-glass"></i>
             </button>
           </form>
