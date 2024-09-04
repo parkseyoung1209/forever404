@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+pageEncoding="UTF-8"%> <%@ taglib prefix="c"
+uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -42,6 +42,7 @@
       <c:if test="${check==false}">
         <p>그룹을 생성하세요</p>
       </c:if>
+      <<<<<<< HEAD ======= >>>>>>> jinjoo
 
       <div id="bigModal" style="display: none">
         <div id="modalContent3">
@@ -52,7 +53,7 @@
           <!-- <div id="addMemo"><h1>안녕하세요</h1></div> -->
           <div class="modsection" id="addMemo">
             <div id="memoSection">
-            <button id="addMemoh1"></button>
+              <button id="addMemoh1"></button>
             </div>
             <div id="memoSection1">
               여행 시작 :
@@ -121,53 +122,65 @@
         </div>
       </div>
       <div id="albumModal" style="display: none">
-      <div id="modalContent6">
-      	<header id="mdl-header3">
-      		<button id="delete">삭제</button>
-      		<i class="fa-solid fa-xmark" id="close"></i></header>
-      	<div id="modalContent5">
-      		<main id="photoSection">
-      		<div id="mainImg"></div>
-      		</main>
-      	</div>
-      	<div id="picScroll">
-      	<button id="slideBtn1" class="slide">&#10094;</button>
-		<button id="slideBtn2" class="slide">&#10095;</button>
-		<div id="slider">
-		</div>
-      	</div>
-      	</div>
+        <div id="modalContent6">
+          <header id="mdl-header3">
+            <button id="delete">삭제</button>
+            <i class="fa-solid fa-xmark" id="close"></i>
+          </header>
+          <div id="modalContent5">
+            <main id="photoSection">
+              <div id="mainImg"></div>
+            </main>
+          </div>
+          <div id="picScroll">
+            <button id="slideBtn1" class="slide">&#10094;</button>
+            <button id="slideBtn2" class="slide">&#10095;</button>
+            <div id="slider"></div>
+          </div>
+        </div>
       </div>
-      
+
       <script>
-      $("#delete").click(() => {
-    	  const bigImgUrl = document.querySelector("#bigImg");
-    	  console.log(bigImgUrl);
-    	  var bImgSrc = bigImgUrl.getAttribute(src);
-    	  console.log(bImgSrc);
-    	  console.log(pCode);
+        //앨범 삭제
+        $("#delete").click(() => {
+          const bigImg = document.querySelector("#bigImg");
+          var imgSrc = bigImg.getAttribute("src");
+          var imgCode = bigImg.getAttribute("alt");
+          console.log(imgSrc);
+          console.log(imgCode);
           $.ajax({
-				
+            type: "post",
+            url: "/deletePhoto",
+            data: {
+              photoUrl: imgSrc,
+              photoCode: imgCode,
             },
             success: function () {
-
+              alert("성공적으로 삭제되었습니다");
+              //console.log($('.smallImg img[alt="' + imgCode + '"]'));
+              $('img[alt="' + imgCode + '"]').remove();
             },
             error: function () {
-
+              alert("삭제되지 않았습니다");
+              location.reload();
             },
           });
-      });
+        });
       </script>
-      
-      	<c:if test="${not empty groupName}">
-		<c:forEach items="${userList}" var="smallGroup">
-			<div style="margin-left: 1200px;">선택한 그룹에 있는 유저 아이디들 : ${smallGroup.user.id}</div>
-		</c:forEach>
-		</c:if>
+
+      <c:if test="${not empty groupName}">
+        <c:forEach items="${userList}" var="smallGroup">
+          <div style="margin-left: 1200px">
+            선택한 그룹에 있는 유저 아이디들 : ${smallGroup.user.id}
+          </div>
+        </c:forEach>
+      </c:if>
+
       <script
         src="https://kit.fontawesome.com/ef885bd654.js"
         crossorigin="anonymous"
       ></script>
+
       <script>
         $("#final").click(() => {
           $.ajax({
@@ -191,6 +204,7 @@
             },
           });
         });
+
         $("#add2").click(() => {
           $.ajax({
             type: "post",
@@ -204,11 +218,9 @@
             success: function () {},
           });
         });
-      </script>
 
-      <script>
         $(".add2").click(() => {
-          const title = $("#textbox").val().trim(); 
+          const title = $("#textbox").val().trim();
           const miniTitle = title.substring(0, 2);
           $.ajax({
             type: "post",
@@ -225,7 +237,7 @@
                     miniTitle +
                     "</button><span>" +
                     title +
-                    "</span>"  
+                    "</span>"
                 );
                 // 사용할 앱의 JavaScript 키를 설정해 주세요.
                 //$('.modal').css("display", "none");
@@ -249,15 +261,11 @@
       const bigSchedules = [];
       let schedule = {};
       <c:forEach items="${bsList}" var="item">
-        schedule.title = "${item.title}";
-        schedule.start = "${item.startDate}";
-        schedule.end = "${item.endDate}";
-        schedule.money = "${item.entireMoney}";
-        schedule.color = "${item.scheduleColor}";
-        schedule.bsCode = "${item.bsCode}";
-        bigSchedules.push(schedule);
-        schedule = {};
-      </c:forEach>
+        schedule.title = "${item.title}"; schedule.start = "${item.startDate}";
+        schedule.end = "${item.endDate}"; schedule.money = "${item.entireMoney}
+        "; schedule.color = "${item.scheduleColor}"; schedule.bsCode = "$
+        {item.bsCode}"; bigSchedules.push(schedule); schedule = {};
+      </c:forEach>;
       console.log(bigSchedules);
     </script>
     <script src="${pageContext.request.contextPath}/js/calander.js"></script>
