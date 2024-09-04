@@ -5,7 +5,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>Insert title here</title>
+    <title>ForeverCalendar</title>
     <link
       rel="stylesheet"
       href="${pageContext.request.contextPath}/css/reset.css"
@@ -142,6 +142,7 @@
       		<i class="fa-solid fa-xmark" id="close"></i></header>
       	<div id="modalContent5">
       		<main id="photoSection">
+      		<div id="mainImg"></div>
 			<img id="bigImg" src="">
       		</main>
       	</div>

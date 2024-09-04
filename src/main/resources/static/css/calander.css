@@ -902,9 +902,10 @@ font-size: 50px;
 #bigImg{
 	position:absolute;
 	left:425px;
-	top:50px;
+	top:25px;
 	width:1000px;
-	height:500px;
+	height:550px;
+	object-fit:contain;
 }
 .smallImg{
 	position:relative;

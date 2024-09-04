@@ -261,8 +261,8 @@ $("#seven").click(function() {
 				}
 			});
 			$(".smallImg").click(function() {
-			                const imgTag2 = $(this).attr("src");
-			                $("#bigImg").attr("src", imgTag2);
+			                const SRC = $(this).attr("src");
+			                $("#bigImg").attr("src", SRC);
 			            });
 			setupSlider();
 		 }
