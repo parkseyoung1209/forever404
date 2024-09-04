@@ -55,13 +55,18 @@ button i {
   font-size: 30px;
 }
 .group {
-  display: flex;
-  flex-direction: column;
-  margin-left: 5px;
-  margin-top: 15px;
+	margin-top:40px;
+  	overflow-y:scroll;
+	width:135px;
+	height:650px;
+}
+.group button {
+	margin-left: 27px;
+	padding-top:5px;
 }
 .group span {
-  text-align: center;
+	display:flex;
+	justify-content:center;
   margin-bottom: 15px;
 }
 .group i {
@@ -76,7 +81,7 @@ button i {
   cursor: pointer;
   background-color: white;
   width: 65px;
-  height: 60px;
+  height: 65px;
   padding-top: 10px;
   padding-left: 11px;
   border-top-left-radius: 5px;
@@ -963,6 +968,10 @@ button i {
   width: 600px;
   height: 800px;
   border-radius:10px;
+  overflow-y:scroll;
+}
+#modalContent7::-webkit-scrollbar {
+	display:  none;
 }
 #cancelBtn{
 	position:relative;
@@ -980,7 +989,7 @@ button i {
 	font-size:30px;
 	display:flex;
 	align-items:center;
-	margin-top:10px;
+	margin-top:15px;
 	background-color: rgba(211, 211, 211, 0.3);
 	height: 100px;
 }
@@ -997,4 +1006,13 @@ button i {
 }
 #userCount{
 	margin-left:10px;
+}
+#modal1{
+	z-index:2;
+}
+#modal2{
+	z-index:2;
+}
+#group1::-webkit-scrollbar {
+	display:  none;
 }

@@ -38,7 +38,7 @@ uri="http://java.sun.com/jsp/jstl/functions"%>
         </button>
       </div>
 
-      <div class="group" id="group"></div>
+      <div class="group" id="group1"></div>
 
       <!-- 
            <div class="group-container">
