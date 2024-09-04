@@ -239,7 +239,10 @@
 		DELETE FROM photo
 		WHERE photo_code = #{photoCode}
 	</delete>
-	
+	<delete id="deleteAllImg" parameterType="int">
+	DELETE FROM photo
+		WHERE bs_code = #{bsCode}
+	</delete>
 	
 	<select id="curDateSchedule" resultMap="scMap" parameterType="SmallSchedule">
 	SELECT * FROM small_schedule

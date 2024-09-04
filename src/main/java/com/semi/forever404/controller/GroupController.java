@@ -117,6 +117,7 @@ public class GroupController {
 			}
 			service.deleteGroup2(bsCode);
 			System.out.println("삭제 0.5");
+			service.deleteAllImg(bsCode);
 		}
 		service.deleteGroup3(bgCode);
 		System.out.println("삭제 1");
@@ -228,5 +229,4 @@ public class GroupController {
 
 		service.insertMoney(money);
 	}
-	
 }

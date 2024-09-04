@@ -58,11 +58,9 @@
 									<p>총금액 : ${item.schedule.bigSchedule.entireMoney}</p>
 									<c:set var="using" value="0" />
 									<c:forEach items="${item.moneyList}" var="money">
-										<c:if test="${item.schedule.ssCode == money.smallSchedule.ssCode}">
 										<c:set var="using" value="${using + money.useMoney}" />
 										<p>지불금액 : ${money.useMoney}</p>
 										<p>지불품목 : ${money.buyingList}</p>
-										</c:if>
 									</c:forEach>
 									<c:set var="remainingAmount" value="${item.schedule.bigSchedule.entireMoney - using}" />
 									<p>남은금액 : ${remainingAmount}</p>
@@ -279,7 +277,8 @@
             ssCode: ssCode,
           },
           success: function () {
-        	  alert("!");
+        	  alert($("#useMoney").val()+ "원 만큼 사용");
+        	  location.reload();
           },
           error: function() {
         	  alert("다시입력");

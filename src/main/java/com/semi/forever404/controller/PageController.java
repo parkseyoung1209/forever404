@@ -140,7 +140,7 @@ public class PageController {
 			List<MoneyDTO> addList = new ArrayList<>();
 			for(SmallSchedule ss : smallSchedule) {
 				if(ss.getCurDate().equals(stringDates.get(i))) {
-					addList.add(new MoneyDTO(ss, service.selectMoney(smallSchedule.get(i).getSsCode())));
+					addList.add(new MoneyDTO(ss, service.selectMoney(ss.getSsCode())));
 				}
 			}
 			list.add(new CalendarDTO(stringDates.get(i), addList));

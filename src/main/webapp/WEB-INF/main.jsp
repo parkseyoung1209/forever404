@@ -30,6 +30,7 @@
 
       <c:if test="${check==true}">
         <c:if test="${not empty groupName}">
+        <button id="teamBtn"><i id="teamUser" class="fa-solid fa-user"></i><h1></h1></button>
           <div id="calendar-container">
             <div id="calendar"></div>
           </div>
@@ -52,7 +53,7 @@
 		</c:if>
        </div>
       </div>
-      <button id="teamBtn"><i id="teamUser" class="fa-solid fa-user"></i><h1>1</h1></button>
+      
       <div id="bigModal" style="display: none">
         <div id="modalContent3">
           <header class="mdl-header">

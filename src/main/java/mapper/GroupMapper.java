@@ -61,4 +61,5 @@ public interface GroupMapper {
 	
 	// 이미지 삭제
 	void deleteImg(int photoCode);
+	void deleteAllImg(int groupCode);
 }

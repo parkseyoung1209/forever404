@@ -117,7 +117,9 @@ public class GroupService {
 	public void deleteImg(int photoCode) {
 		mapper.deleteImg(photoCode);
 	}
-	
+	public void deleteAllImg(int groupCode) {
+		mapper.deleteAllImg(groupCode);
+	}
 	public Map<String, Object> getDateRange(int bsCode) {
 		return mapper.getDateRange(bsCode);
 	}
