@@ -40,7 +40,7 @@
 				</header>
 
 				<main>
-					<c:forEach items="${total.list}" var="item">
+					<c:forEach items="${total.list}" var="item" varStatus="status">
 						<div class="main-content">
 							<div id="time1" class="time">
 								<c:choose>
@@ -58,9 +58,11 @@
 									<p>총금액 : ${item.schedule.bigSchedule.entireMoney}</p>
 									<c:set var="using" value="0" />
 									<c:forEach items="${item.moneyList}" var="money">
+										<c:if test="${item.schedule.ssCode == money.smallSchedule.ssCode}">
 										<c:set var="using" value="${using + money.useMoney}" />
 										<p>지불금액 : ${money.useMoney}</p>
 										<p>지불품목 : ${money.buyingList}</p>
+										</c:if>
 									</c:forEach>
 									<c:set var="remainingAmount" value="${item.schedule.bigSchedule.entireMoney - using}" />
 									<p>남은금액 : ${remainingAmount}</p>
@@ -75,11 +77,11 @@
 											<img src="${item.schedule.serviceImg}" class="img">
 										</c:otherwise>
 									</c:choose>
-									<div class="item-content">
+									<div class="item-content" id="${item.schedule.ssCode}">
 										<h2>타이틀 : ${item.schedule.serviceName}</h2>
 										<p>위치 : ${item.schedule.serviceJibun}</p>
 										<p>연락처 : ${item.schedule.servicePhone}</p>
-										<button class="payPlus">추가</button>
+										<button class="payPlus" id="${status.count}">추가</button>
 									</div>
 								</section>
 							</div>
@@ -208,6 +210,8 @@
           });
         </script>
 	<script>
+	const test = $(".payPlus").parents(".item-content");
+	
       $("#moneyBtn").click(() => {
         $.ajax({
           type: "post",
@@ -215,6 +219,7 @@
           data: {
             buyingList: $("#buyingList").val(),
             useMoney: $("#useMoney").val(),
+            ssCode : $()
           },
           success: function () {},
           error: function() {

@@ -113,12 +113,17 @@ public class GroupController {
 			for(int j=0; j<smallSchedule.size(); j++) {
 				// 스몰스케쥴 ss_code로 money테이블 조회해서 삭제하고
 				service.deleteGroup1(smallSchedule.get(j).getSsCode()); // money 테이블
+				System.out.println("삭제 0");
 			}
 			service.deleteGroup2(bsCode);
+			System.out.println("삭제 0.5");
 		}
 		service.deleteGroup3(bgCode);
+		System.out.println("삭제 1");
 		service.deleteGroup4(bgCode);
+		System.out.println("삭제 2");
 		service.deleteGroup5(bgCode);
+		System.out.println("삭제 3");
 	}
 	
 	
@@ -216,10 +221,9 @@ public class GroupController {
 	@ResponseBody
 	@PostMapping("/insertMoney")
 	public void insertMoney(Money money, String curDate) {
-//		List<SmallSchedule> list = service.curDateSchedule(curDate);
-//		SmallSchedule sm = new SmallSchedule();
-//		sm.setSsCode(ssCode);
-//		money.setSmallSchedule(sm);
+		SmallSchedule sm = new SmallSchedule();
+		sm.setSsCode(ssCode);
+		money.setSmallSchedule(sm);
 		service.insertMoney(money);
 	}
 	
