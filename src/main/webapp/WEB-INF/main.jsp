@@ -42,21 +42,7 @@
       <c:if test="${check==false}">
         <p>그룹을 생성하세요</p>
       </c:if>
-      <button id="deleteGroup" class="add2">삭제</button>
-
-      <script>
-        $("#deleteGroup").click(() => {
-          let groupName = localStorage.getItem("groupName");
-          $.ajax({
-            url: "/deleteGroup",
-            type: "post",
-            data: "groupName=" + groupName,
-            success: function () {
-              window.location.href = "/main";
-            },
-          });
-        });
-      </script>
+    
 
       <div id="bigModal" style="display: none">
         <div id="modalContent3">
@@ -136,33 +122,62 @@
         </div>
       </div>
       <div id="albumModal" style="display: none">
-      <div id="modalContent6">
-      	<header id="mdl-header3">
-      		<button id="delete">삭제</button>
-      		<i class="fa-solid fa-xmark" id="close"></i></header>
-      	<div id="modalContent5">
-      		<main id="photoSection">
-      		<div id="mainImg"></div>
-			<img id="bigImg" src="">
-      		</main>
-      	</div>
-      	<div id="picScroll">
-      	<button id="slideBtn1" class="slide">&#10094;</button>
-		<button id="slideBtn2" class="slide">&#10095;</button>
-		<div id="slider">
-		</div>
-      	</div>
+	      <div id="modalContent6">
+	      	<header id="mdl-header3">
+	      		<button id="delete">삭제</button>
+	      		<i class="fa-solid fa-xmark" id="close"></i>
+	      	</header>
+	      	<div id="modalContent5">
+	      		<main id="photoSection">
+	      		<div id="mainImg"></div>
+				<img id="bigImg" src="">
+	      		</main>
+	      	</div>
+	      	<div id="picScroll">
+	      	<button id="slideBtn1" class="slide">&#10094;</button>
+			<button id="slideBtn2" class="slide">&#10095;</button>
+				<div id="slider">
+				</div>
+	      	</div>
       	</div>
       </div>
-      	<c:if test="${not empty groupName}">
-		<c:forEach items="${userList}" var="smallGroup">
-			<div style="margin-left: 1200px;">선택한 그룹에 있는 유저 아이디들 : ${smallGroup.user.id}</div>
-		</c:forEach>
-		</c:if>
-      <script
-        src="https://kit.fontawesome.com/ef885bd654.js"
-        crossorigin="anonymous"
-      ></script>
+      
+      <script> 
+      //앨범 삭제
+      $("#delete").click(()=>{
+    	  const bigImg = document.querySelector("#bigImg");
+    	  var imgSrc = bigImg.getAttribute("src");
+    	  var imgCode = bigImg.getAttribute("alt");
+    		console.log(imgSrc);
+    		console.log(imgCode);
+    	  $.ajax({
+    		 type: "post",
+    		 url: "/deletePhoto",
+    		 data:{
+    			 photoUrl: imgSrc,
+    			 photoCode: imgCode,
+    		 },
+    		 success: function(){
+    			 alert("성공적으로 삭제되었습니다");
+    			 //console.log($('.smallImg img[alt="' + imgCode + '"]'));
+    			 $('img[alt="' + imgCode + '"]').remove();
+    		 },
+    		 error: function(){
+    			 alert("삭제되지 않았습니다");
+    			 location.reload();
+    		 }
+    	  });
+      });
+      </script>
+      
+    <c:if test="${not empty groupName}">
+	<c:forEach items="${userList}" var="smallGroup">
+		<div style="margin-left: 1200px;">선택한 그룹에 있는 유저 아이디들 : ${smallGroup.user.id}</div>
+	</c:forEach>
+	</c:if>
+      
+      <script src="https://kit.fontawesome.com/ef885bd654.js" crossorigin="anonymous"></script>
+      
       <script>
         $("#final").click(() => {
           $.ajax({
@@ -186,6 +201,7 @@
             },
           });
         });
+        
         $("#add2").click(() => {
           $.ajax({
             type: "post",
@@ -199,9 +215,7 @@
             success: function () {},
           });
         });
-      </script>
-
-      <script>
+     
         $(".add2").click(() => {
           const title = $("#textbox").val().trim(); 
           const miniTitle = title.substring(0, 2);
@@ -232,6 +246,7 @@
           });
         });
       </script>
+      
     </c:if>
     <!-- 로그아웃 cif -->
     <c:if test="${empty user}">

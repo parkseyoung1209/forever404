@@ -55,4 +55,7 @@ public interface GroupMapper {
 	
 	// 팁 가져오기
 	List<Tip> tip();
+	
+	// 이미지 삭제
+	void deleteImg(int photoCode);
 }

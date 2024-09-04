@@ -231,6 +231,13 @@
 	SELECT * FROM photo WHERE bs_code=#{bsCode}
 	</select>
 	
+	<!-- 이미지 삭제 -->
+	<delete id="deleteImg" parameterType="int">
+		DELETE FROM photo
+		WHERE photo_code = #{photoCode}
+	</delete>
+	
+	
 	<select id="curDateSchedule" resultMap="scMap" parameterType="SmallSchedule">
 	SELECT * FROM small_schedule
 	WHERE cur_date=#{curDate} AND bs_code=#{bigSchedule.bsCode}

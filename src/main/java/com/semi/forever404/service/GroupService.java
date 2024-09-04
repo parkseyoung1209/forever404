@@ -107,6 +107,12 @@ public class GroupService {
 	public List<Photo> selectMyImg(int num) {
 		return mapper.selectMyImg(num);
 	}
+	
+	// 이미지 삭제
+	public void deleteImg(int photoCode) {
+		mapper.deleteImg(photoCode);
+	}
+	
 	public Map<String, Object> getDateRange(int bsCode) {
 		return mapper.getDateRange(bsCode);
 	}

@@ -15,9 +15,17 @@ document.addEventListener("DOMContentLoaded", function () {
     eventTextColor: "black",
     customButtons: {
       groupcurrent: {
-        text: "그룹 현황",
+        text: "그룹 삭제",
         click: function () {
-          alert("기능 테스트 중입니다!!!!!!!");
+			let groupName = localStorage.getItem("groupName");
+	         $.ajax({
+	           url: "/deleteGroup",
+	           type: "post",
+	           data: "groupName=" + groupName,
+	           success: function () {
+	             window.location.href = "/main";
+	           },
+	         });
         },
       },
     },
@@ -252,17 +260,19 @@ $("#seven").click(function () {
       const imgContainer1 = $("#slider");
       const photo = result.map(function (picture) {
         const photo2 = picture.photoUrl;
+		const photoCode = picture.photoCode;
         const photoExist =
           imgContainer1.find(`img[src="${photo2}"]`).length > 0;
 
         if (!photoExist) {
-          const imgTag = $("<img>").attr("src", photo2).addClass("smallImg");
+          const imgTag = $("<img>").attr("src", photo2).addClass("smallImg").attr("alt", photoCode);
           imgContainer1.append(imgTag);
         }
       });
       $(".smallImg").click(function () {
         const SRC = $(this).attr("src");
-        $("#bigImg").attr("src", SRC);
+		const pCode = $(this).attr("alt");
+        $("#bigImg").attr("src", SRC).attr("alt", pCode);
       });
       setupSlider();
     },
