@@ -261,9 +261,20 @@ $("#seven").click(function() {
 				}
 			});
 			$(".smallImg").click(function() {
-			                const SRC = $(this).attr("src");
-			                $("#bigImg").attr("src", SRC);
-			            });
+			        const src = $(this).attr("src");  // 클릭한 이미지의 src 속성 값
+			        
+			        // .bigImg가 이미 존재하는지 확인
+			        let bigImg = $("#bigImg");
+			        
+			        if (bigImg.length === 0) {
+			            // .bigImg가 존재하지 않으면 새로 생성하여 body에 추가
+			            bigImg = $("<img>").attr("id", "bigImg").addClass("bigImg").attr("src", src);
+			            $("#mainImg").append(bigImg);
+			        } else {
+			            // .bigImg가 이미 존재하면 src 속성만 변경
+			            bigImg.attr("src", src);
+			       }
+			    });
 			setupSlider();
 		 }
 	})
@@ -303,7 +314,7 @@ $("#close").click(function(){
 	$("#albumModal").css("display", "none");
 	$("#bigModal").css("display", "block");
 	$("#picScroll").find("img").remove();
-	$("#bigImg").attr("src", "");
+	$("#mainImg").find("#bigImg").remove();
 	const slideInside = document.querySelector("#slider");
 	    slideInside.style.transform = "translateX(0)";
 });
