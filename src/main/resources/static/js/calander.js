@@ -260,6 +260,10 @@ $("#seven").click(function () {
           imgContainer1.append(imgTag);
         }
       });
+      $(".smallImg").click(function () {
+        const SRC = $(this).attr("src");
+        $("#bigImg").attr("src", SRC);
+      });
       setupSlider();
     },
   });
@@ -300,9 +304,7 @@ $("#close").click(function () {
   $("#albumModal").css("display", "none");
   $("#bigModal").css("display", "block");
   $("#picScroll").find("img").remove();
+  $("#bigImg").attr("src", "");
   const slideInside = document.querySelector("#slider");
   slideInside.style.transform = "translateX(0)";
-});
-$("#smallImg").click(function () {
-  const bigImg = document.querySelector("#bigImg");
 });
