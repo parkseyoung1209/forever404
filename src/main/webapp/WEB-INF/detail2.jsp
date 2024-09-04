@@ -29,7 +29,7 @@
 		window: location.href = "/";
 		</c:if>
 	</script>
-
+<c:set var="using" value="0" />
 	<div class="carousel-container">
 		<c:forEach items="${totalList}" var="total">
 			<div class="carousel-item">
@@ -40,6 +40,7 @@
 				</header>
 
 				<main>
+				
 					<c:forEach items="${total.list}" var="item" varStatus="status">
 						<div class="main-content">
 							<div id="time1" class="time">
@@ -56,15 +57,17 @@
 								<!-- 여기까지가 머니 섹션 -->
 								<div id="pay">
 									<p>총금액 : ${item.schedule.bigSchedule.entireMoney}</p>
-									<c:set var="using" value="0" />
+									
 									<c:forEach items="${item.moneyList}" var="money">
 										<c:set var="using" value="${using + money.useMoney}" />
 										<p>지불금액 : ${money.useMoney}</p>
 										<p>지불품목 : ${money.buyingList}</p>
 									</c:forEach>
-									<c:set var="remainingAmount" value="${item.schedule.bigSchedule.entireMoney - using}" />
+
+									<c:set var="remainingAmount"
+										value="${item.schedule.bigSchedule.entireMoney - using}" />
 									<p>남은금액 : ${remainingAmount}</p>
-								
+
 								</div>
 								<section>
 									<c:choose>
