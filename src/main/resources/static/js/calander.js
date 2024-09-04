@@ -14,6 +14,12 @@ document.addEventListener("DOMContentLoaded", function () {
     events: bigSchedules,
     eventTextColor: "black",
     customButtons: {
+		groupUsers: {
+			text:"그룹인원",
+			click: function() {
+				$("#teamModal").css("display", "none");
+			}
+		},
       groupcurrent: {
         text: "그룹 삭제",
         click: function () {
@@ -212,6 +218,12 @@ $(document).keydown(function (event) {
 $(".user").click(function () {
   $(".mymodal").css("display", "block");
 });
+$("#teamBtn").click(function(){
+	$("#teamModal").css("display", "block");
+});
+$("#cancelBtn").click(function(){
+	$("#teamModal").css("display", "none");
+})
 $("#calendar-container").mouseover((e) => {
   let content = $(".mymodal");
   if (content.css("display") != "none") {

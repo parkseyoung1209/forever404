@@ -42,7 +42,17 @@
       <c:if test="${check==false}">
         <p>그룹을 생성하세요</p>
       </c:if>
-
+      <div id="teamModal" style="display: none">
+       <div id="modalContent7">
+       <i id="cancelBtn" class="fa-solid fa-x"></i>
+            	<c:if test="${not empty groupName}">
+		<c:forEach items="${userList}" var="smallGroup">
+			<div id="users"><i id="UserProfile" class="fa-solid fa-user"></i><p id="userCount">${smallGroup.user.id}</p></div>
+		</c:forEach>
+		</c:if>
+       </div>
+      </div>
+      <button id="teamBtn"><i id="teamUser" class="fa-solid fa-user"></i><h1>1</h1></button>
       <div id="bigModal" style="display: none">
         <div id="modalContent3">
           <header class="mdl-header">
@@ -138,12 +148,6 @@
       	</div>
       	</div>
       </div>
-      
-      	<c:if test="${not empty groupName}">
-		<c:forEach items="${userList}" var="smallGroup">
-			<div style="margin-left: 1200px;">선택한 그룹에 있는 유저 아이디들 : ${smallGroup.user.id}</div>
-		</c:forEach>
-		</c:if>
       <script
         src="https://kit.fontawesome.com/ef885bd654.js"
         crossorigin="anonymous"
