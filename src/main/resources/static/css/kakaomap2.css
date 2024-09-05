@@ -24,8 +24,9 @@
   border-radius: 50%;
   font-size: 1.2rem;
   right: 30px;
-  top: 75px;
+  top: 70px;
   border: none;
+  cursor: pointer;
 }
 
 #bttn:hover {
@@ -39,14 +40,15 @@
 }
 
 #curLocation {
-  margin: 10px 0 5px 15px;
-  padding: 15px;
+  margin: 10px 0 0px 15px;
   color: white;
   background-color: #d95050;
   border: none;
   box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2);
   border-radius: 5px;
   cursor: pointer;
+  height:40px;
+  
 }
 
 #back {
@@ -291,11 +293,12 @@ header {
 #keyword {
   margin-left: 15px;
   width: 270px;
-  height: 60px;
+  height: 55px;
   border: 2px solid #d95050;
   padding-left: 10px;
   border-radius: 5px;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
+  font-weight: bold;
 }
 
 #keyword:focus {
@@ -307,12 +310,17 @@ header {
 }
 .serviceInfo {
   font-size: 1.5rem;
-  margin-bottom: 400px;
+  margin-bottom: 30px;
   padding: 30px;
   display: flex;
   justify-content: space-between;
   flex-direction: column;
 }
+
+#testI {
+	padding:5px;
+}
+
 
 #testI1 {
   margin-bottom: 1px;
@@ -326,26 +334,29 @@ header {
   margin-left: -3px;
 }
 
-#isReservation {
-  padding-left: 10px;
-  width: 70px;
-  height: 25px;
-  border-radius: 5px;
-  border: 2px solid lightgray;
+
+input[type='radio'] {
+  -webkit-appearance: none;
+  width: 18px;
+  height: 18px;
+  border: 2px solid #ccc;
+  border-radius: 50%;
+  outline: none; 
+  cursor: pointer;
 }
 
-#isReservation:focus {
-  border: 2px solid #d95050;
-  outline: none;
+input[type='radio']:checked {
+	background-color : #d95050;
 }
 
 #time {
-  margin-top: 15px;
   padding-left: 5px;
-  width: 70px;
-  height: 25px;
+  width: 55px;
+  height: 30px;
   border-radius: 5px;
   border: 2px solid lightgray;
+  font-weight: bold;
+  padding-top:1px;
 }
 
 #time:focus {
@@ -382,25 +393,23 @@ textarea:focus {
 }
 
 #ssTest {
-  position: absolute;
-  margin-left: -30px;
-  margin-top: 580px;
-  width: 300px;
-  height: 150px;
-  padding-bottom: 20px;
-  font-size: 3rem;
+  height: 50px;
+  font-size: 1.1rem;
   background-color: #d95050;
-  border-top: 2px solid #d95050;
-  border-left: none;
-  border-right: none;
+  border: 2px solid #d95050;
   cursor: pointer;
   font-weight: none;
   color: white;
+  border-radius: 5px;
+   box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2);
+   margin-top: 5px;
+   
 }
 
-#ssTest:hover {
+
+#ssTest:focus {
   border: none;
-  background: #595959;
+  background-color: #595959;
   color: #fff;
 }
 
@@ -408,10 +417,10 @@ textarea:focus {
   margin-left: -10px;
   padding-left: 10px;
   width: 250px;
-  height: 50px;
-  font-size: 1.2rem;
+  height: 40px;
   font-weight: bold;
   border: none;
+  margin-top:10px;
 }
 
 #testI input:focus {
@@ -428,7 +437,7 @@ textarea:focus {
   position: fixed;
   width: 300px;
   height: 300px;
-  left: 0px;
+  left: -300px;
   bottom: 70px;
   background-color: white;
   z-index: 2;
@@ -438,7 +447,7 @@ textarea:focus {
 }
 
 #gptOpen {
-  margin-top: 5px;
+  margin-top: 15px;
   height: 50px;
   color: white;
   background-color: #d95050;
@@ -448,37 +457,62 @@ textarea:focus {
   cursor: pointer;
 }
 
+#gptOpen:focus {
+	background-color: #595959;
+}
+
 #gptH2 {
   margin-left: 55px;
   margin-top: 15px;
+  font-weight: bold;
 }
 
 #gptTest {
-  margin-left: 55px;
-  margin-top: 10px;
+  margin-left: 40px;
   height: 30px;
   resize: none;
+  padding-top:7px;
+  padding-left:8px;
+  border: 2px solid lightgray;
+  font-weight:bold;
+}
+
+#gptTest:focus {
+	border: 2px solid #d95050;
+	outline: none;
+
 }
 
 #gpt {
   position: absolute;
-  top: 40px;
-  right: 33px;
+  top: 48px;
+  right: 25px;
   height: 30px;
+  border:none;
+  background-color: #d95050;
+  color: white;
+  border-radius: 5px;
+  cursor:pointer;
+  overflow: scroll;
 }
 
 #gptAsk {
   width: 270px;
   height: 200px;
-  margin: 15px;
+  margin-top: 7px;
   margin-left: 15px;
   border: 2px solid lightgray;
   border-radius: 5px;
 }
 
 .headerP {
+	padding-top: 10px;
   font-size: 16px;
   font-weight: bold;
+}
+
+#reserveP {
+	margin-top: 10px;
 }
 hr {
   width: 280px;
@@ -488,8 +522,22 @@ hr {
   background-color: lightgray;
 }
 
+.gptHr {
+	margin-left: 10px;
+  height: 1px;
+  border: 0px;
+  background-color: lightgray;
+}
+
 .testIP {
   padding-left: 10px;
+  font-size:1.2rem;
+  margin-top:5px;
+  margin-bottom:5px;
+}
+
+.service {
+	margin-bottom: 5px;
 }
 
 /*로딩스피너 테스트*/

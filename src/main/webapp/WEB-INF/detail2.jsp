@@ -56,17 +56,18 @@
 							<div class="detail-content">
 								<!-- 여기까지가 머니 섹션 -->
 								<div id="pay">
-									<p>총금액 : ${item.schedule.bigSchedule.entireMoney}</p>
-									
+									<p>예산 : ${item.schedule.bigSchedule.entireMoney}원</p>
+
 									<c:forEach items="${item.moneyList}" var="money">
 										<c:set var="using" value="${using + money.useMoney}" />
-										<p>지불금액 : ${money.useMoney}</p>
-										<p>지불품목 : ${money.buyingList}</p>
+										<p>지불 금액 : ${money.useMoney}원</p>
+										<p>지불 품목 : ${money.buyingList}</p>
 									</c:forEach>
-
-									<c:set var="remainingAmount"
+																		<c:set var="remainingAmount"
 										value="${item.schedule.bigSchedule.entireMoney - using}" />
-									<p>남은금액 : ${remainingAmount}</p>
+									<p>남은 예산 : ${remainingAmount}원</p>
+									
+									
 
 								</div>
 								<section>
@@ -80,11 +81,12 @@
 									</c:choose>
 									<div class="item-content">
 										<input type="hidden" value="${item.schedule.ssCode}">
-										<h2>타이틀 : ${item.schedule.serviceName}</h2>
+										<h2>장소 : ${item.schedule.serviceName}</h2>
 										<p>위치 : ${item.schedule.serviceJibun}</p>
 										<p>연락처 : ${item.schedule.servicePhone}</p>
-										<button class="payPlus">추가</button>
-										<input type="submit" class="deleteSc" value="삭제">
+										<button class="payPlus"><i class="fa-solid fa-won-sign"></i></button>
+										<label>
+										<input type="submit" class="deleteSc" value="X"></label>
 									</div>
 								</section>
 							</div>
@@ -136,10 +138,12 @@
 	<div id="modal3" class="modal">
 		<div class="modalcontent" id="modalcontent2">
 			<span class="close">&times</span>
-			<h2>지불 품목</h2>
+			<h2>비용 지불</h2>
 			<hr />
-			지불 품목 <input type="text" class="money" id="buyingList" />
-			사용 금액 <input type="text" class="money" id="useMoney" />
+						<label><i class="fa-solid fa-coins"></i><input type="text" class="money" id="useMoney" placeholder="사용 금액(원)"/></label>
+						<label><i class="fa-solid fa-pencil"></i>
+			<input type="text" class="money" id="buyingList" placeholder="지불 품목"></input></label>
+
 			<div class="add">
 				<button class="add2" id="moneyBtn">추가</button>
 			</div>
@@ -280,7 +284,7 @@
             ssCode: ssCode,
           },
           success: function () {
-        	  alert($("#useMoney").val()+ "원 만큼 사용");
+        	  alert($("#useMoney").val()+ "원 사용하셨습니다!");
         	  location.reload();
           },
           error: function() {
@@ -354,5 +358,10 @@
 	<script src="${pageContext.request.contextPath}/js/detail2.js">
     
     </script>
+    
+          <script
+        src="https://kit.fontawesome.com/ef885bd654.js"
+        crossorigin="anonymous"
+      ></script>
 </body>
 </html>
