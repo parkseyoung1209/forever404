@@ -95,8 +95,8 @@
 										<p>위치 : ${item.schedule.serviceJibun}</p>
 										<p>연락처 : ${item.schedule.servicePhone}</p>
 										<button class="payPlus"><i class="fa-solid fa-won-sign"></i></button>
-										<label>
-										<input type="submit" class="deleteSc" value="X"></label>
+										
+										<input type="submit" class="deleteSc" value="X">
 									</div>
 								</section>
 							</div>

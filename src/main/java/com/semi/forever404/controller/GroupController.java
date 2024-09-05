@@ -12,6 +12,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Random;
 
+import org.openqa.selenium.NoSuchElementException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -209,8 +210,8 @@ public class GroupController {
 		try {
 			url = crawling.getImgUrl(smallSchedule.getServiceName());
 			smallSchedule.setServiceImg(url);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
+		} catch (InterruptedException | NoSuchElementException e) {
+			System.out.println("등록 실패");
 		}
 		
 		smallSchedule.setBigSchedule(service.selectOneBs(bsCode));

@@ -100,8 +100,6 @@
            <label>
           <input type="radio" name="radioButton" id="is" class="reservation" value="N" checked/>N</label>
         </p>
-
-        </p>
 		
          <p id="memoP" class="headerP">메모</p>
           <textarea id="memo" class="memo" rows="1"></textarea><hr>
@@ -200,7 +198,7 @@
     	});
 
       const apiUrl = "https://api.openai.com/v1/chat/completions";
-      const apiKey = 'sk-M7fT1oBqq3qojGEX_MVrKaeRnsUomsu5QpTg__8alyT3BlbkFJj1JNMuVnUQSetU1_D5M-MVZxipWI0YF4KGhxYH3msA';
+      const apiKey = 'sk-qrG7Y2RyqKTSXw6siBbpyOyuGCTG5DtV4Eneb4Rib6T3BlbkFJQmaTyMLgv-hVPR9JOx_9Z_zZArshsm6KeZtDfaOR8A';
       const gptTest = document.querySelector("#gptTest");
       const gptAsk = document.querySelector("#gptAsk");
       
@@ -211,7 +209,7 @@
 		    const response = await fetch(apiUrl,{
 	        method : 'POST',
 	        headers : {
-	          'Authorization': `Bearer sk-M7fT1oBqq3qojGEX_MVrKaeRnsUomsu5QpTg__8alyT3BlbkFJj1JNMuVnUQSetU1_D5M-MVZxipWI0YF4KGhxYH3msA`, // API 문서에 따라 Authorization 헤더 사용
+	          'Authorization': `Bearer sk-qrG7Y2RyqKTSXw6siBbpyOyuGCTG5DtV4Eneb4Rib6T3BlbkFJQmaTyMLgv-hVPR9JOx_9Z_zZArshsm6KeZtDfaOR8A`, // API 문서에 따라 Authorization 헤더 사용
 	          'Content-Type': 'application/json'
 	        },
 	        body : JSON.stringify({

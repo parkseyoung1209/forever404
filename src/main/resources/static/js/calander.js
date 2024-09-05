@@ -364,8 +364,10 @@ $("#seven").click(function () {
 });
 
 $("#eight").click(() => {
+	
   console.log("클릭");
   let bsCode = sessionStorage.getItem("bsCode");
+  if(confirm( "삭제하시면 복구할 수 없습니다 \n 정말로 삭제하시겠습니까??")) {
   $.ajax({
     type: "get",
     url: "/deleteBs",
@@ -376,6 +378,9 @@ $("#eight").click(() => {
       location.reload();
     },
   });
+  }else {
+	return false;
+  }
 });
 
 $("#delete").click(() => {
