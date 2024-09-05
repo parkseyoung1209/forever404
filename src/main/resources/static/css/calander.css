@@ -21,6 +21,7 @@
     justify-content: center;
     text-align: center;
     height: 100%;
+    bottom:140px;
 }
 
 header {
@@ -1043,10 +1044,10 @@ button i {
 	margin-left:10px;
 }
 #modal1{
-	z-index:2;
+	z-index:5;
 }
 #modal2{
-	z-index:2;
+	z-index:5;
 }
 #calendar-container{
 	position:relative;

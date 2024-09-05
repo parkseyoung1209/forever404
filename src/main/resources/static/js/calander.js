@@ -203,6 +203,7 @@ document.addEventListener("DOMContentLoaded", function () {
     $("#memoSection3").hide();
     $("#six").css("display", "block");
     $("#seven").css("display", "none");
+	$("#eight").css("display", "none");
   }
   /*
   document.getElementById("X").addEventListener("click", function () {

@@ -14,8 +14,13 @@ uri="http://java.sun.com/jsp/jstl/core"%>
       rel="stylesheet"
       href="${pageContext.request.contextPath}css/calander.css"
     />
+    <link
+      rel="stylesheet"
+      href="${pageContext.request.contextPath}css/tetris.css"
+    />
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="${pageContext.request.contextPath}js/index.global.min.js"></script>
+    <script src="${pageContext.request.contextPath}js/tetris.js"></script>
   </head>
   <body>
     <script>
@@ -31,44 +36,47 @@ uri="http://java.sun.com/jsp/jstl/core"%>
       <c:if test="${check==true}">
         <c:if test="${not empty groupName}">
           <div id="calendar-container">
+            <div id="btn-Container">
+              <button id="teamBtn">
+                <i id="teamUser" class="fa-solid fa-user"></i>
+                <h1>${userListSize}</h1>
+              </button>
+              <button id="teamDelBtn">그룹 삭제</button>
+
+              <script>
+                $("#teamDelBtn").click(() => {
+                  let groupName = localStorage.getItem("groupName");
+                  if (
+                    confirm(
+                      "삭제하시면 복구할 수 없습니다 \n 정말로 삭제하시겠습니까??"
+                    )
+                  ) {
+                    $.ajax({
+                      url: "/deleteGroup",
+                      type: "post",
+                      data: "groupName=" + groupName,
+                      success: function () {
+                        window.location.href = "/main";
+                      },
+                    });
+                  } else {
+                    return false;
+                  }
+                });
+              </script>
+            </div>
             <div id="calendar"></div>
           </div>
         </c:if>
         <c:if test="${empty groupName}">
           <p class="selectOrAdd">그룹을 선택하세요</p>
+          <canvas></canvas>
         </c:if>
       </c:if>
-      <div id="btn-Container">
-        <button id="teamBtn">
-          <i id="teamUser" class="fa-solid fa-user"></i>
-          <h1>${userListSize}</h1>
-        </button>
-        <button id="teamDelBtn">그룹 삭제</button>
 
-        <script>
-          $("#teamDelBtn").click(() => {
-            let groupName = localStorage.getItem("groupName");
-            if (
-              confirm(
-                "삭제하시면 복구할 수 없습니다 \n 정말로 삭제하시겠습니까??"
-              )
-            ) {
-              $.ajax({
-                url: "/deleteGroup",
-                type: "post",
-                data: "groupName=" + groupName,
-                success: function () {
-                  window.location.href = "/main";
-                },
-              });
-            } else {
-              return false;
-            }
-          });
-        </script>
-      </div>
       <c:if test="${check==false}">
         <p class="selectOrAdd">그룹을 생성하세요</p>
+        <canvas></canvas>
       </c:if>
       <div id="teamModal" style="display: none">
         <div id="modalContent7">
@@ -254,14 +262,12 @@ uri="http://java.sun.com/jsp/jstl/core"%>
       const bigSchedules = [];
       let schedule = {};
       <c:forEach items="${bsList}" var="item">
-        schedule.title = "${item.title}";
-        schedule.start = "${item.startDate}";
-        schedule.end = "${item.endDate}";
-        schedule.money = "${item.entireMoney}";
-        schedule.color = "${item.scheduleColor}";
-        schedule.bsCode = "${item.bsCode}"; bigSchedules.push(schedule);
-        schedule = {};
-      </c:forEach>
+        schedule.title = "${item.title}"; schedule.start = "${item.startDate}";
+        schedule.end = "${item.endDate}"; schedule.money = "${item.entireMoney}
+        "; schedule.color = "${item.scheduleColor}"; schedule.bsCode = "$
+        {item.bsCode}"; bigSchedules.push(schedule); schedule = {};
+      </c:forEach>;
+
       console.log(bigSchedules);
     </script>
     <script src="${pageContext.request.contextPath}/js/calander.js"></script>
