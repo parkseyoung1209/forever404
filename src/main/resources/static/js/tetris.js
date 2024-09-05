@@ -1,7 +1,7 @@
   $(document).ready(function () {
 
 width = 42;
-height = 30;
+height = 24;
 scale = 20;
 speed = 8;
 

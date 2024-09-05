@@ -133,13 +133,12 @@
 					<div class=fileContainer>
 						<div id="image_container">
 						<label for="file" class="upload">
-							<div>+</div>
+						<div>+</div>
 							<input id="file" type="file" name="files" multiple accept="image/*" onchange="imgShow(event)" value="+" placeholder="+" />
 						</label> 
 						</div>
 					</div>
 				</form>
-
 			</div>
 			<section class="addSection">
 				<button class="add2" id="fileSubmit">업로드</button>
