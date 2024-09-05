@@ -60,17 +60,33 @@ header {
 .groupButton {
   background-color: transparent;
   border: none;
-  margin-top: 30px;
   cursor: pointer;
+    width: 80px;
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  font-size: 30px;
+  color: #fff;
+  background-color: #999;
+  line-height: 1;
+  margin-bottom:10px;
+}
+.groupButton:hover {
+  background-color: lightgray;
 }
 button i {
   font-size: 30px;
 }
 .group {
-	margin-top:40px;
   	overflow-y:scroll;
 	width:135px;
 	height:650px;
+	margin-top:40px;
+}
+#group1::-webkit-scrollbar {
+	display:  none;
 }
 .group button {
 	margin-left: 27px;
@@ -126,11 +142,11 @@ button i {
 }
 #calendar {
   position: absolute;
-  width: 176vh;
+  width: 1675px;
   height: 90vh;
   top: 40px;
   left: 200px;
-  z-index: 1;
+  z-index: 0;
 }
 .modal {
   display: none;
@@ -529,6 +545,7 @@ button i {
   width: 500px;
   height: 500px;
   border-radius: 10px;
+  z-index:4;
 }
 .head-wrd {
   font-size: 40px;
@@ -609,6 +626,9 @@ button i {
   width: 500px;
   height: 600px;
   border-radius: 10px;
+}
+#modalContent4 input {
+	color:black;
 }
 .head-wrd2 {
   font-size: 30px;
@@ -742,27 +762,6 @@ button i {
 .fc-day-sat a {
   color: blue;
 }
-
-.groupButton {
-  width: 80px;
-  height: 80px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 50%;
-  font-size: 38px;
-  color: #fff;
-  background-color: #999;
-  margin-left: 12px;
-  line-height: 1;
-  border: none;
-  cursor: pointer;
-}
-
-.groupButton:hover {
-  background-color: lightgray;
-}
-
 #myHeader {
   background-color: #fca31d;
   width: 302px;
@@ -776,7 +775,7 @@ button i {
   width: 90px;
   height: 90px;
   background-color: #fca31d;
-  font-size: 50px;
+  font-size: 40px;
   margin-left: 110px;
   margin-top: 30px;
   text-align: center;
@@ -936,12 +935,12 @@ button i {
   transition: transform 0.5s ease;
 }
 #btn-Container{
-	position:relative;
-	display:flex;
-	width:10.5%;
+	position:absolute;
+	top:39px;
+	left:1675px;
+	width:200px;
 	height:4.5vh;
 	flex-direction: row;
-	border:2px solid black;
 }
 #teamBtn {
 	position:absolute;
@@ -953,7 +952,7 @@ button i {
 	height:40px;
 	background-color: white;
 	border: none;
-	border-radius: 5px;
+	border-radius: 4px;
 	cursor:pointer;
 	color:white;
 	background-color:#2c3e50;
@@ -971,7 +970,7 @@ button i {
 	height:40px;
 	background-color: white;
 	border: none;
-	border-radius: 5px;
+	border-radius: 4px;
 	cursor:pointer;
 	color:white;
 	background-color:#2c3e50;
@@ -1048,9 +1047,6 @@ button i {
 }
 #modal2{
 	z-index:2;
-}
-#group1::-webkit-scrollbar {
-	display:  none;
 }
 #calendar-container{
 	position:relative;

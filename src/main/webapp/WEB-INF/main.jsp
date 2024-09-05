@@ -44,9 +44,9 @@ uri="http://java.sun.com/jsp/jstl/core"%>
           <h1>${userListSize}</h1>
         </button>
         <button id="teamDelBtn">그룹 삭제</button>
-        
+
         <script>
-        $("#teamDelBtn").click(() => { 
+          $("#teamDelBtn").click(() => {
             let groupName = localStorage.getItem("groupName");
             if (
               confirm(
@@ -64,7 +64,7 @@ uri="http://java.sun.com/jsp/jstl/core"%>
             } else {
               return false;
             }
-        });
+          });
         </script>
       </div>
       <c:if test="${check==false}">
@@ -133,8 +133,9 @@ uri="http://java.sun.com/jsp/jstl/core"%>
           <div class="inpt-brder">
             <i class="fa-solid fa-plane-departure"></i>
             <input
-              type="date"
+              type="text"
               placeholder="시작 날짜"
+              onfocus="this.type='date'"
               class="tripinfo"
               max="9999-12-31"
               id="startDate"
@@ -143,8 +144,9 @@ uri="http://java.sun.com/jsp/jstl/core"%>
           <div class="inpt-brder">
             <i class="fa-solid fa-plane-arrival"></i>
             <input
-              type="date"
+              type="text"
               placeholder="종료 날짜"
+              onfocus="this.type='date'"
               class="tripinfo"
               max="9999-12-31"
               id="endDate"
@@ -252,14 +254,10 @@ uri="http://java.sun.com/jsp/jstl/core"%>
       const bigSchedules = [];
       let schedule = {};
       <c:forEach items="${bsList}" var="item">
-        schedule.title = "${item.title}"; 
-        schedule.start = "${item.startDate}";
-        schedule.end = "${item.endDate}"; 
-        schedule.money = "${item.entireMoney}"; 
-        schedule.color = "${item.scheduleColor}"; 
-        schedule.bsCode = "${item.bsCode}"; 
-        bigSchedules.push(schedule); 
-        schedule = {};
+        schedule.title = "${item.title}"; schedule.start = "${item.startDate}";
+        schedule.end = "${item.endDate}"; schedule.money = "${item.entireMoney}
+        "; schedule.color = "${item.scheduleColor}"; schedule.bsCode = "$
+        {item.bsCode}"; bigSchedules.push(schedule); schedule = {};
       </c:forEach>;
       console.log(bigSchedules);
     </script>
