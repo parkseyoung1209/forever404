@@ -95,13 +95,13 @@ uri="http://java.sun.com/jsp/jstl/core"%>
       <div id="bigModal" style="display: none">
         <div id="modalContent3">
           <header class="mdl-header">
-            <p class="head-wrd">일정 추가하기</p>
-            <i class="fa-solid fa-xmark" id="X"></i>
+            <p id="addTitle" class="head-wrd">일정 추가하기</p>
+            <button id="addMemoh1"></button>
           </header>
+          <i class="fa-solid fa-xmark" id="X"></i>
           <!-- <div id="addMemo"><h1>안녕하세요</h1></div> -->
           <div class="modsection" id="addMemo">
             <div id="memoSection">
-              <button id="addMemoh1"></button>
             </div>
             <div id="memoSection1">
               여행 시작 :
@@ -116,10 +116,15 @@ uri="http://java.sun.com/jsp/jstl/core"%>
               <p id="addMemop3"></p>
               원
             </div>
+            <div id="memoSection4">
+              <p id="addMemop4">
+               아직 일정이 없어요, 일정을 넣어주세요!
+              </p>
+            </div>
           </div>
-          <button class="modsection" id="six">추가</button>
-          <button class="modsection" id="seven">앨범</button>
-          <button class="modsection" id="eight">삭제</button>
+          <button class="modsection" id="seven"><i class="fa-solid fa-images"></i></button>
+          <button class="modsection" id="six"><i class="fa-solid fa-paper-plane"></i></button>
+          <button class="modsection" id="eight"><i class="fa-solid fa-trash-can"></i></button>
         </div>
       </div>
 
@@ -127,8 +132,8 @@ uri="http://java.sun.com/jsp/jstl/core"%>
         <div id="modalContent4">
           <header class="mdl-header2">
             <p class="head-wrd2">세부 일정 추가</p>
-            <i class="fa-solid fa-xmark" id="X2"></i>
           </header>
+          <i class="fa-solid fa-xmark" id="X2"></i>
           <div class="inpt-brder" id="title">
             <i class="fa-solid fa-pencil"></i>
             <input
@@ -169,7 +174,7 @@ uri="http://java.sun.com/jsp/jstl/core"%>
               id="entireMoney"
             />
           </div>
-          <div><button class="submit" id="final">추가하기</button></div>
+          <div><button class="submit" id="final"><i id="finalBtn" class="fa-regular fa-calendar-plus"></i></button></div>
         </div>
       </div>
       <div id="albumModal" style="display: none">
