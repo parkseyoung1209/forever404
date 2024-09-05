@@ -923,10 +923,16 @@ button i {
   display: flex;
   transition: transform 0.5s ease;
 }
-#teamBtn {
+#btn-Container{
 	position:relative;
-	top:42px;
-	left:1660px;
+	display:flex;
+	width:10.5%;
+	height:4.5vh;
+	flex-direction: row;
+	border:2px solid black;
+}
+#teamBtn {
+	position:absolute;
 	display:flex;
 	flex-direction:row;
 	align-items:center;
@@ -943,6 +949,24 @@ button i {
 }
 #teamBtn:hover{
 	background-color:black;
+}
+#teamDelBtn{
+	position:absolute;
+	margin-left:20px;
+	font-size:18px;
+	right:0%;
+	width:90px;
+	height:40px;
+	background-color: white;
+	border: none;
+	border-radius: 5px;
+	cursor:pointer;
+	color:white;
+	background-color:#2c3e50;
+	z-index:2;
+}
+#teamDelBtn:hover{
+	background-color: black;
 }
 #teamUser{
 	font-size:20px;
@@ -1015,4 +1039,8 @@ button i {
 }
 #group1::-webkit-scrollbar {
 	display:  none;
+}
+#calendar-container{
+	position:relative;
+	z-index:4;
 }

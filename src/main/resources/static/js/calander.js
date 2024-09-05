@@ -7,34 +7,12 @@ document.addEventListener("DOMContentLoaded", function () {
     headerToolbar: {
       left: "prev,next today",
       center: "title",
-      right: "groupcurrent",
+	  right:"",
     },
     selectable: true,
     editable: true,
     events: bigSchedules,
     eventTextColor: "black",
-    customButtons: {
-		groupUsers: {
-			text:"그룹인원",
-			click: function() {
-				$("#teamModal").css("display", "none");
-			}
-		},
-      groupcurrent: {
-        text: "그룹 삭제",
-        click: function () {
-          let groupName = localStorage.getItem("groupName");
-          $.ajax({
-            url: "/deleteGroup",
-            type: "post",
-            data: "groupName=" + groupName,
-            success: function () {
-              window.location.href = "/main";
-            },
-          });
-        },
-      },
-    },
     events: bigSchedules.map((event) => {
       let endDate = new Date(event.end);
       endDate.setDate(endDate.getDate() + 1);
@@ -110,7 +88,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 		          $("#addMemoh1").text(eventOnClickedDate.title);
 		          $("#addMemop").text(`${eventOnClickedDate.start.toLocaleDateString()}`);
-		          const linkbs = eventOnClickedDate.extendedProps.bsCode;
+		          linkbs = eventOnClickedDate.extendedProps.bsCode;
 		          sessionStorage.setItem("bsCode", linkbs);
 
 		          const endDate = new Date(eventOnClickedDate.end);
@@ -417,6 +395,3 @@ $("#close").click(function () {
 });
 const Calendar = FullCalendar.Calendar;
 const Users = $("#users");
-if(Calendar == null) {
-	Users.css("display", "none");
-}
