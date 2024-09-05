@@ -36,24 +36,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
-  prevButton.addEventListener("click", function () {
-    if (currentIndex > 1) {
-      $(`.carousel-item:nth-child(${currentIndex - 1})`).css({
-        display: "block",
-      });
-      $(`.carousel-item:nth-child(${currentIndex})`).css({ display: "none" });
-      console.log($(`.carousel-item:nth-child(${currentIndex - 1})`).innerText);
-      currentIndex--;
-      curDateNodes.forEach((curDate) => {
-        if (curDate.isEqualNode(curDateNodes[currentIndex - 1])) {
-          curDate = curDate.getAttribute("id");
-          sessionStorage.setItem("curDate", curDate);
-          console.log(curDate);
-        }
-      });
-    }
-  });
-
   nextButton.addEventListener("click", function () {
     if (currentIndex < items.length) {
       $(`.carousel-item:nth-child(${currentIndex})`).css({ display: "none" });

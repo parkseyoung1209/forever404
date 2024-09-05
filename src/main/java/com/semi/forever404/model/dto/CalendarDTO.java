@@ -1,7 +1,6 @@
 package com.semi.forever404.model.dto;
 
 import java.util.List;
-import com.semi.forever404.model.vo.SmallSchedule;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

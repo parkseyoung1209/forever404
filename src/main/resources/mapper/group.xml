@@ -201,7 +201,7 @@
 	
 	<!-- 돈 관련 테이블(money) -->
 	<resultMap type="Money" id="moneyMap">
-		<id column="m_code" property="MCode"></id>
+		<id column="m_code" property="mCode"/>
 		<result column="use_money" property="useMoney"/>
 		<result column="buying_list" property="buyingList"/>
 		<association property="smallSchedule" javaType="SmallSchedule">

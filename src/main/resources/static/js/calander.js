@@ -24,14 +24,26 @@ document.addEventListener("DOMContentLoaded", function () {
         text: "그룹 삭제",
         click: function () {
           let groupName = localStorage.getItem("groupName");
-          $.ajax({
+		  if(confirm('삭제하시면 복구할 수 없습니다 \n 정말로 삭제하시겠습니까??')) {
+			$.ajax({
+			        url: "/deleteGroup",
+			        type: "post",
+			        data: "groupName=" + groupName,
+			        success: function () {
+			        	window.location.href = "/main";
+			        },
+			   });
+		  } else {
+			return false;
+		  }
+          /*$.ajax({
             url: "/deleteGroup",
             type: "post",
             data: "groupName=" + groupName,
             success: function () {
               window.location.href = "/main";
             },
-          });
+          });*/
         },
       },
     },

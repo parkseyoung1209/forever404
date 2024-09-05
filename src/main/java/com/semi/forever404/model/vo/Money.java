@@ -4,7 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Data @NoArgsConstructor @AllArgsConstructor
+@Data @AllArgsConstructor @NoArgsConstructor
 public class Money {
 	private int mCode;
 	private int useMoney;
@@ -13,6 +13,14 @@ public class Money {
 	
 	public Money(SmallSchedule smallSchedule) {
 		this.smallSchedule = smallSchedule;
+	}
+
+	public int getmCode() {
+		return mCode;
+	}
+
+	public void setmCode(int mCode) {
+		this.mCode = mCode;
 	}
 	
 	

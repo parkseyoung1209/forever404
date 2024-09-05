@@ -40,7 +40,7 @@ uri="http://java.sun.com/jsp/jstl/core"%>
           </div>
         </c:if>
         <c:if test="${empty groupName}">
-          <p id="selectOrAdd">그룹을 선택하세요</p>
+          <p class="selectOrAdd">그룹을 선택하세요</p>
         </c:if>
       </c:if>
 

@@ -195,7 +195,7 @@
     	});
 
       const apiUrl = "https://api.openai.com/v1/chat/completions";
-      const apiKey = 'sk-zW-eQw_d-_JqMF0Vfs7YEixlV3gkLUxq0-oa22q2txT3BlbkFJX_JI2PL7EcNLUqnTwe-7kqm8AepVjkzQBBi7rktI0A';
+      const apiKey = 'sk-M7fT1oBqq3qojGEX_MVrKaeRnsUomsu5QpTg__8alyT3BlbkFJj1JNMuVnUQSetU1_D5M-MVZxipWI0YF4KGhxYH3msA';
       const gptTest = document.querySelector("#gptTest");
       const gptAsk = document.querySelector("#gptAsk");
       
@@ -206,7 +206,7 @@
 		    const response = await fetch(apiUrl,{
 	        method : 'POST',
 	        headers : {
-	          'Authorization': `Bearer sk-zW-eQw_d-_JqMF0Vfs7YEixlV3gkLUxq0-oa22q2txT3BlbkFJX_JI2PL7EcNLUqnTwe-7kqm8AepVjkzQBBi7rktI0A`, // API 문서에 따라 Authorization 헤더 사용
+	          'Authorization': `Bearer sk-M7fT1oBqq3qojGEX_MVrKaeRnsUomsu5QpTg__8alyT3BlbkFJj1JNMuVnUQSetU1_D5M-MVZxipWI0YF4KGhxYH3msA`, // API 문서에 따라 Authorization 헤더 사용
 	          'Content-Type': 'application/json'
 	        },
 	        body : JSON.stringify({
