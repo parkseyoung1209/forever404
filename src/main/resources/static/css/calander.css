@@ -11,6 +11,17 @@
   margin-left: 300px;
 }
 
+.selectOrAdd {
+	font-size: 80px;
+    position: absolute;
+    align-items: center;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    height: 100%;
+}
+
 header {
   display: flex;
   align-items: center;

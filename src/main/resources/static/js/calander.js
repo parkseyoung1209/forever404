@@ -110,7 +110,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
 		          $("#addMemoh1").text(eventOnClickedDate.title);
 		          $("#addMemop").text(`${eventOnClickedDate.start.toLocaleDateString()}`);
-		          const linkbs = eventOnClickedDate.extendedProps.bsCode;
+
+				  linkbs = eventOnClickedDate.extendedProps.bsCode;
 		          sessionStorage.setItem("bsCode", linkbs);
 
 		          const endDate = new Date(eventOnClickedDate.end);

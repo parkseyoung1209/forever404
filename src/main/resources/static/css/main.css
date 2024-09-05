@@ -1,3 +1,4 @@
+
 .main {
   background-color: violet;
   height: 100vh;
@@ -9,10 +10,12 @@
   color: white;
 }
 
+
 .fade-in {
   opacity: 0;
   animation: fadeInAnimation 2s forwards;
 }
+
 
 @keyframes fadeInAnimation {
   from {
