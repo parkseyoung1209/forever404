@@ -493,7 +493,7 @@ textarea:focus {
   color: white;
   border-radius: 5px;
   cursor:pointer;
-  overflow: scroll;
+
 }
 
 #gptAsk {
@@ -503,6 +503,10 @@ textarea:focus {
   margin-left: 15px;
   border: 2px solid lightgray;
   border-radius: 5px;
+  overflow: scroll;
+  overflow-X : hidden;
+  padding: 5px;
+  line-height: 22px;
 }
 
 .headerP {

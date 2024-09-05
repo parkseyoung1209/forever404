@@ -185,19 +185,6 @@ uri="http://java.sun.com/jsp/jstl/core"%>
             },
           });
         });
-        $("#add2").click(() => {
-          $.ajax({
-            type: "post",
-            url: "/scheduleAdd2",
-            data: {
-              groupName: buttonId,
-              memo: $("#memo").val(),
-              items: $("#items").val(),
-              isReservation: $("#isReservation").val(),
-            },
-            success: function () {},
-          });
-        });
       </script>
 
       <script>
@@ -243,11 +230,14 @@ uri="http://java.sun.com/jsp/jstl/core"%>
       const bigSchedules = [];
       let schedule = {};
       <c:forEach items="${bsList}" var="item">
-        schedule.title = "${item.title}"; schedule.start = "${item.startDate}";
-        schedule.end = "${item.endDate}"; schedule.money = "${item.entireMoney}
-        "; schedule.color = "${item.scheduleColor}"; schedule.bsCode = "$
-        {item.bsCode}"; bigSchedules.push(schedule); schedule = {};
-      </c:forEach>;
+        schedule.title = "${item.title}";
+        schedule.start = "${item.startDate}";
+        schedule.end = "${item.endDate}";
+        schedule.money = "${item.entireMoney}";
+        schedule.color = "${item.scheduleColor}";
+        schedule.bsCode = "${item.bsCode}"; bigSchedules.push(schedule);
+        schedule = {};
+      </c:forEach>
       console.log(bigSchedules);
     </script>
     <script src="${pageContext.request.contextPath}/js/calander.js"></script>

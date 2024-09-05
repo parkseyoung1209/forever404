@@ -1054,5 +1054,5 @@ button i {
 }
 #calendar-container{
 	position:relative;
-	z-index:4;
+	z-index:1;
 }
