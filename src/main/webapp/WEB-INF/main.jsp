@@ -262,10 +262,14 @@ uri="http://java.sun.com/jsp/jstl/core"%>
       const bigSchedules = [];
       let schedule = {};
       <c:forEach items="${bsList}" var="item">
-        schedule.title = "${item.title}"; schedule.start = "${item.startDate}";
-        schedule.end = "${item.endDate}"; schedule.money = "${item.entireMoney}
-        "; schedule.color = "${item.scheduleColor}"; schedule.bsCode = "$
-        {item.bsCode}"; bigSchedules.push(schedule); schedule = {};
+        schedule.title = "${item.title}"; 
+        schedule.start = "${item.startDate}";
+        schedule.end = "${item.endDate}"; 
+        schedule.money = "${item.entireMoney}"; 
+        schedule.color = "${item.scheduleColor}"; 
+        schedule.bsCode = "${item.bsCode}"; 
+        bigSchedules.push(schedule); 
+        schedule = {};
       </c:forEach>;
 
       console.log(bigSchedules);
