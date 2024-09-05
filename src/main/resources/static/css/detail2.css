@@ -71,6 +71,7 @@
   display: flex;
   justify-content: center;
   gap: 15px;
+
 }
 
 #pay {
@@ -83,16 +84,23 @@
   width: 250px;
   height: 200px;
   padding: 10px;
+    overflow:scroll;
+    overflow-x:hidden;
+}
+
+#pay::-webkit-scrollbar {
+	display:  none;
 }
 
 .detail-content section {
   display: flex;
+      font-size:1.8rem;
   border: 2px solid rgba(0, 0, 0, 0.05);
   border-radius: 10px;
   box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
-  font-family: "Nanum Gothic", sans-serif;
   width: 800px;
   height: 200px;
+
 }
 
 .detail-content section .img {
@@ -113,34 +121,46 @@
 }
 
 .item-content h2 {
-  font-size: 1.3rem;
+  font-size: 1.8rem;
   font-weight: bold;
   padding-top: 22px;
+    font-family: "Dongle", sans-serif;
 }
 
 .item-content p {
-  font-size: 1.3rem;
+  font-size: 1.8rem;
+    font-family: "Dongle", sans-serif;
   margin-top: 10px;
 }
 
 .item-content button {
   margin-left: 180px;
   margin-top: 40px;
-  width: 45px;
+  width: 50px;
+  height:30px;
   cursor: pointer;
   position: absolute;
-  bottom: 5px;
-  right: 5px;
+  bottom: 10px;
+  right: 10px;
+  border:2px solid #999;
+  color:#999;
+  border-radius: 5px;
+  background-color:transparent;
+}
+
+.item-content button:hover {
+	color:black;
+	border:2px solid black;
 }
 
 /* 고정된 애들 */
 #plus {
   background-color: transparent;
   position: fixed;
-  right: 105px;
+  right: 80px;
   bottom: 30px;
   border: none;
-  font-size: 4.5rem;
+  font-size: 4rem;
   cursor: pointer;
   outline: none;
 }
@@ -159,20 +179,22 @@
   display: flex;
   position: fixed;
   flex-direction: column;
-  bottom: 120px;
-  right: 60px;
+  bottom: 110px;
+  right: 45px;
+
 }
 
 .btn1 {
-  width: 180px;
+  width: 150px;
   height: 45px;
   cursor: pointer;
   background-color: white;
   color: black;
-  font-size: 1.2rem;
+  font-size: 1.5rem;
   display: none;
   border-bottom: none;
   outline: none;
+      font-family: "Dongle", sans-serif;
 }
 
 .btn1:hover {
@@ -235,26 +257,12 @@
   overflow-x: hidden;
 }
 
-
-#modalcontent2 {
-  position: relative;
-  background-color: white;
-  margin: 10% auto;
-  padding: 20px;
-  border: 1px solid #999;
-  width: 450px;
-  height: 50vh;
-  border-radius: 20px;
-  overflow-y: hidden;
-}
-
 .modal h2 {
   display: flex;
   justify-content: center;
   font-weight: bold;
   font-size: 2rem;
 }
-
 .close {
   color: #999;
   float: right;
@@ -269,7 +277,54 @@
   text-decoration: none;
   cursor: pointer;
 }
+#modalcontent2 {
+  position: relative;
+  background-color: white;
+  margin: 10% auto;
+  padding: 20px;
+  border: 1px solid #999;
+  width: 300px;
+  height: 30vh;
+  border-radius: 20px;
+  overflow-y: hidden;
+}
 
+#modalcontent2 .close {
+	font-size:24px;
+	position:absolute;
+	top:10px;
+	right:10px;
+}
+
+.modal h2 {
+	font-size:1.2rem
+}
+
+
+#moneyBtn {
+	position:absolute;
+	bottom:10px;
+	left:50%;
+	transform: translateX(-50%);
+	background-color:wihte;
+	color: black;
+	border: 2px solid transparent;
+	border-radius:5px;
+	cursor:pointer;
+}
+#moneyBtn:hover {
+	background-color: #999;
+	color: white;
+}
+
+.money {
+	border:none;
+	border-bottom: 1px solid black;
+	width:90%;
+	height:40px;
+	padding-left:30px;
+	padding-top:5px;
+}
 .fileContainer {
   display: flex;
   flex-direction: column;
@@ -383,8 +438,24 @@
 
 
 
+
 #modal3 input {
 	display:flex;
 	
 	margin: 10px;
+}
+
+.deleteSc {
+	position:absolute;
+	top:5px;
+	right:5px;
+	border:none;
+	background-color:transparent;
+	color:#999;
+	cursor: pointer;
+	font-size:24px;
+}
+
+.deleteSc:hover {
+	color:black;
 }

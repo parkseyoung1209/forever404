@@ -57,21 +57,15 @@
         <button id="button1">&#10094;</button>
         <button id="button2">&#10095;</button>
       </section>
-
+		
       <div class="serviceInfo">
+      <hr>
       <div id="testI">
-        <i class="fa-solid fa-location-dot" id="testI1"><span class="testIP">장소</p></a></i><input id="serviceName" placeholder="KH정보교육원"></input><br />
-        <i class="fa-solid fa-turn-up" id="testI2"><span class="testIP">위치</p></i><input id="serviceJibun" placeholder="서울시 강남구 테헤란로 14"></input><br />
-        <i class="fa-solid fa-phone" id="testI3"><span class="testIP">연락처</p></i><input id="servicePhone" placeholder="1544-9970"></input><br /><hr>
+        <i class="fa-solid fa-location-dot" id="testI1"><span class="testIP">장소</span></a></i><input id="serviceName"  class="service" placeholder="KH정보교육원"></input><br />
+        <i class="fa-solid fa-turn-up" id="testI2"><span class="testIP">위치</span></i><input id="serviceJibun" class="service" placeholder="서울시 강남구 테헤란로 14"></input><br />
+        <i class="fa-solid fa-phone" id="testI3"><span class="testIP">연락처</span></i><input id="servicePhone" class="service" placeholder="1544-9970"></input><br /><hr>
         </div>
-        <p class="headerP">
-          예약
-          <select id="isReservation">
-            <option value="N">N</option>
-            <option value="Y">Y</option>
-          </select>
-        </p>
-        <p class="headerP">
+                <p class="headerP">
           시간
           <select id="time">
             <option value="0">0시</option>
@@ -99,17 +93,26 @@
             <option value="22">22시</option>
             <option value="23">23시</option>
           </select>
+        <p class="headerP" id="reserveP">
+          예약
+          <label>
+          <input type="radio" name="radioButton" id="isReservation" class="reservation" value="Y"/>Y</label>
+           <label>
+          <input type="radio" name="radioButton" id="is" class="reservation" value="N" checked/>N</label>
+        </p>
+
         </p>
 		
          <p id="memoP" class="headerP">메모</p>
           <textarea id="memo" class="memo" rows="1"></textarea><hr>
+                  <input type="submit" value="일정 추가하기" id="ssTest" />
 		<button id="gptOpen">선택이 어려우신가요?</button>
-        <input type="submit" value="추가하기" id="ssTest" />
+
       </div>
     </header>
 	
 	<section id="gptModal">
-		          <h2 id=gptH2>궁금하신 걸 질문해보세요!</h2>
+		          <h2 id=gptH2>궁금하신 걸 질문해보세요!</h2><hr class="gptHr">
           <textarea id="gptTest" class="memo" rows="1"></textarea>
           <input type="submit" value="입력" id="gpt" />
           <div id="gptAsk"></div>
@@ -149,6 +152,7 @@
       $("#button1").click(function () {
         $("#category").animate({ marginLeft: "-300px" }, 800);
         $("header").animate({ marginLeft: "-300px" }, 800);
+        $("#gptModal").animate({ marginLeft: "-620px" }, 800);
         $("#button1")
           .animate({ marginLeft: "-300px" }, 800)
           .promise()
@@ -162,6 +166,7 @@
       $("#button2").click(function () {
         $("#category").animate({ marginLeft: "0px" }, 800);
         $("header").animate({ marginLeft: "0px" }, 800);
+
         $("#button2")
           .animate({ marginLeft: "300px" }, 800)
           .promise()
@@ -187,15 +192,15 @@
     	    
     	    const locationValue = parseInt(location, 10);
     	    
-    	    if (locationValue === 320) {
-    	        $("#gptModal").animate({ "margin-left": "-320px" }, 600);
+    	    if (locationValue === 620) {
+    	        $("#gptModal").animate({ "margin-left": "-620px" }, 600);
     	    } else {
-    	        $("#gptModal").animate({ "margin-left": "320px" }, 400);
+    	        $("#gptModal").animate({ "margin-left": "620px" }, 400);
     	    }
     	});
 
       const apiUrl = "https://api.openai.com/v1/chat/completions";
-      const apiKey = 'sk-zW-eQw_d-_JqMF0Vfs7YEixlV3gkLUxq0-oa22q2txT3BlbkFJX_JI2PL7EcNLUqnTwe-7kqm8AepVjkzQBBi7rktI0A';
+      const apiKey = 'sk-M7fT1oBqq3qojGEX_MVrKaeRnsUomsu5QpTg__8alyT3BlbkFJj1JNMuVnUQSetU1_D5M-MVZxipWI0YF4KGhxYH3msA';
       const gptTest = document.querySelector("#gptTest");
       const gptAsk = document.querySelector("#gptAsk");
       
