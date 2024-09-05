@@ -7,35 +7,39 @@ document.addEventListener("DOMContentLoaded", function () {
     headerToolbar: {
       left: "prev,next today",
       center: "title",
-      right: "groupcurrent",
+      right: "",
     },
     selectable: true,
     editable: true,
     events: bigSchedules,
     eventTextColor: "black",
     customButtons: {
-		groupUsers: {
-			text:"그룹인원",
-			click: function() {
-				$("#teamModal").css("display", "none");
-			}
-		},
+      groupUsers: {
+        text: "그룹인원",
+        click: function () {
+          $("#teamModal").css("display", "none");
+        },
+      },
       groupcurrent: {
         text: "그룹 삭제",
         click: function () {
           let groupName = localStorage.getItem("groupName");
-		  if(confirm('삭제하시면 복구할 수 없습니다 \n 정말로 삭제하시겠습니까??')) {
-			$.ajax({
-			        url: "/deleteGroup",
-			        type: "post",
-			        data: "groupName=" + groupName,
-			        success: function () {
-			        	window.location.href = "/main";
-			        },
-			   });
-		  } else {
-			return false;
-		  }
+          if (
+            confirm(
+              "삭제하시면 복구할 수 없습니다 \n 정말로 삭제하시겠습니까??"
+            )
+          ) {
+            $.ajax({
+              url: "/deleteGroup",
+              type: "post",
+              data: "groupName=" + groupName,
+              success: function () {
+                window.location.href = "/main";
+              },
+            });
+          } else {
+            return false;
+          }
           /*$.ajax({
             url: "/deleteGroup",
             type: "post",
@@ -102,49 +106,49 @@ document.addEventListener("DOMContentLoaded", function () {
 
         return clickedDate >= eventStart + 1 && clickedDate <= eventEndDate;
       });
-	  
-	  // 클릭한 날짜에 해당하는 이벤트 찾기
-	      const eventOnClickedDate = events.find((event) => {
-	          const eventStart = event.start.toISOString().split("T")[0];
-	          const eventEnd = new Date(event.end);
-	          eventEnd.setDate(eventEnd.getDate()); // 하루 빼기
-	          const eventEndDate = eventEnd.toISOString().split("T")[0];
 
-	          // 클릭한 날짜가 이벤트 기간 내에 있는지 확인
-	          return clickedDate >= eventStart + 1 && clickedDate <= eventEndDate;
-	      });
+      // 클릭한 날짜에 해당하는 이벤트 찾기
+      const eventOnClickedDate = events.find((event) => {
+        const eventStart = event.start.toISOString().split("T")[0];
+        const eventEnd = new Date(event.end);
+        eventEnd.setDate(eventEnd.getDate()); // 하루 빼기
+        const eventEndDate = eventEnd.toISOString().split("T")[0];
 
-		  if (eventOnClickedDate) {
-		          // 해당 날짜에 이벤트가 있으면 eventClick과 동일한 로직 실행
-		          const modal = $("#bigModal");
-		          const btn = $("#six");
-		          const btn2 = $("#seven");
+        // 클릭한 날짜가 이벤트 기간 내에 있는지 확인
+        return clickedDate >= eventStart + 1 && clickedDate <= eventEndDate;
+      });
 
-		          $("#addMemoh1").text(eventOnClickedDate.title);
-		          $("#addMemop").text(`${eventOnClickedDate.start.toLocaleDateString()}`);
+      if (eventOnClickedDate) {
+        // 해당 날짜에 이벤트가 있으면 eventClick과 동일한 로직 실행
+        const modal = $("#bigModal");
+        const btn = $("#six");
+        const btn2 = $("#seven");
 
-				  linkbs = eventOnClickedDate.extendedProps.bsCode;
-		          sessionStorage.setItem("bsCode", linkbs);
+        $("#addMemoh1").text(eventOnClickedDate.title);
+        $("#addMemop").text(`${eventOnClickedDate.start.toLocaleDateString()}`);
 
-		          const endDate = new Date(eventOnClickedDate.end);
-		          endDate.setDate(endDate.getDate() - 1);
-		          $("#addMemop2").text(`${endDate.toLocaleDateString()}`);
-		          $("#addMemop3").text(eventOnClickedDate.extendedProps.money);
+        linkbs = eventOnClickedDate.extendedProps.bsCode;
+        sessionStorage.setItem("bsCode", linkbs);
 
-		          modal.css("display", "block");
+        const endDate = new Date(eventOnClickedDate.end);
+        endDate.setDate(endDate.getDate() - 1);
+        $("#addMemop2").text(`${endDate.toLocaleDateString()}`);
+        $("#addMemop3").text(eventOnClickedDate.extendedProps.money);
 
-		          if ($("#addMemoh1").length) {
-		              btn2.css("display", "block");
-		              btn.css("display", "none");
-		              $("#addMemoh1").show();
-		              $("#memoSection1").show();
-		              $("#memoSection2").show();
-		              $("#memoSection3").show();
-		          }
+        modal.css("display", "block");
 
-		          // 클릭한 날짜에 이벤트가 있으므로 추가 로직은 실행하지 않음
-		          return;
-		      }
+        if ($("#addMemoh1").length) {
+          btn2.css("display", "block");
+          btn.css("display", "none");
+          $("#addMemoh1").show();
+          $("#memoSection1").show();
+          $("#memoSection2").show();
+          $("#memoSection3").show();
+        }
+
+        // 클릭한 날짜에 이벤트가 있으므로 추가 로직은 실행하지 않음
+        return;
+      }
       // 이벤트가 없으면 아래 로직 실행
       const month = calendarEl
         .querySelector(".fc-toolbar-title")
@@ -265,12 +269,12 @@ $(document).keydown(function (event) {
 $(".user").click(function () {
   $(".mymodal").css("display", "block");
 });
-$("#teamBtn").click(function(){
-	$("#teamModal").css("display", "block");
+$("#teamBtn").click(function () {
+  $("#teamModal").css("display", "block");
 });
-$("#cancelBtn").click(function(){
-	$("#teamModal").css("display", "none");
-})
+$("#cancelBtn").click(function () {
+  $("#teamModal").css("display", "none");
+});
 $("#calendar-container").mouseover((e) => {
   let content = $(".mymodal");
   if (content.css("display") != "none") {
@@ -356,32 +360,29 @@ $("#seven").click(function () {
 });
 
 $("#delete").click(() => {
-          const bigImg = document.querySelector("#bigImg");
-          var imgSrc = bigImg.getAttribute("src");
-          var imgCode = bigImg.getAttribute("alt");
-          console.log(imgSrc);
-          console.log(imgCode);
-          $.ajax({
-				
-            type: "post",
-            url: "/deletePhoto",
-            data: {
-              photoUrl: imgSrc,
-              photoCode: imgCode,
-            },
-            success: function () {
-
-              alert("성공적으로 삭제되었습니다");
-              //console.log($('.smallImg img[alt="' + imgCode + '"]'));
-              $('img[alt="' + imgCode + '"]').remove();
-            },
-            error: function () {
-
-              alert("삭제되지 않았습니다");
-              location.reload();
-            },
-          });
-      });
+  const bigImg = document.querySelector("#bigImg");
+  var imgSrc = bigImg.getAttribute("src");
+  var imgCode = bigImg.getAttribute("alt");
+  console.log(imgSrc);
+  console.log(imgCode);
+  $.ajax({
+    type: "post",
+    url: "/deletePhoto",
+    data: {
+      photoUrl: imgSrc,
+      photoCode: imgCode,
+    },
+    success: function () {
+      alert("성공적으로 삭제되었습니다");
+      //console.log($('.smallImg img[alt="' + imgCode + '"]'));
+      $('img[alt="' + imgCode + '"]').remove();
+    },
+    error: function () {
+      alert("삭제되지 않았습니다");
+      location.reload();
+    },
+  });
+});
 
 function setupSlider() {
   const leftButton = document.querySelector("#slideBtn1");
@@ -407,16 +408,11 @@ function setupSlider() {
     }%)`;
   }
 
-
-	
-
   leftButton.addEventListener("click", function () {
     showPhoto(currentIndex - 5);
-
   });
 
   rightButton.addEventListener("click", function () {
-
     showPhoto(currentIndex + 5);
   });
 }
@@ -428,3 +424,5 @@ $("#close").click(function () {
   const slideInside = document.querySelector("#slider");
   slideInside.style.transform = "translateX(0)";
 });
+const Calendar = FullCalendar.Calendar;
+const Users = $("#users");
