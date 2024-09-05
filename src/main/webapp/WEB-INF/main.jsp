@@ -39,13 +39,12 @@ uri="http://java.sun.com/jsp/jstl/core"%>
         </c:if>
       </c:if>
       <div id="btn-Container">
-      <button id="teamBtn">
-              <i id="teamUser" class="fa-solid fa-user"></i>
-              <h1>${userListSize}</h1>
-            </button>
-            <button id="teamDelBtn">
-            그룹 삭제
-            </button></div>
+        <button id="teamBtn">
+          <i id="teamUser" class="fa-solid fa-user"></i>
+          <h1>${userListSize}</h1>
+        </button>
+        <button id="teamDelBtn">그룹 삭제</button>
+      </div>
       <c:if test="${check==false}">
         <p class="selectOrAdd">그룹을 생성하세요</p>
       </c:if>
@@ -90,6 +89,7 @@ uri="http://java.sun.com/jsp/jstl/core"%>
           </div>
           <button class="modsection" id="six">추가</button>
           <button class="modsection" id="seven">앨범</button>
+          <button class="modsection" id="eight">삭제</button>
         </div>
       </div>
 
@@ -243,15 +243,11 @@ uri="http://java.sun.com/jsp/jstl/core"%>
       const bigSchedules = [];
       let schedule = {};
       <c:forEach items="${bsList}" var="item">
-        schedule.title = "${item.title}";
-        schedule.start = "${item.startDate}";
-        schedule.end = "${item.endDate}";
-        schedule.money = "${item.entireMoney}";
-        schedule.color = "${item.scheduleColor}";
-        schedule.bsCode = "${item.bsCode}";
-        bigSchedules.push(schedule);
-        schedule = {};
-      </c:forEach>
+        schedule.title = "${item.title}"; schedule.start = "${item.startDate}";
+        schedule.end = "${item.endDate}"; schedule.money = "${item.entireMoney}
+        "; schedule.color = "${item.scheduleColor}"; schedule.bsCode = "$
+        {item.bsCode}"; bigSchedules.push(schedule); schedule = {};
+      </c:forEach>;
       console.log(bigSchedules);
     </script>
     <script src="${pageContext.request.contextPath}/js/calander.js"></script>

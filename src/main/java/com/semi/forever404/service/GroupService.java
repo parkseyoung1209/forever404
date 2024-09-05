@@ -100,9 +100,20 @@ public class GroupService {
 		mapper.deleteGroup5(num);
 	}
 	
+	// 금액 삭제
+	public void deleteM(int mCode) {
+		mapper.deleteM(mCode);
+	}
+	
+	
 	// 세부 스케줄 삭제
 	public void deleteSc(int ssCode) {
 		mapper.deleteSc(ssCode);
+	}
+	
+	// 전체 일정 삭제
+	public void deleteBs(int bsCode) {
+		mapper.deleteBs(bsCode);
 	}
 	
 	// 이미지 추가 및 선택

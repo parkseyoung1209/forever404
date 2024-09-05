@@ -44,8 +44,14 @@ public interface GroupMapper {
 	void deleteGroup4 (int num);
 	void deleteGroup5 (int num);
 	
+	// 금액 삭제
+	void deleteM(int mCode);
+	
 	// 세부 스케줄 삭제
 	void deleteSc(int ssCode);
+	
+	// 전체 일정 삭제
+	void deleteBs(int bsCode);
 	
 	//이미지 추가 및 선택
 	void imgLoad (Photo photo); //추가

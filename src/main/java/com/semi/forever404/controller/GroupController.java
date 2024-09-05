@@ -198,7 +198,7 @@ public class GroupController {
 			service.scheduleAdd(bigSchedule);
 			return true;
 		}
-
+	
 	}
 	
 	@ResponseBody
