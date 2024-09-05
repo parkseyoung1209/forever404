@@ -1,6 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-pageEncoding="UTF-8"%> <%@ taglib prefix="c"
-uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -30,16 +29,12 @@ uri="http://java.sun.com/jsp/jstl/core"%>
 
       <c:if test="${check==true}">
         <c:if test="${not empty groupName}">
-          <button id="teamBtn">
-            <i id="teamUser" class="fa-solid fa-user"></i>
-            <h1></h1>
-          </button>
           <div id="calendar-container">
-            <button id="teamBtn">
+           <button id="teamBtn">
               <i id="teamUser" class="fa-solid fa-user"></i>
               <h1>${userListSize}</h1>
-            </button>
-            <div id="calendar"></div>
+            </button></div>
+            <div id="calendar"> 
           </div>
         </c:if>
         <c:if test="${empty groupName}">
@@ -91,6 +86,7 @@ uri="http://java.sun.com/jsp/jstl/core"%>
           </div>
           <button class="modsection" id="six">추가</button>
           <button class="modsection" id="seven">앨범</button>
+          <button class="modsection" id="eight">삭제</button>
         </div>
       </div>
 
@@ -244,10 +240,13 @@ uri="http://java.sun.com/jsp/jstl/core"%>
       const bigSchedules = [];
       let schedule = {};
       <c:forEach items="${bsList}" var="item">
-        schedule.title = "${item.title}"; schedule.start = "${item.startDate}";
-        schedule.end = "${item.endDate}"; schedule.money = "${item.entireMoney}
-        "; schedule.color = "${item.scheduleColor}"; schedule.bsCode = "$
-        {item.bsCode}"; bigSchedules.push(schedule); schedule = {};
+        schedule.title = "${item.title}"; 
+        schedule.start = "${item.startDate}";
+        schedule.end = "${item.endDate}"; 
+        schedule.money = "${item.entireMoney}"; 
+        schedule.color = "${item.scheduleColor}"; 
+        schedule.bsCode = "${item.bsCode}"; 
+        bigSchedules.push(schedule); schedule = {};
       </c:forEach>;
       console.log(bigSchedules);
     </script>

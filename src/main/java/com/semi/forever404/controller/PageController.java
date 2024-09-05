@@ -147,7 +147,6 @@ public class PageController {
 			list.add(new CalendarDTO(stringDates.get(i), addList));
 		}
 		
-	
 		session.setAttribute("totalList", list);
 
 		
@@ -216,5 +215,25 @@ public class PageController {
 		service.deleteSc(ssCode);
 	}
 	
+	// 금액 삭제
+	@ResponseBody
+	@GetMapping("/deleteM")
+	public void deleteM(int mCode) {
+		service.deleteM(mCode);
+	}
+	
+	// 전체일정 삭제
+	@ResponseBody
+	@GetMapping("/deleteBs")
+	public void deleteBs(int bsCode) {
+		List<SmallSchedule> smallSchedule = service.selectOneSc(bsCode);
+		for(int i=0; i<smallSchedule.size(); i++) {
+			// 스몰스케쥴 ss_code로 money테이블 조회해서 삭제하고
+			service.deleteGroup1(smallSchedule.get(i).getSsCode()); // money 테이블
+		}
+		service.deleteGroup2(bsCode);
+		service.deleteAllImg(bsCode);
+		service.deleteBs(bsCode);
+	}
 	
 }

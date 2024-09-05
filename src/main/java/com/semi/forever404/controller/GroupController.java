@@ -1,6 +1,8 @@
 package com.semi.forever404.controller;
 
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
@@ -131,7 +133,9 @@ public class GroupController {
 	@ResponseBody
 	@PostMapping("/scheduleAdd")
 	public boolean schduleAdd(HttpServletRequest request, BigSchedule bigSchedule, Model model) throws ParseException {
+		
 		String groupName = request.getHeader("referer").substring(22);
+		
 		BigGroup bg = service.searchBgCode(groupName);
 		int num = bg.getBgGroupCode();
 		List<BigSchedule> bs = service.searchBsCode(num);
@@ -192,7 +196,7 @@ public class GroupController {
 			service.scheduleAdd(bigSchedule);
 			return true;
 		}
-
+	
 	}
 	
 	@ResponseBody

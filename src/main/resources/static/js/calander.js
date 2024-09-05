@@ -56,6 +56,7 @@ document.addEventListener("DOMContentLoaded", function () {
       const modal = $("#bigModal");
       const btn = $("#six");
       const btn2 = $("#seven");
+	  const btn3 = $("#eight");
       $("#addMemoh1").text(info.event.title);
       $("#addMemop").text(`${info.event.start.toLocaleDateString()}`);
       linkbs = info.event.extendedProps.bsCode;
@@ -69,6 +70,7 @@ document.addEventListener("DOMContentLoaded", function () {
       modal.css("display", "block");
       if ("#addMemoh1" != null) {
         btn2.css("display", "block");
+		btn3.css("display", "block");
         btn.css("display", "none");
         $("#addMemoh1").show();
         $("#memoSection1").show();
@@ -107,7 +109,7 @@ document.addEventListener("DOMContentLoaded", function () {
 		          const modal = $("#bigModal");
 		          const btn = $("#six");
 		          const btn2 = $("#seven");
-
+				  const btn3 = $("#eight");
 		          $("#addMemoh1").text(eventOnClickedDate.title);
 		          $("#addMemop").text(`${eventOnClickedDate.start.toLocaleDateString()}`);
 		          const linkbs = eventOnClickedDate.extendedProps.bsCode;
@@ -122,6 +124,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 		          if ($("#addMemoh1").length) {
 		              btn2.css("display", "block");
+					  btn3.css("display", "block");
 		              btn.css("display", "none");
 		              $("#addMemoh1").show();
 		              $("#memoSection1").show();
@@ -340,6 +343,21 @@ $("#seven").click(function () {
       setupSlider();
     },
   });
+});
+
+$("#eight").click(()=>{
+	console.log("클릭");
+	let bsCode = sessionStorage.getItem("bsCode");
+	$.ajax({
+		type:"get",
+		url:"/deleteBs",
+		data:{
+			bsCode: bsCode,
+		},
+		success: function(){
+			location.reload();
+		}
+	});
 });
 
 $("#delete").click(() => {

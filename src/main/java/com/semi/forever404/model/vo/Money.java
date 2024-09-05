@@ -14,6 +14,14 @@ public class Money {
 	public Money(SmallSchedule smallSchedule) {
 		this.smallSchedule = smallSchedule;
 	}
+
+	public int getmCode() {
+		return mCode;
+	}
+
+	public void setmCode(int mCode) {
+		this.mCode = mCode;
+	}
 	
 	
 }
