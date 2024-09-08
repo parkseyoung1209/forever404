@@ -57,7 +57,7 @@
 							<div class="detail-content">
 								<!-- 여기까지가 머니 섹션 -->
 								<div id="pay">
-									<p>예산 : ${item.schedule.bigSchedule.entireMoney}원</p>
+									<p id="entireMoney">예산 : ${item.schedule.bigSchedule.entireMoney}원</p>
 
 									<c:forEach items="${item.moneyList}" var="money">
 										<c:set var="using" value="${using + money.useMoney}" />

@@ -18,7 +18,7 @@
 
 #bttn {
   position: absolute;
-  background: #d95050;
+  background: #194569;
   color: #fff;
   padding: 8px;
   border-radius: 50%;
@@ -42,7 +42,7 @@
 #curLocation {
   margin: 10px 0 0px 15px;
   color: white;
-  background-color: #d95050;
+  background-color: #194569;
   border: none;
   box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2);
   border-radius: 5px;
@@ -56,7 +56,7 @@
   width: 40px;
   padding: 10px 15px;
   color: white;
-  background-color: #d95050;
+  background-color: #194569;
   border: none;
   box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2);
   border-radius: 5px;
@@ -82,7 +82,7 @@
   border-radius: 5px;
   border: 1px solid #909090;
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.4);
-  background: #d95050;
+  background: #194569;
   color: #fff;
   overflow: hidden;
   z-index: 2;
@@ -170,7 +170,7 @@
 }
 
 .placeinfo_wrap input {
-  background: #d95050;
+  background: #194569;
   font-weight: bold;
   margin-left: 10px;
   padding: 10px;
@@ -233,8 +233,8 @@
   margin: -1px -1px 0 -1px;
   padding: 10px;
   color: #fff;
-  background: #d95050;
-  background: #d95050
+  background: #194569;
+  background: #194569
     url(https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/arrow_white.png)
     no-repeat right 14px center;
 }
@@ -294,7 +294,7 @@ header {
   margin-left: 15px;
   width: 270px;
   height: 55px;
-  border: 2px solid #d95050;
+  border: 2px solid #194569;
   padding-left: 10px;
   border-radius: 5px;
   font-size: 1.2rem;
@@ -302,7 +302,7 @@ header {
 }
 
 #keyword:focus {
-  outline: 1px solid #d95050;
+  outline: 1px solid #194569;
 }
 
 #keyword::placeholder {
@@ -346,7 +346,7 @@ input[type='radio'] {
 }
 
 input[type='radio']:checked {
-	background-color : #d95050;
+	background-color : #194569;
 }
 
 #time {
@@ -360,7 +360,7 @@ input[type='radio']:checked {
 }
 
 #time:focus {
-  border: 2px solid #d95050;
+  border: 2px solid #194569;
   outline: none;
 }
 
@@ -369,7 +369,7 @@ textarea {
 }
 
 textarea:focus {
-  outline: 1px solid #d95050;
+  outline: 1px solid #194569;
 }
 
 #memoP {
@@ -388,15 +388,15 @@ textarea:focus {
 }
 
 #memo:focus {
-  border: 2px solid #d95050;
+  border: 2px solid #194569;
   outline: none;
 }
 
 #ssTest {
   height: 50px;
   font-size: 1.1rem;
-  background-color: #d95050;
-  border: 2px solid #d95050;
+  background-color: #194569;
+  border: 2px solid #194569;
   cursor: pointer;
   font-weight: none;
   color: white;
@@ -424,7 +424,7 @@ textarea:focus {
 }
 
 #testI input:focus {
-  outline: 2px solid #d95050;
+  outline: 2px solid #194569;
   border-radius: 5px;
 }
 
@@ -450,7 +450,7 @@ textarea:focus {
   margin-top: 15px;
   height: 50px;
   color: white;
-  background-color: #d95050;
+  background-color: #194569;
   border: none;
   box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2);
   border-radius: 5px;
@@ -478,7 +478,7 @@ textarea:focus {
 }
 
 #gptTest:focus {
-	border: 2px solid #d95050;
+	border: 2px solid #194569;
 	outline: none;
 
 }
@@ -489,7 +489,7 @@ textarea:focus {
   right: 25px;
   height: 30px;
   border:none;
-  background-color: #d95050;
+  background-color: #194569;
   color: white;
   border-radius: 5px;
   cursor:pointer;
@@ -571,7 +571,7 @@ hr {
   position: absolute;
   margin-top: 250px;
   left: calc(50% - 20px);
-  background-color: #d95050;
+  background-color: #194569;
   width: 80px;
   height: 80px;
   border-radius: 100%;
