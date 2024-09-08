@@ -265,7 +265,6 @@ button i {
   border-bottom-right-radius: 20px;
   cursor: pointer;
   display: none;
-  z-index: 10;
 }
 
 .addgroup2 {
