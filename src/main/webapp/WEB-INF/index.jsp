@@ -61,46 +61,48 @@
         <button id="prevBtn" class="button2">&#10094;</button>
         <div id="sectioncontainer">
           <section class="section" id="section1">
-            <h1>트러블 없는 트래블 스케줄러,(적당한 멘트)</h1>
-            <br />
-            <h1>"SEMI PROJECT"　< Trip Scheduler ></h1>
+            <h1>간편하고 체계적인 여행 스케쥴러</h1>
+            <h1>SEMI PROJECT　< Trip Scheduler ></h1>
             <h2><a id="scrollLink">자세히 보기</a></h2>
           </section>
           <section class="section" id="section2">
-            <h1>심플한 여행스케줄러,</h1>
-            <h1>복잡한 방식에 지친 당신을 위한.(적당한 멘트)</h1>
+            <h1>실시간으로 일정 공유를</h1>
+            <h3>그룹을 생성해 일행들과 계획을 조율해보세요.</h3>
           </section>
           <section class="section" id="section3">
-            <h1>그룹의 스케줄을 한 눈에!</h1>
+            <h1>체계적인 예산으로</h1>
+            <h3>시간 단위로 예산을 설정해 좀 더 계획적인 여행을 즐겨보세요.</h3>
           </section>
           <section class="section" id="section4">
-            <h1>유용한 기능2(적당한 멘트)</h1>
+            <h1>어디로 가야할지 고민이신가요?</h1>
+            <h3>Trip Scheduler와 연동된 시스템들을 이용해보세요.</h3>
           </section>
         </div>
         <button id="nextBtn" class="button2">&#10095;</button>
       </div>
       <section id="section5">
         <div class=schedule data-aos="fade-down" data-aos-delay="300" data-aos-duration="600">
-          <h1>이 스케줄러의 장점</h1>
-          <p>전체 여행 일정을 한눈에 !</p>
+          <h1>그룹 간 일정 공유를 손쉽게</h1>
+          <p>실시간으로 변동되는 일정으로 조율이 간편해요.</p>
         </div>
 
         <div class="schedule" data-aos="fade-up" data-aos-delay="300" data-aos-duration="800">
-          <img src="${pageContext.request.contextPath}/image/main/schedule.jpg" alt="" />
+          <img src="${pageContext.request.contextPath}/image/mainpage2.png" alt="" />
         </div>
       </section>
       <section id="section6">
         <div id="textBox" data-aos="fade-right"  data-aos-delay="300" data-aos-duration="800">
-          <h1>이 외의 유용한 기능들</h1>
-          <p>세부 일정을 요일, 시간 별로 확인해 보세요.</p>
-          <p>자주 잊어먹는 분들을 위한 알람 기능</p>
+          <h1>계획을 체계적으로</h1>
+          <p>어디로 갈 지 직접 조회하고, 질문하고, 추가해요.<br>
+          시간 단위로 여행 경비를 정리할 수 있어요.</p>
+          <p></p>
         </div>
         <div id="positionBox">
           <div class="box" id="box1" data-aos="fade-left"  data-aos-delay="300" data-aos-duration="800">
-            <img src="${pageContext.request.contextPath}/image/main/calender2.jpg" alt="" />
+            <img src="${pageContext.request.contextPath}/image/kakaomappage.png" alt="" />
           </div>
           <div class="box" id="box2" data-aos="fade-left"  data-aos-delay="500" data-aos-duration="800">
-            <img src="${pageContext.request.contextPath}/image/main/plane.jpg" alt="" />
+            <img src="${pageContext.request.contextPath}/image/detailpage3.png" alt="" />
           </div>
         </div>
       </section>

@@ -72,7 +72,7 @@ header {
   color: #fff;
   background-color: #999;
   line-height: 1;
-  margin-bottom:10px;
+  margin-bottom:20px;
 }
 .groupButton:hover {
   background-color: lightgray;
@@ -97,6 +97,8 @@ button i {
 	display:flex;
 	justify-content:center;
   margin-bottom: 15px;
+  font-weight:bold;
+  font-family: "Nanum Gothic", sans-serif;
 }
 .group i {
   font-size: 15px;
@@ -960,12 +962,12 @@ button i {
 	z-index:2;
 }
 #teamBtn:hover{
-	background-color:black;
+	background-color:#1E2B37;
 }
 #teamDelBtn{
 	position:absolute;
 	margin-left:20px;
-	font-size:18px;
+	font-size:14px;
 	right:0%;
 	width:90px;
 	height:40px;
@@ -978,7 +980,7 @@ button i {
 	z-index:2;
 }
 #teamDelBtn:hover{
-	background-color: black;
+	background-color: #1E2B37;
 }
 #teamUser{
 	font-size:20px;
@@ -1052,4 +1054,10 @@ button i {
 #calendar-container{
 	position:relative;
 	z-index:1;
+}
+
+.nanum-gothic-bold {
+  font-family: "Nanum Gothic", sans-serif;
+  font-weight: 700;
+  font-style: normal;
 }

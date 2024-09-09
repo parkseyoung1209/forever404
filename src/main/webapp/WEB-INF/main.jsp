@@ -18,6 +18,9 @@ uri="http://java.sun.com/jsp/jstl/core"%>
       rel="stylesheet"
       href="${pageContext.request.contextPath}css/tetris.css"
     />
+    <link
+	href="https://fonts.googleapis.com/css2?family=Dongle:wght@700&family=Nanum+Gothic:wght@400;700&display=swap"
+	rel="stylesheet" />
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="${pageContext.request.contextPath}js/index.global.min.js"></script>
     <script src="${pageContext.request.contextPath}js/tetris.js"></script>
