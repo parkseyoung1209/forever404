@@ -120,12 +120,18 @@ body {
 .item-content {
   position: relative;
   flex-grow: 1;
+  overflow: scroll;
+  overflow-x: hidden;
+  word-wrap: break-word;
+  width: 150px;
 }
-
+.item-content::-webkit-scrollbar {
+  display: none;
+}
 .item-content h2 {
   font-size: 2rem;
   font-weight: bold;
-  padding-top: 40px;
+  padding-top: 15px;
   font-family: "Dongle", sans-serif;
 }
 
@@ -133,9 +139,17 @@ body {
   font-size: 2rem;
   font-family: "Dongle", sans-serif;
   margin-top: 15px;
+  width: 100%;
+}
+.button-content {
+	flex-direction: column-reverse;
+    display: flex;
+    width: 65px;
+    height: 100%;
+    position: relative;
 }
 
-.item-content button {
+.button-content button {
   margin-left: 180px;
   margin-top: 40px;
   width: 50px;
@@ -150,7 +164,7 @@ body {
   background-color: transparent;
 }
 
-.item-content button:hover {
+.button-content button:hover {
   color: black;
   border: 2px solid black;
 }
@@ -540,3 +554,60 @@ body {
 #entireMoney {
   padding-top: 5px;
 }
+
+
+/* From Uiverse.io by SmookyDev */ 
+.tooltip {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  font-family: "Arial", sans-serif;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+}
+
+.tooltiptext {
+	font-size: 12px;
+  visibility: hidden;
+  width: 100px;
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  border-radius: 5px;
+  padding: 10px;
+  position: absolute;
+  z-index: 1;
+  top: 125%;
+  left: 50%;
+  margin-left: -40px;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.tooltiptext::after {
+  content: "";
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  margin-left: -10px;
+  border-width: 10px;
+  border-style: solid;
+  border-color: transparent transparent #333 transparent;
+}
+
+.tooltip .icon {
+	margin-left: 10px;
+	font-size: 18px;
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background-color: #4caf50;
+  color: #fff;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 20px;
+}
+

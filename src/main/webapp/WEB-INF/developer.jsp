@@ -77,11 +77,11 @@
             <img src="${pageContext.request.contextPath}/image/developer/family2.jpg"  alt="" />
             <h2>박세영</h2>
             <ul>
-              <li>한일1 : (사용한언어)</li>
-              <li>한일2 : (구축한 코드)</li>
-              <li>한일3 : (구축한 코드)</li>
-              <li>한일4 : (구축한 코드)</li>
-              <li>한일5 : (구축한 코드)</li>
+              <li>사용 언어 및 기술 : Java, Java Script, jQuery, MySql</li>
+              <li>한일1 : 회원가입 및 로그인 기능</li>
+              <li>한일2 : 사용자 그룹 생성</li>
+              <li>한일3 : 일정 만들기 로직 구현</li>
+              <li>한일4 : 카카오 로그인 및 openAI API 활용</li>
             </ul>
           </section>
           <section id="member3">

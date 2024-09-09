@@ -44,6 +44,7 @@ public class UserController {
 				service.register(user);
 			}
 	}
+	// 사용자가 입력한 값을 user 객체 방식으로 받아 세션에 담은 후 null 여부로 로그인 
 	@ResponseBody
 	@PostMapping("/login")
 		public boolean login(HttpServletRequest request, User user) {
@@ -55,7 +56,7 @@ public class UserController {
 			else return false;
 		}
 	
-	// check!
+	// user 세션 날림
 	@ResponseBody
 	@PostMapping("/logout")
 	public void logout(HttpServletRequest request, HttpServletResponse response) throws IOException {
@@ -64,22 +65,7 @@ public class UserController {
 		session.invalidate();
 		}
 	}	
-	// check
-	/*@PostMapping("/register")
-	public String register(String id, String password, String phone, String name, String email, @RequestParam(name="birth", required=false) String birth) {
-		try {
-			if(!birth.equals("")) {
-			SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd"); 
-			Date date = formatter.parse(birth);
-			User user = new User(id, password, phone, name, email, date);
-			service.register(user);
-			} else {
-				User user = new User(id, password, phone, name, email, null);
-				service.register(user);
-			}
-		} catch (ParseException e) {} 
-		return "main";
-	}*/
+	// 이미 데이터베이스에 있는 카카오 아이디라면 회원가입 생략하고 로그인, 아니라면 데이터베이스에 넣어 자동 등록 후 로그인
 	@ResponseBody
 	@PostMapping("/kakaoLogin")
 	public String kakaoLogin(@RequestParam("email") String email,
@@ -103,7 +89,6 @@ public class UserController {
 		String newphone = phone.replace("+82 ", "0");
 		User existingUser = service.kakaoLogin(email);
 		if(existingUser !=null) {
-			 
 			 session.setAttribute("user", existingUser);
 			 System.out.println("기존 정보가 존재할경우만 뜨는 문구");
 			 return "main";
