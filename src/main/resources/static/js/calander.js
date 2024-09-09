@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const calendarEl = document.getElementById("calendar");
   const calendar = new Calendar(calendarEl, {
     headerToolbar: {
-      left: "prev,next today",
+      left: "prev,today,next",
       center: "title",
       right: "",
     },
