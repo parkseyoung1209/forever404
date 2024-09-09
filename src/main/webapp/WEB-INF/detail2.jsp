@@ -97,10 +97,10 @@
  											 <div class="icon">i</div>
   											<div class="tooltiptext">
   											<c:if test="${item.schedule.isReservation eq 'Y'}">
-  											예약이 되었습니다.
+  											예약 완료.
   											</c:if>
   											<c:if test="${item.schedule.isReservation eq 'N'}">
-  											예약이 안됨.
+  											예약 안됨.
   											</c:if>
   											</div>
 										</div>
