@@ -63,7 +63,7 @@
         <h1>back-end Members</h1>
         <section class="members">
           <section id="member1">
-            <img src="${pageContext.request.contextPath}/image/developer/family1.jpg" alt="" />
+            <img src="${pageContext.request.contextPath}/image/developer/아침새.jpg" alt="" />
             <h2>윤유진(팀장)</h2>
             <ul>
               <li>한일1 : (사용한언어)</li>
@@ -74,7 +74,7 @@
             </ul>
           </section>
           <section id="member2">
-            <img src="${pageContext.request.contextPath}/image/developer/family2.jpg"  alt="" />
+            <img src="${pageContext.request.contextPath}/image/developer/쿼카1.jpg"  alt="" />
             <h2>박세영</h2>
             <ul>
               <li>한일1 : (사용한언어)</li>
@@ -85,7 +85,7 @@
             </ul>
           </section>
           <section id="member3">
-            <img src="${pageContext.request.contextPath}/image/developer/family3.jpg"  alt="" />
+            <img src="${pageContext.request.contextPath}/image/developer/고양이3.jpg"  alt="" />
             <h2>김진주</h2>
             <ul>
               <li>한일1 : (사용한언어)</li>
@@ -101,25 +101,25 @@
         <h1>front-end Members</h1>
         <section class="members">
           <section id="member4">
-            <img src="${pageContext.request.contextPath}/image/developer/family1.jpg" alt="" />
+            <img src="${pageContext.request.contextPath}/image/developer/오카피1.jpg" alt=""/>
             <h2>장영태</h2>
             <ul>
-              <li>한일1 : (사용한언어)</li>
-              <li>한일2 : (구축한 코드)</li>
-              <li>한일3 : (구축한 코드)</li>
-              <li>한일4 : (구축한 코드)</li>
-              <li>한일5 : (구축한 코드)</li>
+              <li>사용 언어 : HTML, CSS, JS, JQUERY</li>
+              <li>한일2 : register 페이지 HTML, CSS 구축</li>
+              <li>한일3 : login 페이지 HTML, CSS 구축</li>
+              <li>한일4 : main 페이지 fullcalendar, HTML, CSS, JS, JQUERY 구축</li>
+              <li>한일5 : main 페이지 일정, 상세 일정 모달 구축)</li>
             </ul>
           </section>
           <section id="member5">
-            <img src="${pageContext.request.contextPath}/image/developer/family2.jpg"  alt="" />
+            <img src="${pageContext.request.contextPath}/image/developer/카피바라1.jpg"  alt="" />
             <h2>배영운</h2>
             <ul>
-              <li>한일1 : (사용한언어)</li>
-              <li>한일2 : (구축한 코드)</li>
-              <li>한일3 : (구축한 코드)</li>
-              <li>한일4 : (구축한 코드)</li>
-              <li>한일5 : (구축한 코드)</li>
+              <li>사용 언어 : HTML, CSS, JAVASCRIPT, JQUERY</li>
+              <li>한일2 : INDEX페이지 구축</li>
+              <li>한일3 : DETAIL페이지 HTML, CSS, JAVASCRIPT, JSTL 구축</li>
+              <li>한일4 : KAKAOMAP페이지 HTML, CSS 구축</li>
+              <li>한일5 : MAIN페이지 서브 CSS, JAVASCRIPT</li>
             </ul>
           </section>
         </section>

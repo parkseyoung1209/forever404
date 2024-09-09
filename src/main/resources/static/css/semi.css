@@ -90,10 +90,6 @@ nav button {
   font-weight: bold;
 }
 
-#section2 h1 {
-  padding: 20px;
-  padding-bottom: 50px;
-}
 #section3 {
   min-width: 100%;
   background-color: rgba(0, 0, 0, 0.3);
@@ -181,6 +177,7 @@ nav button {
 
 #section5 {
   height: 1000px;
+  background-color : rgba(0, 0, 0, 0.02);
 }
 
 .schedule {
@@ -189,7 +186,7 @@ nav button {
 
 #section5 h1 {
   position: relative;
-  font-size: 3rem;
+  font-size: 1.8rem;
   display: flex;
   justify-content: center;
   padding: 15px;
@@ -208,16 +205,17 @@ nav button {
 }
 
 #section5 img {
-  width: 900px;
+  width: auto;
   height: 600px;
   padding-top: 50px;
-  margin-left: 480px;
+  margin-left: 350px;
+  
 }
 
 #section6 {
   height: 100vh;
   display: flex;
-  background-color: rgba(0, 0, 0, 0.05);
+  background-color: rgba(0, 0, 0, 0.03);
 }
 
 #textBox {
@@ -226,18 +224,20 @@ nav button {
   justify-content: center;
   align-items: center;
   width: 50%;
+  padding-left:10%;
 }
 
 #textBox h1 {
-  font-size: 4rem;
+  font-size: 1.8rem;
   font-weight: bold;
   padding: 15px;
 }
 
 #textBox p {
-  font-size: 2rem;
+  font-size: 1.5rem;
   color: gray;
   padding: 15px;
+  line-height:50px;
 }
 
 #positionBox {
@@ -256,7 +256,7 @@ nav button {
 
 #box1 img {
   margin-top: 100px;
-  margin-left: 150px;
+  margin-left: 50px;
   background-color: white;
   z-index: 0;
   width: 90%;
@@ -265,7 +265,7 @@ nav button {
 }
 
 #box2 {
-  left: 40%;
+  left: 20%;
   top: 35%;
   z-index: 1;
   color: white;
@@ -385,3 +385,8 @@ div.user_login input {
     display: none;
   }
 }
+
+.section h3{
+	margin-top:50px;
+	font-size:2rem;
+} 

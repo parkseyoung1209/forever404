@@ -350,7 +350,7 @@ function searchLocalPlaces() {
         serviceLng: lng,
         servicePhone: phone,
         memo: $("#memo").val(),
-        isReservation: $("#isReservation").val(),
+        isReservation: $(".reservation").val(),
         curTime: $("#time").val(),
         bsCode: bsCode,
         curDate: curDate,
