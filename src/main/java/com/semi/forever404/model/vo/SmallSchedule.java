@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 public class SmallSchedule {
 	private int ssCode;
 	private String memo;
-	private char isReservation;
+	private String isReservation;
 	private int leftMoney;
 	private String curDate;
 	private String curTime;

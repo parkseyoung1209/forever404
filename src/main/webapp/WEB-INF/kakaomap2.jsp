@@ -98,7 +98,7 @@
           <label>
           <input type="radio" name="radioButton" id="isReservation" class="reservation" value="Y"/>Y</label>
            <label>
-          <input type="radio" name="radioButton" id="is" class="reservation" value="N" checked/>N</label>
+          <input type="radio" name="radioButton" id="isReservation" class="reservation" value="N" checked/>N</label>
         </p>
 		
          <p id="memoP" class="headerP">메모</p>

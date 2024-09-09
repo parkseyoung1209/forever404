@@ -54,7 +54,7 @@ uri="http://java.sun.com/jsp/jstl/functions"%>
 
     <div class="mymodal">
       <header id="myHeader"></header>
-      <i class="fa-solid fa-plane" id="myImg"></i>
+      <i class="fa-solid fa-earth-americas" id="myImg"></i>
       <div id="nameSection">
         <h1 id="myName"></h1>
         <p id="myId">test1234</p>

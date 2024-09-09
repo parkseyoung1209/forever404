@@ -12,18 +12,17 @@
 }
 
 .selectOrAdd {
-	z-index : -1;
-	font-size: 80px;
-    position: absolute;
-    align-items: center;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    text-align: center;
-    height: 100%;
-    bottom:140px;
+  z-index: -1;
+  font-size: 80px;
+  position: absolute;
+  align-items: center;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  height: 100%;
+  bottom: 140px;
 }
-
 header {
   display: flex;
   align-items: center;
@@ -62,7 +61,7 @@ header {
   background-color: transparent;
   border: none;
   cursor: pointer;
-    width: 80px;
+  width: 80px;
   height: 80px;
   display: flex;
   justify-content: center;
@@ -72,7 +71,7 @@ header {
   color: #fff;
   background-color: #999;
   line-height: 1;
-  margin-bottom:20px;
+  margin-bottom: 20px;
 }
 .groupButton:hover {
   background-color: lightgray;
@@ -81,23 +80,23 @@ button i {
   font-size: 30px;
 }
 .group {
-  	overflow-y:scroll;
-	width:135px;
-	height:650px;
-	margin-top:40px;
+  overflow-y: scroll;
+  width: 135px;
+  height: 650px;
+  margin-top: 40px;
 }
 #group1::-webkit-scrollbar {
-	display:  none;
+  display: none;
 }
 .group button {
-	margin-left: 27px;
-	padding-top:5px;
+  margin-left: 27px;
+  padding-top: 5px;
 }
 .group span {
-	display:flex;
-	justify-content:center;
+  display: flex;
+  justify-content: center;
   margin-bottom: 15px;
-  font-weight:bold;
+  font-weight: bold;
   font-family: "Nanum Gothic", sans-serif;
 }
 .group i {
@@ -400,28 +399,28 @@ button i {
   border-radius: 10px;
 }
 .head-wrd {
+  margin-left: 20px;
   font-size: 40px;
-  margin-left: 120px;
+  text-align: center;
 }
 #X {
+  position: absolute;
+  left: 455px;
   font-size: 40px;
   color: black;
-  margin-left: 90px;
-  margin-bottom: 60px;
-  cursor: pointer;
 }
-
 #X:hover {
   color: #999;
 }
 .mdl-header {
   display: flex;
   flex-direction: row;
-  width: 498px;
   height: 100px;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
-  border-bottom: 1px solid black;
+  width: 450px;
+  margin-left: 24px;
+  height: 100px;
+  border-bottom: 3px solid black;
+  background-color: white;
 }
 .section {
   display: flex;
@@ -433,20 +432,6 @@ button i {
 }
 #one {
   margin-top: 100px;
-}
-#six {
-  font-size: 20px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: white;
-  background-color: black;
-  width: 80px;
-  height: 80px;
-  border-radius: 100px;
-  margin-left: 410px;
-  margin-top: 10px;
-  cursor: pointer;
 }
 #modal2 {
   display: none;
@@ -466,10 +451,6 @@ button i {
   height: 700px;
   border-radius: 10px;
 }
-.head-wrd2 {
-  font-size: 30px;
-  margin-left: 150px;
-}
 #X2 {
   font-size: 40px;
   color: black;
@@ -477,51 +458,8 @@ button i {
   margin-bottom: 60px;
   cursor: pointer;
 }
-#X2:hover {
-  color: black;
-}
-.mdl-header2 {
-  display: flex;
-  flex-direction: row;
-  width: 498px;
-  height: 100px;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
-  border-bottom: 1px solid black;
-}
-.inpt-brder {
-  border: 1px solid black;
-  height: 80px;
-  margin: 20px;
-  border: none;
-  border-bottom: 2px solid black;
-}
 #title {
   margin-top: 100px;
-}
-.submit {
-  font-size: 40px;
-  width: 498px;
-  height: 98px;
-  border-bottom-left-radius: 10px;
-  border-bottom-right-radius: 10px;
-  border: none;
-  cursor: pointer;
-  border-top: 1px solid black;
-}
-.inpt-brder i {
-  font-size: 30px;
-  margin-top: 35px;
-  margin-left: 10px;
-}
-.tripinfo {
-  font-size: 30px;
-  width: 370px;
-  height: 50px;
-  margin-left: 30px;
-  border: none;
-  outline: none;
-  color: #999;
 }
 
 ::placeholder {
@@ -543,30 +481,16 @@ button i {
   background-color: white;
   margin-top: 200px;
   margin-left: 700px;
-  border: 1px solid #999;
+  border: 4px solid black;
   width: 500px;
   height: 500px;
-  border-radius: 10px;
-  z-index:4;
+  z-index: 4;
+  box-shadow: 5px 5px black;
 }
 .head-wrd {
+  font-weight: bold;
+  width: 400px;
   font-size: 40px;
-  margin-left: 120px;
-}
-#X {
-  font-size: 40px;
-  color: black;
-  margin-left: 90px;
-  margin-bottom: 60px;
-}
-.mdl-header {
-  display: flex;
-  flex-direction: row;
-  width: 498px;
-  height: 100px;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
-  border-bottom: 1px solid black;
 }
 .modsection {
   display: flex;
@@ -574,39 +498,56 @@ button i {
   width: 498px;
   height: 120px;
   border: none;
-  border-bottom: 1px solid black;
-  margin-top: 100px;
-}
-#one {
   margin-top: 100px;
 }
 #six {
-  font-size: 20px;
+  font-size: 40px;
   display: flex;
   justify-content: center;
   align-items: center;
   color: white;
   background-color: black;
-  width: 80px;
-  height: 80px;
-  border-radius: 100px;
-  margin-left: 410px;
-  margin-top: 10px;
+  width: 450px;
+  height: 120px;
+  margin-left: 24px;
+  margin-top: 60px;
   cursor: pointer;
 }
+#six:hover {
+  color: black;
+  background-color: white;
+  transition-duration: 0.4s;
+}
 #seven {
-  font-size: 20px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  margin-top: 25px;
+  width: 450px;
+  height: 85px;
+  font-size: 30px;
+  font-size: 25px;
+  cursor: pointer;
   color: white;
   background-color: black;
-  width: 80px;
-  height: 80px;
-  border-radius: 100px;
-  margin-left: 410px;
-  margin-top: 10px;
+  margin-left: 24px;
+}
+#seven:hover {
+  color: black;
+  background-color: orange;
+  transition-duration: 0.2s;
+}
+#eight {
+  margin-top: 25px;
+  width: 450px;
+  height: 85px;
+  font-size: 30px;
   cursor: pointer;
+  border: 3px solid black;
+  margin-left: 24px;
+}
+#eight:hover {
+  color: white;
+  background-color: #ff3838f0;
+  border-color: #ff3838f0;
+  transition-duration: 0.2s;
 }
 #detModal {
   display: none;
@@ -624,42 +565,46 @@ button i {
   background-color: white;
   margin-top: 150px;
   margin-left: 700px;
-  border: 1px solid #999;
+  border: 4px solid black;
   width: 500px;
   height: 600px;
-  border-radius: 10px;
+  box-shadow: 3px 3px 0 #000;
 }
 #modalContent4 input {
-	color:black;
+  color: black;
 }
 .head-wrd2 {
-  font-size: 30px;
-  margin-left: 150px;
+  font-weight: bold;
+  font-size: 40px;
+  text-align: center;
+  margin-left: 85px;
 }
 #X2 {
   font-size: 40px;
   color: black;
-  margin-left: 113px;
-  margin-bottom: 60px;
   cursor: pointer;
+  position: absolute;
+  right: 5px;
 }
 
 #X2:hover {
   color: #999;
 }
 .mdl-header2 {
+  margin-left: 24px;
   display: flex;
   flex-direction: row;
-  width: 498px;
+  width: 450px;
   height: 100px;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
-  border-bottom: 1px solid black;
+  background-color: white;
+  border-bottom: 3px solid black;
 }
 .inpt-brder {
   border: 1px solid black;
   height: 80px;
-  margin: 20px;
+  width: 450px;
+  margin-left: 24px;
+  margin-right: 24px;
   border: none;
   border-bottom: 2px solid black;
 }
@@ -667,14 +612,25 @@ button i {
   margin-top: 100px;
 }
 .submit {
-  font-size: 40px;
-  width: 498px;
-  height: 98px;
-  border-bottom-left-radius: 10px;
-  border-bottom-right-radius: 10px;
+  width: 450px;
+  height: 120px;
   border: none;
   cursor: pointer;
-  border-top: 1px solid black;
+  margin-left: 24px;
+  margin-top: 25px;
+  border: none;
+  color: black;
+  background-color: white;
+  border-top-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+#finalBtn {
+  font-size: 80px;
+}
+.submit:hover {
+  color: white;
+  background-color: #296fbb;
+  transition-duration: 0.2s;
 }
 .inpt-brder i {
   font-size: 30px;
@@ -683,7 +639,7 @@ button i {
 }
 .tripinfo {
   font-size: 30px;
-  width: 370px;
+  width: 350px;
   height: 50px;
   margin-left: 30px;
   border: none;
@@ -705,57 +661,75 @@ button i {
 }
 
 #addMemo {
-  height: 155px;
-  width: 100%;
+  height: 150px;
+  width: 450px;
+  margin-left: 24px;
   display: flex;
   flex-direction: column;
+  border-bottom: 3px solid black;
 }
 #memoSection1 {
   display: flex;
   flex-direction: row;
-  font-size: 20px;
+  font-size: 25px;
   margin-left: 10px;
-  margin-top: 10px;
+  margin-top: 15px;
 }
 #memoSection2 {
   display: flex;
   flex-direction: row;
-  font-size: 20px;
-  margin-left: 30px;
-  margin-top: 10px;
+  font-size: 25px;
+  margin-left: 35.5px;
+  margin-top: 20px;
 }
 #memoSection3 {
   display: flex;
   flex-direction: row;
-  font-size: 20px;
+  font-size: 25px;
   margin-left: 10px;
-  margin-top: 10px;
+  margin-top: 20px;
+}
+#memoSection4 {
+  margin-top: 67px;
+  text-align: center;
+  font-weight: bold;
+  font-size: 20px;
+  color: #a9a9a9;
 }
 #addMemoh1 {
-  margin-left: 19px;
+  margin-left: 25px;
   margin-top: 5px;
-  height: 50px;
+  width: 400px;
+  height: 60px;
   border-radius: 0px;
-  border: 1px solid lightgray;
-  font-size: 25px;
+  font-size: 40px;
+  font-weight: bold;
   cursor: pointer;
-  width: 460px;
+  border: none;
+  background-color: white;
 }
 #addMemoh1:hover {
   color: white;
-  background-color: #2c3e50;
+  background-color: #296fbb;
+  border-color: #296fbb;
+  transition-duration: 0.4s;
 }
 #addMemop {
+  font-weight: bold;
   margin-left: 10px;
 }
 #addMemop2 {
+  font-weight: bold;
   margin-left: 10px;
 }
 .Memo2 {
+  font-weight: bold;
   margin-left: 20px;
 }
 #addMemop3 {
+  font-weight: bold;
   margin-left: 10px;
+  margin-right: 10px;
 }
 .fc-day-sun a {
   color: red;
@@ -781,8 +755,7 @@ button i {
   margin-left: 110px;
   margin-top: 30px;
   text-align: center;
-  padding-top: 15px;
-  padding-left: 7px;
+  padding-top: 18.5px;
   border: 6px solid black;
   border-radius: 50%;
 }
@@ -936,58 +909,59 @@ button i {
   display: flex;
   transition: transform 0.5s ease;
 }
-#btn-Container{
-	position:absolute;
-	top:39px;
-	left:1675px;
-	width:200px;
-	height:4.5vh;
-	flex-direction: row;
+#btn-Container {
+  position: absolute;
+  top: 48px;
+  left: 1650px;
+  width: 210px;
+  height: 4.5vh;
+  flex-direction: row;
 }
 #teamBtn {
-	position:absolute;
-	display:flex;
-	flex-direction:row;
-	align-items:center;
-	font-size:20px;
-	width:90px;
-	height:40px;
-	background-color: white;
-	border: none;
-	border-radius: 4px;
-	cursor:pointer;
-	color:white;
-	background-color:#2c3e50;
-	z-index:2;
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-size: 20px;
+  width: 90px;
+  height: 60px;
+  background-color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  color: white;
+  background-color: #194569;
+  z-index: 2;
+  margin-right: 10px;
 }
-#teamBtn:hover{
-	background-color:#1E2B37;
+#teamBtn:hover {
+  background-color: #1e2b37;
 }
-#teamDelBtn{
-	position:absolute;
-	margin-left:20px;
-	font-size:14px;
-	right:0%;
-	width:90px;
-	height:40px;
-	background-color: white;
-	border: none;
-	border-radius: 4px;
-	cursor:pointer;
-	color:white;
-	background-color:#2c3e50;
-	z-index:2;
+#teamDelBtn {
+  position: absolute;
+  margin-left: 20px;
+  font-size: 14px;
+  right: 0%;
+  width: 90px;
+  height: 60px;
+  background-color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  color: white;
+  background-color: #194569;
+  z-index: 2;
 }
-#teamDelBtn:hover{
-	background-color: #1E2B37;
+#teamDelBtn:hover {
+  background-color: #1e2b37;
 }
-#teamUser{
-	font-size:20px;
-	margin-right:15px;
-	margin-left:25px;
+#teamUser {
+  font-size: 20px;
+  margin-right: 15px;
+  margin-left: 25px;
 }
-#teamModal{
-	  display: none;
+#teamModal {
+  display: none;
   position: fixed;
   z-index: 3;
   width: 100%;
@@ -996,65 +970,108 @@ button i {
   top: 0;
   background-color: rgba(0, 0, 0, 0.5);
 }
-#modalContent7{
+#modalContent7 {
   position: relative;
-  top:50px;
-  left:660px;
+  top: 50px;
+  left: 660px;
   background-color: white;
   border: none;
   width: 600px;
   height: 800px;
-  border-radius:10px;
-  overflow-y:scroll;
+  border-radius: 10px;
+  overflow-y: scroll;
 }
 #modalContent7::-webkit-scrollbar {
-	display:  none;
+  display: none;
 }
-#cancelBtn{
-	position:relative;
-	padding:5px;
-	top:10px;
-	left:290px;
-	cursor:pointer;
-	font-size:20px;
-	border-radius:5px;
+#cancelBtn {
+  position: relative;
+  padding: 5px;
+  top: 10px;
+  left: 290px;
+  cursor: pointer;
+  font-size: 20px;
+  border-radius: 5px;
 }
-#cancelBtn:hover{
-	background-color:rgba(0,0,0,0.2);
+#cancelBtn:hover {
+  background-color: rgba(0, 0, 0, 0.2);
 }
-#users{
-	font-size:30px;
-	display:flex;
-	align-items:center;
-	margin-top:15px;
-	background-color: rgba(211, 211, 211, 0.3);
-	height: 100px;
+#users {
+  font-size: 30px;
+  display: flex;
+  align-items: center;
+  margin-top: 15px;
+  background-color: rgba(211, 211, 211, 0.3);
+  height: 100px;
 }
-#UserProfile{
-	display:flex;
-	align-items:center;
-	justify-content:center;
-	border-radius:10px;
-	background-color: rgba(211, 211, 211, 0.5);
-	width:50px;
-	height:50px;
-	margin-left:10px;
-	color: rgb(44,62,80);
+#UserProfile {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  background-color: rgba(211, 211, 211, 0.5);
+  width: 50px;
+  height: 50px;
+  margin-left: 10px;
+  color: rgb(44, 62, 80);
 }
-#userCount{
-	margin-left:10px;
+#userCount {
+  margin-left: 10px;
 }
-#modal1{
-	z-index:5;
+#modal1 {
+  z-index: 5;
 }
-#modal2{
-	z-index:5;
+#modal2 {
+  z-index: 5;
 }
-#calendar-container{
-	position:relative;
-	z-index:1;
+#calendar-container {
+  position: relative;
+  z-index: 1;
 }
+.fc-theme-standard th {
+  height: 40px;
+  background: #f5f5f5;
+  border: 1px solid #e8e8e8;
+  font-weight: normal;
+  font-size: 19px;
+  line-height: 19px;
+  vertical-align: middle;
+}
+.fc .fc-toolbar.fc-header-toolbar {
+  margin: 0;
+  background-color: #194569;
+  height: 120px;
+  color: white;
 
+  font-size: 19px;
+  line-height: 30px;
+  border-radius: 20px 20px 0px 0px;
+}
+.fc .fc-toolbar-title {
+  margin-right: 200px;
+}
+.fc .fc-toolbar-chunk .fc-button {
+  background-color: #194569;
+  border: 1px solid black;
+  height: 60px;
+  width: 100px;
+  font-size: 20px;
+  text-align: center;
+  margin-left: 20px;
+  border: none;
+}
+.fc .fc-toolbar-chunk .fc-button:disabled {
+  background-color: #194569;
+  color: white;
+  opacity: 1;
+}
+.fc .fc-toolbar-chunk .fc-button:focus {
+  box-shadow: none;
+  outline: none;
+}
+.fc .fc-toolbar-chunk .fc-button:hover {
+  background-color: #2c3e50;
+}
 .nanum-gothic-bold {
   font-family: "Nanum Gothic", sans-serif;
   font-weight: 700;

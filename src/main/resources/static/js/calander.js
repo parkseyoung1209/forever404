@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const calendarEl = document.getElementById("calendar");
   const calendar = new Calendar(calendarEl, {
     headerToolbar: {
-      left: "prev,next today",
+      left: "prev,today,next",
       center: "title",
       right: "",
     },
@@ -89,9 +89,11 @@ document.addEventListener("DOMContentLoaded", function () {
         btn3.css("display", "block");
         btn.css("display", "none");
         $("#addMemoh1").show();
+		$("#addTitle").hide();
         $("#memoSection1").show();
         $("#memoSection2").show();
         $("#memoSection3").show();
+		$("#memoSection4").hide();
       }
     },
 
@@ -144,10 +146,12 @@ document.addEventListener("DOMContentLoaded", function () {
           btn2.css("display", "block");
           btn3.css("display", "block");
           btn.css("display", "none");
+		  $("#addTitle").hide();
           $("#addMemoh1").show();
           $("#memoSection1").show();
           $("#memoSection2").show();
           $("#memoSection3").show();
+		  $("#memoSection4").hide();
         }
 
         // 클릭한 날짜에 이벤트가 있으므로 추가 로직은 실행하지 않음
@@ -197,10 +201,12 @@ document.addEventListener("DOMContentLoaded", function () {
   calendar.render();
   function showModal() {
     $("#bigModal").css("display", "block");
+	$("#addTitle").show();
     $("#addMemoh1").hide();
     $("#memoSection1").hide();
     $("#memoSection2").hide();
     $("#memoSection3").hide();
+	$("#memoSection4").show();
     $("#six").css("display", "block");
     $("#seven").css("display", "none");
 	$("#eight").css("display", "none");

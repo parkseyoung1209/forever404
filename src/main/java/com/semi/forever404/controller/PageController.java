@@ -73,7 +73,6 @@ public class PageController {
 		// 한 그룹의 여러 회원
 //		
 		session.setAttribute("smlist", list);
-//		session.setAttribute("userList", userList);
 		
 		if(list.isEmpty()) {
 			session.setAttribute("check", false);
@@ -83,7 +82,7 @@ public class PageController {
 		}
 		return "main";
 	}
-	
+	// 세부 일정 생성 시 로딩창에 나오는 문구 db에서 가져오기
 	@GetMapping("/kakao/map")
 	public String kakaomap(HttpServletRequest request) {
 		HttpSession session = request.getSession();
@@ -188,12 +187,11 @@ public class PageController {
 		return photoList;
 	}
 	
-
+	
 	@ResponseBody
 	@PostMapping("/deletePhoto")
 	public void deletePhoto(String photoUrl, int photoCode) {
 		//System.out.println("URL : " + photoUrl);
-		System.out.println("code : " + photoCode);
 		String url = photoUrl.replace("http://192.168.10.28:8080/storage/","\\\\192.168.10.28\\forever404\\storage\\");
 		System.out.println("storage : " + url);
 		if(photoUrl!=null) {
