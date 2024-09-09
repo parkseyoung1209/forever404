@@ -109,13 +109,15 @@ var ps = new kakao.maps.services.Places(map);
 //document.getElementById("bttn").addEventListener("click", searchLocalPlaces)
 
 function handleSubmit(event) {
-    event.preventDefault(); // Prevent default form submission
-    searchLocalPlaces();    // Call the search function
+  event.preventDefault(); // Prevent default form submission
+  searchLocalPlaces(); // Call the search function
 }
 
 // Adding event listener on DOMContentLoaded to attach the event handler
-document.addEventListener('DOMContentLoaded', function() {
-    document.getElementById('searchForm').addEventListener('submit', handleSubmit);
+document.addEventListener("DOMContentLoaded", function () {
+  document
+    .getElementById("searchForm")
+    .addEventListener("submit", handleSubmit);
 });
 
 function searchLocalPlaces() {
@@ -327,7 +329,7 @@ function searchLocalPlaces() {
     const loading = document.querySelector("#loading");
     loading.style.display = "block";
     document.body.style.pointerEvents = "none";
-    document.body.style.cursor = "wait";           
+    document.body.style.cursor = "wait";
   }
   function loadingEnd() {
     const loading = document.querySelector("#loading");
@@ -339,6 +341,9 @@ function searchLocalPlaces() {
   $("#ssTest").click(() => {
     const groupName = localStorage.getItem("groupName");
     let curDate = sessionStorage.getItem("curDate");
+    const isReservation = document.querySelector(
+      'input[name="radioButton"]:checked'
+    ).value;
     loadingStart();
     $.ajax({
       type: "post",
@@ -350,7 +355,7 @@ function searchLocalPlaces() {
         serviceLng: lng,
         servicePhone: phone,
         memo: $("#memo").val(),
-        isReservation: $(".reservation").val(),
+        isReservation: isReservation,
         curTime: $("#time").val(),
         bsCode: bsCode,
         curDate: curDate,

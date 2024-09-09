@@ -72,8 +72,12 @@ uri="http://java.sun.com/jsp/jstl/core"%>
           </div>
         </c:if>
         <c:if test="${empty groupName}">
-          <p class="selectOrAdd">그룹을 선택하세요</p>
+        <div id="pId1">
+        <p>그룹을 선택하세요</p>
+        </div>
+        <div class="selectOrAdd">
           <canvas></canvas>
+          </div>
         </c:if>
       </c:if>
 

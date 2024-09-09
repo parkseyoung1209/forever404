@@ -34,19 +34,21 @@ import jakarta.servlet.http.HttpSession;
 
 @Controller
 public class GroupController {
+	
 	@Autowired
 	private GroupService service;
 	
 	@Autowired
 	private ServiceService crawling;
 	
+	// 그룹 추가
 	@ResponseBody
 	@PostMapping("/addGroup")
 	public boolean addGroup(BigGroup bigGroup, String groupName, HttpServletRequest request) {
-			List<BigGroup> list = service.userGroup();
+			List<BigGroup> list = service.userGroup();	// 모든 big_group 테이블 가져옴
 			for(BigGroup bg : list) {
 				if(groupName.equals(bg.getGroupName()) && bg!=null) {
-					return false;
+					return false;	// 반복문 이용해서 입력받은 그룹명과 기존에 존재하는 그룹들의 이름 중 하나라도 같으면 false 리턴
 				}
 			}
 			HttpSession session = request.getSession();
@@ -60,9 +62,9 @@ public class GroupController {
 				service.addSmGroup(smGroup);
 				return true;
 			} else return false;
-
 	}
 	
+	// 특정 id 컬럼값을 가진 small_group 가져오기
 	@ResponseBody
 	@PostMapping("/userGroup")
 	public List<SmallGroup> userGroup(Model model, HttpServletRequest request) {
@@ -115,30 +117,23 @@ public class GroupController {
 			int bsCode = bs.get(i).getBsCode();
 			List<SmallSchedule> smallSchedule = service.selectOneSc(bsCode);
 			for(int j=0; j<smallSchedule.size(); j++) {
-				// 스몰스케쥴 ss_code로 money테이블 조회해서 삭제하고
-				service.deleteGroup1(smallSchedule.get(j).getSsCode()); // money 테이블
-				System.out.println("삭제 0");
+				service.deleteGroup1(smallSchedule.get(j).getSsCode());
 			}
 			service.deleteGroup2(bsCode);
-			System.out.println("삭제 0.5");
 			service.deleteAllImg(bsCode);
 		}
 		service.deleteGroup3(bgCode);
-		System.out.println("삭제 1");
 		service.deleteGroup4(bgCode);
-		System.out.println("삭제 2");
 		service.deleteGroup5(bgCode);
-		System.out.println("삭제 3");
 	}
 	
-	
+	// 전체 일정 추가
 	@ResponseBody
 	@PostMapping("/scheduleAdd")
 	public boolean schduleAdd(HttpServletRequest request, BigSchedule bigSchedule, Model model) throws ParseException, UnsupportedEncodingException {
 		System.out.println(request.getHeader("referer"));
 		String name = URLDecoder.decode(request.getHeader("referer"), "UTF-8");
-		String groupName = name.substring(22);
-		System.out.println(groupName);
+		String groupName = name.substring(22); // url 링크에서 그룹명 잘라내어 디코딩 이후 사용
 		BigGroup bg = service.searchBgCode(groupName);
 		int num = bg.getBgGroupCode();
 		List<BigSchedule> bs = service.searchBsCode(num);
@@ -149,7 +144,6 @@ public class GroupController {
 		bigSchedule.setUser(user);
 		
 		// 컬러 추가
-
 		int rand1 = (int)(Math.random()*256);
 		int rand2 = (int)(Math.random()*256);
 		int rand3 = (int)(Math.random()*256);
@@ -158,6 +152,7 @@ public class GroupController {
 		bigSchedule.setScheduleColor(color);
 		
 		
+		// 중복 제거 로직
 		String addStartDate = bigSchedule.getStartDate();
 		String addEndDate = bigSchedule.getEndDate();
 		
@@ -196,16 +191,14 @@ public class GroupController {
 		if(count >= 1) {
 			return false;
 		} else {
-			service.scheduleAdd(bigSchedule);
+			service.scheduleAdd(bigSchedule); // 위의 로직을 거치고 전체 일정 생성
 			return true;
 		}
-	
 	}
-	
+	// 하나의 전체 일정에 따른 세부 일정 만들기
 	@ResponseBody
 	@PostMapping("/scheduleAdd2")
 	public SmallSchedule scheduleAdd2(HttpServletRequest request, SmallSchedule smallSchedule, int bsCode, String curDate)  {
-	
 		String url;
 		try {
 			url = crawling.getImgUrl(smallSchedule.getServiceName());
@@ -213,27 +206,18 @@ public class GroupController {
 		} catch (InterruptedException | NoSuchElementException e) {
 			System.out.println("등록 실패");
 		}
-		
-		smallSchedule.setBigSchedule(service.selectOneBs(bsCode));
-			
-//		CurDate 값 수정 필요(front한테 받기)
+		smallSchedule.setBigSchedule(service.selectOneBs(bsCode));	
 		smallSchedule.setCurDate(curDate);
-		
 		service.scheduleAdd2(smallSchedule);
-		
 		return smallSchedule;
-//		#{memo} o, #{isReservation} o, #{cur_date}x, #{cur_time}x, #{use_money}x, #{left_money}x, #{buying_list}, #{bigSchedule.bsCode}, #{serviceName}, 
-//		#{serviceJibun}, #{serviceLat},#{serviceLng},#{servicePhone},#{serviceImg}
 	}
-
+	//세부 일정에 따른 지불 품목 생성
 	@ResponseBody
 	@PostMapping("/insertMoney")
 	public void insertMoney(Money money, int ssCode) {
 		SmallSchedule sm = new SmallSchedule();
 		sm.setSsCode(ssCode);
 		money.setSmallSchedule(sm);
-//		System.out.println(money);
-
 		service.insertMoney(money);
 	}
 }

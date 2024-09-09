@@ -92,11 +92,26 @@
 									</c:choose>
 									<div class="item-content">
 										<input type="hidden" value="${item.schedule.ssCode}">
-										<h2>장소 : ${item.schedule.serviceName}</h2>
+										<h2>장소 : ${item.schedule.serviceName}
+										<div class="tooltip">
+ 											 <div class="icon">i</div>
+  											<div class="tooltiptext">
+  											<c:if test="${item.schedule.isReservation eq 'Y'}">
+  											예약 완료.
+  											</c:if>
+  											<c:if test="${item.schedule.isReservation eq 'N'}">
+  											예약 안됨.
+  											</c:if>
+  											</div>
+										</div>
+										</h2>
 										<p>위치 : ${item.schedule.serviceJibun}</p>
 										<p>연락처 : ${item.schedule.servicePhone}</p>
-										<button class="payPlus"><i class="fa-solid fa-won-sign"></i></button>
-										
+										<p>메모 : ${item.schedule.memo}</p>
+									</div>
+									<div class="button-content">
+									<input type="hidden" value="${item.schedule.ssCode}">
+									<button class="payPlus"><i class="fa-solid fa-won-sign"></i></button>
 										<input type="submit" class="deleteSc" value="X">
 									</div>
 								</section>
@@ -133,13 +148,12 @@
 					<div class=fileContainer>
 						<div id="image_container">
 						<label for="file" class="upload">
-							<div>+</div>
+						<div>+</div>
 							<input id="file" type="file" name="files" multiple accept="image/*" onchange="imgShow(event)" value="+" placeholder="+" />
 						</label> 
 						</div>
 					</div>
 				</form>
-
 			</div>
 			<section class="addSection">
 				<button class="add2" id="fileSubmit">업로드</button>
