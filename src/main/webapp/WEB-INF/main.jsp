@@ -254,6 +254,7 @@ uri="http://java.sun.com/jsp/jstl/core"%>
           });
         });
       </script>
+      
     </c:if>
     <!-- 로그아웃 cif -->
     <c:if test="${empty user}">

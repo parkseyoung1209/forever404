@@ -266,5 +266,6 @@
     	  window.location.href="/"+groupName+"/detail?bsCode="+bsCode;
       });
     </script>
+    
 </body>
 </html>

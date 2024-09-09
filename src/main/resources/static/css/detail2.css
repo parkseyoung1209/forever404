@@ -1,3 +1,6 @@
+body {
+}
+
 .carousel-container {
   display: flex;
   overflow: hidden;
@@ -13,7 +16,7 @@
 }
 
 .carousel-item header {
-  background: black;
+  background: #194569;
   color: white;
   height: 80px;
   position: fixed;
@@ -21,6 +24,7 @@
   display: flex;
   align-items: center;
   z-index: 1;
+  font-family: "Dongle", sans-serif;
 }
 
 .carousel-item header button {
@@ -30,28 +34,26 @@
   justify-content: center;
   align-items: center;
   border-radius: 50%;
-  font-size: 18px;
+  font-size: 32px;
   color: black;
   background-color: white;
   border: none;
   cursor: pointer;
   margin-left: 50px;
   z-index: 2;
-  font-weight:bold;
-}
-
-.carousel-item header button:hover {
-  background-color: lightgray;
+  font-weight: bold;
+  font-family: "Dongle", sans-serif;
 }
 
 .carousel-item header h1 {
   display: flex;
   justify-content: center;
-  font-size: 3rem;
+  font-size: 5rem;
   font-weight: bold;
   color: white;
   flex-grow: 1;
   margin-left: -75px;
+  margin-top: 10px;
 }
 
 .carousel-item main {
@@ -65,6 +67,7 @@
   align-items: center;
   font-family: "Dongle", sans-serif;
   font-size: 7rem;
+  color: #213a5c;
 }
 
 .detail-content {
@@ -75,17 +78,17 @@
 
 #pay {
   padding: 10px;
-  border: 2px solid rgba(0, 0, 0, 0.05);
+  border: 2px solid rgba(25, 69, 105, 0.3);
   font-size: 1.8rem;
   border-radius: 20px;
-  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.1);
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.1);
   font-family: "Dongle", sans-serif;
   width: 250px;
   height: 200px;
   padding: 10px;
   overflow: scroll;
   overflow-x: hidden;
-  position:relative;
+  position: relative;
 }
 
 #pay::-webkit-scrollbar {
@@ -95,9 +98,9 @@
 .detail-content section {
   display: flex;
   font-size: 1.8rem;
-  border: 2px solid rgba(0, 0, 0, 0.05);
+  border: 2px solid rgba(25, 69, 105, 0.3);
   border-radius: 10px;
-  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.1);
   width: 800px;
   height: 200px;
 }
@@ -120,16 +123,16 @@
 }
 
 .item-content h2 {
-  font-size: 1.8rem;
+  font-size: 2rem;
   font-weight: bold;
-  padding-top: 22px;
+  padding-top: 40px;
   font-family: "Dongle", sans-serif;
 }
 
 .item-content p {
-  font-size: 1.8rem;
+  font-size: 2rem;
   font-family: "Dongle", sans-serif;
-  margin-top: 10px;
+  margin-top: 15px;
 }
 
 .item-content button {
@@ -141,7 +144,7 @@
   position: absolute;
   bottom: 10px;
   right: 10px;
-  border: 2px solid #999;
+  border: 2px solid rgba(25, 69, 105, 0.3);
   color: #999;
   border-radius: 5px;
   background-color: transparent;
@@ -162,6 +165,7 @@
   font-size: 4rem;
   cursor: pointer;
   outline: none;
+  color: rgba(25, 69, 105, 1);
 }
 
 #plus:hover {
@@ -196,14 +200,14 @@
 }
 
 .btn1:hover {
-  background-color: #999;
+  background-color: rgba(25, 69, 105, 0.3);
   color: white;
 }
 
 #button3 {
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
-  border: 2px solid rgba(0, 0, 0, 0.1);
+  border: 2px solid rgba(25, 69, 105, 0.3);
   border-bottom: none;
   box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.1);
 }
@@ -212,7 +216,7 @@
   border-bottom: 2px solid black;
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
-  border: 2px solid rgba(0, 0, 0, 0.1);
+  border: 2px solid rgba(25, 69, 105, 0.3);
   box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.1);
 }
 
@@ -220,7 +224,7 @@
   border-bottom: 2px solid black;
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
-  border: 2px solid rgba(0, 0, 0, 0.1);
+  border: 2px solid rgba(25, 69, 105, 0.3);
 }
 
 .modal {
@@ -259,11 +263,12 @@
   display: flex;
   justify-content: center;
   font-weight: bold;
-  font-size: 2rem;
+  font-family: "Dongle", sans-serif;
+  font-size: 2.5rem;
 }
 .close {
   color: #999;
-  float:right;
+  float: right;
   font-size: 28px;
   font-weight: bold;
   cursor: pointer;
@@ -287,6 +292,11 @@
   overflow-y: hidden;
 }
 
+#modalcontent2 input {
+  font-family: "Dongle", sans-serif;
+  font-size: 1.4rem;
+}
+
 #modalcontent2 .close {
   font-size: 24px;
   position: absolute;
@@ -296,17 +306,17 @@
 
 #modalcontent2 i {
   position: absolute;
-  top: 70px;
+  top: 75px;
   left: 35px;
 }
 
 #modalcontent2 #labelI2 {
-	top:120px;
+  top: 125px;
 }
 
-
-.modal h2 {
-  font-size: 1.2rem;
+#modalcontent2 h2 {
+  font-family: "Dongle", sans-serif;
+  font-size: 1.5rem;
 }
 
 #moneyBtn {
@@ -316,14 +326,17 @@
   transform: translateX(-50%);
   background-color: white;
   color: black;
-  border: 1px solid black;
+  border: 1px solid rgba(25, 69, 105, 0.3);
   border-radius: 5px;
   cursor: pointer;
+  font-family: "Dongle", sans-serif;
+  font-size: 1.2rem;
+  width: 45px;
 }
 #moneyBtn:hover {
-  background-color: #999;
+  background-color: rgba(25, 69, 105, 1);
   color: white;
-  border: 1px solid #999;
+  border: 1px solid rgba(25, 69, 105, 1);
 }
 
 .money {
@@ -333,7 +346,7 @@
   height: 40px;
   padding-left: 30px;
   padding-top: 5px;
-  margin-top:100px;
+  margin-top: 100px;
 }
 .fileContainer {
   display: flex;
@@ -363,7 +376,6 @@
   margin-right: 20px;
 }
 
-
 #image_container {
   top: 300px;
   display: flex;
@@ -387,6 +399,7 @@
   background-color: transparent;
   font-size: 4rem;
   cursor: pointer;
+  color: #194569;
 }
 #nextBtn {
   position: fixed;
@@ -397,6 +410,7 @@
   background-color: transparent;
   font-size: 4rem;
   cursor: pointer;
+  color: #194569;
 }
 
 #prevBtn:hover {
@@ -407,14 +421,9 @@
   color: lightgray;
 }
 
-#moneyBtn:hover {
-  background-color: #999;
-  color: white;
-  border: 1px solid #999;
-}
 #fileSubmit {
   width: 80px;
-  height: 30px;
+  height: 35px;
   border-radius: 5px;
   position: absolute;
   bottom: 20px;
@@ -422,15 +431,17 @@
   transform: translateX(+50%);
   cursor: pointer;
   background-color: white;
-   color: black;
-   border: 2px solid black;
+  color: black;
+  border: 2px solid rgba(25, 69, 105, 0.3);
   border-radius: 5px;
+  font-family: "Dongle", sans-serif;
+  font-size: 1.3rem;
 }
 
 #fileSubmit:hover {
-  background-color: #999;
+  background-color: rgba(25, 69, 105, 1);
   color: white;
-  border: 1px solid #999;
+  border: 1px solid rgba(25, 69, 105, 1);
 }
 
 .dongle-bold {
@@ -483,8 +494,8 @@
   background-color: transparent;
   position: absolute;
   border: none;
-  right:18px;
-  margin-top:20px;
+  right: 18px;
+  margin-top: 20px;
 }
 
 .deleteM::after {
@@ -526,3 +537,6 @@
   top: -160%;
 }
 
+#entireMoney {
+  padding-top: 5px;
+}

@@ -84,7 +84,6 @@ uri="http://java.sun.com/jsp/jstl/functions"%>
           <div class="add">
             <button id="addGroup" class="add2">만들기</button>
             <div id="successText"></div>
-            >
           </div>
         </section>
       </div>
@@ -197,6 +196,9 @@ uri="http://java.sun.com/jsp/jstl/functions"%>
       });
     </script>
 
+
+
+
     <script>
       $(".user").click(function () {
         $.ajax({
@@ -209,5 +211,6 @@ uri="http://java.sun.com/jsp/jstl/functions"%>
         });
       });
     </script>
+    
   </body>
 </html>

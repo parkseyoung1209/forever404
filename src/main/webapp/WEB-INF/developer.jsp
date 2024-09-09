@@ -115,11 +115,11 @@
             <img src="${pageContext.request.contextPath}/image/developer/family2.jpg"  alt="" />
             <h2>배영운</h2>
             <ul>
-              <li>한일1 : (사용한언어)</li>
-              <li>한일2 : (구축한 코드)</li>
-              <li>한일3 : (구축한 코드)</li>
-              <li>한일4 : (구축한 코드)</li>
-              <li>한일5 : (구축한 코드)</li>
+              <li>사용 언어 : HTML, CSS, JAVASCRIPT, JQUERY</li>
+              <li>한일2 : INDEX페이지 구축</li>
+              <li>한일3 : DETAIL페이지 HTML, CSS, JAVASCRIPT, JSTL 구축</li>
+              <li>한일4 : KAKAOMAP페이지 HTML, CSS 구축</li>
+              <li>한일5 : MAIN페이지 서브 CSS, JAVASCRIPT</li>
             </ul>
           </section>
         </section>

@@ -63,7 +63,7 @@
           <section class="section" id="section1">
             <h1>트러블 없는 트래블 스케줄러,(적당한 멘트)</h1>
             <br />
-            <h1>"SEMI PROJECT"<프로젝트제목></h1>
+            <h1>"SEMI PROJECT"　< Trip Scheduler ></h1>
             <h2><a id="scrollLink">자세히 보기</a></h2>
           </section>
           <section class="section" id="section2">
@@ -308,4 +308,6 @@
     
     AOS.init();
   </script>
+  
+
 </html>
