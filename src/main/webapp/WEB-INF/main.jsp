@@ -1,6 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" 
-	pageEncoding="UTF-8"%> 
-<%@ taglib prefix="c"uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+pageEncoding="UTF-8"%> <%@ taglib prefix="c"
+uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -284,15 +284,11 @@
       const bigSchedules = [];
       let schedule = {};
       <c:forEach items="${bsList}" var="item">
-        schedule.title = "${item.title}"; 
-        schedule.start = "${item.startDate}";
-        schedule.end = "${item.endDate}"; 
-        schedule.money = "${item.entireMoney}"; 
-        schedule.color = "${item.scheduleColor}"; 
-        schedule.bsCode = "${item.bsCode}"; 
-        bigSchedules.push(schedule); 
-        schedule = {};
-      </c:forEach>
+        schedule.title = "${item.title}"; schedule.start = "${item.startDate}";
+        schedule.end = "${item.endDate}"; schedule.money = "${item.entireMoney}
+        "; schedule.color = "${item.scheduleColor}"; schedule.bsCode = "$
+        {item.bsCode}"; bigSchedules.push(schedule); schedule = {};
+      </c:forEach>;
     </script>
     <script src="${pageContext.request.contextPath}/js/calander.js"></script>
   </body>
