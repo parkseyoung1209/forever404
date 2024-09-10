@@ -183,7 +183,6 @@ uri="http://java.sun.com/jsp/jstl/functions"%>
             });
             const button = document.querySelectorAll(".groupButton");
             button.forEach((e) => {
-              console.log(e);
               e.addEventListener("click", () => {
                 const code = e.getAttribute("data-code");
                 localStorage.setItem("groupName", code);

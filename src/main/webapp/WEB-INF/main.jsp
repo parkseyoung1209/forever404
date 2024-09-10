@@ -51,7 +51,7 @@ uri="http://java.sun.com/jsp/jstl/core"%>
                   let groupName = localStorage.getItem("groupName");
                   if (
                     confirm(
-                      "삭제하시면 복구할 수 없습니다 \n 정말로 삭제하시겠습니까??"
+                      "삭제하시면 복구할 수 없습니다 \n정말로 삭제하시겠습니까??"
                     )
                   ) {
                     $.ajax({
@@ -284,8 +284,6 @@ uri="http://java.sun.com/jsp/jstl/core"%>
         bigSchedules.push(schedule); 
         schedule = {};
       </c:forEach>;
-
-      console.log(bigSchedules);
     </script>
     <script src="${pageContext.request.contextPath}/js/calander.js"></script>
   </body>

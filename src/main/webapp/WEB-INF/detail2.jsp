@@ -291,13 +291,11 @@
       let ssCode;
       
       $(".payPlus").click(function () {
-    	 console.log("click");
         $("#modal3").css("display", "block");
         ssCode = $(this).siblings('input[type="hidden"]').val();
       });
       
       $("#moneyBtn").click(() => {
-    	  console.log(ssCode);
         $.ajax({
           type: "post",
           url: "/insertMoney",
@@ -319,7 +317,6 @@
       //금액 삭제
       $(".deleteM").click(function () {
     	  var mCode = $(this).siblings('input[type="hidden"]').val();
-    	  console.log(mCode);
     	  $.ajax({
     		  type: "get",
     		  url: "/deleteM",
@@ -335,7 +332,7 @@
       //스케줄 삭제
       $(".deleteSc").click(function () {
     	  ssCode = $(this).siblings('input[type="hidden"]').val();
-    	  console.log(ssCode);
+    	  if(confirm( "삭제하시면 복구할 수 없습니다 \n정말로 삭제하시겠습니까??")) {
     	  $.ajax({
     		  type: "get",
     		  url:"/deleteSc",
@@ -347,6 +344,9 @@
     			  location.reload();
     		  }
     	  });
+    	  }else {
+    		  return false;
+    	  }
       });
       
       
