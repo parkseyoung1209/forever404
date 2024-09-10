@@ -1,6 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-pageEncoding="UTF-8"%> <%@ taglib prefix="c"
-uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" 
+	pageEncoding="UTF-8"%> 
+<%@ taglib prefix="c"uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -19,8 +19,9 @@ uri="http://java.sun.com/jsp/jstl/core"%>
       href="${pageContext.request.contextPath}css/tetris.css"
     />
     <link
-	href="https://fonts.googleapis.com/css2?family=Dongle:wght@700&family=Nanum+Gothic:wght@400;700&display=swap"
-	rel="stylesheet" />
+      href="https://fonts.googleapis.com/css2?family=Dongle:wght@700&family=Nanum+Gothic:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="${pageContext.request.contextPath}js/index.global.min.js"></script>
     <script src="${pageContext.request.contextPath}js/tetris.js"></script>
@@ -72,19 +73,19 @@ uri="http://java.sun.com/jsp/jstl/core"%>
           </div>
         </c:if>
         <c:if test="${empty groupName}">
-        <div id="pId1">
-        <p>그룹을 선택하세요</p>
-        </div>
-        <div class="selectOrAdd">
-          <canvas></canvas>
+          <div id="pId1">
+            <p>그룹을 선택하세요</p>
+          </div>
+          <div class="selectOrAdd">
+            <canvas></canvas>
           </div>
         </c:if>
       </c:if>
 
       <c:if test="${check==false}">
-        <p id='pId1'>그룹을 생성하세요</p>
+        <p id="pId1">그룹을 생성하세요</p>
         <div class="selectOrAdd">
-        <canvas></canvas>
+          <canvas></canvas>
         </div>
       </c:if>
       <div id="teamModal" style="display: none">
@@ -110,8 +111,7 @@ uri="http://java.sun.com/jsp/jstl/core"%>
           <i class="fa-solid fa-xmark" id="X"></i>
           <!-- <div id="addMemo"><h1>안녕하세요</h1></div> -->
           <div class="modsection" id="addMemo">
-            <div id="memoSection">
-            </div>
+            <div id="memoSection"></div>
             <div id="memoSection1">
               여행 시작 :
               <p id="addMemop"></p>
@@ -126,14 +126,18 @@ uri="http://java.sun.com/jsp/jstl/core"%>
               원
             </div>
             <div id="memoSection4">
-              <p id="addMemop4">
-               아직 일정이 없어요, 일정을 넣어주세요!
-              </p>
+              <p id="addMemop4">아직 일정이 없어요, 일정을 넣어주세요!</p>
             </div>
           </div>
-          <button class="modsection" id="seven"><i class="fa-solid fa-images"></i></button>
-          <button class="modsection" id="six"><i class="fa-solid fa-paper-plane"></i></button>
-          <button class="modsection" id="eight"><i class="fa-solid fa-trash-can"></i></button>
+          <button class="modsection" id="seven">
+            <i class="fa-solid fa-images"></i>
+          </button>
+          <button class="modsection" id="six">
+            <i class="fa-solid fa-paper-plane"></i>
+          </button>
+          <button class="modsection" id="eight">
+            <i class="fa-solid fa-trash-can"></i>
+          </button>
         </div>
       </div>
 
@@ -183,7 +187,11 @@ uri="http://java.sun.com/jsp/jstl/core"%>
               id="entireMoney"
             />
           </div>
-          <div><button class="submit" id="final"><i id="finalBtn" class="fa-regular fa-calendar-plus"></i></button></div>
+          <div>
+            <button class="submit" id="final">
+              <i id="finalBtn" class="fa-regular fa-calendar-plus"></i>
+            </button>
+          </div>
         </div>
       </div>
       <div id="albumModal" style="display: none">
@@ -204,8 +212,10 @@ uri="http://java.sun.com/jsp/jstl/core"%>
           </div>
         </div>
       </div>
-      <script src="https://kit.fontawesome.com/ef885bd654.js"
-        crossorigin="anonymous"></script>
+      <script
+        src="https://kit.fontawesome.com/ef885bd654.js"
+        crossorigin="anonymous"
+      ></script>
       <script>
         $("#final").click(() => {
           $.ajax({
@@ -262,7 +272,6 @@ uri="http://java.sun.com/jsp/jstl/core"%>
           });
         });
       </script>
-      
     </c:if>
     <!-- 로그아웃 cif -->
     <c:if test="${empty user}">
@@ -283,7 +292,7 @@ uri="http://java.sun.com/jsp/jstl/core"%>
         schedule.bsCode = "${item.bsCode}"; 
         bigSchedules.push(schedule); 
         schedule = {};
-      </c:forEach>;
+      </c:forEach>
     </script>
     <script src="${pageContext.request.contextPath}/js/calander.js"></script>
   </body>

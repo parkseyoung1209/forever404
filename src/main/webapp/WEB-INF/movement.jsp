@@ -1,14 +1,20 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
- <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+pageEncoding="UTF-8"%> 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ForeverCalendar</title>
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/reset.css" />
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/movement.css" />
+    <link
+      rel="stylesheet"
+      href="${pageContext.request.contextPath}/css/reset.css"
+    />
+    <link
+      rel="stylesheet"
+      href="${pageContext.request.contextPath}/css/movement.css"
+    />
   </head>
   <body>
     <div class="main" id="main">

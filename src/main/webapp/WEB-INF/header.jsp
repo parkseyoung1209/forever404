@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-pageEncoding="UTF-8"%> <%@ taglib prefix="c"
-uri="http://java.sun.com/jsp/jstl/core"%> <%@ taglib prefix="fn"
-uri="http://java.sun.com/jsp/jstl/functions"%>
+pageEncoding="UTF-8"%> 
+<%@ taglib prefix="c"uri="http://java.sun.com/jsp/jstl/core"%> 
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
 <html>
   <head>
@@ -39,13 +39,6 @@ uri="http://java.sun.com/jsp/jstl/functions"%>
       </div>
 
       <div class="group" id="group1"></div>
-
-      <!-- 
-           <div class="group-container">
-      <div class="grouptest" id="grouptest"></div>
-      <i class="fa-regular fa-user"></i>
-       
-    </div>-->
 
       <div class="user" id="header2">
         <i class="fa-solid fa-user" id="myUser"></i>
@@ -195,9 +188,6 @@ uri="http://java.sun.com/jsp/jstl/functions"%>
       });
     </script>
 
-
-
-
     <script>
       $(".user").click(function () {
         $.ajax({
@@ -210,6 +200,5 @@ uri="http://java.sun.com/jsp/jstl/functions"%>
         });
       });
     </script>
-    
   </body>
 </html>
