@@ -87,7 +87,7 @@
         </div>
 
         <div class="schedule" data-aos="fade-up" data-aos-delay="300" data-aos-duration="800">
-          <img src="${pageContext.request.contextPath}/image/mainpage2.png" alt="" />
+          <img src="${pageContext.request.contextPath}/image/mainpage3.png" alt="" />
         </div>
       </section>
       <section id="section6">
