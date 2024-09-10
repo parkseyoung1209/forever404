@@ -82,8 +82,10 @@ uri="http://java.sun.com/jsp/jstl/core"%>
       </c:if>
 
       <c:if test="${check==false}">
-        <p class="selectOrAdd">그룹을 생성하세요</p>
+        <p id='pId1'>그룹을 생성하세요</p>
+        <div class="selectOrAdd">
         <canvas></canvas>
+        </div>
       </c:if>
       <div id="teamModal" style="display: none">
         <div id="modalContent7">

@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Document</title>
+<title>ForeverCalendar</title>
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/css/reset.css" />
 <link rel="stylesheet"
@@ -254,16 +254,7 @@
         }
       });
 
-      /*
-      $("#button3").click(function () {
-        $("#modal1").css("display", "block");
-      });
-		*/
-      /*
-		  $(".btn").click(function () {
-		        $("#modal1").css("display", "block");
-		      });
-*/
+
       $(".close").click(function () {
         $(".modal").css("display", "none");
         $("#image_container img").remove();
@@ -346,11 +337,6 @@
     	  }
       });
       
-      
-      // $("#schedule").click(function () {
-      // $(".section").show().css("display", "block");
-      // });
-   
       $(document).ready(function () {
         let groupName = localStorage.getItem("groupName");
         $.ajax({
