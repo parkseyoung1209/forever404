@@ -102,6 +102,7 @@ pageEncoding="UTF-8"%>
       </div>
     </div>
     <script>
+    //그룹 참여 데이터 전송
       $("#attend").click(() => {
         const title = $("#inputatt").val();
         $.ajax({
@@ -136,7 +137,7 @@ pageEncoding="UTF-8"%>
           },
         });
       });
-      /* $(document).ready(function () {*/
+      ///카카오 로그아웃
       Kakao.init("416439531d0e4d8f33eb240c9b791ffb");
       $("#logout2").click(function () {
         $.ajax({
@@ -153,6 +154,7 @@ pageEncoding="UTF-8"%>
       });
     </script>
     <script>
+    // 페이지 시작 시 특정 유저가 가진 그룹을 가져오는 로직
       $(document).ready(function () {
         $.ajax({
           type: "post",
@@ -174,6 +176,7 @@ pageEncoding="UTF-8"%>
                   "</span>"
               );
             });
+            // 그룹 별 페이지 구분을 위한 그룹네임 데이터를 로컬 스트로지에 담음
             const button = document.querySelectorAll(".groupButton");
             button.forEach((e) => {
               e.addEventListener("click", () => {
@@ -189,6 +192,7 @@ pageEncoding="UTF-8"%>
     </script>
 
     <script>
+    // 로그아웃 기능을 위한 아이디 구현
       $(".user").click(function () {
         $.ajax({
           type: "post",

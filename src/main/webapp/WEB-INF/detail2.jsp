@@ -25,6 +25,7 @@
 </head>
 <body>
 	<script>
+	// user 세션 삭제 시, index 페이지로 자동 이동
 		<c:if test="${empty user}">
 		alert("로그인 세션 만료!");
 		window: location.href = "/";
@@ -174,12 +175,8 @@
 	</div>
 
 	<script>
-	
       const kakaobtn = document.querySelector("#button3");
       kakaobtn.addEventListener("click", () => {
-    	  $.ajax({
-    		  
-    	  });
         window.location.href = "/kakao/map";
       });
    
@@ -375,11 +372,8 @@
             });
       }
     </script>
-
 	<script src="${pageContext.request.contextPath}/js/detail2.js">
-    
     </script>
-    
           <script
         src="https://kit.fontawesome.com/ef885bd654.js"
         crossorigin="anonymous"

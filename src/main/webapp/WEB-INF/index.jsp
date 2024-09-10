@@ -16,20 +16,15 @@
   <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script> 
-  <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
   </head>
   <body>
    
   	<c:if test="${not empty user}">
   	<script>
+  	//이미 로그인 되어있으면 main가게끔
   	window.location.href = "/movement";
   	</script>
   </c:if>
- 
-  <script>
-  Kakao.init('416439531d0e4d8f33eb240c9b791ffb');
-  Kakao.Auth.logout();
-  </script>
  
     <header id="header">
       <nav id="a1">
@@ -145,6 +140,7 @@
             <img src="${pageContext.request.contextPath}/image/main/kakao.png" alt="카카오 로그인 버튼" />
             </a>
             <script>
+            //카카오 로그인 및 데이터 전송
             function kakaoLogin() {
             	  window.Kakao.Auth.login({
             	    scope: 'account_email, name, birthyear, phone_number, birthday',
@@ -198,6 +194,7 @@
       
    
 	<script>
+	// 로그인
 		$("#login2").click(() => {
 			$.ajax({
 				type : "post",
