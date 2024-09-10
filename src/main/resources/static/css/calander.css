@@ -533,8 +533,8 @@ button i {
   margin-left: 24px;
 }
 #seven:hover {
-  color: black;
-  background-color: orange;
+  color: white;
+  background-color: #194569;
   transition-duration: 0.2s;
 }
 #eight {
@@ -632,7 +632,7 @@ button i {
 }
 .submit:hover {
   color: white;
-  background-color: #296fbb;
+  background-color: #194569;
   transition-duration: 0.2s;
 }
 .inpt-brder i {
@@ -713,8 +713,8 @@ button i {
 }
 #addMemoh1:hover {
   color: white;
-  background-color: #296fbb;
-  border-color: #296fbb;
+  background-color: #194569;
+  border-color: #194569;
   transition-duration: 0.4s;
 }
 #addMemop {
@@ -783,7 +783,7 @@ button i {
 }
 #albumModal {
   position: fixed;
-  z-index: 3;
+  z-index: 15;
   width: 100%;
   height: 100vh;
   left: 0;

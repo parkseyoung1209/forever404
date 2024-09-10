@@ -202,10 +202,8 @@ uri="http://java.sun.com/jsp/jstl/core"%>
           </div>
         </div>
       </div>
-      <script
-        src="https://kit.fontawesome.com/ef885bd654.js"
-        crossorigin="anonymous"
-      ></script>
+      <script src="https://kit.fontawesome.com/ef885bd654.js"
+        crossorigin="anonymous"></script>
       <script>
         $("#final").click(() => {
           $.ajax({
