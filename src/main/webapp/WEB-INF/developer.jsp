@@ -63,7 +63,7 @@
         <h1>back-end Members</h1>
         <section class="members">
           <section id="member1">
-            <img src="${pageContext.request.contextPath}/image/developer/아침새.jpg" alt="" />
+            <img src="${pageContext.request.contextPath}/image/developer/아침새2.png" alt="" />
             <h2>윤유진(팀장)</h2>
             <ul>
               <li>한일1 : (사용한언어)</li>
@@ -74,7 +74,7 @@
             </ul>
           </section>
           <section id="member2">
-            <img src="${pageContext.request.contextPath}/image/developer/쿼카1.jpg"  alt="" />
+            <img src="${pageContext.request.contextPath}/image/developer/쿼카1.jpg"  alt="" id="park"/>
             <h2>박세영</h2>
             <ul>
               <li>사용 언어 및 기술 : Java, Java Script, jQuery, MySql</li>
