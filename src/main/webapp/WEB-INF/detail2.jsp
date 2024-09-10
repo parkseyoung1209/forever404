@@ -309,7 +309,7 @@
         	  location.reload();
           },
           error: function() {
-        	  alert("다시입력");
+        	  alert("다시 입력해주세요");
           }
         });
       });

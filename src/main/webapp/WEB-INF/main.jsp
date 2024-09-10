@@ -218,13 +218,13 @@ uri="http://java.sun.com/jsp/jstl/core"%>
               entireMoney: $("#entireMoney").val(),
             },
             success: function (result) {
-              alert("추가됐음!");
+              alert("일정 추가 완료!");
               const id = $("#title2").val();
               $("#addMemo").html("<button>" + id + "</button>");
               location.reload();
             },
             error: function () {
-              alert("다시해라");
+              alert("추가에 실패했습니다.");
               location.reload();
             },
           });

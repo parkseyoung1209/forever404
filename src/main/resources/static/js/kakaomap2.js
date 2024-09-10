@@ -69,7 +69,7 @@ function currentLocation() {
       });
     });
   } else {
-    alert("현위치를 확인할 수 없음");
+    alert("현위치를 확인할 수 없습니다");
   }
 }
 

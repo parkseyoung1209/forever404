@@ -124,7 +124,7 @@ uri="http://java.sun.com/jsp/jstl/functions"%>
             location.reload();
           },
           error: function () {
-            alert("실패");
+            alert("그룹 참여 실패");
           },
         });
       });
