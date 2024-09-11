@@ -13,7 +13,8 @@ document.addEventListener("DOMContentLoaded", function () {
     editable: true,
     events: bigSchedules,
     eventTextColor: "black",
-    customButtons: {
+    /* 중복!!
+	customButtons: {
       groupUsers: {
         text: "그룹인원",
         click: function () {
@@ -40,17 +41,10 @@ document.addEventListener("DOMContentLoaded", function () {
           } else {
             return false;
           }
-          /*$.ajax({
-            url: "/deleteGroup",
-            type: "post",
-            data: "groupName=" + groupName,
-            success: function () {
-              window.location.href = "/main";
-            },
-          });*/
         },
       },
     },
+	*/
     events: bigSchedules.map((event) => {
       let endDate = new Date(event.end);
       endDate.setDate(endDate.getDate() + 1);
