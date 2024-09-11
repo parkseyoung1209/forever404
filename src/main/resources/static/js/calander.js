@@ -13,38 +13,7 @@ document.addEventListener("DOMContentLoaded", function () {
     editable: true,
     events: bigSchedules,
     eventTextColor: "black",
-    /* 중복!!
-	customButtons: {
-      groupUsers: {
-        text: "그룹인원",
-        click: function () {
-          $("#teamModal").css("display", "none");
-        },
-      },
-      groupcurrent: {
-        text: "그룹 삭제",
-        click: function () {
-          let groupName = localStorage.getItem("groupName");
-          if (
-            confirm(
-              "삭제하시면 복구할 수 없습니다 \n 정말로 삭제하시겠습니까??"
-            )
-          ) {
-            $.ajax({
-              url: "/deleteGroup",
-              type: "post",
-              data: "groupName=" + groupName,
-              success: function () {
-                window.location.href = "/main";
-              },
-            });
-          } else {
-            return false;
-          }
-        },
-      },
-    },
-	*/
+ 
     events: bigSchedules.map((event) => {
       let endDate = new Date(event.end);
       endDate.setDate(endDate.getDate() + 1);
@@ -52,10 +21,7 @@ document.addEventListener("DOMContentLoaded", function () {
         ...event,
         end: endDate.toISOString().split("T")[0],
       };
-    }) /*
-	 eventContent: {
-		html: `<div><i class="fa-solid fa-pencil"></i></div>` -> 나중에 생일할때 이용하면 좋을것같음
-	 },*/,
+    }),
     eventClick: function (info) {
     },
     eventClick: function showModal() {

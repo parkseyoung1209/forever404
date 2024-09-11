@@ -22,8 +22,9 @@ pageEncoding="UTF-8"%>
       <h1>Forever 404</h1>
       <p>어서오세요 환영합니다!</p>
     </div>
-
+    
     <script>
+    // 창 애니메이션
       document.addEventListener("DOMContentLoaded", () => {
         setTimeout(() => {
           document.getElementById("main").classList.add("fade-out");

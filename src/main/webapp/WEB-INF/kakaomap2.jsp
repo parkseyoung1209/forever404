@@ -218,7 +218,7 @@
   		}
       }
       
-      
+      // gpt 답장 시 적용 시키는 텍스트 딜레이
       $("#gpt").click(() =>{
     	  const userMessage = gptTest.value;
     	  conversationHistory.push({ "role": "user", "content": userMessage});
@@ -248,7 +248,7 @@
 	                 console.error('Error:', error);
 	              });
 	      });
-            
+      // 특정 그룹의 메인 페이지로 가기 위한 함수      
       $("#back").click(() => {
     	  const groupName = localStorage.getItem("groupName");
     	  const bsCode = localStorage.getItem("bsCode");

@@ -156,6 +156,7 @@ uri="http://java.sun.com/jsp/jstl/functions"%>
     <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
 
     <script>
+    // 로그아웃 후, 남은 세션 및 로컬 스트로지 정리
       $("#logout").click(function () {
         $.ajax({
           type: "post",

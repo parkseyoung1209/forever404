@@ -130,7 +130,7 @@ pageEncoding="UTF-8"%>
               <li>한일2 : register 페이지 HTML, CSS 구축</li>
               <li>한일3 : login 페이지 HTML, CSS 구축</li>
               <li>
-                한일4 : main 페이지 fullcalendar, HTML, CSS, JS, JQUERY 구축
+                한일4 : main 페이지 FullCalendar, HTML, CSS, JS, JQUERY 구축
               </li>
               <li>한일5 : main 페이지 일정, 상세 일정 모달 구축</li>
             </ul>

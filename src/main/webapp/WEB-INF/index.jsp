@@ -215,7 +215,9 @@
 		});
 	</script>
   </body>
-  <script>	
+  <script>
+  
+  // 첫 화면 캐러셀 기능
     const header = document.getElementById("header");
     const navLinks = document.querySelectorAll(".nav-link");
 
@@ -290,7 +292,7 @@
 
       handleScroll();
     });
-
+	// 첫화면 모달
     const modal = document.querySelector(".modal");
     const btnOpenModal = document.querySelector("#login");
 
