@@ -139,6 +139,11 @@
           	 <a href="javascript:kakaoLogin();">
             <img src="${pageContext.request.contextPath}/image/main/kakao.png" alt="카카오 로그인 버튼" />
             </a>
+            <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+          <script>
+          // 카카오 script 키
+            Kakao.init("416439531d0e4d8f33eb240c9b791ffb");
+          </script>
             <script>
             //카카오 로그인 및 데이터 전송
             function kakaoLogin() {
