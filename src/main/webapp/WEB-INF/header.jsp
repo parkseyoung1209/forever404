@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-pageEncoding="UTF-8"%> 
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%> 
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+pageEncoding="UTF-8"%> <%@ taglib prefix="c"
+uri="http://java.sun.com/jsp/jstl/core"%> <%@ taglib prefix="fn"
+uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
 <html>
   <head>
@@ -102,7 +102,36 @@ pageEncoding="UTF-8"%>
       </div>
     </div>
     <script>
-    //그룹 참여 데이터 전송
+      // 그룹 생성
+      $(".add2").click(() => {
+        const title = $("#textbox").val().trim();
+        const miniTitle = title.substring(0, 2);
+        $.ajax({
+          type: "post",
+          url: "/addGroup",
+          data: { groupName: title },
+          success: function (response) {
+            if (response) {
+              $(".group").append(
+                "<button type='button' data-code='" +
+                  title +
+                  "' class='groupButton' id='" +
+                  miniTitle +
+                  "'>" +
+                  miniTitle +
+                  "</button><span>" +
+                  title +
+                  "</span>"
+              );
+              window.location.reload();
+            } else {
+              $("#successText").text("사용할 수 없는 그룹명입니다.");
+            }
+          },
+        });
+      });
+
+      // 그룹 참가
       $("#attend").click(() => {
         const title = $("#inputatt").val();
         $.ajax({
@@ -123,7 +152,9 @@ pageEncoding="UTF-8"%>
         });
       });
     </script>
+
     <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+
     <script>
       $("#logout").click(function () {
         $.ajax({
@@ -154,7 +185,7 @@ pageEncoding="UTF-8"%>
       });
     </script>
     <script>
-    // 페이지 시작 시 특정 유저가 가진 그룹을 가져오는 로직
+      // 페이지 시작 시 특정 유저가 가진 그룹을 가져오는 로직
       $(document).ready(function () {
         $.ajax({
           type: "post",
@@ -192,7 +223,7 @@ pageEncoding="UTF-8"%>
     </script>
 
     <script>
-    // 로그아웃 기능을 위한 아이디 구현
+      // 로그아웃 기능을 위한 아이디 구현
       $(".user").click(function () {
         $.ajax({
           type: "post",
