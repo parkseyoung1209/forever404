@@ -114,8 +114,9 @@
 .form div.user_birth i {
   margin-right: 19.5px;
 }
-
-
+#birth{
+	color:black;
+}
 .submit_btn {
   border: none;
   width: 600px;
