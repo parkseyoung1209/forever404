@@ -1,12 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-pageEncoding="UTF-8"%> 
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+pageEncoding="UTF-8"%> <%@ taglib prefix="c"
+uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ForeverCalendar</title>
+    <title>ForeverCalendar-Intro</title>
     <link
       rel="stylesheet"
       href="${pageContext.request.contextPath}/css/reset.css"
@@ -24,7 +24,7 @@ pageEncoding="UTF-8"%>
   <body>
     <c:if test="${not empty user}">
       <script>
-      // user 세션 존재 시 자동으로 main 이동
+        // user 세션 존재 시 자동으로 main 이동
         window.location.href = "/movement";
       </script>
     </c:if>
@@ -79,7 +79,9 @@ pageEncoding="UTF-8"%>
               <li>사용 언어 및 기술 : Java, Java Script, jQuery, MySql</li>
               <li>한일1 : 이미지 크롤링</li>
               <li>한일2 : 그룹 관련 데이터베이스 추가, 삭제, 읽기 기능 구현</li>
-              <li>한일3 : 스케줄 관련 데이터베이스 추가, 삭제, 읽기 기능 구현</li>
+              <li>
+                한일3 : 스케줄 관련 데이터베이스 추가, 삭제, 읽기 기능 구현
+              </li>
               <li>한일4 : 예외처리 구현</li>
             </ul>
           </section>
@@ -94,7 +96,9 @@ pageEncoding="UTF-8"%>
               <li>사용 언어 및 기술 : Java, Java Script, jQuery, MySql</li>
               <li>한일1 : 회원가입 및 로그인 기능</li>
               <li>한일2 : 그룹 관련 데이터베이스 추가, 삭제, 읽기 기능 구현</li>
-              <li>한일3 : 스케줄 관련 데이터베이스 추가, 삭제, 읽기 기능 구현</li>
+              <li>
+                한일3 : 스케줄 관련 데이터베이스 추가, 삭제, 읽기 기능 구현
+              </li>
               <li>한일4 : 카카오 로그인 및 openAI API 활용</li>
             </ul>
           </section>
@@ -196,11 +200,11 @@ pageEncoding="UTF-8"%>
           </a>
           <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
           <script>
-          // 카카오 script 키
+            // 카카오 script 키
             Kakao.init("416439531d0e4d8f33eb240c9b791ffb");
           </script>
           <script>
-         	//카카오 로그인 키
+            //카카오 로그인 키
             function kakaoLogin() {
               window.Kakao.Auth.login({
                 scope: "account_email, name, birthyear, phone_number",
@@ -253,7 +257,7 @@ pageEncoding="UTF-8"%>
       </div>
     </div>
     <script>
-    // 개발진 소개 시 발생하는 애니메이션 스크립트
+      // 개발진 소개 시 발생하는 애니메이션 스크립트
       document.addEventListener("DOMContentLoaded", () => {
         const observerOptions = {
           root: null,
@@ -296,7 +300,7 @@ pageEncoding="UTF-8"%>
       });
     </script>
     <script>
-    // 로그인 jQuery + ajax 방식 데이터
+      // 로그인 jQuery + ajax 방식 데이터
       $("#login2").click(() => {
         $.ajax({
           type: "post",

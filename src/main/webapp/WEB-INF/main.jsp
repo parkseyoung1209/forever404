@@ -146,7 +146,7 @@ uri="http://java.sun.com/jsp/jstl/core"%>
       <div id="detModal" style="display: none">
         <div id="modalContent4">
           <header class="mdl-header2">
-            <p class="head-wrd2">세부 일정 추가</p>
+            <p class="head-wrd2">전체 일정 추가</p>
           </header>
           <i class="fa-solid fa-xmark" id="X2"></i>
           <div class="inpt-brder" id="title">
@@ -233,21 +233,40 @@ uri="http://java.sun.com/jsp/jstl/core"%>
               entireMoney: $("#entireMoney").val(),
             },
             success: function (result) {
-            	if(result==true) {
-            		alert("일정 추가 완료!");
-                    const id = $("#title2").val();
-                    $("#addMemo").html("<button>" + id + "</button>");
-                    location.reload();
-            	} else {
-            		alert("중복된 일정이 존재합니다.");
-            		location.reload();
-            	}
+              if (result == true) {
+                alert("일정 추가 완료!");
+                const id = $("#title2").val();
+                $("#addMemo").html("<button>" + id + "</button>");
+                location.reload();
+              } else {
+                alert("중복된 일정이 존재합니다.");
+                location.reload();
+              }
             },
             error: function () {
               alert("추가에 실패했습니다.");
               location.reload();
             },
           });
+        });
+
+        // 그룹 삭제
+        $("#teamDelBtn").click(() => {
+          let groupName = localStorage.getItem("groupName");
+          if (
+            confirm("삭제하시면 복구할 수 없습니다 \n정말로 삭제하시겠습니까??")
+          ) {
+            $.ajax({
+              url: "/deleteGroup",
+              type: "post",
+              data: "groupName=" + groupName,
+              success: function () {
+                window.location.href = "/main";
+              },
+            });
+          } else {
+            return false;
+          }
         });
       </script>
     </c:if>
@@ -263,15 +282,11 @@ uri="http://java.sun.com/jsp/jstl/core"%>
       const bigSchedules = [];
       let schedule = {};
       <c:forEach items="${bsList}" var="item">
-        schedule.title = "${item.title}"; 
-        schedule.start = "${item.startDate}";
-        schedule.end = "${item.endDate}"; 
-        schedule.money = "${item.entireMoney}"; 
-        schedule.color = "${item.scheduleColor}"; 
-        schedule.bsCode = "${item.bsCode}"; 
-        bigSchedules.push(schedule); 
-        schedule = {};
-      </c:forEach>
+        schedule.title = "${item.title}"; schedule.start = "${item.startDate}";
+        schedule.end = "${item.endDate}"; schedule.money = "${item.entireMoney}
+        "; schedule.color = "${item.scheduleColor}"; schedule.bsCode = "$
+        {item.bsCode}"; bigSchedules.push(schedule); schedule = {};
+      </c:forEach>;
     </script>
 
     <script src="${pageContext.request.contextPath}/js/calander.js"></script>

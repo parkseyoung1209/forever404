@@ -101,6 +101,9 @@ uri="http://java.sun.com/jsp/jstl/functions"%>
         </section>
       </div>
     </div>
+
+    <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+
     <script>
       // 그룹 생성
       $(".add2").click(() => {
@@ -156,7 +159,7 @@ uri="http://java.sun.com/jsp/jstl/functions"%>
     <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
 
     <script>
-    // 로그아웃 후, 남은 세션 및 로컬 스트로지 정리
+      // 로그아웃 후, 남은 세션 및 로컬 스트로지 정리
       $("#logout").click(function () {
         $.ajax({
           type: "post",
@@ -171,6 +174,7 @@ uri="http://java.sun.com/jsp/jstl/functions"%>
       });
       ///카카오 로그아웃
       Kakao.init("416439531d0e4d8f33eb240c9b791ffb");
+
       $("#logout2").click(function () {
         $.ajax({
           type: "post",
@@ -187,6 +191,7 @@ uri="http://java.sun.com/jsp/jstl/functions"%>
     </script>
     <script>
       // 페이지 시작 시 특정 유저가 가진 그룹을 가져오는 로직
+
       $(document).ready(function () {
         $.ajax({
           type: "post",
@@ -209,6 +214,7 @@ uri="http://java.sun.com/jsp/jstl/functions"%>
               );
             });
             // 그룹 별 페이지 구분을 위한 그룹네임 데이터를 로컬 스트로지에 담음
+
             const button = document.querySelectorAll(".groupButton");
             button.forEach((e) => {
               e.addEventListener("click", () => {

@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Trip Scheduler - Map</title>
+<title>ForeverCalendar - Map</title>
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 <link rel="stylesheet"
       href="${pageContext.request.contextPath}/css/reset.css" />
