@@ -38,32 +38,9 @@
                 <h1>${userListSize}</h1>
               </button>
               <button id="teamDelBtn">그룹 삭제</button>
-
-  <script>
-  	// 그룹 삭제
-    $("#teamDelBtn").click(() => {
-      let groupName = localStorage.getItem("groupName");
-      if (
-        confirm(
-          "삭제하시면 복구할 수 없습니다 \n정말로 삭제하시겠습니까??"
-        )
-      ) {
-        $.ajax({
-          url: "/deleteGroup",
-          type: "post",
-          data: "groupName=" + groupName,
-          success: function () {
-            window.location.href = "/main";
-          },
-        });
-      } else {
-        return false;
-      }
-    });
-  </script>
            </div>
            <div id="calendar"></div>
-         </div>
+         </div>   
        </c:if>
        <c:if test="${empty groupName}">
        	<div id="pId1">
@@ -132,7 +109,7 @@
       <div id="detModal" style="display: none">
         <div id="modalContent4">
           <header class="mdl-header2">
-            <p class="head-wrd2">세부 일정 추가</p>
+            <p class="head-wrd2">전체 일정 추가</p>
           </header>
           <i class="fa-solid fa-xmark" id="X2"></i>
           <div class="inpt-brder" id="title">
@@ -202,30 +179,52 @@
         
       <script>
       
-       // 전체적인 일정 추가
-        $("#final").click(() => {
-          $.ajax({
-            type: "post",
-            url: "/scheduleAdd",
-            data: {
-              title: $("#title2").val(),
-              startDate: $("#startDate").val(),
-              endDate: $("#endDate").val(),
-              entireMoney: $("#entireMoney").val(),
-            },
-            success: function (result) {
-              alert("일정 추가 완료!");
-              const id = $("#title2").val();
-              $("#addMemo").html("<button>" + id + "</button>");
-              location.reload();
-            },
-            error: function () {
-              alert("추가에 실패했습니다.");
-              location.reload();
-            },
-          });
+      // 전체적인 일정 추가
+       $("#final").click(() => {
+         $.ajax({
+           type: "post",
+           url: "/scheduleAdd",
+           data: {
+             title: $("#title2").val(),
+             startDate: $("#startDate").val(),
+             endDate: $("#endDate").val(),
+             entireMoney: $("#entireMoney").val(),
+           },
+           success: function (result) {
+             alert("일정 추가 완료!");
+             const id = $("#title2").val();
+             $("#addMemo").html("<button>" + id + "</button>");
+             location.reload();
+           },
+           error: function () {
+             alert("추가에 실패했습니다.");
+             location.reload();
+           },
+         });
+       });
+    
+  	// 그룹 삭제
+    $("#teamDelBtn").click(() => {
+      let groupName = localStorage.getItem("groupName");
+      if (
+        confirm(
+          "삭제하시면 복구할 수 없습니다 \n정말로 삭제하시겠습니까??"
+        )
+      ) {
+        $.ajax({
+          url: "/deleteGroup",
+          type: "post",
+          data: "groupName=" + groupName,
+          success: function () {
+            window.location.href = "/main";
+          },
         });
-      </script>
+      } else {
+        return false;
+      }
+    });
+  	
+  </script>
 
     </c:if>
     <!-- 로그아웃 -->

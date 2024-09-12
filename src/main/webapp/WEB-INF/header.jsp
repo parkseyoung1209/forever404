@@ -37,15 +37,8 @@ uri="http://java.sun.com/jsp/jstl/functions"%>
           <p>그룹 참가</p>
         </button>
       </div>
-
+      
       <div class="group" id="group1"></div>
-
-      <!-- 
-           <div class="group-container">
-      <div class="grouptest" id="grouptest"></div>
-      <i class="fa-regular fa-user"></i>
-       
-    </div>-->
 
       <div class="user" id="header2">
         <i class="fa-solid fa-user" id="myUser"></i>
@@ -108,6 +101,9 @@ uri="http://java.sun.com/jsp/jstl/functions"%>
         </section>
       </div>
     </div>
+    
+ <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+    
     <script>
     
   	// 그룹 생성
@@ -159,12 +155,8 @@ uri="http://java.sun.com/jsp/jstl/functions"%>
         },
       });
     });
-    </script>
     
-    <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
-    
-    <script>
-    
+    // 로그아웃
       $("#logout").click(function () {
         $.ajax({
           type: "post",
@@ -177,8 +169,9 @@ uri="http://java.sun.com/jsp/jstl/functions"%>
           },
         });
       });
-      /* $(document).ready(function () {*/
+     
       Kakao.init("416439531d0e4d8f33eb240c9b791ffb");
+     
       $("#logout2").click(function () {
         $.ajax({
           type: "post",
@@ -192,8 +185,8 @@ uri="http://java.sun.com/jsp/jstl/functions"%>
           },
         });
       });
-    </script>
-    <script>
+  
+      // 그룹 list
       $(document).ready(function () {
         $.ajax({
           type: "post",
@@ -215,6 +208,8 @@ uri="http://java.sun.com/jsp/jstl/functions"%>
                   "</span>"
               );
             });
+            
+            // 그룹별 스케줄
             const button = document.querySelectorAll(".groupButton");
             button.forEach((e) => {
               e.addEventListener("click", () => {
@@ -227,12 +222,8 @@ uri="http://java.sun.com/jsp/jstl/functions"%>
           },
         });
       });
-    </script>
-
-
-
-
-    <script>
+   
+      // 내 아이디&이름 모달창
       $(".user").click(function () {
         $.ajax({
           type: "post",
