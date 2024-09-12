@@ -229,6 +229,7 @@
               cache: false,
               url: "/testupload",
               success: function () {
+            	  alert("사진 추가 완료!");
             	  $('#modal2').css("display", "none");
             	  $("#image_container img").remove(); // img 태그만 삭제하려면 
               },

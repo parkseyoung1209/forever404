@@ -334,6 +334,7 @@ $("#eight").click(() => {
         bsCode: bsCode,
       },
       success: function () {
+		alert("삭제 완료했습니다!");
         location.reload();
       },
     });
@@ -355,7 +356,7 @@ $("#delete").click(() => {
         photoCode: imgCode,
       },
       success: function () {
-        alert("성공적으로 삭제되었습니다");
+        alert("삭제 완료했습니다!");
         $('img[alt="' + imgCode + '"]').remove();
       },
       error: function () {

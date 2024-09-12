@@ -62,6 +62,7 @@ uri="http://java.sun.com/jsp/jstl/core"%>
                       type: "post",
                       data: "groupName=" + groupName,
                       success: function () {
+                    	alert("삭제 완료했습니다!");
                         window.location.href = "/main";
                       },
                     });
@@ -249,25 +250,6 @@ uri="http://java.sun.com/jsp/jstl/core"%>
             },
           });
         });
-
-        // 그룹 삭제
-        $("#teamDelBtn").click(() => {
-          let groupName = localStorage.getItem("groupName");
-          if (
-            confirm("삭제하시면 복구할 수 없습니다 \n정말로 삭제하시겠습니까??")
-          ) {
-            $.ajax({
-              url: "/deleteGroup",
-              type: "post",
-              data: "groupName=" + groupName,
-              success: function () {
-                window.location.href = "/main";
-              },
-            });
-          } else {
-            return false;
-          }
-        });
       </script>
     </c:if>
     <!-- 로그아웃 -->
@@ -282,11 +264,15 @@ uri="http://java.sun.com/jsp/jstl/core"%>
       const bigSchedules = [];
       let schedule = {};
       <c:forEach items="${bsList}" var="item">
-        schedule.title = "${item.title}"; schedule.start = "${item.startDate}";
-        schedule.end = "${item.endDate}"; schedule.money = "${item.entireMoney}
-        "; schedule.color = "${item.scheduleColor}"; schedule.bsCode = "$
-        {item.bsCode}"; bigSchedules.push(schedule); schedule = {};
-      </c:forEach>;
+        schedule.title = "${item.title}"; 
+        schedule.start = "${item.startDate}";
+        schedule.end = "${item.endDate}"; 
+        schedule.money = "${item.entireMoney}"; 
+        schedule.color = "${item.scheduleColor}"; 
+        schedule.bsCode = "${item.bsCode}"; 
+        bigSchedules.push(schedule); 
+        schedule = {};
+      </c:forEach>
     </script>
 
     <script src="${pageContext.request.contextPath}/js/calander.js"></script>
