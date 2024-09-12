@@ -233,10 +233,15 @@ uri="http://java.sun.com/jsp/jstl/core"%>
               entireMoney: $("#entireMoney").val(),
             },
             success: function (result) {
-              alert("일정 추가 완료!");
-              const id = $("#title2").val();
-              $("#addMemo").html("<button>" + id + "</button>");
-              location.reload();
+            	if(result==true) {
+            		alert("일정 추가 완료!");
+                    const id = $("#title2").val();
+                    $("#addMemo").html("<button>" + id + "</button>");
+                    location.reload();
+            	} else {
+            		alert("중복된 일정이 존재합니다.");
+            		location.reload();
+            	}
             },
             error: function () {
               alert("추가에 실패했습니다.");

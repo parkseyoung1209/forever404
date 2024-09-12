@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", function () {
     editable: true,
     events: bigSchedules,
     eventTextColor: "black",
- 
+
     events: bigSchedules.map((event) => {
       let endDate = new Date(event.end);
       endDate.setDate(endDate.getDate() + 1);
@@ -22,8 +22,7 @@ document.addEventListener("DOMContentLoaded", function () {
         end: endDate.toISOString().split("T")[0],
       };
     }),
-    eventClick: function (info) {
-    },
+    eventClick: function (info) {},
     eventClick: function showModal() {
       $("#bigModal").css("display", "block");
     },
@@ -48,11 +47,11 @@ document.addEventListener("DOMContentLoaded", function () {
         btn3.css("display", "block");
         btn.css("display", "none");
         $("#addMemoh1").show();
-		$("#addTitle").hide();
+        $("#addTitle").hide();
         $("#memoSection1").show();
         $("#memoSection2").show();
         $("#memoSection3").show();
-		$("#memoSection4").hide();
+        $("#memoSection4").hide();
       }
     },
 
@@ -105,12 +104,12 @@ document.addEventListener("DOMContentLoaded", function () {
           btn2.css("display", "block");
           btn3.css("display", "block");
           btn.css("display", "none");
-		  $("#addTitle").hide();
+          $("#addTitle").hide();
           $("#addMemoh1").show();
           $("#memoSection1").show();
           $("#memoSection2").show();
           $("#memoSection3").show();
-		  $("#memoSection4").hide();
+          $("#memoSection4").hide();
         }
 
         // 클릭한 날짜에 이벤트가 있으므로 추가 로직은 실행하지 않음
@@ -132,8 +131,7 @@ document.addEventListener("DOMContentLoaded", function () {
           groupName: groupName,
           localDate: date,
         },
-        success: function (response) {
-        },
+        success: function (response) {},
       });
 
       // 예: 7월 (8월의 경우 7로 설정)
@@ -159,15 +157,15 @@ document.addEventListener("DOMContentLoaded", function () {
   calendar.render();
   function showModal() {
     $("#bigModal").css("display", "block");
-	$("#addTitle").show();
+    $("#addTitle").show();
     $("#addMemoh1").hide();
     $("#memoSection1").hide();
     $("#memoSection2").hide();
     $("#memoSection3").hide();
-	$("#memoSection4").show();
+    $("#memoSection4").show();
     $("#six").css("display", "block");
     $("#seven").css("display", "none");
-	$("#eight").css("display", "none");
+    $("#eight").css("display", "none");
   }
   /*
   document.getElementById("X").addEventListener("click", function () {
@@ -278,7 +276,7 @@ $("#addgroup3").mouseout((e) => {
 });
 $("#seven").click(function () {
   let bsCode = sessionStorage.getItem("bsCode");
-  // 이미지 리스트로 뿌림 result에서 추출 잘하세요
+  // 이미지 리스트로 뿌림 result에서 추출
   $.ajax({
     type: "post",
     url: "/selectMyImg",
@@ -327,21 +325,20 @@ $("#seven").click(function () {
 });
 
 $("#eight").click(() => {
-	
   let bsCode = sessionStorage.getItem("bsCode");
-  if(confirm( "삭제하시면 복구할 수 없습니다 \n정말로 삭제하시겠습니까??")) {
-  $.ajax({
-    type: "get",
-    url: "/deleteBs",
-    data: {
-      bsCode: bsCode,
-    },
-    success: function () {
-      location.reload();
-    },
-  });
-  }else {
-	return false;
+  if (confirm("삭제하시면 복구할 수 없습니다 \n정말로 삭제하시겠습니까??")) {
+    $.ajax({
+      type: "get",
+      url: "/deleteBs",
+      data: {
+        bsCode: bsCode,
+      },
+      success: function () {
+        location.reload();
+      },
+    });
+  } else {
+    return false;
   }
 });
 
@@ -350,24 +347,24 @@ $("#delete").click(() => {
   var imgSrc = bigImg.getAttribute("src");
   var imgCode = bigImg.getAttribute("alt");
   if (confirm("삭제하시면 복구할 수 없습니다 \n정말로 삭제하시겠습니까??")) {
-  $.ajax({
-    type: "post",
-    url: "/deletePhoto",
-    data: {
-      photoUrl: imgSrc,
-      photoCode: imgCode,
-    },
-    success: function () {
-      alert("성공적으로 삭제되었습니다");
-      $('img[alt="' + imgCode + '"]').remove();
-    },
-    error: function () {
-      alert("삭제되지 않았습니다");
-      location.reload();
-    },
-  });
-  }else {
-	return false;
+    $.ajax({
+      type: "post",
+      url: "/deletePhoto",
+      data: {
+        photoUrl: imgSrc,
+        photoCode: imgCode,
+      },
+      success: function () {
+        alert("성공적으로 삭제되었습니다");
+        $('img[alt="' + imgCode + '"]').remove();
+      },
+      error: function () {
+        alert("삭제되지 않았습니다");
+        location.reload();
+      },
+    });
+  } else {
+    return false;
   }
 });
 
@@ -413,6 +410,3 @@ $("#close").click(function () {
 });
 const Calendar = FullCalendar.Calendar;
 const Users = $("#users");
-
-
-
