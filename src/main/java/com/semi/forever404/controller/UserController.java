@@ -101,6 +101,4 @@ public class UserController {
 		user = (User) session.getAttribute("user");
 		return user;
 	}
-	
-	
 }

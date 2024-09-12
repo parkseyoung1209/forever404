@@ -357,25 +357,6 @@
           },
         });
       });
-      
-      //
-      function dateLoad(date){
-    	  var cur_date = date;
-    	  $.ajax({
-              type: "post",
-              url: "/mola",
-              contentType: "application/json; charset=utf-8",
-              data: JSON.stringify({ cur_date: cur_date }),
-              dataType: "json",
-              success: function (response) {
-                let miniTitle = response.groupName.substring(0, 2);
-                $(".group").text(miniTitle);
-              },
-              error: function (xhr, status, error) {
-                console.error("Error:", error);
-              },
-            });
-      }
     </script>
 	<script src="${pageContext.request.contextPath}/js/detail2.js">
     </script>
