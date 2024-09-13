@@ -62,7 +62,7 @@ public class UserController {
 	// 이미 데이터베이스에 있는 카카오 아이디라면 회원가입 생략하고 로그인, 아니라면 데이터베이스에 넣어 자동 등록 후 로그인
 	@ResponseBody
 	@PostMapping("/kakaoLogin")
-	public String kakaoLogin(@RequestParam("email") String email,
+	public void kakaoLogin(@RequestParam("email") String email,
 						   @RequestParam("name") String name,
 						   @RequestParam("phone") String phone,
 						   @RequestParam("birthday") String birthday,
@@ -84,14 +84,11 @@ public class UserController {
 		User existingUser = service.kakaoLogin(email);
 		if(existingUser !=null) {
 			 session.setAttribute("user", existingUser);
-			 return "main";
 		}else {
 			 user = new User(email, token, newphone, name, email, date);
 			 service.register(user);
 			 session.setAttribute("user", user);
-			 return "main";
-		}
-		 
+		} 
 	}
 	
 	@ResponseBody
