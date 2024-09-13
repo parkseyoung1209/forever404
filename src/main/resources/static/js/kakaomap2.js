@@ -317,9 +317,7 @@ function searchLocalPlaces() {
   $("#ssTest").click(() => {
     const groupName = localStorage.getItem("groupName");
     let curDate = sessionStorage.getItem("curDate");
-    const isReservation = document.querySelector(
-      'input[name="radioButton"]:checked'
-    ).value;
+    const isReservation = document.querySelector('input[name="radioButton"]:checked').value;
     loadingStart();
     $.ajax({
       type: "post",

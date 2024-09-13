@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Document</title>
+<title>ForeverCalendar-Day</title>
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/css/reset.css" />
 <link rel="stylesheet"
@@ -25,6 +25,7 @@
 </head>
 <body>
 	<script>
+	// user 세션 삭제 시, index 페이지로 자동 이동
 		<c:if test="${empty user}">
 		alert("로그인 세션 만료!");
 		window: location.href = "/";
@@ -228,6 +229,7 @@
               cache: false,
               url: "/testupload",
               success: function () {
+            	  alert("사진 추가 완료!");
             	  $('#modal2').css("display", "none");
             	  $("#image_container img").remove(); // img 태그만 삭제하려면 
               },
@@ -338,7 +340,6 @@
     	  }
       });
       
-      //
       $(document).ready(function () {
         let groupName = localStorage.getItem("groupName");
         $.ajax({
@@ -356,31 +357,9 @@
           },
         });
       });
-      
-      //
-      function dateLoad(date){
-    	  var cur_date = date;
-    	  $.ajax({
-              type: "post",
-              url: "/mola",
-              contentType: "application/json; charset=utf-8",
-              data: JSON.stringify({ cur_date: cur_date }),
-              dataType: "json",
-              success: function (response) {
-                let miniTitle = response.groupName.substring(0, 2);
-                $(".group").text(miniTitle);
-              },
-              error: function (xhr, status, error) {
-                console.error("Error:", error);
-              },
-            });
-      }
     </script>
-
 	<script src="${pageContext.request.contextPath}/js/detail2.js">
-    
     </script>
-    
           <script
         src="https://kit.fontawesome.com/ef885bd654.js"
         crossorigin="anonymous"

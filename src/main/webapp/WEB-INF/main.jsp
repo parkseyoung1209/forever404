@@ -1,18 +1,27 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%> 
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+pageEncoding="UTF-8"%> <%@ taglib prefix="c"
+uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <title>ForeverCalendar</title>
-    <link rel="stylesheet"
-      href="${pageContext.request.contextPath}/css/reset.css"/>
-    <link rel="stylesheet"
-      href="${pageContext.request.contextPath}css/calander.css"/>
-    <link rel="stylesheet"
-      href="${pageContext.request.contextPath}css/tetris.css"/>
-    <link href="https://fonts.googleapis.com/css2?family=Dongle:wght@700&family=Nanum+Gothic:wght@400;700&display=swap"
-	rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="${pageContext.request.contextPath}/css/reset.css"
+    />
+    <link
+      rel="stylesheet"
+      href="${pageContext.request.contextPath}css/calander.css"
+    />
+    <link
+      rel="stylesheet"
+      href="${pageContext.request.contextPath}css/tetris.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Dongle:wght@700&family=Nanum+Gothic:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="${pageContext.request.contextPath}js/index.global.min.js"></script>
     <script src="${pageContext.request.contextPath}js/tetris.js"></script>
@@ -25,7 +34,7 @@
         localStorage.clear();
       }
     </script>
-    
+
     <c:if test="${not empty user}">
       <jsp:include page="header.jsp" />
 
@@ -39,45 +48,48 @@
               </button>
               <button id="teamDelBtn">그룹 삭제</button>
 
-  <script>
-  	// 그룹 삭제
-    $("#teamDelBtn").click(() => {
-      let groupName = localStorage.getItem("groupName");
-      if (
-        confirm(
-          "삭제하시면 복구할 수 없습니다 \n정말로 삭제하시겠습니까??"
-        )
-      ) {
-        $.ajax({
-          url: "/deleteGroup",
-          type: "post",
-          data: "groupName=" + groupName,
-          success: function () {
-            window.location.href = "/main";
-          },
-        });
-      } else {
-        return false;
-      }
-    });
-  </script>
-           </div>
-           <div id="calendar"></div>
-         </div>
-       </c:if>
-       <c:if test="${empty groupName}">
-       	<div id="pId1">
-       		<p>그룹을 선택하세요</p>
-       	</div>
-       <div class="selectOrAdd">
-         <canvas></canvas>
-       </div>
+              <script>
+                // 그룹 삭제
+                $("#teamDelBtn").click(() => {
+                  let groupName = localStorage.getItem("groupName");
+                  if (
+                    confirm(
+                      "삭제하시면 복구할 수 없습니다 \n정말로 삭제하시겠습니까??"
+                    )
+                  ) {
+                    $.ajax({
+                      url: "/deleteGroup",
+                      type: "post",
+                      data: "groupName=" + groupName,
+                      success: function () {
+                    	alert("삭제 완료했습니다!");
+                        window.location.href = "/main";
+                      },
+                    });
+                  } else {
+                    return false;
+                  }
+                });
+              </script>
+            </div>
+            <div id="calendar"></div>
+          </div>
+        </c:if>
+        <c:if test="${empty groupName}">
+          <div id="pId1">
+            <p>그룹을 선택하세요</p>
+          </div>
+          <div class="selectOrAdd">
+            <canvas></canvas>
+          </div>
+        </c:if>
       </c:if>
-     </c:if>
 
       <c:if test="${check==false}">
         <p id="pId1">그룹을 생성하세요</p>
-        <div class="selectOrAdd"><canvas></canvas></div>
+        <div class="selectOrAdd">
+          <canvas></canvas>
+        </div>
       </c:if>
       <div id="teamModal" style="display: none">
         <div id="modalContent7">
@@ -102,8 +114,7 @@
           <i class="fa-solid fa-xmark" id="X"></i>
 
           <div class="modsection" id="addMemo">
-            <div id="memoSection">
-            </div>
+            <div id="memoSection"></div>
             <div id="memoSection1">
               여행 시작 :
               <p id="addMemop"></p>
@@ -118,21 +129,25 @@
               원
             </div>
             <div id="memoSection4">
-              <p id="addMemop4">
-               아직 일정이 없어요, 일정을 넣어주세요!
-              </p>
+              <p id="addMemop4">아직 일정이 없어요, 일정을 넣어주세요!</p>
             </div>
           </div>
-          <button class="modsection" id="seven"><i class="fa-solid fa-images"></i></button>
-          <button class="modsection" id="six"><i class="fa-solid fa-paper-plane"></i></button>
-          <button class="modsection" id="eight"><i class="fa-solid fa-trash-can"></i></button>
+          <button class="modsection" id="seven">
+            <i class="fa-solid fa-images"></i>
+          </button>
+          <button class="modsection" id="six">
+            <i class="fa-solid fa-paper-plane"></i>
+          </button>
+          <button class="modsection" id="eight">
+            <i class="fa-solid fa-trash-can"></i>
+          </button>
         </div>
       </div>
 
       <div id="detModal" style="display: none">
         <div id="modalContent4">
           <header class="mdl-header2">
-            <p class="head-wrd2">세부 일정 추가</p>
+            <p class="head-wrd2">전체 일정 추가</p>
           </header>
           <i class="fa-solid fa-xmark" id="X2"></i>
           <div class="inpt-brder" id="title">
@@ -175,7 +190,11 @@
               id="entireMoney"
             />
           </div>
-          <div><button class="submit" id="final"><i id="finalBtn" class="fa-regular fa-calendar-plus"></i></button></div>
+          <div>
+            <button class="submit" id="final">
+              <i id="finalBtn" class="fa-regular fa-calendar-plus"></i>
+            </button>
+          </div>
         </div>
       </div>
       <div id="albumModal" style="display: none">
@@ -196,13 +215,14 @@
           </div>
         </div>
       </div>
-      
-      <script src="https://kit.fontawesome.com/ef885bd654.js"
-        crossorigin="anonymous"></script>
-        
+
+      <script
+        src="https://kit.fontawesome.com/ef885bd654.js"
+        crossorigin="anonymous"
+      ></script>
+
       <script>
-      
-       // 전체적인 일정 추가
+        // 전체적인 일정 추가
         $("#final").click(() => {
           $.ajax({
             type: "post",
@@ -214,10 +234,15 @@
               entireMoney: $("#entireMoney").val(),
             },
             success: function (result) {
-              alert("일정 추가 완료!");
-              const id = $("#title2").val();
-              $("#addMemo").html("<button>" + id + "</button>");
-              location.reload();
+              if (result == true) {
+                alert("일정 추가 완료!");
+                const id = $("#title2").val();
+                $("#addMemo").html("<button>" + id + "</button>");
+                location.reload();
+              } else {
+                alert("중복된 일정이 존재합니다.");
+                location.reload();
+              }
             },
             error: function () {
               alert("추가에 실패했습니다.");
@@ -226,7 +251,6 @@
           });
         });
       </script>
-
     </c:if>
     <!-- 로그아웃 -->
     <c:if test="${empty user}">
@@ -235,7 +259,7 @@
         window.location.href = "/";
       </script>
     </c:if>
-    
+
     <script>
       const bigSchedules = [];
       let schedule = {};
@@ -248,9 +272,9 @@
         schedule.bsCode = "${item.bsCode}"; 
         bigSchedules.push(schedule); 
         schedule = {};
-      </c:forEach>;
+      </c:forEach>
     </script>
-    
+
     <script src="${pageContext.request.contextPath}/js/calander.js"></script>
   </body>
 </html>

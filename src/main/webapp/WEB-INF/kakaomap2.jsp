@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Trip Scheduler - Map</title>
+<title>ForeverCalendar - Map</title>
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 <link rel="stylesheet"
       href="${pageContext.request.contextPath}/css/reset.css" />
@@ -187,7 +187,7 @@
     	});
 
       const apiUrl = "https://api.openai.com/v1/chat/completions";
-      const apiKey = 'sk-qrG7Y2RyqKTSXw6siBbpyOyuGCTG5DtV4Eneb4Rib6T3BlbkFJQmaTyMLgv-hVPR9JOx_9Z_zZArshsm6KeZtDfaOR8A';
+      const apiKey = 'sk-TQFAcsr2lzC4jH8_QaKLoVbkU5OFJPbiynfqI6g63iT3BlbkFJoNVixKWiGfPoG7tv4us-yi7PM67W2KVmA-5LuiW6UA';
       const gptTest = document.querySelector("#gptTest");
       const gptAsk = document.querySelector("#gptAsk");
       
@@ -198,7 +198,7 @@
 		    const response = await fetch(apiUrl,{
 	        method : 'POST',
 	        headers : {
-	          'Authorization': `Bearer sk-qrG7Y2RyqKTSXw6siBbpyOyuGCTG5DtV4Eneb4Rib6T3BlbkFJQmaTyMLgv-hVPR9JOx_9Z_zZArshsm6KeZtDfaOR8A`, // API 문서에 따라 Authorization 헤더 사용
+	          'Authorization': `Bearer sk-TQFAcsr2lzC4jH8_QaKLoVbkU5OFJPbiynfqI6g63iT3BlbkFJoNVixKWiGfPoG7tv4us-yi7PM67W2KVmA-5LuiW6UA`, // API 문서에 따라 Authorization 헤더 사용
 	          'Content-Type': 'application/json'
 	        },
 	        body : JSON.stringify({
@@ -218,7 +218,7 @@
   		}
       }
       
-      
+      // gpt 답장 시 적용 시키는 텍스트 딜레이
       $("#gpt").click(() =>{
     	  const userMessage = gptTest.value;
     	  conversationHistory.push({ "role": "user", "content": userMessage});
@@ -248,7 +248,7 @@
 	                 console.error('Error:', error);
 	              });
 	      });
-            
+      // 특정 그룹의 메인 페이지로 가기 위한 함수      
       $("#back").click(() => {
     	  const groupName = localStorage.getItem("groupName");
     	  const bsCode = localStorage.getItem("bsCode");
